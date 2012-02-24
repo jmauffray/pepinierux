@@ -1,0 +1,10 @@
+syntax: glob
+
+*~
+*.orig
+include/session/*
+factux/dbinfo.php
+factux/include/config/common.php
+factux/include/config/var.php
+factux/image/logo.png
+factux/image/passeport-phyto.jpg

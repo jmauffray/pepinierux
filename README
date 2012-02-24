@@ -1,0 +1,42 @@
+== Installation du site web ==
+#clone repository
+hg clone https://breizhux@bitbucket.org/breizhux/pepinierux
+
+#copy and edit config files
+cd pepinierux
+cp factux/include/config/common.php.default factux/include/config/common.php
+cp factux/include/config/var.php.default factux/include/config/var.php
+cp factux/dbinfo.php.default factux/dbinfo.php
+
+#copy and edit PDF logo and phyto passport
+cp factux/image/logo.png.default factux/image/logo.png
+cp factux/image/passeport-phyto.jpg.default factux/image/passeport-phyto.jpg
+
+#change user rights for webserver access
+chmod 777 factux/include/session
+chmod 777 factux/fpdf
+
+#go to home page and connect login:admin pwd:admin
+firefox http://localhost/pepinierux/factux/
+
+== Installation de LAMP (Linux/Apache/MySQL/PHP) ==
+#download xampp version 1.6.6 : http://sourceforge.net/projects/xampp/files/XAMPP%20Linux/1.6.6/
+sudo tar xvfz ./xampp-linux-1.6.6.tar.gz -C /opt
+
+#change user right
+cd /opt/lampp/
+sudo chown $USER:$USER htdocs
+
+#active lamp during pc starting, not mandatory
+sudo ln -s /opt/lampp/lampp /etc/rc2.d/S99lampp
+sudo ln -s /opt/lampp/lampp /etc/rc1.d/K02lampp
+
+#create link to website, check if valid link
+sudo ln -s /home/$USER/pepinierux /opt/lampp/htdocs
+
+#start lampp manually
+sudo /opt/lampp/lampp start
+
+#create database
+/opt/lampp/bin/mysql -uroot -e "CREATE DATABASE factux"
+/opt/lampp/bin/mysql -uroot factux < factux.sql
