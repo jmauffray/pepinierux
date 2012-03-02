@@ -2,7 +2,7 @@ syntax: glob
 
 *~
 *.orig
-include/session/*
+include/session/sess*
 factux/dbinfo.php
 factux/include/config/common.php
 factux/include/config/var.php
