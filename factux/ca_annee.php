@@ -39,6 +39,7 @@ include_once("include/head.php");
 <tr>
 <td><form action="ca_annee.php" method="post" name="annee">
 année <select name="an">
+<option value="2012">2012</option>
 <option value="2011">2011</option>
 <option value="2010">2010</option>
 <option value="2009">2009</option>
