@@ -95,6 +95,7 @@ while($data = mysql_fetch_array($req))
 		<OPTION VALUE='motte'>motte</OPTION>
 		<OPTION VALUE='motte en pot'>motte en pot</OPTION>
 		<OPTION VALUE='racines nues'>racines nues</OPTION>
+		<OPTION VALUE='godet'>godet</OPTION>
 		<OPTION VALUE=''></OPTION>
 	      </SELECT>
 	    </td>
