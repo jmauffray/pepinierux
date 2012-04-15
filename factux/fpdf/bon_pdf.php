@@ -365,6 +365,23 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
 			'align' =>L);
 	    $pdf->Table("$sql2",$prop);
 
+            //NEGOCE : categorie id = 7 dans ce cas
+	    $sql2_negoce="SELECT SUM(tot_art_htva)
+			FROM " . $tblpref ."client
+			RIGHT JOIN " . $tblpref ."bon_comm on " . $tblpref ."client.num_client = " . $tblpref ."bon_comm.client_num 
+			LEFT join " . $tblpref ."cont_bon on " . $tblpref ."bon_comm.num_bon = " . $tblpref ."cont_bon.bon_num 
+			LEFT JOIN  " . $tblpref ."article on " . $tblpref ."article.num = " . $tblpref ."cont_bon.article_num 
+			WHERE " . $tblpref ."bon_comm.num_bon = '".$num_bon."' AND " . $tblpref ."article.cat = '7'"; 
+            $suite3_sql_negoce=" GROUP BY $taux_tva";
+	    $sql2_negoce="$sql2_negoce $suite3_sql_negoce";
+	    $resu_negoce = mysql_query( $sql2_negoce ) or die('Erreur SQL !<br>'.$sql2_negoce.'<br>'.mysql_error());
+            $data_negoce_prix = 0;
+            $rowsfound = mysql_num_rows($resu_negoce);
+            while($row = mysql_fetch_array($resu_negoce))
+            {
+                $data_negoce_prix += $row[0];
+            }
+
 	    //fin ventillation
 	    //pour les commentaire
 	    $pdf->SetFont('Arial','',10);
@@ -378,8 +395,16 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
 		$pdf->SetFont('Arial','',10);
 		$pdf->SetY(262);
 		$pdf->SetX(10);
-		$pdf->MultiCell(190,4,"Escompte de 2% pour règlement sous 8 jours après enlèvement ou expédition",0,C,0);
+		$pdf->MultiCell(190,4,"Escompte de 2% pour règlement sous 8 jours après enlèvement ou expédition. Négoce HT : ". $data_negoce_prix."€",0,C,0);
 	      }
+            else
+              {
+		//ligne negoce pour particulier
+		$pdf->SetFont('Arial','',10);
+		$pdf->SetY(262);
+		$pdf->SetX(10);
+		$pdf->MultiCell(190,4,"Négoce HT : ". $data_negoce_prix ."€", 0,C,0);
+              }
 	  }
 	
 	$pdf->Line(10,267,200,267);
