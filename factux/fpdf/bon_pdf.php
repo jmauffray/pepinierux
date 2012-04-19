@@ -257,7 +257,7 @@ WHERE " . $tblpref ."bon_comm.num_bon = '".$num_bon."' ";
 	if( $isPhyto > 0 )
 	  {
 	    //le logo
-	    $pdf->Image("../image/passeport-phyto.jpg",10,75,40,10);
+	    $pdf->Image("../image/passeport-phyto.jpg",10,75,50,13);
 	  }
 	$pdf->Line(10,48,200,48);
 	$pdf->ln(50);
