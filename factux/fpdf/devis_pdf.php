@@ -404,6 +404,7 @@ if ($_POST['mail']=='y') {
   
  }else{
 
+  header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
   echo "<HTML><SCRIPT>document.location='$file';</SCRIPT></HTML>";
  }
 ?> 
