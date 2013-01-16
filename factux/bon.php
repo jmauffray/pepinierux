@@ -26,7 +26,9 @@ include_once("include/config/var.php");
 include_once("include/language/$lang.php");
 include_once("include/utils.php");
 include_once("include/headers.php");
+include_once("include/autocomplete-headers.php");
 include_once("include/finhead.php");
+include_once("include/autocomplete.php");
 ?>
 
 <table width="760" border="0" class="page" align="center">
@@ -132,7 +134,7 @@ include_once("include/finhead.php");
 	      </tr>
 	    <tr>
 	      <td class="texte0"><?php echo $lang_quanti; ?> </td>
-	      <td class="texte0" colspan="3"><input name='quanti' type='text' id='quanti' size='6'></td>
+	      <td class="texte0" colspan="3"><input name='quanti' type='text' id='quanti' size='6' value='1'></td>
 	    </tr>
 	    <tr>
 	      <td class="texte0"><?php echo $lang_remise; ?> </td>

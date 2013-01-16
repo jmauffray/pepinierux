@@ -30,9 +30,15 @@ include_once("include/utils.php");
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="include/style.css">
 <link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >
+<?php
+include_once("include/autocomplete-headers.php");
+?>
 </head>
 
 <body onload="document.formu2.article.focus()">
+<?php
+include_once("include/autocomplete.php");
+?>
 <table width="760" border="0" class="page" align="center">
 <tr>
 <td class="page" align="center">

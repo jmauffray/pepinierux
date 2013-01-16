@@ -1,1 +1,1 @@
-<input name='article' type='text' id='article' size='8'>
+<input name='article' type='text' id='autocomplete' size='8'>

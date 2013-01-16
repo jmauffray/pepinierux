@@ -25,7 +25,9 @@ include_once("include/config/var.php");
 include_once("include/language/$lang.php");
 include_once("include/utils.php");
 include_once("include/headers.php");
+include_once("include/autocomplete-headers.php");
 include_once("include/finhead.php");
+include_once("include/autocomplete.php");
 include_once("include/configav.php");
 $quanti=isset($_POST['quanti'])?$_POST['quanti']:"";
 $remise=isset($_POST['remise'])?$_POST['remise']:"";
@@ -261,7 +263,7 @@ if( $prix_remise == '' )
 		  }
 		?>
 	  <tr><td class='texte0'><?php echo "$lang_quanti"; ?>
-	  <td class='texte0'colspan='3'><input name='quanti' type='text' id='quanti' size='6'>
+	  <td class='texte0'colspan='3'><input name='quanti' type='text' id='quanti' size='6' value='1'>
 	    <tr><td class='texte0'><?php echo "$lang_remise"; ?>
 	    <td class='texte0'colspan='3'><input name='remise' type='text' id='remise' size='6'>
 	    <tr><td class='texte0'><?php echo "$lang_prix_remise"; ?>

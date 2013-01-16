@@ -241,7 +241,7 @@ $result2 = mysql_query( $rqSql )
 	      </tr>
 	      <tr> 
 		<td class="texte0"><?php echo $lang_quantite; ?> 
-		</td><td class="texte0" colspan="8"><input name="quanti" type="text" id="quanti" size="6">
+		</td><td class="texte0" colspan="8"><input name="quanti" type="text" id="quanti" size="6" value="1">
 	      </td></tr>
 	      <tr> 
 		<td class="texte0"><?php echo $lang_remise; ?> 
