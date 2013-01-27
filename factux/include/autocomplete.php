@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT num, variete, taille, cat, conditionnement FROM " . $tblpref ."article";
+$sql = "SELECT num, variete, taille, cat, conditionnement, prix_htva, prix_ttc_part FROM " . $tblpref ."article ORDER BY num DESC";
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
 
 $rqSql = "SELECT id_cat, categorie FROM " . $tblpref ."categorie WHERE 1";
@@ -15,7 +15,7 @@ while ( $row = mysql_fetch_array( $result)) {
   <?php 
       while($data = mysql_fetch_array($req))
       {
-          echo "{ label:\"".addslashes($data['num']." - ".$data['variete']." - ".$data['taille']." - ".$categories[$data['cat']]." - ".$data['conditionnement'])."\", value:\"".$data['num']."\"},";
+          echo "{ label:\"".addslashes($data['num']." - ".$data['variete']." - ".$data['taille']." - ".$categories[$data['cat']]." - ".$data['conditionnement']." - ".$data['prix_htva']." - ".$data['prix_ttc_part'])."\", value:\"".$data['num']."\"},";
       }
   ?>
   ];
