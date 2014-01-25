@@ -51,7 +51,7 @@ $sql = "SELECT $prix_htva, $prix_htva_gros,$taux_tva, conditionnement FROM " . $
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 while($data = mysql_fetch_array($req))
   {
-    if( ($quanti > 24) && ($data[$prix_htva_gros] > 0) && ($type != 'particulier') )
+    if( ($quanti > 14) && ($data[$prix_htva_gros] > 0) && ($type != 'particulier') )
       {
 	$prix_article = $data[$prix_htva_gros];
       }
