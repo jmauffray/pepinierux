@@ -3,7 +3,7 @@ require_once("include/verif.php");
 include_once("include/config/common.php");
 //0.6Mo pour 1000 articles (3300 en base)
 //$sql = "SELECT * FROM " . $tblpref ."article  LIMIT 0, 200";
-$sql = "SELECT num, article, variete, taille FROM " . $tblpref ."article";
+$sql = "SELECT num, article, variete, taille, prix_ttc_part FROM " . $tblpref ."article";
 
 mysql_query("set names 'utf8'");
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
