@@ -88,7 +88,7 @@ if ($message !='') {
   </tr>
   <tr> 
   <td class='<?php echo couleur_alternee (); ?>'> <?php echo "Part. : $lang_ttva" ?></td>
-  <td class='<?php echo couleur_alternee (FALSE); ?>'> <input name="taux_tva_part" type="text" id="taux_tva_part" size="5" maxlength="5" value=7>
+  <td class='<?php echo couleur_alternee (FALSE); ?>'> <input name="taux_tva_part" type="text" id="taux_tva_part" size="5" maxlength="5" value=10>
   %</td>
   </tr>
   <tr> 
@@ -101,7 +101,7 @@ if ($message !='') {
   </tr>
   <tr> 
   <td class='<?php echo couleur_alternee (); ?>'> <?php echo "$lang_ttva" ?></td>
-  <td class='<?php echo couleur_alternee (FALSE); ?>'> <input name="taux_tva" type="text" id="taux_tva" size="5" maxlength="5" value=7>
+  <td class='<?php echo couleur_alternee (FALSE); ?>'> <input name="taux_tva" type="text" id="taux_tva" size="5" maxlength="5" value=10>
   %</td>
   </tr>
   <tr> 
