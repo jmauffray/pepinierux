@@ -41,7 +41,7 @@ if( $type=='particulier' )
 {
   $prix_htva='prix_htva_part';
 }
-else if( $quanti > 24 )
+else if( $quanti > 14 )
   {
     $prix_htva='prix_htva_gros';
   }
@@ -92,7 +92,7 @@ while($data = mysql_fetch_array($req))
 $sql2 = "SELECT $prix_htva FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
 $prix_article = mysql_result($result, $prix_htva);
-if( $quanti > 24 )
+if( $quanti > 14 )
   {
     $sql2 = "SELECT prix_htva_gros FROM " . $tblpref ."article WHERE num = $article";
     $result = mysql_query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());

@@ -42,7 +42,7 @@ if( $type=='particulier' )
     $taux_tva='taux_tva_part';
     $prix_htva='prix_htva_part';
   }
-else if( $quanti > 24 )
+else if( $quanti > 14 )
   {
     $prix_htva='prix_htva_gros';
   }
