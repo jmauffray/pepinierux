@@ -3,7 +3,7 @@ require_once("include/verif.php");
 include_once("include/config/common.php");
 
 //sql request
-$sql = "SELECT * FROM " . $tblpref ."client  LIMIT 0, 200";
+$sql = "SELECT * FROM " . $tblpref ."client";
 mysql_query("set names 'utf8'");
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
 
