@@ -3,13 +3,13 @@ require_once("include/verif.php");
 include_once("include/config/common.php");
 
 //sql request
-$sql = "SELECT * FROM " . $tblpref ."client";
+$sql = "SELECT num_client, nom FROM " . $tblpref ."client";
 mysql_query("set names 'utf8'");
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
 
 //fill array with sql results
 $rows = array(); 
-while($data = mysql_fetch_array($req))
+while($data = mysql_fetch_array($req, MYSQL_ASSOC))
   {
     $rows[] = $data;
   }
