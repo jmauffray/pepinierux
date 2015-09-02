@@ -36,6 +36,7 @@ while($data = mysql_fetch_array($req))
   {
     $article = $data['article'];
     $variete = $data['variete'];
+    $contenance = $data['contenance'];
     $phyto = $data['phyto'];
     $num =$data['num'];
     $prix = $data['prix_htva'];
@@ -67,6 +68,7 @@ while($data = mysql_fetch_array($req))
 	      if($use_stock=='y'){?>
 	    <th><?php echo "Plante"; ?></th>
 	    <th><?php echo "$lang_variete"; ?></th>
+	    <th><?php echo "Cont."; ?></th>
 	    <th><?php echo "phyto"; ?></th>
 	    <th><?php echo "$lang_taille"; ?></th>
 	    <th><?php echo "$lang_conditionnement"; ?></th>
@@ -86,6 +88,7 @@ while($data = mysql_fetch_array($req))
 	  <tr>
 	    <td><input size=8 name="article" type="text" value ="<?php echo"$article" ?>"></td>
 	    <td><input size=8 name="variete" type="text" value ="<?php echo"$variete" ?>"></td>
+	    <td><input size=8 name="contenance" type="text" value ="<?php echo"$contenance" ?>"></td>
 	    <td><input size=2 name="phyto" type="text" value ="<?php echo"$phyto" ?>"></td>
 	    <td><input size=8 name="taille" type="text" value ="<?php echo"$taille" ?>"></td>
 	    <td>

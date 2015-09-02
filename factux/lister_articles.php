@@ -89,6 +89,7 @@ include_once("include/configav.php");
 	  <th><a href="lister_articles.php?ordre=num"> <?php echo "N°"; ?></a></th>
 	  <th><a href="lister_articles.php?ordre=article"> <?php echo $lang_article; ?></a></th>
 	  <th><a href="lister_articles.php?ordre=variete"><?php echo $lang_variete; ?></a></th>
+	  <th><a href="lister_articles.php?ordre=contenance"><?php echo "Cont."; ?></a></th>
 	  <th><a href="lister_articles.php?ordre=phyto"><?php echo "P"; ?></a></th>
 	  <th><a href="lister_articles.php?ordre=taille"><?php echo $lang_taille; ?></a></th>
 	  <th><a href="lister_articles.php?ordre=conditionnement"><?php echo "Cond."; ?></a></th>
@@ -114,6 +115,7 @@ include_once("include/configav.php");
 	      $article = htmlentities($article, ENT_QUOTES);
 	      $cat = $data['categorie'];
 	      $variete = $data['variete'];
+	      $contenance = $data['contenance'];
 	      $phyto = $data['phyto'];
 	      $taille = $data['taille'];
 	      $conditionnement = $data['conditionnement'];
@@ -140,6 +142,7 @@ include_once("include/configav.php");
 	<td class="highlight"><a name="<?php echo "$num"; ?>"><?php echo "$num"; ?></a></td>
 	<td class="highlight"><?php echo "$article"; ?></td>
 	<td class="highlight"><?php echo $variete; ?></td>
+	<td class="highlight"><?php echo $contenance; ?></td>
 	<td class="highlight"><?php echo $phyto; ?></td>
 	<td class="highlight"><?php echo $taille; ?></td>
 	<td class="highlight"><?php echo $conditionnement; ?></td>

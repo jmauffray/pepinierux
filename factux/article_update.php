@@ -36,6 +36,7 @@ $stock=isset($_POST['stock'])?$_POST['stock']:"";
 $categorie=isset($_POST['categorie'])?$_POST['categorie']:"";
 $taille=isset($_POST['taille'])?$_POST['taille']:"";
 $variete=isset($_POST['variete'])?$_POST['variete']:"";
+$contenance=isset($_POST['contenance'])?$_POST['contenance']:"";
 $phyto=isset($_POST['phyto'])?$_POST['phyto']:"";
 $conditionnement=isset($_POST['conditionnement'])?$_POST['conditionnement']:"";
 $id=0;
@@ -44,12 +45,12 @@ mysql_select_db($db) or die ("Could not select $db database");
 
 if( $Submit == 'Modifier')
   {
-    $sql2 = "UPDATE " . $tblpref ."article SET `prix_htva`='".$prix."',`prix_htva_gros`='".$prix_gros."',`taux_tva`='".$tva."',`taux_tva_part`='".$tva_part."',`prix_htva_part`='".$prix_part."',`prix_ttc_part`='".$prix_part_ttc."',`stock`='".$stock."', `cat`='".$categorie."', `taille`='".$taille."', `article`='".$article."', `conditionnement`='".$conditionnement."', `variete`='".$variete."', `phyto`='".$phyto."' WHERE num ='".$num."' LIMIT 1 ";
+    $sql2 = "UPDATE " . $tblpref ."article SET `prix_htva`='".$prix."',`prix_htva_gros`='".$prix_gros."',`taux_tva`='".$tva."',`taux_tva_part`='".$tva_part."',`prix_htva_part`='".$prix_part."',`prix_ttc_part`='".$prix_part_ttc."',`stock`='".$stock."', `cat`='".$categorie."', `taille`='".$taille."', `article`='".$article."', `conditionnement`='".$conditionnement."', `variete`='".$variete."', `contenance`='".$contenance."', `phyto`='".$phyto."' WHERE num ='".$num."' LIMIT 1 ";
     $id = $num;
   }
  else
    {
-     $sql2 = "INSERT INTO " . $tblpref ."article(article, prix_htva,prix_htva_gros, taux_tva, prix_ttc_part, prix_htva_part, taux_tva_part, uni, stock, cat, taille, conditionnement, variete, phyto) VALUES ('$article', '$prix','$prix_gros', '$tva','$prix_part_ttc', '$prix_part', '$tva_part', 'pcs', '$stock', '$categorie', '$taille', '$conditionnement', '$variete', '$phyto')";
+     $sql2 = "INSERT INTO " . $tblpref ."article(article, prix_htva,prix_htva_gros, taux_tva, prix_ttc_part, prix_htva_part, taux_tva_part, uni, stock, cat, taille, conditionnement, variete, contenance, phyto) VALUES ('$article', '$prix','$prix_gros', '$tva','$prix_part_ttc', '$prix_part', '$tva_part', 'pcs', '$stock', '$categorie', '$taille', '$conditionnement', '$variete', '$contenance', '$phyto')";
    }
 
 mysql_query($sql2) OR die("<p>Erreur Mysql<br/>$sql2<br/>".mysql_error()."</p>");
