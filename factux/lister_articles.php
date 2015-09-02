@@ -30,7 +30,7 @@ include_once("include/headers.php");?>
 include_once("include/finhead.php");
 include_once("include/configav.php");
 ?>
-<table width="900" border="0" class="page" align="center">
+<table width="1000" border="0" class="page" align="center">
   <tr>
     <td class="page" align="center">
       <?php
