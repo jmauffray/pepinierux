@@ -60,25 +60,36 @@ include_once("include/configav.php");
   </tr>
   <tr>
 
-    <table id="dg" title="My Users" style="width:700px;height:250px"
-        toolbar="#toolbar" pagination="true" idField="num"
-        rownumbers="true" fitColumns="true" singleSelect="false">
+    <table id="dg" title="Articles" style="width:1300px;height:550px"
+        toolbar="#toolbar"
+        pagination="true" data-options="pageSize:50"
+        idField="num"
+        rownumbers="false" fitColumns="true" singleSelect="false">
       <thead>
         <tr>
-  				<th field="num" width="50" editor="text">Num</th>
-  				<th field="article" width="50" editor="text">Article</th>
-  				<th field="variete" width="50" editor="text">Variete</th>
-  				<th field="taille" width="50" editor="text">Phone</th>
+  				<th field="num" width="10" editor="text">N.</th>
+  				<th field="article" width="50" editor="text">Plante</th>
+  				<th field="variete" width="70" editor="text">Variete</th>
+          <th field="contenance" width="12" editor="text">Cont.</th>
+          <th field="phyto" width="7" editor="text">P</th>
+  				<th field="taille" width="30" editor="text">Taille</th>
+  				<th field="conditionnement" width="30" editor="text">Cond.</th>
+          <th field="prix_htva" width="20" editor="text">HT</th>
+          <th field="prix_htva_gros" width="20" editor="text">HT:Gros</th>
+          <th field="taux_tva" width="10" editor="text">TVA</th>
+          <th field="prix_ttc_part" width="20" editor="text">TTC:Part.</th>
+          <th field="taux_tva_part" width="10" editor="text">TVA:Part.</th>
+          <th field="stock" width="20" editor="text">Quantite</th>
+          <th field="cat" width="10" editor="text">Origine</th>
         </tr>
       </thead>
     </table>
     <div id="toolbar">
-      <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">New</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">Destroy</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">Save</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">Cancel</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">Creer</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">Supprimer</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">Sauver</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">Annuler</a>
     </div>
-
 
 
   </tr>
