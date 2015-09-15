@@ -44,6 +44,13 @@ include_once("include/headers.php");?>
       destroyUrl: 'easyui-crud/destroy_user.php'
     });
   });
+        function doSearch(){
+        $('#dg').datagrid('load',{
+            num: $('#num').val(),
+            article: $('#article').val(),
+            variete: $('#variete').val()
+        });
+    }
 </script>
 
 <?php
@@ -85,6 +92,16 @@ include_once("include/configav.php");
       </thead>
     </table>
     <div id="toolbar">
+
+        <span>Num:</span>
+        <input id="num" style="line-height:26px;border:1px solid #ccc">
+        <span>Plante:</span>
+        <input id="article" style="line-height:26px;border:1px solid #ccc">
+        <span>Variete:</span>
+        <input id="variete" style="line-height:26px;border:1px solid #ccc">
+        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">Search</a>
+    <br/>
+    
       <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">Creer</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">Supprimer</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">Sauver</a>
