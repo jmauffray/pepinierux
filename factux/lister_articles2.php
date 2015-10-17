@@ -67,7 +67,7 @@ include_once("include/configav.php");
   </tr>
   <tr>
 
-    <table id="dg" title="Articles" style="width:1300px;height:750px"
+    <table id="dg" title="Articles" style="width:1200px;height:750px"
         toolbar="#toolbar"
         pagination="true" data-options="pageSize:50"
         idField="num"
