@@ -94,12 +94,12 @@ include_once("include/configav.php");
     <div id="toolbar">
 
         <span>Num:</span>
-        <input id="num" style="line-height:26px;border:1px solid #ccc">
-        <span>Plante:</span>
+        <input id="num" style="line-height:26px;width:50px;border:1px solid #ccc">
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plante:</span>
         <input id="article" style="line-height:26px;border:1px solid #ccc">
-        <span>Variete:</span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variete:</span>
         <input id="variete" style="line-height:26px;border:1px solid #ccc">
-        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">Search</a>
+        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">&nbsp;&nbsp;&nbsp;Search</a>
     <br/>
     
       <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">Creer</a>
