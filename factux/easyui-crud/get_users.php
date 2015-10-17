@@ -18,11 +18,19 @@ if (empty($num)) {
     $whereSql = "num LIKE '$num'";
 }
 
+$order = "";
+if (!empty($article) || 
+    !empty($variete))
+{
+    $order = " ORDER BY variete ASC, taille ASC, conditionnement ASC";
+}
+
 //get articles
 $sql = "SELECT * FROM " . $tblpref ."article
 LEFT JOIN " . $tblpref ."categorie ON " . $tblpref ."categorie.id_cat = " . $tblpref ."article.cat
 WHERE actif != 'non'
-AND " . $whereSql ." 
+AND " . $whereSql ."
+". $order ."
 LIMIT $from, $row";
 
 mysql_query("set names 'utf8'");
