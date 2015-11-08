@@ -16,7 +16,7 @@ $cat = $_REQUEST['cat'];
 $phyto = $_REQUEST['phyto'];
 
 //compute
-$prix_htva_part = ($prix_part_ttc * 100 / (100 + $taux_tva_part));
+$prix_htva_part = ($prix_ttc_part * 100 / (100 + $taux_tva_part));
 
 include '../include/config/common.php';
 
@@ -31,7 +31,7 @@ conditionnement='$conditionnement',
 contenance='$contenance',
 prix_ttc_part='$prix_ttc_part',
 prix_htva_part='$prix_htva_part',
-taux_tva_part='$tva_part',
+taux_tva_part='$taux_tva_part',
 prix_htva='$prix_htva',
 prix_htva_gros='$prix_htva_gros',
 taux_tva='$taux_tva',
