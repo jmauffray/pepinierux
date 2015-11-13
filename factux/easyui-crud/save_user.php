@@ -14,14 +14,23 @@ $stock = $_REQUEST['stock'];
 $cat = $_REQUEST['cat'];
 $phyto = $_REQUEST['phyto'];
 
+//compute
+$prix_htva_part = ($prix_ttc_part * 100 / (100 + $taux_tva_part));
+
 include '../include/config/common.php';
 
 
-$sql = "insert into " . $tblpref ."article(article, variete, taille, conditionnement, contenance, prix_ttc_part, prix_htva_part, taux_tva_part, prix_htva, prix_htva_gros, taux_tva, uni, stock, cat, phyto)
-values '$article', '$variete', '$taille', '$conditionnement', '$contenance', '$prix_ttc_part', '$prix_htva_part', '$taux_tva_part', '$prix_htva', '$prix_htva_gros', '$taux_tva', 'pcs', '$stock', '$cat', '$phyto')";
+$sql = "insert into " . $tblpref ."article(
+article,     variete,   taille,    conditionnement,     contenance,   prix_ttc_part,    prix_htva_part,    taux_tva_part,    prix_htva,    prix_htva_gros,    taux_tva,    uni,   stock,    cat,    phyto)
+values(
+'$article', '$variete', '$taille', '$conditionnement', '$contenance', '$prix_ttc_part', '$prix_htva_part', '$taux_tva_part', '$prix_htva', '$prix_htva_gros', '$taux_tva', 'pcs', '$stock', '$cat', '$phyto')";
 
 mysql_query("set names 'utf8'");
-mysql_query($sql);
+$result = @mysql_query($sql);
+if (!$result) {
+	error_log("result - ".$result  . mysql_error());
+    die('Requête invalide : ' . mysql_error());
+}
 
 echo json_encode(array(
 	'num' => mysql_insert_id(),
