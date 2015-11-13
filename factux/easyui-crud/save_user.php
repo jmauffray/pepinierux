@@ -1,5 +1,7 @@
 <?php
 
+include 'cat_util.php';
+
 $article = $_REQUEST['article'];
 $variete = $_REQUEST['variete'];
 $taille = $_REQUEST['taille'];
@@ -11,7 +13,7 @@ $prix_htva = $_REQUEST['prix_htva'];
 $prix_htva_gros = $_REQUEST['prix_htva_gros'];
 $taux_tva = $_REQUEST['taux_tva'];
 $stock = $_REQUEST['stock'];
-$cat = $_REQUEST['cat'];
+$cat = getCatId($_REQUEST['categorie']);
 $phyto = $_REQUEST['phyto'];
 
 //compute

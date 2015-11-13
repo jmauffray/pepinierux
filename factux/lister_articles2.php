@@ -87,7 +87,7 @@ include_once("include/configav.php");
           <th field="prix_ttc_part" width="20" editor="text">TTC:Part.</th>
           <th field="taux_tva_part" width="10" editor="text">TVA:Part.</th>
           <th field="stock" width="20" editor="text">Quantite</th>
-          <th field="cat" width="10" editor="text">Origine</th>
+          <th field="categorie" width="10" editor="text">Origine</th>
         </tr>
       </thead>
     </table>
@@ -101,7 +101,7 @@ include_once("include/configav.php");
         <input id="variete" style="line-height:26px;border:1px solid #ccc">
         <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">&nbsp;&nbsp;&nbsp;Search</a>
     <br/>
-    
+
       <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">Creer</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">Supprimer</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">Sauver</a>
