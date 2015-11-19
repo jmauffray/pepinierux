@@ -1,20 +1,20 @@
-<?php 
+<?php
 /*
  * Factux le facturier libre
  * Copyright (C) 2003-2004 Guy Hendrickx
- * 
+ *
  * Licensed under the terms of the GNU  General Public License:
  * 		http://www.opensource.org/licenses/gpl-license.php
- * 
+ *
  * For further information visit:
  * 		http://factux.sourceforge.net
- * 
+ *
  * File Name: edit_art.php
  * 	Permet de modifier certains parametres des articles.
- * 
+ *
  * * * Version:  1.1.5
  * * * * Modified: 23/07/2005
- * 
+ *
  * File Authors:
  * 		Guy Hendrickx
  *.
@@ -52,7 +52,7 @@ while($data = mysql_fetch_array($req))
     $conditionnement = $data['conditionnement'];
     $cat_id = $data['id_cat'];
   }
-?>			
+?>
 <table width="760" border="0" class="page" align="center">
   <tr>
     <td class="page" align="center">
@@ -86,11 +86,11 @@ while($data = mysql_fetch_array($req))
 	    <th><?php echo "Part : %TVA"; ?></th>
 	  </tr>
 	  <tr>
-	    <td><input size=8 name="article" type="text" value ="<?php echo"$article" ?>"></td>
-	    <td><input size=8 name="variete" type="text" value ="<?php echo"$variete" ?>"></td>
-	    <td><input size=8 name="contenance" type="text" value ="<?php echo"$contenance" ?>"></td>
+	    <td><input size=18 name="article" type="text" value ="<?php echo"$article" ?>"></td>
+	    <td><input size=24 name="variete" type="text" value ="<?php echo"$variete" ?>"></td>
+	    <td><input size=4 name="contenance" type="text" value ="<?php echo"$contenance" ?>"></td>
 	    <td><input size=2 name="phyto" type="text" value ="<?php echo"$phyto" ?>"></td>
-	    <td><input size=8 name="taille" type="text" value ="<?php echo"$taille" ?>"></td>
+	    <td><input size=6 name="taille" type="text" value ="<?php echo"$taille" ?>"></td>
 	    <td>
 	      <SELECT NAME='conditionnement'>
 		<OPTION VALUE='<?php echo"$conditionnement" ?>'><?php echo"$conditionnement" ?></OPTION>
@@ -102,17 +102,17 @@ while($data = mysql_fetch_array($req))
 		<OPTION VALUE=''></OPTION>
 	      </SELECT>
 	    </td>
-	    <td><input size=8 name="prix" type="text"  value ="<?php echo"$prix" ?> <?php echo "$devise" ?>"></td>
-	    <td><input size=8 name="prix_gros" type="text"  value ="<?php echo"$prix_gros" ?> <?php echo "$devise" ?>"></td>
-	      <td><input size=8 name="prix_part_ttc" type="text"  value ="<?php echo"$prix_part_ttc" ?> <?php echo "$devise" ?>"></td>
+	    <td><input size=5 name="prix" type="text"  value ="<?php echo"$prix" ?> <?php echo "$devise" ?>"></td>
+	    <td><input size=5 name="prix_gros" type="text"  value ="<?php echo"$prix_gros" ?> <?php echo "$devise" ?>"></td>
+	      <td><input size=5 name="prix_part_ttc" type="text"  value ="<?php echo"$prix_part_ttc" ?> <?php echo "$devise" ?>"></td>
 	    <?php
 	      if($use_stock=='y'){?>
 	    <td><input size=8 name="stock" type="text" value ="<?php echo"$stock" ?>"></td>
 	    <?php  if ($use_categorie =='y') { ?>
 	    <td>
-	      <?php 
+	      <?php
 		$rqSql = "SELECT id_cat, categorie FROM " . $tblpref ."categorie WHERE 1";
-	      $result = mysql_query( $rqSql ) or die( "ExÃÂÃÂÃÂÃ¢ÂÂÃÂÃ¢ÂÂ ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ¢ÃÂÃÂÃÂ¢Ã¢ÂÂ¬ÃÂ¡ÃÂÃ¢ÂÂÃÂÃÂ©cution requÃÂÃÂÃÂÃ¢ÂÂÃÂÃ¢ÂÂ ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ¢ÃÂÃÂÃÂ¢Ã¢ÂÂ¬ÃÂ¡ÃÂÃ¢ÂÂÃÂÃÂªte impossible."); ?> 
+	      $result = mysql_query( $rqSql ) or die( "ExÃÂÃÂÃÂÃ¢ÂÂÃÂÃ¢ÂÂ ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ¢ÃÂÃÂÃÂ¢Ã¢ÂÂ¬ÃÂ¡ÃÂÃ¢ÂÂÃÂÃÂ©cution requÃÂÃÂÃÂÃ¢ÂÂÃÂÃ¢ÂÂ ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ¢ÃÂÃÂÃÂ¢Ã¢ÂÂ¬ÃÂ¡ÃÂÃ¢ÂÂÃÂÃÂªte impossible."); ?>
 	      <SELECT NAME='categorie'>
 		<OPTION VALUE='<?php echo"$cat_id" ?>'><?php echo $cate; ?></OPTION>
 		<?php
@@ -125,8 +125,8 @@ while($data = mysql_fetch_array($req))
 		  }
 		?>
 	      </SELECT></td>
-	      <td><input size=8 name="tva" type="text" value ="<?php echo"$tva" ?>"></td>
-	      <td><input size=8 name="tva_part" type="text" value ="<?php echo"$tva_part" ?>"></td>
+	      <td><input size=3 name="tva" type="text" value ="<?php echo"$tva" ?>"></td>
+	      <td><input size=3 name="tva_part" type="text" value ="<?php echo"$tva_part" ?>"></td>
 	      <?php } ?>
 
 	      <?php } ?>
