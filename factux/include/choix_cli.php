@@ -14,7 +14,7 @@ $l=0;
 foreach ($lettre as $value) {
  echo"pays[$l] = new Array( \"p$l\",\"$value\");";
  echo"ville[\"p$l\"] = new Array;";  
-	 $rqSql2 ="$rqSql AND `nom` LIKE '$value%'";
+	 $rqSql2 ="$rqSql AND `nom` LIKE '$value%' ORDER BY nom ASC";
 	 $req = mysql_query($rqSql2) or die('Erreur SQL !<br>'.$rqSql2.'<br>'.mysql_error());
 	 $v=0;
 	 	 while($data = mysql_fetch_array($req))
