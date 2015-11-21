@@ -124,7 +124,7 @@ if ($use_categorie =='y') { ?>
     <td  class='<?php echo couleur_alternee (); ?>'><?php echo"$lang_categorie" ?>
     <td class='<?php echo couleur_alternee (FALSE); ?>'>
     <?php
-    $rqSql = "SELECT id_cat, categorie FROM " . $tblpref ."categorie WHERE 1";
+    $rqSql = "SELECT id_cat, categorie FROM " . $tblpref ."categorie WHERE 1 ORDER BY id_cat DESC";
   $result = mysql_query( $rqSql ) or die( "Exécution requête impossible."); ?>
     <SELECT NAME='categorie'>
        <OPTION VALUE='0'><?php echo $lang_choisissez; ?>

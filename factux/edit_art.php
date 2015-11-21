@@ -113,7 +113,7 @@ while($data = mysql_fetch_array($req))
 	    <?php  if ($use_categorie =='y') { ?>
 	    <td>
 	      <?php
-		$rqSql = "SELECT id_cat, categorie FROM " . $tblpref ."categorie WHERE 1";
+		$rqSql = "SELECT id_cat, categorie FROM " . $tblpref ."categorie WHERE 1 ORDER BY id_cat DESC";
 	      $result = mysql_query( $rqSql ) or die( "ExÃÂÃÂÃÂÃ¢ÂÂÃÂÃ¢ÂÂ ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ¢ÃÂÃÂÃÂ¢Ã¢ÂÂ¬ÃÂ¡ÃÂÃ¢ÂÂÃÂÃÂ©cution requÃÂÃÂÃÂÃ¢ÂÂÃÂÃ¢ÂÂ ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ¢ÃÂÃÂÃÂ¢Ã¢ÂÂ¬ÃÂ¡ÃÂÃ¢ÂÂÃÂÃÂªte impossible."); ?>
 	      <SELECT NAME='categorie'>
 		<OPTION VALUE='<?php echo"$cat_id" ?>'><?php echo $cate; ?></OPTION>
