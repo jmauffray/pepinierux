@@ -53,6 +53,14 @@ include_once("include/headers.php");?>
     }
 </script>
 
+<script type="text/javascript">
+    function cellStyler(value,row,index){
+        if (value < 1){
+            return 'background-color:#ffee00;';
+        }
+    }
+</script>
+
 <?php
 include_once("include/finhead.php");
 include_once("include/configav.php");
@@ -86,7 +94,7 @@ include_once("include/configav.php");
           <th field="taux_tva" width="10" editor="text">TVA</th>
           <th field="prix_ttc_part" width="20" editor="text">TTC:Part.</th>
           <th field="taux_tva_part" width="10" editor="text">TVA:Part.</th>
-          <th field="stock" width="20" editor="text">Quantite</th>
+          <th field="stock" data-options="styler:cellStyler" width="20" editor="text">Quantite</th>
           <th field="categorie" width="10" editor="text">Origine</th>
         </tr>
       </thead>
@@ -99,7 +107,7 @@ include_once("include/configav.php");
         <input id="article" style="line-height:26px;border:1px solid #ccc">
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variete:</span>
         <input id="variete" style="line-height:26px;border:1px solid #ccc">
-        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">&nbsp;&nbsp;&nbsp;Search</a>
+        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">&nbsp;&nbsp;&nbsp;Chercher</a>
     <br/>
 
       <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">Creer</a>
