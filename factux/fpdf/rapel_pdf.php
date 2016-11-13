@@ -80,7 +80,7 @@ $pdf->SetFillColor(255,238,204);
 $pdf->SetFont('Arial','B',8);
 $pdf->SetY(70);
 $pdf->SetX(10);
-$pdf->MultiCell(40,4,"Siege social/Social zetel\n Tel/Fax\n T.V.A/B.T.W\n Compte\n email",1,R,1);
+$pdf->MultiCell(40,4,"Siege social/Social zetel\n Tel/Tel\n T.V.A/B.T.W\n Compte\n email",1,R,1);
 //la date
 $pdf->SetFillColor(255,238,204);
 $pdf->SetFont('Arial','B',10);

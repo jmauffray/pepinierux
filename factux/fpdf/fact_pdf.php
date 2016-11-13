@@ -278,7 +278,7 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
 	//cellule coordonnees client
 	$pdf->SetY(50);
 	$pdf->SetX(10);
-	$pdf->MultiCell(65,6,"TVA N° : $num_tva\nTel : $tel_client\nFax : $fax_client",0,L,1);
+	$pdf->MultiCell(65,6,"TVA N° : $num_tva\nTel : $tel_client\nTel : $fax_client",0,L,1);
 
 	//cellule date
 	$pdf->SetFont('Arial','B',8);
@@ -309,7 +309,7 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
 	$pdf->SetFont('Arial','',8);
 	$pdf->SetY(10);
 	$pdf->SetX(80);
-	$pdf->MultiCell(55,4,"$entrep_nom\n$social\nTél/Fax : $tel\nPortable : $tel_portable\n$mail\nTVA N° : $tva_vend\n$siret_num\n$site_web_url\n",0,L,1);//
+	$pdf->MultiCell(55,4,"$entrep_nom\n$social\nTél/Tel : $tel\nPortable : $tel_portable\n$mail\nTVA N° : $tva_vend\n$siret_num\n$site_web_url\n",0,L,1);//
 
 	//phyto
 	if( $isPhyto > 0 )
