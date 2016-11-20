@@ -29,7 +29,7 @@ $num_dev=isset($_GET['num_dev'])?$_GET['num_dev']:"";
 $jour = date("d");
 $mois = date("m");
 $annee = date("Y");
-//on recpere les donnée de devis
+//on recpere les donnï¿½e de devis
 $sql0 = "SELECT * FROM " . $tblpref ."devis WHERE num_dev = $num_dev";
 $req = mysql_query($sql0) or die('Erreur SQL !<br>'.$sql0.'<br>'.mysql_error());
 while($data = mysql_fetch_array($req))
@@ -39,10 +39,11 @@ while($data = mysql_fetch_array($req))
 		$date = $data['date'];
 		$tot_htva = $data['tot_htva'];
 		$tot_tva = $data['tot_tva'];
+		$coment = $data['coment'];
 		}
 		//on les reinjecte dans la base bon_comm
 
-$sql1 = "INSERT INTO " . $tblpref ."bon_comm ( client_num, date, tot_htva, tot_tva ) VALUES ( $client_num, '$annee-$mois-$jour', $tot_htva, $tot_tva )";
+$sql1 = "INSERT INTO " . $tblpref ."bon_comm ( client_num, date, tot_htva, tot_tva, coment ) VALUES ( $client_num, '$annee-$mois-$jour', $tot_htva, $tot_tva, '$coment' )";
 
 mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
 
