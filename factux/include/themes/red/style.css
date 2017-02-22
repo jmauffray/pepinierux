@@ -466,3 +466,19 @@ Bref... pour résumer, ce qu'il y a à modifier à la base, c'est :
 - l'effet spécial IE pour les ssmenu
 - police et couleurs des liens "non survolés" et "survolés".
 */
+
+
+
+/* Formulaire */
+fieldset {
+  padding: 1em;
+  }
+label {
+  float:left;
+  width:25%;
+  margin-right:0.5em;
+  padding-top:0.2em;
+  text-align:right;
+  font-weight:bold;
+  color: red;
+  }
