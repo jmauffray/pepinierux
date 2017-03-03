@@ -40,7 +40,15 @@ include_once("include/configav.php");
   </tr>
   <tr>
     <td><form action="lister_articles.php" method="post" name="lister_articles">
-      <input name='plante' type='text' id='plante' size='8'>
+      <?php
+      $plantePost='';
+      if ( isset ( $_POST['plante'] ) )
+      {
+          $plantePost=$_POST[plante];
+      }
+      echo '<input name="plante" type="text" id="plante" size="8" value='.$plantePost.'>';
+      ?>
+      
       <input type="submit" name="Submit" value="Tri par nom de plante">
     </td>
   </tr>
