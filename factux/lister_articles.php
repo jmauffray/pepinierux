@@ -1,20 +1,20 @@
-<?php 
+<?php
 /*
  * Factux le facturier libre
  * Copyright (C) 2003-2004 Guy Hendrickx
- * 
+ *
  * Licensed under the terms of the GNU  General Public License:
  * 		http://www.opensource.org/licenses/gpl-license.php
- * 
+ *
  * For further information visit:
  * 		http://factux.sourceforge.net
- * 
+ *
  * File Name: lister_article.php
  * 	liste les article et donne acces a differentes actions
- * 
+ *
  * * * Version:  1.1.5
  * * * * Modified: 23/07/2005
- * 
+ *
  * File Authors:
  * 		Guy Hendrickx
  *.
@@ -45,17 +45,17 @@ include_once("include/configav.php");
     </td>
   </tr>
   <tr>
-    <td style="text-align:center;"  >			
-      <?php 
-	if ($user_art == n) { 
+    <td style="text-align:center;"  >
+      <?php
+	if ($user_art == n) {
 	  echo "<h1>$lang_article_droit";
-	  exit;  
+	  exit;
 	}
-	if ($message !='') { 
-	  echo "<table><tr><td>$message</td></tr></table>"; 
+	if ($message !='') {
+	  echo "<table><tr><td>$message</td></tr></table>";
       } ?>
       <?php
-	$sql = "SELECT * FROM " . $tblpref ."article 
+	$sql = "SELECT * FROM " . $tblpref ."article
 	LEFT JOIN " . $tblpref ."categorie ON " . $tblpref ."categorie.id_cat = " . $tblpref ."article.cat
 	WHERE actif != 'non' ";
 
@@ -76,16 +76,16 @@ include_once("include/configav.php");
 	      }
 	    else
 	      {
-		$sql .= "ORDER BY num ASC ";
+		$sql .= "ORDER BY num DESC LIMIT 40";
 	    }
 	  }
 
 	$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
       ?>
-      <center><table class="boiteaction">	
+      <center><table class="boiteaction">
 
 	<caption><?php echo $lang_articles_liste; ?></caption>
-	<tr> 
+	<tr>
 	  <th><a href="lister_articles.php?ordre=num"> <?php echo "N°"; ?></a></th>
 	  <th><a href="lister_articles.php?ordre=article"> <?php echo $lang_article; ?></a></th>
 	  <th><a href="lister_articles.php?ordre=variete"><?php echo $lang_variete; ?></a></th>
@@ -102,7 +102,7 @@ include_once("include/configav.php");
 	  <?php } ?>
 	  <?php
 	    if ($use_categorie =='y') { ?>
-	  <th><a href="lister_articles.php?ordre=categorie"><?php echo $lang_categorie ?> </a> 
+	  <th><a href="lister_articles.php?ordre=categorie"><?php echo $lang_categorie ?> </a>
 	  <?php } ?>
 	  <th colspan="2"><?php echo $lang_action; ?></th>
 	</tr>
@@ -135,7 +135,7 @@ include_once("include/configav.php");
 		$line="0";
 	      }else{
 		$line="1";
-		
+
 	      }
 	?>
 	<tr class="texte<?php echo"$line" ?>" onmouseover="this.className='highlight'" onmouseout="this.className='texte<?php echo"$line" ?>'">
@@ -151,8 +151,8 @@ include_once("include/configav.php");
         <td class="highlight"><?php echo montant_financier ($prix_part_ttc); ?></td>
 	<?php
 	  if($use_stock=='y'){?>
-	<td class="highlight"><?php echo $stock; ?></td><?php 
-	  
+	<td class="highlight"><?php echo $stock; ?></td><?php
+
 	if ($use_categorie =='y') { ?>
   	<td class="highlight"><?php echo $cat; ?></td>
 	<?php } ?>
@@ -175,8 +175,8 @@ include_once("include/configav.php");
 
 	$url = $_SERVER['PHP_SELF'];
 	$file = basename ($url);
-	if ($file=="form_article.php") { 
-	  echo"</table>"; 
+	if ($file=="form_article.php") {
+	  echo"</table>";
       } ?>
     </table></body>
   </html>
