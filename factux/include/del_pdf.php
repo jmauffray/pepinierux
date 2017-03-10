@@ -1,6 +1,6 @@
 <?php 
-
-$dir = fpdf ;
+//delete temporary pdf files
+$dir = "fpdf";
     $t=time();
     $h=opendir($dir);
     while($file=readdir($h))

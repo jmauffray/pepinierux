@@ -58,6 +58,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 <center><table class="boiteaction">
   <caption><?php echo $lang_clients_existants; ?></caption>
  <tr>
+ <th><a href="lister_clients.php?ordre=num_client">Id</a></th>
  <th><a href="lister_clients.php?ordre=civ"><?php echo $lang_civ; ?> </a></th>
  <th><a href="lister_clients.php?ordre=nom"><?php echo $lang_nom; ?></a></th>
 <th><a href="lister_clients.php?ordre=nom2"><?php echo $lang_complement; ?></a></th>
@@ -75,6 +76,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 $nombre =1;
 while($data = mysql_fetch_array($req))
     {
+		$id = $data['num_client'];
 		$nom = $data['nom'];
 		$nom_html= addslashes($nom);
 		$nom2 = $data['nom2'];
@@ -96,7 +98,8 @@ while($data = mysql_fetch_array($req))
 		}
 		?>
 		<tr class="texte<?php echo"$line" ?>" onmouseover="this.className='highlight'" onmouseout="this.className='texte<?php echo"$line" ?>'">
-  	<td class="highlight"><?php echo $civ; ?></td>
+		<td class="highlight"><?php echo $id; ?></td>
+		<td class="highlight"><?php echo $civ; ?></td>
 		<td class="highlight"><?php echo $nom; ?></td>
 		<td class="highlight"><?php echo $nom2; ?></td>
 		<td class="highlight"><?php echo $rue; ?></td>
