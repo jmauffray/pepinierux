@@ -62,6 +62,7 @@ preChargement();
 	<li><a href="lister_commandes.php"><?php echo $lang_lister ?><span>&nbsp;;</span></a></li>
 	<li><a href="chercher_commande.php"><?php echo $lang_cherc ?><span>&nbsp;;</span></a></li>
 	<li><a href="lister_commandes_non_facturees.php"><?php echo $lang_non_facu ?><span>&nbsp;;</span></a></li>
+	<li><a href="importer_commande.php"><?php echo "Importer commande" ?><span>&nbsp;;</span></a></li>
 	<?php } ?>
 	</ul>
 
