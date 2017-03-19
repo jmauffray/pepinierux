@@ -30,16 +30,16 @@ $type =isset($_POST['type'])?$_POST['type']:"particulier";
 $sql1 = "INSERT INTO " . $tblpref . "bon_comm(client_num, date) VALUES (".$clientNum.", '".$date."')";
 mysql_query($sql1) or die('Erreur SQL !<br>' . $sql1 . '<br>' . mysql_error());
 
-$row = 1;
+$row = 0;
 if (($handle = fopen($target_file, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        ++$row;
         if ($row == 1) {
             //ignore first line
-            //continue;
+            continue;
         }
         $num = count($data);
-        $row++;
-
+        
         for ($c = 0; $c < $num; $c++) {
             //echo $data[$c] . "<br />\n";
         }
@@ -56,7 +56,7 @@ if (($handle = fopen($target_file, "r")) !== FALSE) {
 
         $max = addArticleInBon(
                 $quanti, $remise, $prix_remise, $volume_pot, $article, $prixHtvaColumn, $type, $lot1);
-        echo "Ajout de l'article : ",$article," : x", $quanti," - ", $prix_remise, "e dans le bon ", $max ,"</br>";
+        echo "Ajout de l'article : ",$article," : x", $quanti," - ", $prix_remise, "e unitaire dans le bon ", $max ,"</br>";
     }
     fclose($handle);
 }
