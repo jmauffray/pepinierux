@@ -41,10 +41,11 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <?php 
-if ($message !='') { 
+if (isset($message) && 
+        $message !='') { 
  echo"<table><tr><td>$message</td></tr></table>"; 
 }
-if ($user_dev == n) {
+if ($user_dev == 'n') {
 echo "<h1>$lang_devis_droit";
 exit;  
 }
@@ -54,7 +55,7 @@ $sql = "SELECT login, mail, num_dev, tot_htva, tot_tva, DATE_FORMAT(date,'%d/%m/
        FROM " . $tblpref ."devis RIGHT JOIN " . $tblpref ."client on " . $tblpref ."devis.client_num = num_client
 	   WHERE num_dev >0 AND  resu = '0'
 		 ";
-		 if ($user_dev == r) { 
+		 if ($user_dev == 'r') { 
 $sql = "SELECT login, mail, num_dev, tot_htva, tot_tva, DATE_FORMAT(date,'%d/%m/%Y') AS date, nom
        FROM " . $tblpref ."devis RIGHT JOIN " . $tblpref ."client on " . $tblpref ."devis.client_num = num_client
 	   WHERE num_dev >0 AND  resu = '0' 

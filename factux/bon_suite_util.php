@@ -31,7 +31,7 @@ $lot1)
   //touver le dernier enregistrement pour le numero de bon
   $sql = "SELECT MAX(num_bon) As Maxi FROM " . $tblpref ."bon_comm";
   $result = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
-  $max = mysql_result($result, 'Maxi');
+	$max = mysql_result2($result, 'Maxi');
   //trouver le client correspodant au dernier bon
   $sql = "SELECT client_num FROM " . $tblpref ."bon_comm WHERE num_bon = $max";
   $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
@@ -42,17 +42,17 @@ $lot1)
   //on recupere le prix htva
   $sql2 = "SELECT $prix_htva FROM " . $tblpref ."article WHERE num = $article";
   $result = mysql_query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
-  $prix_article = mysql_result($result, '$prix_htva');
+	$prix_article = mysql_result2($result, $prix_htva);
 
   //on recupere le taux de tva
   $sql3 = "SELECT taux_tva FROM " . $tblpref ."article WHERE num = $article";
   $result = mysql_query($sql3) or die('Erreur SQL !<br>'.$sql3.'<br>'.mysql_error());
-  $taux_tva = mysql_result($result, 'taux_tva');
+	$taux_tva = mysql_result2($result, 'taux_tva');
 
   //on recupere le conditionnement
   $sql4 = "SELECT conditionnement FROM " . $tblpref ."article WHERE num = $article";
   $result = mysql_query($sql4) or die('Erreur SQL !<br>'.$sql4.'<br>'.mysql_error());
-  $conditionnement = mysql_result($result, 'conditionnement');
+	$conditionnement = mysql_result2($result, 'conditionnement');
 
   ////conditionnement
   if($volume_pot > 0)

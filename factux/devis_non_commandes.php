@@ -49,7 +49,7 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <?php 
-if ($user_dev == n) {
+if ($user_dev == 'n') {
 echo "<h1>$lang_devis_droit"; 
 exit;  
 }
@@ -67,7 +67,7 @@ echo "$lang_de_per";
   <caption><?php echo $lang_devis_perdus; ?></caption>
         <?php
 $sql = "SELECT num_dev, tot_htva, tot_tva, DATE_FORMAT(date,'%d/%m/%Y') AS date, nom FROM " . $tblpref ."devis RIGHT JOIN " . $tblpref ."client on " . $tblpref ."devis.client_num = num_client WHERE num_dev >0 AND  resu = 'per' ORDER BY " . $tblpref ."devis.num_dev DESC ";
-if ($user_dev == r) { 
+if ($user_dev == 'r') { 
 $sql = "SELECT num_dev, tot_htva, tot_tva, DATE_FORMAT(date,'%d/%m/%Y') AS date, nom FROM " . $tblpref ."devis RIGHT JOIN " . $tblpref ."client on " . $tblpref ."devis.client_num = num_client WHERE num_dev >0 AND  resu = 'per'  
 		 			 				 AND " . $tblpref ."client.permi LIKE '$user_num,' 
 		 			 				 or  " . $tblpref ."client.permi LIKE '%,$user_num,' 

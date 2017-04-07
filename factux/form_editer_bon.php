@@ -47,7 +47,7 @@ $result = mysql_query( $rqSql1 )
   or die( "ExÃ©cution requÃªte impossible.");
 
 $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client WHERE actif != 'non'";
-if ($user_com == r) { 
+if ($user_com == 'r') { 
   $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client WHERE actif != 'non'
 	 and (" . $tblpref ."client.permi LIKE '$user_num,' 
 	 or  " . $tblpref ."client.permi LIKE '%,$user_num,' 

@@ -28,7 +28,7 @@ $sql = "SELECT SUM( tot_htva ) FROM " . $tblpref ."bon_comm WHERE YEAR( date ) =
 				$req = mysql_query($sql);
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 
-$total= mysql_result($req,0);
+$total= mysql_result2($req,0);
 $total = montant_financier($total);
 
 

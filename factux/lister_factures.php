@@ -40,7 +40,7 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <?php 
-if ($user_fact == n) { 
+if ($user_fact == 'n') { 
 echo "<h1>$lang_facture_droit";
 exit;
 }
@@ -53,7 +53,7 @@ $sql = "SELECT mail, login, DATE_FORMAT(date_fact,'%d/%m/%Y') AS date_fact,
 	    FROM " . $tblpref ."facture RIGHT JOIN " . $tblpref ."client on client = num_client
         WHERE num >0 ";
 				//ORDER BY 'num' DESC
-				if ($user_fact == r) { 
+				if ($user_fact == 'r') { 
 $sql = "SELECT mail, login, DATE_FORMAT(date_fact,'%d/%m/%Y') AS date_fact,
                total_fact_ttc, payement, num_client, date_deb, 
 			   DATE_FORMAT(date_deb,'%d/%m/%Y') AS date_deb2, date_fin,
@@ -103,7 +103,7 @@ while($data = mysql_fetch_array($req))
 		$line="1";
  		}
 	switch ($pay) {
-	case carte:
+	case "carte":
    $payement="$lang_carte_ban";
    break;
 	case "liquide":

@@ -48,19 +48,19 @@ else if( $quanti > 14 )
 //on recupere le prix htva		
 $sql2 = "SELECT $prix_htva FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql2) or die('Erreur SQL1 !<br>'.$sql2.'<br>'.mysql_error());
-$prix_article = mysql_result($result, '$prix_htva');
+$prix_article = mysql_result2($result, '$prix_htva');
 
 //on recupere le taux de tva
 $sql3 = "SELECT $taux_tva FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql3) or die('Erreur SQL2 !<br>'.$sql3.'<br>'.mysql_error());
-$taux_tva_res = mysql_result($result, '$taux_tva');
+$taux_tva_res = mysql_result2($result, '$taux_tva');
 
 //on recupere le taux de tva
 $sql3 = "SELECT conditionnement FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql3) or die('Erreur SQL2 !<br>'.$sql3.'<br>'.mysql_error());
-$conditionnement = mysql_result($result, 'conditionnement');
+$conditionnement = mysql_result2($result, 'conditionnement');
 
-//premiere utilisation de la remise, on la calcule si nécessaire
+//premiere utilisation de la remise, on la calcule si nï¿½cessaire
 if( ($remise == 0) && ($prix_remise != '') ) {
   $thePrix = 0;
   if( $type == 'particulier' )
@@ -94,7 +94,7 @@ if($volume_pot > 0)
     $conditionnement = "motte en pot";
   }
 
-//inserer les données dans la table du contenu des bons.
+//inserer les donnï¿½es dans la table du contenu des bons.
 mysql_select_db($db) or die ("Could not select $db database");
 $sql1 = "INSERT INTO " . $tblpref ."cont_bon(num_lot, quanti, remise, volume_pot, conditionnement, article_num, bon_num, tot_art_htva, to_tva_art, p_u_jour, p_u_jour_net) 
 VALUES ('$num_lot', '$quanti', '$remise', '$volume_pot', '$conditionnement', '$article', '$num_bon', '$total_htva', '$mont_tva', '$prix_article', '$montant_u_htva')";

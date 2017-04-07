@@ -10,7 +10,7 @@
  * 		http://factux.sourceforge.net
  * 
  * File Name: fact_multi.php
- * 	enregistrement de données de la facture
+ * 	enregistrement de donnï¿½es de la facture
  * 
  * * * Version:  1.1.5
  * * * * Modified: 23/07/2005
@@ -113,15 +113,15 @@ $error2 = '1';
 $error2 = '0';
 }
 
-//on recherche le numero de la facture crée
+//on recherche le numero de la facture crï¿½e
 $sql = "SELECT MAX(num) As Maxi FROM " . $tblpref ."facture";
 $result = mysql_query($sql) or die('Erreur');
-$num = mysql_result($result, 'Maxi');
+$num = mysql_result2($result, 'Maxi');
 $num = $num + 1 ;
 
 if($error !='1'and $error2 != '1'){
 //On afiche le resultat
-//echo "Facture $num créée pour $nom $nom2"; 
+//echo "Facture $num crï¿½ï¿½e pour $nom $nom2"; 
 //nouvelle methode
 $sql = " SELECT num_bon 
 		FROM " . $tblpref ."bon_comm 
@@ -139,7 +139,7 @@ $list_num = serialize($list_num);
 $sql1 = "INSERT INTO " . $tblpref ."facture(acompte, coment, client, date_deb, date_fin, date_fact, total_fact_h, total_fact_ttc, list_num) 
 VALUES ('$acompte', '$coment', '$client', '$debut', '$fin', '$date_fact', '$total_htva', '$total_ttc', '$list_num')";
 mysql_query($sql1) or die('Erreur SQL1 !<br>'.$sql1.'<br>'.mysql_error());
-echo "<center><h2> Facture crenregistrée pour $nom $nom2</h2><br>";		
+echo "<center><h2> Facture crenregistrï¿½e pour $nom $nom2</h2><br>";		
 $sql2 = "UPDATE " . $tblpref ."bon_comm SET fact='ok' WHERE " . $tblpref ."bon_comm.client_num = '".$client."' AND " . $tblpref ."bon_comm.date >= '".$debut."' and " . $tblpref ."bon_comm.date <= '".$fin."'";
 mysql_query($sql2) or die('Erreur SQL2 !<br>'.$sql2.'<br>'.mysql_error());
 }

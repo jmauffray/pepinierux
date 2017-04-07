@@ -28,7 +28,7 @@ $login=isset($_POST['login'])?$_POST['login']:"";
 //on recupere le num user
 $sql = "SELECT num FROM " . $tblpref ."user WHERE login = '".$login."'";
 $result = mysql_query($sql) or die("<p>Erreur Mysql<br/>$sql<br/>".mysql_error()."</p>");
-$num_user = mysql_result($result, 'num');
+$num_user = mysql_result2($result, 'num');
 $num_user_vir = "$num_user," ;
 
 //on extrai les variables du select multiple
@@ -39,7 +39,7 @@ for($i=0;$i<=($nbr_li - 1);$i++)
 $num_client = $HTTP_POST_VARS['client'][$i];
 $sql3 = "SELECT permi FROM " . $tblpref ."client WHERE num_client = '".$num_client."'";
 $result = mysql_query($sql3) or die("<p>Erreur Mysql<br/>$sql3<br/>".mysql_error()."</p>");
-$permi_av = mysql_result($result, 'permi');
+$permi_av = mysql_result2($result, 'permi');
 
 $permi = "$permi_av$num_user_vir";
 

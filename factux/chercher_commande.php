@@ -37,14 +37,14 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <?php 
-if ($user_com == n) { 
+if ($user_com == 'n') { 
 echo"<h1>$lang_commande_droit";
 exit;  
 }
 ?> 
 <?php
 $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client WHERE 1";
-if ($user_com == r) { 
+if ($user_com == 'r') { 
 $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client 
 	WHERE " . $tblpref ."client.permi LIKE '$user_num,' 
 	 or  " . $tblpref ."client.permi LIKE '%,$user_num,' 
@@ -66,7 +66,7 @@ $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client
 			if ($liste_cli!='y') { 
 			 $rqSql="$rqSql order by nom";
 			 
-			  $result = mysql_query( $rqSql ) or die( "Exécution requête impossible.");
+			  $result = mysql_query( $rqSql ) or die( "Exï¿½cution requï¿½te impossible.");
  				?> 
         <SELECT NAME='listeville'>
         <OPTION VALUE='null'><?php echo $lang_choisissez; ?></OPTION>

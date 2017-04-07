@@ -80,7 +80,7 @@ echo "<center><table class='boiteaction'>
 //touver le dernier enregistrement pour le numero de bon
 $sql = "SELECT MAX(num_dev) As Maxi FROM " . $tblpref ."devis";
 $result = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
-$max = mysql_result($result, 'Maxi');
+$max = mysql_result2($result, 'Maxi');
 //trouver le client correspodant au dernier bon
 $sql = "SELECT client_num FROM " . $tblpref ."devis WHERE num_dev = $max";
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
@@ -91,20 +91,20 @@ while($data = mysql_fetch_array($req))
 //on recupere le prix htva		
 $sql2 = "SELECT $prix_htva FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
-$prix_article = mysql_result($result, $prix_htva);
+$prix_article = mysql_result2($result, $prix_htva);
 if( $quanti > 14 )
   {
     $sql2 = "SELECT prix_htva_gros FROM " . $tblpref ."article WHERE num = $article";
     $result = mysql_query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
-    $prix_article = mysql_result($result, 'prix_htva_gros');
+    $prix_article = mysql_result2($result, 'prix_htva_gros');
  }
 //on recupere le taux de tva
 $sql3 = "SELECT taux_tva, conditionnement FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql3) or die('Erreur SQL !<br>'.$sql3.'<br>'.mysql_error());
-$taux_tva = mysql_result($result, 'taux_tva');
-$conditionnement = mysql_result($result, 0, 'conditionnement');
+$taux_tva = mysql_result2($result, 'taux_tva');
+$conditionnement = mysql_result2($result, 'conditionnement');
 
-//premiere utilisation de la remise, on la calcule si nécessaire
+//premiere utilisation de la remise, on la calcule si nï¿½cessaire
 if( ($remise == 0) && ($prix_remise != '') ) {
   $thePrix = 0;
   if( $type == 'particulier' )
@@ -138,7 +138,7 @@ if($volume_pot > 0)
     $conditionnement = "motte en pot";
   }
 
-//inserer les données dans la table du conten des bons.
+//inserer les donnï¿½es dans la table du conten des bons.
 mysql_select_db($db) or die ("Could not select $db database");
 $sql1 = "INSERT INTO " . $tblpref ."cont_dev(p_u_jour, p_u_jour_net, quanti, remise, volume_pot, conditionnement, article_num, dev_num, tot_art_htva, to_tva_art) VALUES ('$prix_article', '$montant_u_htva', '$quanti', '$remise', '$volume_pot', '$conditionnement', '$article', '$max', '$total_htva', '$mont_tva')";
 mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
@@ -189,7 +189,7 @@ echo "<td class='totalmontant'colspan='1'>$total_bon $devise<td class='totalmont
 				  if ($use_categorie !='y') {
 $rqSql = "SELECT num, article, $prix_htva, uni FROM " . $tblpref ."article WHERE actif != 'non' ORDER BY article, $prix_htva";
 $result = mysql_query( $rqSql )
-             or die( "Exécution requête impossible.");
+             or die( "Exï¿½cution requï¿½te impossible.");
 $ld = "<SELECT NAME='article'>";
 
 $ld .= "<OPTION VALUE=0>Choisissez</OPTION>";

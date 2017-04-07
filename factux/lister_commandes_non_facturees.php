@@ -50,7 +50,7 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <?php 
-if ($user_com == n) { 
+if ($user_com == 'n') { 
 echo"<h1>$lang_commande_droit";
 exit;  
 }
@@ -62,7 +62,7 @@ $sql = "SELECT client_num, num_bon, tot_htva, tot_tva, nom, DATE_FORMAT(date,'%d
 FROM " . $tblpref ."bon_comm 
 RIGHT JOIN " . $tblpref ."client on " . $tblpref ."bon_comm.client_num = num_client 
 WHERE fact='0'";
-if ($user_com == r) { 
+if ($user_com == 'r') { 
 $sql = "SELECT num_bon, tot_htva, tot_tva, nom, client_num DATE_FORMAT(date,'%d/%m/%Y') AS date 
 FROM " . $tblpref ."bon_comm 
 RIGHT JOIN " . $tblpref ."client on " . $tblpref ."bon_comm.client_num = num_client 

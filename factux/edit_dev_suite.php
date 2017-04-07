@@ -62,11 +62,11 @@ $article=isset($_POST['article'])?$_POST['article']:"";
 //on recupere le client
 $sql2 = "SELECT client_num FROM " . $tblpref ."devis WHERE num_dev = $num_dev";
 $result = mysql_query($sql2) or die('Erreur SQL1 !<br>'.$sql2.'<br>'.mysql_error());
-$client_num = mysql_result($result, 'client_num');
+$client_num = mysql_result2($result, 'client_num');
 //on recupere le type de client
 $sql2 = "SELECT type FROM " . $tblpref ."client WHERE num_client = $client_num";
 $result = mysql_query($sql2) or die('Erreur SQL1 !<br>'.$sql2.'<br>'.mysql_error());
-$type = mysql_result($result, 'type');
+$type = mysql_result2($result, 'type');
 //part or pro
 $prix_htva = 'prix_htva';
 $taux_tva = 'taux_tva';
@@ -83,17 +83,17 @@ else if( $quanti > 14 )
 //on recupere le prix htva		
 $sql2 = "SELECT $prix_htva FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql2) or die('Erreur SQL1 !<br>'.$sql2.'<br>'.mysql_error());
-$prix_article = mysql_result($result, $prix_htva);
+$prix_article = mysql_result2($result, $prix_htva);
 
 //on recupere le taux de tva
 $sql3 = "SELECT $taux_tva FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql3) or die('Erreur SQL2 !<br>'.$sql3.'<br>'.mysql_error());
-$taux_tva_res = mysql_result($result, $taux_tva);
+$taux_tva_res = mysql_result2($result, $taux_tva);
 
 //on recupere le conditionnement
 $sql3 = "SELECT conditionnement FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql3) or die('Erreur SQL2 !<br>'.$sql3.'<br>'.mysql_error());
-$conditionnement = mysql_result($result, $conditionnement);
+$conditionnement = mysql_result2($result, $conditionnement);
 
 //premiere utilisation de la remise, on la calcule si nécessaire
 if( ($remise == 0) && ($prix_remise != '') ) {

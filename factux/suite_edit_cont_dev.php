@@ -33,11 +33,11 @@ $article=isset($_POST['article'])?$_POST['article']:"";
 //on recupere le client
 $sql2 = "SELECT client_num FROM " . $tblpref ."devis WHERE num_dev = $dev_num";
 $result = mysql_query($sql2) or die('Erreur SQL1 !<br>'.$sql2.'<br>'.mysql_error());
-$client_num = mysql_result($result, 'client_num');
+$client_num = mysql_result2($result, 'client_num');
 //on recupere le type de client
 $sql2 = "SELECT type FROM " . $tblpref ."client WHERE num_client = $client_num";
 $result = mysql_query($sql2) or die('Erreur SQL1 !<br>'.$sql2.'<br>'.mysql_error());
-$type = mysql_result($result, 'type');
+$type = mysql_result2($result, 'type');
 //part or pro
 $prix_htva = 'prix_htva';
 $taux_tva = 'taux_tva';

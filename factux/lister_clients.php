@@ -40,7 +40,7 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <?php 
-if ($user_cli == n) { 
+if ($user_cli == 'n') { 
 echo"<h1>$lang_client_droit";
 exit;  
 }
@@ -114,7 +114,7 @@ while($data = mysql_fetch_array($req))
 		<td class="highlight"><a href='del_client.php?num=<?php echo "$num"; ?>' onClick="return confirmDelete('<?php echo"$lang_cli_effa $nom_html ?"; ?>')"><img border='0'src='image/delete.jpg'  alt='<?php echo $lang_supprimer; ?>'></a></td>
 		<?php
 		}
-$aide = client;
+$aide = "client";
 ?>
 
 <tr><TD colspan="12" class="submit"></TD></tr>

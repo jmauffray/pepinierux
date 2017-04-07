@@ -41,7 +41,7 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <?php 
-if ($user_com == n) { 
+if ($user_com == 'n') { 
 echo"<h1>$lang_commande_droit";
 exit;  
 }

@@ -41,14 +41,14 @@ if ($message !='') {
 echo"<table><tr><td>$message</td></tr></table>";  
 }
  
-if ($user_dev == n) {
+if ($user_dev == 'n') {
 echo "<h1>$lang_devis_droit"; 
 exit;  
 }
  ?> 
 <?php
 $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client WHERE actif != 'non'";
-if ($user_dev == r) { 
+if ($user_dev == 'r') { 
 $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client WHERE actif != 'non'
 		 			 				 AND (" . $tblpref ."client.permi LIKE '$user_num,' 
 		 			 				 or  " . $tblpref ."client.permi LIKE '%,$user_num,' 
@@ -64,7 +64,7 @@ $jour = date("d");
 <form name="formu" method="post" action="devis.php" >
   <center><table >
     <caption>
-    <?php echo $lang_devis_créer; ?>
+    <?php echo $lang_devis_crï¿½er; ?>
     </caption>
     <tr> 
       <td class="texte0"><?php echo "$lang_client"; ?></td>
@@ -74,7 +74,7 @@ $jour = date("d");
 						if ($liste_cli!='y') { 
 						$rqSql="$rqSql order by nom";
 						echo"$rqSql";
-						$result = mysql_query( $rqSql ) or die( "Exécution requête impossible.");
+						$result = mysql_query( $rqSql ) or die( "Exï¿½cution requï¿½te impossible.");
  ?>  
 			<SELECT NAME='listeville'>
           <OPTION VALUE='0'><?php echo $lang_choisissez; ?></OPTION>
@@ -101,7 +101,7 @@ $jour = date("d");
     </tr>
 
     <tr> 
-      <td class="submit" colspan="2"><input type="submit" name="Submit" value="<?php echo "Créer le devis" ?>">
+      <td class="submit" colspan="2"><input type="submit" name="Submit" value="<?php echo "Crï¿½er le devis" ?>">
       </td>
     
   </table></center>
