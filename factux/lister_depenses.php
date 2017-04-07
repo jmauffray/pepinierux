@@ -41,7 +41,7 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <?php 
-if ($user_dep == n) { 
+if ($user_dep == 'n') { 
 echo "<h1>$lang_depense_droit";
 exit;
 }

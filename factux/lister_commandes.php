@@ -42,7 +42,7 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <?php 
-if ($user_com == n) { 
+if ($user_com == 'n') { 
 echo"<h1>$lang_commande_droit";
 exit;  
 }
@@ -73,7 +73,7 @@ $sql = "SELECT mail, login, num_client, num_bon, tot_htva, tot_tva, nom,
 		 ";
 		 //ORDER BY " . $tblpref ."bon_comm.`num_bon` DESC
 		 
-if ($user_com == r) { 
+if ($user_com == 'r') { 
 $sql = "SELECT mail, login, num_client, num_bon, tot_htva, tot_tva, nom,
  DATE_FORMAT(date,'%d/%m/%Y') AS date, (tot_htva + tot_tva) as ttc 
 		 FROM " . $tblpref ."bon_comm 
@@ -225,7 +225,4 @@ $file = basename ($url);
 if ($file=="form_commande.php" or $file=="login.php") { 
 echo"</table>"; 
 }
- ?> 
-<?php 
-include_once("include/footers.php");
  ?> 

@@ -55,11 +55,12 @@ include_once("include/configav.php");
   <tr>
     <td style="text-align:center;"  >
       <?php
-	if ($user_art == n) {
+	if ($user_art == 'n') {
 	  echo "<h1>$lang_article_droit";
 	  exit;
 	}
-	if ($message !='') {
+	if (isset($message) &&
+                $message !='') {
 	  echo "<table><tr><td>$message</td></tr></table>";
       } ?>
       <?php
@@ -175,7 +176,7 @@ include_once("include/configav.php");
 	<tr><td colspan="10" class="submit"></td>
       </table></center>
       <?php
-	$aide = article;
+	$aide = "article";
       ?>
       <?php
 	include("help.php");

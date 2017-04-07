@@ -36,7 +36,8 @@ include_once("include/head.php");
 </td>
 </tr>
 <?php
-if($message!=''){
+if(isset($message) &&
+        $message!=''){
 echo"<tr><TD>$message</TD></tr>";
 }
 ?>
@@ -51,7 +52,7 @@ exit;
   <center><form action="client_new.php" method="post" name="client" id="client" ><table >
   <caption><?php echo $lang_client_ajouter; ?></caption>
     <tr> 
-      <td class="texte0"><?php echo civilitée; ?></td>
+      <td class="texte0"><?php echo "civilitï¿½e"; ?></td>
       <td class="texte0"><input name="civ" type="text" id="civ"></td>
     </tr>
     <tr> 
