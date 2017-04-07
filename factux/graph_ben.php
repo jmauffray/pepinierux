@@ -28,7 +28,7 @@
 				$req = mysql_query($sql);
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 
-$total_dep= mysql_result($req,0);
+$total_dep= mysql_result2($req,0);
 $total_gen = $total - $total_dep ;
 
 reset ($liste_mois);

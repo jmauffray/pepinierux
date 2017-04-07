@@ -10,7 +10,7 @@
  * 		http://factux.sourceforge.net
  * 
  * File Name: fact.php
- * 	enregistrement de données de la facture
+ * 	enregistrement de donnï¿½es de la facture
  * 
  * * * Version:  1.1.5
  * * * * Modified: 23/07/2005
@@ -128,10 +128,10 @@ $suite_sql .= " or " . $tblpref ."bon_comm.num_bon ='$list_num[$m]'";
 
 }
 
-//on recherche le numero de la facture crée
+//on recherche le numero de la facture crï¿½e
 $sql = "SELECT MAX(num) As Maxi FROM " . $tblpref ."facture";
 $result = mysql_query($sql) or die('Erreur');
-$num = mysql_result($result, 'Maxi');
+$num = mysql_result2($result, 'Maxi');
 $num = $num + 1 ;
 
 
@@ -149,7 +149,7 @@ $sql9="$sql9 $suite_sql";
 $req = mysql_query($sql9) or die('Erreur SQL9 !<br>'.$sql9.'<br>'.mysql_error());
 echo "<tr><td class='page'><table class='boiteaction'>
   <caption>
-  Facture $num créée pour $nom $nom2
+  Facture $num crï¿½ï¿½e pour $nom $nom2
   </caption>
 "; 
 
@@ -188,7 +188,7 @@ $list_num = serialize($list_num);
 $sql1 = "INSERT INTO " . $tblpref ."facture(acompte, date_depart, date_echeance, coment, client, date_fact, total_fact_h, total_fact_ttc, list_num)
 	 VALUES ('$acompte','$date_depart','$date_echeance', '$coment', '$client', '$date_fact', '$total_htva', '$total_ttc', '$list_num')";
 mysql_query($sql1) or die('Erreur SQL1 !<br>'.$sql1.'<br>'.mysql_error());
-$message="<h2> Facture crenregistrée<br>";		
+$message="<h2> Facture crenregistrï¿½e<br>";		
 $sql2 = "UPDATE " . $tblpref ."bon_comm SET fact='ok' WHERE " . $tblpref ."bon_comm.client_num = '".$client."' and " . $tblpref ."bon_comm.num_bon = '".$num_bon."' ";
 mysql_query($sql2) or die('Erreur SQL2 !<br>'.$sql2.'<br>'.mysql_error());
 //include('form_facture.php');

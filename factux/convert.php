@@ -52,7 +52,7 @@ mysql_query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
 //touver le dernier enregistrement pour le numero de bon
 $sql = "SELECT MAX(num_bon) As Maxi FROM " . $tblpref ."bon_comm";
 $result = mysql_query($sql) or die('Erreur');
-$max = mysql_result($result, 'Maxi');
+$max = mysql_result2($result, 'Maxi');
 
 $sql3 = "SELECT * FROM " . $tblpref ."cont_dev WHERE dev_num = $num_dev";
 $req = mysql_query($sql3) or die('Erreur SQL !<br>'.$sql3.'<br>'.mysql_error());

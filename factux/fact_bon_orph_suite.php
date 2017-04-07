@@ -10,7 +10,7 @@
  * 		http://factux.sourceforge.net
  * 
  * File Name: fact_bon_orph_suite.php
- * 	enregistrement de données de la facture a partir d'un bon orphelin
+ * 	enregistrement de donnï¿½es de la facture a partir d'un bon orphelin
  * 
  * * * Version:  1.1.5
  * * * * Modified: 23/07/2005
@@ -54,7 +54,7 @@ $client=isset($_POST['client'])?$_POST['client']:"";
 
 $sql = "SELECT MAX(num) As Maxi FROM " . $tblpref ."facture";
 $result = mysql_query($sql) or die('Erreur');
-$num_fact = mysql_result($result, 'Maxi');
+$num_fact = mysql_result2($result, 'Maxi');
 $num_fact = $num_fact + 1 ;
 $sql = " SELECT nom, nom2 From " . $tblpref ."client WHERE num_client = $client ";
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
@@ -112,7 +112,7 @@ include_once("include/head.php");
 <?php
 echo "<center><br><hr><br><table class='boiteaction'>
   <caption>
-  Facture $num_fact créée pour $nom $nom2
+  Facture $num_fact crï¿½ï¿½e pour $nom $nom2
   </caption>
 "; 
 

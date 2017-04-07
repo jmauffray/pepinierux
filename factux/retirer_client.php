@@ -29,7 +29,7 @@ $num_client=isset($_POST['num_client'])?$_POST['num_client']:"";
 $num_user=isset($_POST['num_user'])?$_POST['num_user']:"";
 $sql = "SELECT permi from " . $tblpref ."client WHERE num_client = $num_client";
 $result = mysql_query($sql) or die('Erreur');
-$permi = mysql_result($result, 'permi');
+$permi = mysql_result2($result, 'permi');
 $permi = ereg_replace("$num_user,",'', $permi);
 
 $sql2 = "UPDATE " . $tblpref ."client SET permi = '".$permi."' WHERE num_client = '".$num_client."'";

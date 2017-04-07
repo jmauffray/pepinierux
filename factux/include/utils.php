@@ -24,4 +24,16 @@ include_once("nb.php");
 include_once("date.php");
 include_once("graphisme.php");
 
+function mysql_result2($res,$col=0,$row=0){ 
+    $numrows = mysql_num_rows($res); 
+    if ($numrows && $row <= ($numrows-1) && $row >=0){
+        mysql_data_seek($res,$row);
+        $resrow = (is_numeric($col)) ? mysql_fetch_row($res) : mysql_fetch_assoc($res);
+        if (isset($resrow[$col])){
+            return $resrow[$col];
+        }
+    }
+    return false;
+}
+
 ?>
