@@ -23,7 +23,8 @@
  ini_set('session.save_path', 'include/session'); 
 
 session_start();
-session_register('trucmuch');
+//session_register('trucmuch');
+$_SESSION['trucmuch'] = '';
 
 session_unset();
 session_destroy();

@@ -24,7 +24,8 @@ ini_set('session.save_path', '../include/session');
 $lang ="fr";  
 }
 session_start();
-session_register('login_client');
+//('login_client');
+$_SESSION['login_client'] = '';
 
 session_unset();
 session_destroy();
