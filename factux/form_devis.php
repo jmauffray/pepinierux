@@ -37,7 +37,8 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <?php
-if ($message !='') { 
+if (isset($message) &&
+        $message !='') { 
 echo"<table><tr><td>$message</td></tr></table>";  
 }
  

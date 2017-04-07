@@ -10,7 +10,7 @@
  * 		http://factux.sourceforge.net
  * 
  * File Name: form_facture.php
- * 	formulaire de création des factures
+ * 	formulaire de crï¿½ation des factures
  * 
  * * * Version:  1.1.5
  * * * * Modified: 23/07/2005
@@ -39,11 +39,12 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <?php
-if ($message !="") { 
+if (isset($message) &&
+        $message !="") { 
  echo"<table><tr><td>$message</td></tr></table>"; 
 }
  
-if ($user_fact == n) { 
+if ($user_fact == 'n') { 
 echo "<h1>$lang_facture_droit";
 exit;
 }
@@ -53,7 +54,7 @@ $mois = date("m");
 $annee = date("Y");
 $jour = date("d");
 $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client WHERE actif != 'non'";
-if ($user_fact == r) { 
+if ($user_fact == 'r') { 
 $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client WHERE actif != 'non'
 		 	 and (" . $tblpref ."client.permi LIKE '$user_num,' 
 		 	 or  " . $tblpref ."client.permi LIKE '%,$user_num,' 
@@ -73,7 +74,7 @@ $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client WHERE actif != 'non'
 						require_once("include/configav.php");
 if ($liste_cli!='y') { 
 $rqSql="$rqSql order by nom";
-$result = mysql_query( $rqSql ) or die( "Exécution requête impossible.");
+$result = mysql_query( $rqSql ) or die( "Exï¿½cution requï¿½te impossible.");
  ?>  
 								<SELECT NAME='listeville'>
                 <OPTION VALUE="null"><?php echo $lang_choisissez; ?></OPTION>
@@ -91,7 +92,7 @@ $result = mysql_query( $rqSql ) or die( "Exécution requête impossible.");
 										} ?>
 								</td>
 <tr>
-  <td class='<?php echo couleur_alternee (); ?>'>Bon N°
+  <td class='<?php echo couleur_alternee (); ?>'>Bon Nï¿½
   <td class='<?php echo couleur_alternee (); ?>'><input type="text" name="num_bon"/>
 </tr>           <tr>
                   <td class='<?php echo couleur_alternee (); ?>'><?php echo $lang_facture_date; ?></td>
@@ -101,14 +102,14 @@ $result = mysql_query( $rqSql ) or die( "Exécution requête impossible.");
                   </tr>
 
                 <tr>
-                  <td class='<?php echo couleur_alternee (); ?>'>date départ
+                  <td class='<?php echo couleur_alternee (); ?>'>date dï¿½part
                   <td class='<?php echo couleur_alternee (FALSE); ?>'><input type="text" name="date_depart" value="<?php echo "$jour/$mois/$annee" ?>" readonly="readonly"/>
     <a href="#" onClick=" window.open('include/pop.calendrier.php?frm=formu&amp;ch=date_depart','calendrier','width=415,height=160,scrollbars=0').focus();"><img src="image/petit_calendrier.gif" border="0" alt="calendrier"/></a>
     
                   </td>
                   </tr>
                 <tr>
-  <td class='<?php echo couleur_alternee (); ?>'>date échéance (+62 jours si laissé vide)
+  <td class='<?php echo couleur_alternee (); ?>'>date ï¿½chï¿½ance (+62 jours si laissï¿½ vide)
                   <td class='<?php echo couleur_alternee (FALSE); ?>'><input type="text" name="date_echeance" value="" readonly="readonly"/>
     <a href="#" onClick=" window.open('include/pop.calendrier.php?frm=formu&amp;ch=date_echeance','calendrier','width=415,height=160,scrollbars=0').focus();"><img src="image/petit_calendrier.gif" border="0" alt="calendrier"/></a>
     
@@ -128,7 +129,7 @@ $result = mysql_query( $rqSql ) or die( "Exécution requête impossible.");
       </table></form>
       <hr>
       <?php 
-$aide = factures;
+$aide = "factures";
  ?>
 </td></tr><tr><td>
 <?php

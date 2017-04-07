@@ -41,7 +41,7 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <?php 
-if ($user_fact == n) { 
+if ($user_fact == 'n') { 
 echo "<h1>$lang_facture_droit";
 exit;
 }
@@ -55,7 +55,7 @@ $num_client= $data['CLIENT'];
 
  ?> 	
 <center><table class="boiteaction">
-  <caption><?php echo "Editer la facure n° $num_fact"; ?></caption>
+  <caption><?php echo "Editer la facure nï¿½ $num_fact"; ?></caption>
    	<tr><th>NumBon</th>
 		<th>Date</th>
 		<th>Montant TTC</th>
@@ -98,7 +98,7 @@ WHERE fact='0' AND client_num = '$num_client'
 ORDER BY " . $tblpref ."bon_comm.`num_bon` DESC";
 ?>
 <center><table class="boiteaction">
-  <caption><?php echo "ajouter à la facure n° $num_fact"; ?></caption>
+  <caption><?php echo "ajouter ï¿½ la facure nï¿½ $num_fact"; ?></caption>
   	<tr><th>NumBon</th>
 		<th>date</th>
 		<th>Montant ttc</th>
