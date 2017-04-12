@@ -75,7 +75,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error())
           <tr> 
 					<th>Ingredient</th>
 					<th>Fournisseur</th>
-					<th>N� de lot fournisseur </th>
+					<th>N° de lot fournisseur </th>
 					</tr>
 					<tr>
 <?php 

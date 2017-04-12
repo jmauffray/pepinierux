@@ -33,9 +33,9 @@ include_once("include/head.php");
 echo '<link rel="stylesheet" type="text/css" href="include/style.css">';
 
 echo "<h2><br><hr><br><ul>";
-echo "<li><a href='stats1.php'>Statistiques anuelles</a><li><a href='stats2.php'>Répartition du C.A. annuel par client</a></font>";
-echo "<li><a href='stats2.2.php'>Les statistiques client pour une période donnée</a><br>";
-echo "<li><a href='stats_art.php'>Répartition du C.A. annuel par article</a>";
+echo "<li><a href='stats1.php'>Statistiques anuelles</a><li><a href='stats2.php'>RÃ©partition du C.A. annuel par client</a></font>";
+echo "<li><a href='stats2.2.php'>Les statistiques client pour une pÃ©riode donnÃ©e</a><br>";
+echo "<li><a href='stats_art.php'>RÃ©partition du C.A. annuel par article</a>";
 echo "<li><a href='form_stat_client.php'>Les stats mensuelles par client</a>";
 echo "<li><a href='stats_dep.php'>$lang_depenses_tri_par_fournisseur</a>";
 echo"</ul><br>$lang_statistiques_basees_bons<br><br><hr>";

@@ -19,11 +19,11 @@
  * 		Guy Hendrickx
  *.
  */
-//Pour ne traiter que si un fichier est upLoadé
+//Pour ne traiter que si un fichier est upLoadÃ©
 if (isset($_FILES["monfichier"]["name"]))
 {
 
-//definition des chemins d'accès
+//definition des chemins d'accÃ¨s
 $repertoireDestination = "../image/";
 $nomDestination = $_FILES["monfichier"]["name"];
 
@@ -32,9 +32,9 @@ $nomDestination = $_FILES["monfichier"]["name"];
 if (is_uploaded_file($_FILES["monfichier"]["tmp_name"])) {
 
 if (file_exists($repertoireDestination.$nomDestination)) {
-//Un fichier existe portant le même nom existe déjà => le supprimer
+//Un fichier existe portant le mÃªme nom existe dÃ©jÃ  => le supprimer
 //unlink ($repertoireDestination.$nomDestination);
-echo "<br><h1>Un fichier portant le même nom existe. Veuillez renommer votre fichier avant de l'uploader !</h1>";
+echo "<br><h1>Un fichier portant le mÃªme nom existe. Veuillez renommer votre fichier avant de l'uploader !</h1>";
 include_once('form_upload.inc.php');
 exit();
 }
@@ -58,7 +58,7 @@ echo'<link rel="shortcut icon" type="image/x-icon" href="../image/favicon.ico" >
 echo '<table width="100%" border="1" cellpadding="0" cellspacing="0" summary="">';
 echo '<tr><td class ="install"><img src="../image/factux.gif" alt=""><br><IMG SRC="../image/spacer.gif" WIDTH=150 HEIGHT=400 ALT=""><br></th><td>';
 
-echo "<br>L'image ".$nomDestination." a bien été chargée dans le dossier : ".$repertoireDestination;
+echo "<br>L'image ".$nomDestination." a bien Ã©tÃ© chargÃ©e dans le dossier : ".$repertoireDestination;
 
 $type_fin ='?>';
 $nomDestination = '"'.$nomDestination.'";//nom du logo de l\'entreprise' . "\n";
@@ -67,15 +67,15 @@ fwrite($monfichier, '$logo= '.$nomDestination.''.$type_fin.'');
 fclose($monfichier);
  
 ?>
-<br><h2>La configuration de factux est terminée, félicitations.<br>
+<br><h2>La configuration de factux est terminÃ©e, fÃ©licitations.<br>
 <h2>Entrez dans <a href="../index.php">Factux</a> 
 <?php
 } else {
-echo "<br><h1>Le déplacement du fichier temporaire a échoué".
-" vérifiez l'existence du répertoire ".$repertoireDestination;
+echo "<br><h1>Le dÃ©placement du fichier temporaire a Ã©chouÃ©".
+" vÃ©rifiez l'existence du rÃ©pertoire ".$repertoireDestination;
 }
 } else {
-echo "<br>Le fichier n'a pas été uploadé (trop volumineux ?)";
+echo "<br>Le fichier n'a pas Ã©tÃ© uploadÃ© (trop volumineux ?)";
 include_once('form_upload.inc.php');
 }
 }

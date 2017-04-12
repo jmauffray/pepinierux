@@ -24,7 +24,7 @@ ini_set('session.save_path', '../include/session');
 session_start();
 if($_SESSION['login_client']=='')
 {
-  echo 'Vous n\'êtes pas autorisé à accéder à cette zone.';
+  echo 'Vous n\'Ãªtes pas autorisÃ© Ã  accÃ©der Ã  cette zone.';
   include('login.htm');
   exit;
 }

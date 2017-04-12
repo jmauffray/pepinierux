@@ -10,7 +10,7 @@
  * 		http://factux.sourceforge.net
  * 
  * File Name: lister_factures_non_reglees.php
- * 	liste les facture non reglées et permet de changer leur status de payement
+ * 	liste les facture non reglÃ©es et permet de changer leur status de payement
  * 
  * * * Version:  1.1.5
  * * * * Modified: 23/07/2005

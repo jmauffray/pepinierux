@@ -44,7 +44,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 $data = mysql_fetch_array($req);
 $nom = $data['nom'];
 $tot = $data['SUM(tot_htva)'];
-echo "<tr><td class='td2'>$i/$annee<td class='td2montant'>". avec_virgule ($tot)." €</tr>";
+echo "<tr><td class='td2'>$i/$annee<td class='td2montant'>". avec_virgule ($tot)." â‚¬</tr>";
 }
 echo "</table>";
 include_once("graph_client_moi.php");

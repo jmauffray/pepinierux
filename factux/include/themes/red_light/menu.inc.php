@@ -180,7 +180,7 @@ if ($lot == 'y') { ?>
 		onmouseout="CacherDelai();">
 	<?php if ($user_fact != 'n') { ?>
 	<li><a href="lister_lot.php"><?php echo "Lister" ?><span>&nbsp;;</span></a></li>
-	<li><a href="form_lot.php"><?php echo "Créer" ?><span>.</span></a></li>
+	<li><a href="form_lot.php"><?php echo "CrÃ©er" ?><span>.</span></a></li>
 	<li><a href="form_recherche_lot.php"><?php echo "Rechercher" ?><span>.</span></a></li>
     <?php } ?>
     </ul>

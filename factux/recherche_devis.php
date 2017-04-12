@@ -66,7 +66,7 @@ if ( isset ( $_POST['mois'] ) && $_POST['mois'] != '')
 {
 $requete .= " AND MONTH(date)='" . $_POST['mois'] . "'";
 }
-//on verifie l'année
+//on verifie l'annÃ©e
 if ( isset ( $_POST['annee'] ) && $_POST['annee'] != '')
 {
 $requete .= " AND Year(date)='" . $_POST['annee'] . "'";
@@ -129,7 +129,7 @@ while($data = mysql_fetch_array($req))
 			 			 <img border=0 src= image/icon_cry.gif alt='perdu'></a></div></td></tr>
 <?php 
 }if ($resu =='ok') { ?>
-<td class= '<?php echo couleur_alternee (FALSE); ?>'>Gagné</td>
+<td class= '<?php echo couleur_alternee (FALSE); ?>'>GagnÃ©</td>
 <td class= '<?php echo couleur_alternee (FALSE); ?>'>
 <?php } if ($resu =='per') {?>
 <td class= '<?php echo couleur_alternee (FALSE); ?>'></td>

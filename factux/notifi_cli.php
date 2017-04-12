@@ -39,15 +39,15 @@ $email =isset($_GET['mail'])?$_GET['mail']:"";
 <?php 
 if ($type == comm) { 
 $titre = "Nouveau bon de commande";
-$message = "Un nouveau bon de commade vous est adressé par $entrep_nom <br>vous pouvez le consulter en vous rendant sur le site internet avec votre login mot de passe<br>$entrep_nom";
+$message = "Un nouveau bon de commade vous est adressÃ© par $entrep_nom <br>vous pouvez le consulter en vous rendant sur le site internet avec votre login mot de passe<br>$entrep_nom";
 }
 if ($type == fact) { 
 $titre = "Nouvele facture";  
-$message = "Une nouvelle facture vous est adressé par $entrep_nom <br>vous pouvez la consulter en vous rendant sur le site internet avec votre login mot de passe<br>$entrep_nom";
+$message = "Une nouvelle facture vous est adressÃ© par $entrep_nom <br>vous pouvez la consulter en vous rendant sur le site internet avec votre login mot de passe<br>$entrep_nom";
 }
 if ($type == devis) { 
 $titre = "Nouveau devis";
-$message = "Un nouveau devis vous est adressé par $entrep_nom <br>vous pouvez le consulter en vous rendant sur le site internet avec votre login mot de passe<br>$entrep_nom";
+$message = "Un nouveau devis vous est adressÃ© par $entrep_nom <br>vous pouvez le consulter en vous rendant sur le site internet avec votre login mot de passe<br>$entrep_nom";
 }
 $to = "$email";
 $from = "$entrep_nom<$mail>" ;
@@ -60,7 +60,7 @@ $header = 'From: '.$mail ."\n"
  .'Content-Type: text/html; charset= ISO-8859-1; charset= ISO-8859-1'."\n"
  .'Content-Transfer-Encoding: 8bit'."\n\n";
 	mail($to,$subject,$message,$header);
-echo "mail de notification envoyé !";
+echo "mail de notification envoyÃ© !";
 if ($type == comm) {
 include_once("lister_commandes.php");
 }

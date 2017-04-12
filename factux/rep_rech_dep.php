@@ -45,7 +45,7 @@ if ( isset ( $_POST['mois'] ) && $_POST['mois'] != '')
 {
 $requete .= " AND MONTH(date)='" . $_POST['mois'] . "'";
 }
-//on verifie l'année
+//on verifie l'annÃ©e
 if ( isset ( $_POST['annee'] ) && $_POST['annee'] != '')
 {
 $requete .= " AND Year(date)='" . $_POST['annee'] . "'";
@@ -68,7 +68,7 @@ echo "<center><table width='760' border='0' class='page' align='center'>
   $lang_res_rech
   </caption>
 "; 
-echo "<tr><th>Bon N&deg; <th>Fournisseur<th>Date dépense<th>Prix<th>Libellé<th>action</tr>";
+echo "<tr><th>Bon N&deg; <th>Fournisseur<th>Date dÃ©pense<th>Prix<th>LibellÃ©<th>action</tr>";
 while($data = mysql_fetch_array($req))
     {
 		$num = $data['num'];

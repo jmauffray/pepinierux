@@ -8,30 +8,6 @@ HTMLArea.I18N = {
 	lang: "ja-sjis",
 
 	tooltips: {
-		bold:           "‘¾š",
-		italic:         "Î‘Ì",
-		underline:      "‰ºü",
-		strikethrough:  "‘Å‚¿Á‚µü",
-		subscript:      "‰º•t‚«“Y‚¦š",
-		superscript:    "ã•t‚«“Y‚¦š",
-		justifyleft:    "¶Šñ‚¹",
-		justifycenter:  "’†‰›Šñ‚¹",
-		justifyright:   "‰EŠñ‚¹",
-		justifyfull:    "‹Ï“™Š„•t",
-		orderedlist:    "”Ô†•t‚«‰Óğ‘‚«",
-		unorderedlist:  "‹L†•t‚«‰Óğ‘‚«",
-		outdent:        "ƒCƒ“ƒfƒ“ƒg‰ğœ",
-		indent:         "ƒCƒ“ƒfƒ“ƒgİ’è",
-		forecolor:      "•¶šF",
-		backcolor:      "”wŒiF",
-		horizontalrule: "…•½ü",
-		createlink:     "ƒŠƒ“ƒNì¬",
-		insertimage:    "‰æ‘œ‘}“ü",
-		inserttable:    "ƒe[ƒuƒ‹‘}“ü",
-		htmlmode:       "HTML•\¦Ø‘Ö",
-		popupeditor:    "ƒGƒfƒBƒ^Šg‘å",
-		about:          "ƒo[ƒWƒ‡ƒ“î•ñ",
-		help:           "ƒwƒ‹ƒv",
-		textindicator:  "Œ»İ‚ÌƒXƒ^ƒCƒ‹"
-	}
-};
+		bold:           "â€˜Ä¾Å½Å¡",
+		italic:         "Å½Ãâ€˜Äš",
+		underline:      "â€°ÅŸ

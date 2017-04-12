@@ -10,7 +10,7 @@
  * 		http://factux.sourceforge.net
  * 
  * File Name: db_create.php
- * 	creation de la base de donnée
+ * 	creation de la base de donnÃ©e
  * 
  * * * Version:  1.1.5
  * * * * Modified: 23/07/2005
@@ -30,5 +30,5 @@ $sql = "create database $db";
 mysql_query($sql)or die('Erreur SQL !'.$sql.'
 '.mysql_error());
 include("table_create.php");
-//echo "Votre base de donnée $db à été crée avec succes <a href=''>Continuer</a><hr>";
+//echo "Votre base de donnÃ©e $db Ã  Ã©tÃ© crÃ©e avec succes <a href=''>Continuer</a><hr>";
 ?>

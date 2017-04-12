@@ -1,11 +1,11 @@
 function ac_return(field, item){
-	// on met en place l'expression régulière
+	// on met en place l'expression rÃ©guliÃ¨re
 	var regex = new RegExp('[0123456789]*-idcache', 'i');
 	// on l'applique au contenu
 	var nomimage = regex.exec($(item).innerHTML);
-	//on récupère l'id
+	//on rÃ©cupÃ¨re l'id
 	id = nomimage[0].replace('-idcache', '');
-	// et on l'affecte au champ caché
+	// et on l'affecte au champ cachÃ©
 	$(field.name+'_id').value = id;
 	// log
 	$(field.name+'_log').innerHTML = '<br/>'+id+' - '+$F(field.name)+'<br/>';

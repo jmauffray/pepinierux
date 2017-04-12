@@ -52,8 +52,8 @@ $nomm[11] = "D&eacute;cembre";
 
 /**
  ---------------------------------------------------------------------------------------------
- * Le reste du code PHP, à priori, y'a plus besoin de le toucher. Par contre, y'a la CSS juste
- * un peu plus bas. Celle-là est parfaitement modifiable (c'est d'ailleurs recommandé, c'est
+ * Le reste du code PHP, Ã  priori, y'a plus besoin de le toucher. Par contre, y'a la CSS juste
+ * un peu plus bas. Celle-lÃ  est parfaitement modifiable (c'est d'ailleurs recommandÃ©, c'est
  * toujours mieux de personnaliser un peu le truc)
  */
 $ajd = getdate();
@@ -94,7 +94,7 @@ if ($affichage != "en"){
         $j++;
     }
     $nomj = $temp;
-    //On décale le 1er jour en conséquence
+    //On dÃ©cale le 1er jour en consÃ©quence
     $premierJour--;
     if ($premierJour < 0){
         $premierJour = 6;
@@ -104,9 +104,9 @@ if ($affichage != "en"){
 /**
  * Renvoie une string qui vaut selected ou non, pour un champs SELECT
  *
- * @param   integer     $temps      L'année ou le mois choisi
+ * @param   integer     $temps      L'annÃ©e ou le mois choisi
  * @param   integer     $i          L'annee en cours
- * @return  string                  La string nécessaire pour sélectionner une OPTION
+ * @return  string                  La string nÃ©cessaire pour sÃ©lectionner une OPTION
  */
 function get_selected($temps, $i){
     $selected = "";
@@ -117,15 +117,15 @@ function get_selected($temps, $i){
 }
 
 /**
- * Renvoie une string représentant l'appel à une classe CSS
+ * Renvoie une string reprÃ©sentant l'appel Ã  une classe CSS
  *
- * Pour les valeurs par défaut :
+ * Pour les valeurs par dÃ©faut :
  *      - 1 : ' class="aut"'
  *      - 2 : ''
  *
  * @param   integer     $jour       Le jour en cours
- * @param   integer     $index      La valeur par défaut de la string
- * @return  string                  La string nécessaire pour appeller la classe CSS voulue
+ * @param   integer     $index      La valeur par dÃ©faut de la string
+ * @return  string                  La string nÃ©cessaire pour appeller la classe CSS voulue
  */
 function get_classe($jour, $index, $mode){
     switch ($index) {
@@ -153,18 +153,18 @@ function get_classe($jour, $index, $mode){
 }
 
 /**
- * Détermine si on est sur un dimanche ou un samedi, à partir du 1er du mois
+ * DÃ©termine si on est sur un dimanche ou un samedi, Ã  partir du 1er du mois
  *
- * @param   array       $ajd            Le jour, mois et année de maintenant
- * @param   integer     $annee          L'année en cours
+ * @param   array       $ajd            Le jour, mois et annÃ©e de maintenant
+ * @param   integer     $annee          L'annÃ©e en cours
  * @param   integer     $mois           Le mois en cours
  * @param   integer     $jour           Le jour en cours
- * @param   integer     $cptJour        Le numéro du jour en cours de la semaine
- * @param   integer     $premierJour    Le numéro du 1er jour (dans la semaine) du mois
+ * @param   integer     $cptJour        Le numÃ©ro du jour en cours de la semaine
+ * @param   integer     $premierJour    Le numÃ©ro du 1er jour (dans la semaine) du mois
  * @param   array       $nomj           Le tableau des noms des jours
- * @param   integer     $prems          Le numéro du dernier jour de la semaine du mois précédent
+ * @param   integer     $prems          Le numÃ©ro du dernier jour de la semaine du mois prÃ©cÃ©dent
  * @param   string      $mode           Le mode d'affichage du calendrier ("fr" ou "en")
- * @return  string                      La string nécessaire pour appeller la classe CSS voulue
+ * @return  string                      La string nÃ©cessaire pour appeller la classe CSS voulue
  */
 function get_classeJour($ajd, $annee, $mois, $jour, $cptJour, $premierJour, $nomj, $prems, $mode){
     $classe = "";
@@ -188,12 +188,12 @@ function get_classeJour($ajd, $annee, $mois, $jour, $cptJour, $premierJour, $nom
 }
 
 /**
- * Détermine si on est sur un samedi, lorsqu'on complète le tableau
+ * DÃ©termine si on est sur un samedi, lorsqu'on complÃ¨te le tableau
  *
  * @param   integer     $i              Le jour en cours
- * @param   integer     $cptJour        Le numéro du dernier jour (dans la semaine) du mois
+ * @param   integer     $cptJour        Le numÃ©ro du dernier jour (dans la semaine) du mois
  * @param   string      $mode           Le mode d'affichage du calendrier ("fr" ou "en")
- * @return  string                      La string nécessaire pour appeller la classe CSS voulue
+ * @return  string                      La string nÃ©cessaire pour appeller la classe CSS voulue
  */
 function get_classeJourReste($i, $cptJour, $mode){
     $classe = "";
@@ -312,7 +312,7 @@ for ($i = 0; $i < count($nomm); $i++){
 <select name="annee" id="annee" onChange="reload(this.form)">
 <?php
 /**
- * Affichage des années
+ * Affichage des annÃ©es
  */
 for ($i = $ajd["year"] - $anneeMin; $i < $ajd["year"] + $anneeMax; $i++){
     $selected = get_selected($annee, $i);
@@ -340,7 +340,7 @@ for ($jour = 0; $jour < 7; $jour++){
     <tr>
 <?php
 /**
- * Affichage des cellules vides en début de mois, s'il y en a
+ * Affichage des cellules vides en dÃ©but de mois, s'il y en a
  */
 for ($prems = 0; $prems < $premierJour; $prems++){
     $classe = get_classe($prems, 2, $affichage);
@@ -393,7 +393,7 @@ if ($cptJour != 0){
     var ordre = new Array("<?php echo strtoupper(implode('", "', $ordre)); ?>");
 
     /**
-     * Reload la fenêtre avec les nouveaux mois et année choisis
+     * Reload la fenÃªtre avec les nouveaux mois et annÃ©e choisis
      *
      * @param   object      frm     L'object document du formulaire
      */
@@ -406,10 +406,10 @@ if ($cptJour != 0){
     }
 
     /**
-     * Ajoute un zéro devant le jour et le mois s'ils sont plus petit que 10
+     * Ajoute un zÃ©ro devant le jour et le mois s'ils sont plus petit que 10
      *
-     * @param   integer     jour        Le numéro du jour dans le mois
-     * @param   integer     mois        Le numéro du mois
+     * @param   integer     jour        Le numÃ©ro du jour dans le mois
+     * @param   integer     mois        Le numÃ©ro du mois
      */
     function checkNum(jour, mois){
         tab = new Array();
@@ -427,14 +427,14 @@ if ($cptJour != 0){
     }
 
     /**
-     * Créé la string de retour et la renvoie à la page d'appel
+     * CrÃ©Ã© la string de retour et la renvoie Ã  la page d'appel
      *
-     * C'est ici que la string est créé. C'est également ici que le champ du formulaire
-     * de la page d'appel reçoit la valeur. La fenêtre s'auto-fermera ensuite toute
+     * C'est ici que la string est crÃ©Ã©. C'est Ã©galement ici que le champ du formulaire
+     * de la page d'appel reÃ§oit la valeur. La fenÃªtre s'auto-fermera ensuite toute
      * seule comme une grande.
-     * Paisible est l'étudiant qui comme la rivière peut suivre son cours sans quitter son lit...
+     * Paisible est l'Ã©tudiant qui comme la riviÃ¨re peut suivre son cours sans quitter son lit...
      *
-     * @param   integer     jour        Le numéro du jour dans le mois
+     * @param   integer     jour        Le numÃ©ro du jour dans le mois
      */
     function submitDate(jour){
         tab = this.checkNum(jour, <?php echo $mois; ?>);

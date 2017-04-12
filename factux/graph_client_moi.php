@@ -49,7 +49,7 @@ $tot = $data['SUM(tot_htva)'];
 $prix = $data['SUM(tot_htva)'];
 $tot = number_format(($tot*100)/$total, 2, ",", " ");
 $barre = floor($tot)*3;
-echo "<tr><td>$i/$annee (".avec_virgule ($prix)." €) ($tot%)&nbsp;</td><td class='tdgraph' width='300' height='30' background='image/fond.gif'><img src='image/barre.gif' width='$barre' height='10'></td></tr>";
+echo "<tr><td>$i/$annee (".avec_virgule ($prix)." â‚¬) ($tot%)&nbsp;</td><td class='tdgraph' width='300' height='30' background='image/fond.gif'><img src='image/barre.gif' width='$barre' height='10'></td></tr>";
 }
 
 ?>

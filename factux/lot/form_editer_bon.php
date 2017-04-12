@@ -34,7 +34,7 @@ $sql = "SELECT " . $tblpref ."cont_bon.num, num_lot, quanti, uni, article, tot_a
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 $rqSql = "SELECT num, article, prix_htva, uni FROM " . $tblpref ."article WHERE actif != 'non' ORDER BY article,prix_htva";
 $result = mysql_query( $rqSql )
-             or die( "Exécution requête impossible.");
+             or die( "ExÃ©cution requÃªte impossible.");
 $rqSql2 = "SELECT num_client, nom FROM " . $tblpref ."client WHERE actif != 'non' ORDER BY nom";
 $result2 = mysql_query( $rqSql2 )
              or die('Erreur SQL !<br>'.$rqSql2.'<br>'.mysql_error());	     
@@ -67,11 +67,11 @@ while ( $row = mysql_fetch_array( $result2)) {
   <th><? echo $lang_unite ;?></th>
   <th><? echo $lang_article ;?></th>
   <th><? echo $lang_montant_htva ;?></th>
-	<th><? echo "N° lot"; ?></th>
+	<th><? echo "NÂ° lot"; ?></th>
   <th><? echo $lang_editer ;?></th>
   <th><? echo $lang_supprimer ;?></th>
       <?php
-//trouver le client correspodant devis à editer
+//trouver le client correspodant devis Ã  editer
 
 // echo $lang_cont_devis;
 

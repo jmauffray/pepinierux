@@ -116,7 +116,7 @@ $tables .= $$var;
         
          <INPUT NAME="dbname" TYPE="hidden" class="textbox" VALUE="<?=$dbname; ?>" SIZE="37" MAXLENGTH="100"> 
       </TR><TR> 
-        <td  class="texte0" colspan="2"height="35" >Les tables à sauvgarder<br>
+        <td  class="texte0" colspan="2"height="35" >Les tables Ã  sauvgarder<br>
           </TD>
         <td  class="texte0" colspan="2"><textarea name="table_names"  class="textbox" id="table" cols="37" rows="6"><?="$tables";?></textarea></TD>
       

@@ -30,30 +30,30 @@ $trois=isset($_POST['trois'])?$_POST['trois']:"";
 $quatre=isset($_POST['quatre'])?$_POST['quatre']:"";
 $cinq=isset($_POST['cinq'])?$_POST['cinq']:"";
 $six=isset($_POST['six'])?$_POST['six']:"";
-mysql_connect($quatre,$un,$deux) or die ("<font color= red size=4 > Les informations que vous avez entrées semblent incorrectes, veuillez les verifier et recommencer l'installeur.");
+mysql_connect($quatre,$un,$deux) or die ("<font color= red size=4 > Les informations que vous avez entrÃ©es semblent incorrectes, veuillez les verifier et recommencer l'installeur.");
 
 $type = '<?php' . "\n";
 /*$type_fin = '?>';*/
-$com= '//common.php créé grace à l\'installeur de Factux, soyez prudent si vous l\'éditez'. "\n";
-//$connect = 'mysql_connect($host,$user,$pwd) or die ("serveur de base de données injoignable, verifiez dans /factux/include/common.php si $host est correct.");' . "\n";
-//$connect2 = 'mysql_select_db($db) or die ("La base de données est injoignable, verifiez dans /factux/include/common.php si $user, $pwd, $db sont exacts.");' . "\n";
+$com= '//common.php crÃ©Ã© grace Ã  l\'installeur de Factux, soyez prudent si vous l\'Ã©ditez'. "\n";
+//$connect = 'mysql_connect($host,$user,$pwd) or die ("serveur de base de donnÃ©es injoignable, verifiez dans /factux/include/common.php si $host est correct.");' . "\n";
+//$connect2 = 'mysql_select_db($db) or die ("La base de donnÃ©es est injoignable, verifiez dans /factux/include/common.php si $user, $pwd, $db sont exacts.");' . "\n";
 //$un = "valeur1";
-$un = '"'.$un.'";//l\'utilisateur de la base de données mysql' . "\n";
+$un = '"'.$un.'";//l\'utilisateur de la base de donnÃ©es mysql' . "\n";
 //$deux = "valeur2";
-$deux = '"'.$deux.'";//le mot de passe à la base de données mysql' . "\n";
+$deux = '"'.$deux.'";//le mot de passe Ã  la base de donnÃ©es mysql' . "\n";
 //$trois = "valeur3";
-$trois = '"'.$trois.'";//le nom de la base de données mysql' . "\n";
+$trois = '"'.$trois.'";//le nom de la base de donnÃ©es mysql' . "\n";
 //$quatre = "valeur4";
-$quatre = '"'.$quatre.'";//l\'adresse de la base de données mysql ' . "\n";
+$quatre = '"'.$quatre.'";//l\'adresse de la base de donnÃ©es mysql ' . "\n";
 //$cinq = "valeur5";
-$cinq = '"'.$cinq.'";//la langue de l\'interface et des factures créées par Factux : voir la doc pour les abbréviations' . "\n";
+$cinq = '"'.$cinq.'";//la langue de l\'interface et des factures crÃ©Ã©es par Factux : voir la doc pour les abbrÃ©viations' . "\n";
 $six = '"'.$six.'";//prefixe des tables ' . "\n";
 
 //a modifier avant realease common et pas common2
 $monfichier = fopen("../include/config/common.php", "w+"); 
 
 fwrite($monfichier, ''.$type.''.$com.'$user= '.$un.'$pwd= '.$deux.'$db= '.$trois.'$host= '.$quatre.'$default_lang= '.$cinq.'$tblpref= '.$six.'');
-echo "<center><br><br><b><font color= green> Vos données ont été enregistrées avec succès dans le fichier <font color=red>/factux/include/config/common.php<font color=green><br>En cas d'erreur, vous avez 2 choix : recommencer l'installeur de Factux ou éditer ce fichier.<br>Ce fichier est largement commenté (en francais) pour vous y aider.<br>";
+echo "<center><br><br><b><font color= green> Vos donnÃ©es ont Ã©tÃ© enregistrÃ©es avec succÃ¨s dans le fichier <font color=red>/factux/include/config/common.php<font color=green><br>En cas d'erreur, vous avez 2 choix : recommencer l'installeur de Factux ou Ã©diter ce fichier.<br>Ce fichier est largement commentÃ© (en francais) pour vous y aider.<br>";
 fclose($monfichier);
 include("setup_suite.php");
 ?>

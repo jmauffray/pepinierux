@@ -50,7 +50,7 @@ $mois = date("m");
 $annee = date("Y");
 
 $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client WHERE actif != 'non' ORDER BY nom";
-$result = mysql_query( $rqSql ) or die( "Exécution requête impossible.");
+$result = mysql_query( $rqSql ) or die( "ExÃ©cution requÃªte impossible.");
 
 ?>
 <form name="form_choisir_client" method="post" action="form_choisir_client.php" >

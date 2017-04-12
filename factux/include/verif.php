@@ -10,7 +10,7 @@
  * 		http://factux.sourceforge.net
  * 
  * File Name: verif.php
- * 	Fichier de création et verification de la session
+ * 	Fichier de crÃ©ation et verification de la session
  * 
  * * Version:  1.1.5
  * Modified: 11/04/2005
@@ -26,7 +26,7 @@ session_start();
 
 if($_SESSION['trucmuch']=='')
 {
-echo "Vous n'êtes pas autorisé à accéder à cette zone";
+echo "Vous n'Ãªtes pas autorisÃ© Ã  accÃ©der Ã  cette zone";
 include('login.inc.php');
 exit;
 }

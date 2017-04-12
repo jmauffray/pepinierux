@@ -29,7 +29,7 @@ echo'<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >';
 <SCRIPT language="JavaScript" type="text/javascript">
 		function confirmDelete()
 		{
-		var agree=confirm('<?php echo "Estes vous sûr de vouloir effacer cette dépense ?"; ?>');
+		var agree=confirm('<?php echo "Estes vous sÃ»r de vouloir effacer cette dÃ©pense ?"; ?>');
 		if (agree)
 		 return true ;
 		else
@@ -37,7 +37,7 @@ echo'<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >';
 		}
 		</script>
 <?php
-echo "<br><center><h2>Les 20 dernieres dépenses<br><hr>";
+echo "<br><center><h2>Les 20 dernieres dÃ©penses<br><hr>";
 $sql = "SELECT num, lib, fournisseur, prix, DATE_FORMAT(date,'%d/%m/%Y') AS date FROM " . $tblpref ."`depense`  ORDER BY `num` DESC LIMIT 20";
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
 echo "<center><table class="boiteaction">
@@ -45,7 +45,7 @@ echo "<center><table class="boiteaction">
   Titre du tableau
   </caption>
 "; 
-echo "<tr><td>Dépense N&deg; <td class='td2'>$lang_libelle<td>$lang_total_h_tva <td class='td2'>$lang_fournisseur<td>$lang_date<td class='td2'><b>Editer</td><td><b>Effacer</tr>";
+echo "<tr><td>DÃ©pense N&deg; <td class='td2'>$lang_libelle<td>$lang_total_h_tva <td class='td2'>$lang_fournisseur<td>$lang_date<td class='td2'><b>Editer</td><td><b>Effacer</tr>";
 while($data = mysql_fetch_array($req))
     {
 		$num = $data['num'];

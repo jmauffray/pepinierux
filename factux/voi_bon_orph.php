@@ -29,7 +29,7 @@ echo'<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >';
 <SCRIPT language="JavaScript" type="text/javascript">
 		function confirmDelete()
 		{
-		var agree=confirm("<?php echo 'Désirer vous vraiment effacer ce bon de livraison ?'; ?>");
+		var agree=confirm("<?php echo 'DÃ©sirer vous vraiment effacer ce bon de livraison ?'; ?>");
 		if (agree)
 		 return true ;
 		else
@@ -51,7 +51,7 @@ while($data = mysql_fetch_array($req))
 		$tva = $data['tot_tva'];
 		$date = $data['date'];
 		$nom = $data['nom'];
-		echo "<tr><td class='td2'>$num_bon</td><td>$nom</td><td class='td2'>$date</td><td>$total €</td><td class='td2'>$tva €</td><td><div align='center'><a href=edit_bon.php?num_bon=$num_bon&nom=$nom ><img border=0 alt=editer src=image/edit.gif></a>&nbsp;<a href=delete_bon_suite.php?num_bon=$num_bon&nom=$nom onClick='return confirmDelete()' ><img border=0 src= image/delete.jpg alt='effacer'></a>&nbsp;<a href=fpdf/bon_pdf.php?num_bon=$num_bon&nom=$nom target=_blank ><img border=0 src= image/printer.gif alt='imprimer'></a><br></div></td>";
+		echo "<tr><td class='td2'>$num_bon</td><td>$nom</td><td class='td2'>$date</td><td>$total â‚¬</td><td class='td2'>$tva â‚¬</td><td><div align='center'><a href=edit_bon.php?num_bon=$num_bon&nom=$nom ><img border=0 alt=editer src=image/edit.gif></a>&nbsp;<a href=delete_bon_suite.php?num_bon=$num_bon&nom=$nom onClick='return confirmDelete()' ><img border=0 src= image/delete.jpg alt='effacer'></a>&nbsp;<a href=fpdf/bon_pdf.php?num_bon=$num_bon&nom=$nom target=_blank ><img border=0 src= image/printer.gif alt='imprimer'></a><br></div></td>";
 		}
 		echo "</table><br><hr>";
 include("form_fact.php");

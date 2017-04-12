@@ -52,18 +52,18 @@ $pdf->SetY(45);
 $pdf->SetX(10);
 $pdf->MultiCell(71,4,"$slogan",0,C,0);
 
-//deuxieme cellule les coordoné clients
+//deuxieme cellule les coordonÃ© clients
 $pdf->SetFont('Arial','B',10);
 $pdf->SetY(27);
 $pdf->SetX(120);
 $pdf->MultiCell(65,6,"$nom \n $nom2 \n $rue \n $cp  $ville \n ",1,C,1);
-//Troisieme cellule les coordoné vendeur
+//Troisieme cellule les coordonÃ© vendeur
 $pdf->SetFont('Arial','B',8);
 $pdf->SetY(70);
 $pdf->SetX(10);
 $pdf->MultiCell(40,4,"$lang_dev_pdf_soc",1,R,1);
 
-//le cntenu des coordonées vendeur
+//le cntenu des coordonÃ©es vendeur
 $pdf->SetFont('Arial','',8);
 $pdf->SetY(70);
 $pdf->SetX(51);
@@ -88,7 +88,7 @@ $pdf->SetY(105);
 $pdf->SetX(12);
 $pdf->Cell(186,95,"",1,0,'C',1);
 
-//Le tableau : on définit les colonnes
+//Le tableau : on dÃ©finit les colonnes
 $pdf->AddCol('quanti',15,"$lang_quanti",'C');
 $pdf->AddCol('uni',10,"$lang_unite",'C');
 $pdf->AddCol('article',76,"$lang_article",'C');
@@ -101,7 +101,7 @@ $prop=array('HeaderColor'=>array(255,150,100),
 			'color2'=>array(255,238,204),
 			'padding'=>2);
 $pdf->Table("SELECT " . $tblpref ."cont_bon.num, num_lot,quanti, uni, article, taux_tva, prix_htva, p_u_jour, tot_art_htva FROM " . $tblpref ."cont_bon RIGHT JOIN " . $tblpref ."article on " . $tblpref ."cont_bon.article_num = " . $tblpref ."article.num WHERE  bon_num = $num_bon LIMIT $nb, 15",$prop);
-//les coordonnées vendeurs 2
+//les coordonnÃ©es vendeurs 2
 $pdf->SetFillColor(255,238,204);
 $pdf->SetFont('Arial','',8);
 $pdf->SetY(240);
@@ -120,7 +120,7 @@ $pdf->MultiCell(40,10,"\n\n",1,C,1);
 
 if($num_pa2 >= $nb_pa)
   {
-//Quatrieme cellule les enoncés de totaux
+//Quatrieme cellule les enoncÃ©s de totaux
 $pdf->SetFont('Arial','B',12);
 $pdf->SetY(200);
 $pdf->SetX(158);
@@ -157,12 +157,12 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','B',10);
 $pdf->SetY(10);
 $pdf->SetX(30);
-$pdf->MultiCell(160,4,"Conditions génerales de vente\n",0,C,0);
+$pdf->MultiCell(160,4,"Conditions gÃ©nerales de vente\n",0,C,0);
 $pdf->SetY(70);
 $pdf->SetX(10);
 $pdf->MultiCell(160,4,"$lang_condi_ven",0,C,0);
 }
-//Détermination d'un nom de fichier temporaire dans le répertoire courant
+//DÃ©termination d'un nom de fichier temporaire dans le rÃ©pertoire courant
 $file=basename(tempnam(getcwd(),'tmp'));
 rename($file,$file.'.pdf');
 $file.='.pdf';
@@ -173,7 +173,7 @@ $pdf->Output($file);
 if ($_POST['mail']=='y') {
 $to = "$mail_client";
 $sujet = "Bon de commande de $entrep_nom";
-$message = "un nouveau bon de commande vous a été adressé par $entrep_nom. \n Vous le trouverez en piece jointe de ce mail. \n Salutations distinguées \n $entrep_nom";
+$message = "un nouveau bon de commande vous a Ã©tÃ© adressÃ© par $entrep_nom. \n Vous le trouverez en piece jointe de ce mail. \n Salutations distinguÃ©es \n $entrep_nom";
 $fichier = "$file";
 $typemime = "pdf";
 $nom = "$file";

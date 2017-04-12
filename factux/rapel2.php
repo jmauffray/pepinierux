@@ -33,7 +33,7 @@ while($data = mysql_fetch_array($req))
 			$nom = $data[nom];
 			echo "$nom";
 			}
-echo "<h2>Les factures selectionnées sont:<br>";
+echo "<h2>Les factures selectionnÃ©es sont:<br>";
 for ($i=0 ; $i< sizeof($choix) ; $i++)
    if (isset($choix[$i]) )
    {
@@ -45,8 +45,8 @@ while($data = mysql_fetch_array($req))
 	 {
 	 $total = $data['total_fact_T.T.C'];
 	 $date = $data['date'];
-	 echo "rappel enregistré<br>";
-	 echo "facture n° $choix[$i] du $date pour un montant de $total €<br>";
+	 echo "rappel enregistrÃ©<br>";
+	 echo "facture nÂ° $choix[$i] du $date pour un montant de $total â‚¬<br>";
    }
 	 };
 	 $choix = serialize($choix);

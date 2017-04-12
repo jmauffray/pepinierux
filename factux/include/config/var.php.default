@@ -1,16 +1,16 @@
 <?php
-//common.php créé grâce à l'installeur de Factux soyez prudent si vous l'éditez
+//common.php crÃ©Ã© grÃ¢ce Ã  l'installeur de Factux soyez prudent si vous l'Ã©ditez
 $entrep_nom= "adresse";//Nom de l'entreprise
-$social= "00000 LYON";//Siège social de l'entreprise
-$tel= "0123456789";//numéro de tel. de l'entreprise
-$tel_portable= "0123456789";//numéro de tel. portable de l'entreprise
-$tva_vend= "FR 12 345 678 999";//numéro de T.V.A. de l'entreprise
+$social= "00000 LYON";//SiÃ¨ge social de l'entreprise
+$tel= "0123456789";//numÃ©ro de tel. de l'entreprise
+$tel_portable= "0123456789";//numÃ©ro de tel. portable de l'entreprise
+$tva_vend= "FR 12 345 678 999";//numÃ©ro de T.V.A. de l'entreprise
 $compte= "compte en banque 1212";//Compte en banque de l'entreprise 
 $slogan= "Plantes slogan";//slogan de l'entreprise
 $reg= "num phyto";//Registre de commerce de l'entreprise
 $mail= "mail@mail.com";//adresse email
-$devise= "&euro;";//devise utilisée par Factux
+$devise= "&euro;";//devise utilisÃ©e par Factux
 $logo= "logo.png";//nom du logo de l'entreprise
-$siret_num= "N° SIRET : 12312123131321313";
+$siret_num= "NÂ° SIRET : 12312123131321313";
 $site_web_url= "http://site-web.fr";
 ?>

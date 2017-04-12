@@ -33,7 +33,7 @@ $mail=isset($_POST['mail'])?$_POST['mail']:"";
 $pass2=isset($_POST['pass2'])?$_POST['pass2']:"";
 if($login2=='' || $pass==''|| $nom=='' || $prenom=='' || $mail=='' )
 {
-echo "<h1>Vous avez oublié de remplir un champ !!!";
+echo "<h1>Vous avez oubliÃ© de remplir un champ !!!";
 include('');
 exit;
 }
@@ -48,7 +48,7 @@ $pass_crypt = md5($pass);
 mysql_select_db($db) or die ("Could not select $db database");
 $sql7 = "INSERT INTO " . $tblpref ."user (login, pwd, nom, prenom, email, dev, com, fact, admin, dep, stat, art, cli) VALUES ('$login2', '$pass_crypt', '$nom', '$prenom', '$mail', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'y')";
 mysql_query($sql7) or die('Erreur SQL !<br>'.$sql7.'<br>'.mysql_error());
-echo " <br><br><center><h2>$prenom $nom est maintenant enregistré et a comme login : $login2 mot de passe : $pass .<br>";
+echo " <br><br><center><h2>$prenom $nom est maintenant enregistrÃ© et a comme login : $login2 mot de passe : $pass .<br>";
 include("upload.php");
 //echo "<br><a href=''>Continuer</a>"; 
  ?> 

@@ -82,7 +82,7 @@ if ( isset ( $_POST['mois'] ) && $_POST['mois'] != '')
 {
 $requete .= " AND MONTH(date)='" . $_POST['mois'] . "'";
 }
-//on verifie l'année
+//on verifie l'annÃ©e
 if ( isset ( $_POST['annee'] ) && $_POST['annee'] != '')
 {
 $requete .= " AND Year(date)='" . $_POST['annee'] . "'";

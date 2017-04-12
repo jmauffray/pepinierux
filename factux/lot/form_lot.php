@@ -46,7 +46,7 @@ include_once("include/head.php");
 <form action="insert_lot.php" method="post" name="lot" id="lot"  >
         <table class="boiteaction">
           <caption>
-          <?php echo "Créer un lot"; ?>
+          <?php echo "CrÃ©er un lot"; ?>
           </caption>
 					<tr> 
             <td class="texte1"> <?php echo "$lang_produit"; ?> </td>

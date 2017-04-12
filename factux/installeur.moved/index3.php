@@ -22,19 +22,19 @@
  ?> 
 <form action="setup.php" method="post" name="artice" id="artice">
 <center><table>
-<caption>Paramètres d'installation :</caption>
+<caption>ParamÃ¨tres d'installation :</caption>
 
-<tr><td>Utilisateur (login) de la base de données mysql
+<tr><td>Utilisateur (login) de la base de donnÃ©es mysql
 <td><input name="un" type="text" id="article" maxlength="40"></tr>
 <tr><td>Mot de passe de l'utilisateur mysql
 <td><input name="deux" type="password"  >
 </tr><tr>
-<td>Nom de la base de donnée mysql<td><input name="trois" type="text" >
+<td>Nom de la base de donnÃ©e mysql<td><input name="trois" type="text" >
 <tr>
-<td>Adresse de la base de données mysql (adresse ip ou non d'hôte)
+<td>Adresse de la base de donnÃ©es mysql (adresse ip ou non d'hÃ´te)
 <td><input name="quatre" type="text" >
 <tr>
-<td>Langage par défaut de l'interface et des factures<br>Les autres langages seront disponibles via un menu
+<td>Langage par dÃ©faut de l'interface et des factures<br>Les autres langages seront disponibles via un menu
 <td><select name="cinq" >
 <option value="fr">Francais</option>
 <option value="en">Anglais</option>
@@ -42,7 +42,7 @@
 </select>
 </tr>
 <tr>
-<td>Préfixe des tables dans la base de données
+<td>PrÃ©fixe des tables dans la base de donnÃ©es
 <td><input name="six" type="text" value="factux_" >
 <tr>
 <td><input type="submit" name="Submit" value="Envoyer">

@@ -24,7 +24,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../image/favicon.ico" >
 
 <h2>Installation de Factux suite</h2>
-<p>Nous allons maintenant enregistrer les données qui figureront sur vos bons de commande et factures</p>
+<p>Nous allons maintenant enregistrer les donnÃ©es qui figureront sur vos bons de commande et factures</p>
 
 <hr><center><br>
   
@@ -34,21 +34,21 @@
      <font color =green>
 		    <tr><td><form action="setup_3.php" method="post" name="artice" id="artice">Nom de l'entreprise
         <td><input name="zero" type="text" id="article" maxlength="140"></tr>        
-        <tr><td>Siège social de l'entreprise
+        <tr><td>SiÃ¨ge social de l'entreprise
         <td><input name="un" type="text" id="article" maxlength="140"></tr>
-        <tr><td>Numéro de téléphone de l'entreprise
+        <tr><td>NumÃ©ro de tÃ©lÃ©phone de l'entreprise
 				<td><input name="deux" type="text"  ></tr>
-				<tr><td>Numéro de T.V.A. de l'entreprise
+				<tr><td>NumÃ©ro de T.V.A. de l'entreprise
         <td><input name="trois" type="text" ></tr>
-        <tr><td>Numéro de compte en banque de l'entreprise
+        <tr><td>NumÃ©ro de compte en banque de l'entreprise
         <td><input name="quatre" type="text" ></tr>
         <tr><td>Slogan de l'entreprise (Faites assez court)
         <td><input name="cinq" type="text" ></tr>
-				<tr><td>Numéro de registre de commerce de l'entreprise
+				<tr><td>NumÃ©ro de registre de commerce de l'entreprise
 				<td><input name="six" type="text" ></tr>
 				<tr><td>Adresse email de l'entreprise
         <td><input name="sept" type="text" ></tr>
-				<tr><td>Devise utilisée par Factux (&euro;, $...)
+				<tr><td>Devise utilisÃ©e par Factux (&euro;, $...)
 				<td><input name="huit" type="text" ></tr>
        
         <tr><td><input type="submit" name="Submit" value="Envoyer">

@@ -83,7 +83,7 @@ mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
 			   <td class="texte0"><?php echo "$lang_article"; 
 			$rqSql = "SELECT uni, num, article, prix_htva FROM " . $tblpref ."article WHERE actif != 'non' ORDER BY article, prix_htva";
 			$result = mysql_query( $rqSql )
-             or die( "Exécution requête impossible.");?>
+             or die( "ExÃ©cution requÃªte impossible.");?>
         <td class="texte0"><SELECT NAME='article'>
             <OPTION VALUE=0><?php echo $lang_choisissez; ?></OPTION>
             <?php
@@ -101,7 +101,7 @@ mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
 					<td class="texte0">Lot </td>
 		<?php $rqSql = "SELECT num, prod FROM " . $tblpref ."lot WHERE actif != 'non' ORDER BY num";
 			$result = mysql_query( $rqSql )
-             or die( "Exécution requête impossible.");?>
+             or die( "ExÃ©cution requÃªte impossible.");?>
 					<td class="texte0"><SELECT NAME='lot'>
 					<OPTION VALUE=0><?php echo $lang_choisissez; ?></OPTION>
             <?php

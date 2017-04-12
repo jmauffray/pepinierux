@@ -25,7 +25,7 @@ session_cache_limiter('private');
 session_start();
 if($_SESSION['trucmuch']=='')
     {
-    echo 'Vous n\'êtes pas autorisé à acceder à cette zone';
+    echo 'Vous n\'Ãªtes pas autorisÃ© Ã  acceder Ã  cette zone';
     include('../login.inc.php');
     exit;
     }	

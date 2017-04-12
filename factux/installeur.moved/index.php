@@ -42,13 +42,13 @@
 
 <h2><br>Installation de Factux</h2><br><hr><br>
 <p>Vous voici dans l'instalalleur de Factux. Avant de commencer n'oubliez pas de receuillir les informations suivantes.</p><ul>
-<li>Les paramètres de connexion à votre base de données mysql.</li>
-<li>Les coordonnées de la société qui utilisera Factux.</li>
-<li>Le logo de la société qui utilisera Factux.</li></ul><br><br>
+<li>Les paramÃ¨tres de connexion Ã  votre base de donnÃ©es mysql.</li>
+<li>Les coordonnÃ©es de la sociÃ©tÃ© qui utilisera Factux.</li>
+<li>Le logo de la sociÃ©tÃ© qui utilisera Factux.</li></ul><br><br>
 <?php
-$erreur = "Erreur, veuillez vérifier les droits en écriture sur ce fichier !!";
-$verif = "Vérification des droits d'écriture pour le répertoire";
-$verif2 = "Vérification des droits d'écriture pour le fichier";
+$erreur = "Erreur, veuillez vÃ©rifier les droits en Ã©criture sur ce fichier !!";
+$verif = "VÃ©rification des droits d'Ã©criture pour le rÃ©pertoire";
+$verif2 = "VÃ©rification des droits d'Ã©criture pour le fichier";
 $doss1 = "../include";
 $doss2 = "../dump";
 $doss4 = "../image";
@@ -63,7 +63,7 @@ $fich3 = "../include/configav.php";
 
 <center><table>
 
-<caption>Vérification des droits.</caption>
+<caption>VÃ©rification des droits.</caption>
 <?php
 echo "<tr><td>$verif $doss1 :<td>";
 if (is_writable("$doss1")) {
@@ -127,7 +127,7 @@ echo "<font color=red> $erreur</font></td></tr>";
 }
 echo "</table></center><br>";
 if (!is_writable ($doss1 )||!is_writable ($doss2) || !is_writable ($doss3) || !is_writable ($doss4) || !is_writable ($doss5) || !is_writable ($fich1) || !is_writable ($fich2)|| !is_writable ($fich3) )
-{echo "<h1>Veuiller vérifier les erreurs ci-dessus avant de poursuivre</h1></table>";
+{echo "<h1>Veuiller vÃ©rifier les erreurs ci-dessus avant de poursuivre</h1></table>";
   }else {
 	include("index3.php");
 

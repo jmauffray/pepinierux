@@ -24,7 +24,7 @@ require_once("include/config/common.php");
 if (empty($host)) {
 echo '<link rel="stylesheet" type="text/css" href="include/style.css">';
 echo'<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >';
-echo '<h1>Le logiciel ne semble pas encore avoir ete configuré. Cliquez <a href="installeur/index.php">ici</a> pour le configurer dès maintenant.</h1>';
+echo '<h1>Le logiciel ne semble pas encore avoir ete configurÃ©. Cliquez <a href="installeur/index.php">ici</a> pour le configurer dÃ¨s maintenant.</h1>';
 
 }
 include("logout.php");

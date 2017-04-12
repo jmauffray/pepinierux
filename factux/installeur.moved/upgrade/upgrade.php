@@ -43,7 +43,7 @@ mysql_query($sql7) or die('Erreur SQL7 !<br>'.$sql7.'<br>'.mysql_error());
 
 
 
-echo"La structure des tables à été mise à jour<br>";
+echo"La structure des tables Ã  Ã©tÃ© mise Ã  jour<br>";
 
 $sql="SELECT date_deb, date_fin, num, CLIENT FROM " . $tblpref ."facture WHERE list_num =''";
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
@@ -75,7 +75,7 @@ $list_num = serialize($list_num);
 
 $sql2 = "UPDATE " . $tblpref ."facture SET list_num='$list_num' WHERE " . $tblpref ."facture.num = '".$num_fact."' ";
 mysql_query($sql2) or die('Erreur SQL2 !<br>'.$sql2.'<br>'.mysql_error());
-echo"Facture $num_fact mis à jour<br>";
+echo"Facture $num_fact mis Ã  jour<br>";
 
 }
  
@@ -86,7 +86,7 @@ echo"Facture $num_fact mis à jour<br>";
 			
 
 ?>
-Votre base de donnée et les enregistrement des factures ont été mis a jour. <br>
-Faites une verification du bon deroulement de l'upgrade en comparant vos anciennes factures au foremat papier et les factures stockées dans Factux<br>
-Si tout est correct faite un backup imediatement vos anciens backups étant a present inutilisables.
+Votre base de donnÃ©e et les enregistrement des factures ont Ã©tÃ© mis a jour. <br>
+Faites une verification du bon deroulement de l'upgrade en comparant vos anciennes factures au foremat papier et les factures stockÃ©es dans Factux<br>
+Si tout est correct faite un backup imediatement vos anciens backups Ã©tant a present inutilisables.
 

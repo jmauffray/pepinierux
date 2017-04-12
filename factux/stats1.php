@@ -180,13 +180,13 @@ $tottva12 = $entre12 + $totva12 ;
 
 //a verifier echo "$stat<br>";
 echo "<center><table>";
-echo "<tr><td><strong>&nbsp;</strong><td class='td2'><strong>$lang_depenses_htva</strong><td><strong>$lang_ca_htva</strong><td class='td2'><b>$lang_ca_ttc</b><td><strong>Résultat net</strong></tr>";
+echo "<tr><td><strong>&nbsp;</strong><td class='td2'><strong>$lang_depenses_htva</strong><td><strong>$lang_ca_htva</strong><td class='td2'><b>$lang_ca_ttc</b><td><strong>RÃ©sultat net</strong></tr>";
 echo "<tr><td class='td2'>Janvier<td class='td2montant'>&nbsp;"
      .montant_financier ($depe1)."<td class='td2montant'>&nbsp;"
 	 .montant_financier ($entre1)."<td class='td2montant'>"
 	 .montant_financier ($tottva1)."<td class='td2montant'>"
      .montant_financier ($stat1)."</tr>";
-echo "<tr><td class='td2'>Février<td class='td2montant'>&nbsp;"
+echo "<tr><td class='td2'>FÃ©vrier<td class='td2montant'>&nbsp;"
      .montant_financier ($depe2)."<td class='td2montant'>&nbsp;"
      .montant_financier ($entre2)."<td class='td2montant'>"
 	 .montant_financier ($tottva2)."<td class='td2montant'>"
@@ -216,7 +216,7 @@ echo "<tr><td class='td2'>Juillet<td class='td2montant'>&nbsp;"
      .montant_financier ($entre7)."<td class='td2montant'>"
      .montant_financier ($tottva7)."<td class='td2montant'>"
      .montant_financier ($stat7)."</tr>";
-echo "<tr><td class='td2'>Août<td class='td2montant'>&nbsp;"
+echo "<tr><td class='td2'>AoÃ»t<td class='td2montant'>&nbsp;"
      .montant_financier ($depe8)."<td class='td2montant'>&nbsp;"
      .montant_financier ($entre8)."<td class='td2montant'>"
      .montant_financier ($tottva8)."<td class='td2montant'>"
@@ -236,7 +236,7 @@ echo "<tr><td class='td2'>Novembre<td class='td2montant'>&nbsp;"
 	 .montant_financier ($entre11)."<td class='td2montant'>"
 	 .montant_financier ($tottva11)."<td class='td2montant'>"
      .montant_financier ($stat11)."</tr>";
-echo "<tr><td class='td2'>Décembre<td class='td2montant'>&nbsp;"
+echo "<tr><td class='td2'>DÃ©cembre<td class='td2montant'>&nbsp;"
      .montant_financier ($depe12)."<td class='td2montant'>&nbsp;"
 	 .montant_financier ($entre12)."<td class='td2montant'>"
 	 .montant_financier ($tottva12)."<td class='td2montant'>"

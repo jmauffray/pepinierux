@@ -66,7 +66,7 @@ echo "<center><h1>$lang_erreur_var</h1><br>";
    var csChaine;
    var nDay, nJour, nMois, nAnnee;
    var dtJour;
-   var NomMois = new Array   ('Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre');
+   var NomMois = new Array   ('Janvier','FÃ©vrier','Mars','Avril','Mai','Juin','Juillet','AoÃ»t','Septembre','Octobre','Novembre','DÃ©cembre');
    var NomJour = new Array('Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi');
    csChaine = " ";
    dtJour   = new Date();
@@ -262,7 +262,7 @@ preChargement();
 		onblur="CacherDelai();">
 	<?php if ($user_fact != 'n') { ?>
 	<li><a href="lister_lot.php"><?php echo "Lister" ?><span>&nbsp;;</span></a></li>
-	<li><a href="form_lot.php"><?php echo "Créer" ?><span>.</span></a></li>
+	<li><a href="form_lot.php"><?php echo "CrÃ©er" ?><span>.</span></a></li>
 	<li><a href="form_recherche_lot.php"><?php echo "Rechercher" ?><span>.</span></a></li>
     <?php } ?>
     </ul>

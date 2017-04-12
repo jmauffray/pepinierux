@@ -39,13 +39,13 @@ echo("<h2><br><hr>$lang_rappel");?>
 $rqSql = "SELECT TO_DAYS(NOW()) - TO_DAYS(date_fact) AS peri, client, date_deb, date_fin, total_fact_ttc, num, nom, DATE_FORMAT(date_fact,'%d/%m/%Y') AS date_fact FROM " . $tblpref ."facture RIGHT JOIN " . $tblpref ."client on " . $tblpref ."facture.client = " . $tblpref ."client.num_client WHERE payement = 'non' AND " . $tblpref ."client.num_client = $client ORDER BY peri DESC";
 
 $result = mysql_query( $rqSql )
-             or die( "ExÈcution requÍte impossible. $rqSql");
+             or die( "Ex√©cution requƒôte impossible. $rqSql");
 while ( $row = mysql_fetch_array( $result)) {
     $num = $row["num"];
     $nom = $row["nom"];
 		$peri = $row["peri"];
 		$total = $row["total_fact_ttc"];
-    $ld .="<tr><td><input type='checkbox' name='choix[]'value='$num'>Facture $num de $total Ä envoyÈe depuis $peri jours</tr>";
+    $ld .="<tr><td><input type='checkbox' name='choix[]'value='$num'>Facture $num de $total ‚Ç¨ envoy√©e depuis $peri jours</tr>";
 }
 print $ld;
 
@@ -56,7 +56,7 @@ print $ld;
 <OPTION VALUE=0>Choisissez</OPTION>
 <OPTION VALUE=1>Premier rappel</OPTION>
 <OPTION VALUE=2>Deuxieme rappel</OPTION>
-<OPTION VALUE=3>TroisiËme rappel</OPTION>
+<OPTION VALUE=3>Troisiƒçme rappel</OPTION>
 <tr><td><input type="submit" value="Valider"></tr>
 </FORM></table>
 

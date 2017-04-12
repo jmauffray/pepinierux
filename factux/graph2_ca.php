@@ -149,7 +149,7 @@ $stat12 = $entre12 - $depe12 ;
 
 
     /*
-    ** Convertir les degrés en radians
+    ** Convertir les degrÃ©s en radians
     */
     function radians($degrees)
     {
@@ -169,20 +169,20 @@ $stat12 = $entre12 - $depe12 ;
       }
 
 
-    //remplir les paramètres
+    //remplir les paramÃ¨tres
     $ChartDiameter = 200;
     $ChartFont = 3;
     $ChartFontHeight = imagefontheight($ChartFont);
     $ChartData = array("$entre1", "$entre2", "$entre3", "$entre4", "$entre5","$entre6", "$entre7", "$entre8", "$entre9","$entre10","$entre11", "$entre12");
-    $ChartLabel = array("Janvier", "Février",
-        "Mars", "Avril", "Mai", "Juin", "Juillet", "Août","Septembre","Octobre", "Novembre", "Decembre");
+    $ChartLabel = array("Janvier", "FÃ©vrier",
+        "Mars", "Avril", "Mai", "Juin", "Juillet", "AoÃ»t","Septembre","Octobre", "Novembre", "Decembre");
 
-    //déterminer la taille du graphique
+    //dÃ©terminer la taille du graphique
     $ChartWidth = $ChartDiameter + 20;
     $ChartHeight = $ChartDiameter + 20 +
         (($ChartFontHeight + 2) * count($ChartData));
 
-    //détermine le total de toutes les valeurs
+    //dÃ©termine le total de toutes les valeurs
     for($index = 0; $index < count($ChartData); $index++)
     {
         $ChartTotal += $ChartData[$index];
@@ -213,7 +213,7 @@ $stat12 = $entre12 - $depe12 ;
     $colorSlice[] = imagecolorallocate($image, 0x99, 0x00, 0x99);
     $colorSlice[] = imagecolorallocate($image, 0x00, 0x99, 0x99);
 
-    //arrière-plan
+    //arriÃ¨re-plan
     imagefill($image, 0, 0, $colorBody);
 
 
@@ -239,7 +239,7 @@ $stat12 = $entre12 - $depe12 ;
             $EndDegrees,
             $CurrentColor);
 
-        //Tracer le début de la ligne à partir du centre
+        //Tracer le dÃ©but de la ligne Ã  partir du centre
         list($ArcX, $ArcY) = circle_point($StartDegrees, $ChartDiameter);
         imageline($image,
             $ChartCenterX,
@@ -316,13 +316,13 @@ $stat12 = $entre12 - $depe12 ;
         $colorBorder);
 
 
-    //la légende
+    //la lÃ©gende
     for($index = 0; $index < count($ChartData); $index++)
     {
         $CurrentColor = $colorSlice[$index%(count($colorSlice))];
         $LineY = $ChartDiameter + 20 +  ($index*($ChartFontHeight+2));
 
-        //la couleur des boîtes
+        //la couleur des boÃ®tes
         imagerectangle($image,
             10,
             $LineY,

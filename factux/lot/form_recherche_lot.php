@@ -44,16 +44,16 @@ include_once("include/head.php");
 <tr>
 <td  class="page" align="center">
 <center><table class="boiteaction">
-  <caption><?php echo "Rechercher un bon par son n° de lot"; ?></caption>
+  <caption><?php echo "Rechercher un bon par son nÂ° de lot"; ?></caption>
 	<form action="recherche_lot.php" method="post">
 
 
-        <tr><td>N° de lot<td><input type="text" name="num_lot"  />	</td></tr>
+        <tr><td>NÂ° de lot<td><input type="text" name="num_lot"  />	</td></tr>
 	<tr><td class="submit" colspan="2"><input type="submit" /></td></tr>
 	</form>
 <tr><TD colspan="2" ><FORM action="chercher_lot_fourn.php" method="POST"></TD></tr>
 <tr><TD colspan="2" class="submit">Rechercher a partir du lot fourniseur</TD></tr>
-  <tr><TD>N° de lot fournisseur</TD><td><INPUT type="text" name="lot_fou"></td></tr>
+  <tr><TD>NÂ° de lot fournisseur</TD><td><INPUT type="text" name="lot_fou"></td></tr>
   <tr><TD class="submit" colspan="2"><INPUT type="submit" value="envoyer"></TD></tr>
 </FORM>				
 					</table>

@@ -77,7 +77,7 @@ $taux_tva = mysql_result2($result, 'taux_tva');
 
 $total_htva = $prix_article * $quanti ;
 $mont_tva = $total_htva / 100 * $taux_tva ;
-//inserer les donn�es dans la table du conten des bons.
+//inserer les donnees dans la table du conten des bons.
 mysql_select_db($db) or die ("Could not select $db database");
 $sql1 = "INSERT INTO " . $tblpref ."cont_bon(p_u_jour, quanti, article_num, bon_num, tot_art_htva, to_tva_art, num_lot) 
 VALUES ('$prix_article', '$quanti', '$article', '$max', '$total_htva', '$mont_tva', '$lot')";
@@ -87,7 +87,7 @@ mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
   <th><? echo $lang_unite ;?></th>
   <th><? echo $lang_article ;?></th>
   <th><? echo $lang_montant_htva ;?></th>
-	<th><? echo "n� de lot"; ?>
+	<th><? echo "n° de lot"; ?>
   <th><? echo $lang_editer ;?></th>
   <th><? echo $lang_supprimer ;?></th>
 <tr>
@@ -107,7 +107,7 @@ while($data = mysql_fetch_array($req))
 		echo "<td class =' couleur_alternee ()'>$quanti
 		<td class =' couleur_alternee (FALSE)'>$uni 
 		<td class =' couleur_alternee (FALSE)'>$article 
-		<td class =' couleur_alternee (FALSE)'>$tot �
+		<td class =' couleur_alternee (FALSE)'>$tot €
 		<td class =' couleur_alternee (FALSE)'><a href=voir_lot.php?num=$num_lot target='_blanck'>$num_lot</a>
 		<td class =' couleur_alternee (FALSE)'><a href=edit_cont_bon.php?num_cont=$num_cont><img border=0 alt=editer src=image/edit.gif></a>&nbsp;
 		<td class =' couleur_alternee (FALSE)'><a href=delete_cont_bon.php?num_cont=$num_cont&num_bon=$max onClick='return confirmDelete()'><img border=0 src= image/delete.jpg ></a>&nbsp;<tr>";
@@ -118,7 +118,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 while($data = mysql_fetch_array($req))
     {
 		$total_bon = $data['SUM(tot_art_htva)'];
-		//echo "$lang_som_tot2 <font size = 4>$total_bon</font> �";
+		//echo "$lang_som_tot2 <font size = 4>$total_bon</font> ";
 		}
 //on calcule la some de la tva des contenus du bon
 $sql = " SELECT SUM(to_tva_art) FROM " . $tblpref ."cont_bon WHERE bon_num = $max";
@@ -140,7 +140,7 @@ while($data = mysql_fetch_array($req))
  echo "<tr><td class='texte0'>$lang_article";
 $rqSql = "SELECT num, article, prix_htva FROM " . $tblpref ."article WHERE actif != 'non' ORDER BY article, prix_htva";
 $result = mysql_query( $rqSql )
-             or die( "Ex�cution requ�te impossible.");
+             or die( "Execution requete impossible.");
 $ld = "<SELECT NAME='article'>";
 $ld .= "<OPTION VALUE=0>Choisissez</OPTION>";
 while ( $row = mysql_fetch_array( $result)) {
@@ -156,7 +156,7 @@ print $ld;
 ?>
 		<?php $rqSql = "SELECT num, prod FROM " . $tblpref ."lot WHERE actif != 'non' ORDER BY num";
 			$result = mysql_query( $rqSql )
-             or die( "Ex�cution requ�te impossible.");?>
+             or die( "Execution requete impossible.");?>
 <td class="texte0">Lot</td>
 <td class="texte0"><SELECT NAME='lot'>
 					<OPTION VALUE=0><?php echo $lang_choisissez; ?></OPTION>

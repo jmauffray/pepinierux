@@ -37,9 +37,9 @@
  * Email : dams@nexen.net
  * Url : www.nexen.net/
  * Description : nombre_literal ecrit en toute lettre des nombres.
-Les nombres peuvent Ítre entier, a virgule, mais positif, et ecrit uniquement en chiffres et virgule.
+Les nombres peuvent ƒôtre entier, a virgule, mais positif, et ecrit uniquement en chiffres et virgule.
 ****/
-//$euro= 'Ä';
+//$euro= '‚Ç¨';
 //$devise = ereg_replace('&#128;', $euro, $devise);
 
 define ("ENTIER", "");
@@ -97,10 +97,10 @@ function nombre_literal($nombre, $partie_entiere=ENTIER, $virgule=VIRGULE, $deci
 		$rc = nombre_literal(intval($d));
 		
 //		if ($rc != "z&eacute;ro"){ 
-        // Modification par www.cyberiel.com 10-05-2004. Afficher "virgule zÈro zÈro"
+        // Modification par www.cyberiel.com 10-05-2004. Afficher "virgule z√©ro z√©ro"
         // Modification par www.cyberiel.com 10-05-2004. Afficher EURO et CENT
-		// Si on utilise des devis, on affiche "zÈro" et non "zÈro zÈro" aprËs la virgule
-		// ... attention: Áa ne marche que s'il y a maximum 2 dÈcimales.
+		// Si on utilise des devis, on affiche "z√©ro" et non "z√©ro z√©ro" aprƒçs la virgule
+		// ... attention: √ßa ne marche que s'il y a maximum 2 d√©cimales.
 			$z = ereg_replace("0", "z&eacute;ro ", $z);
 			echo "z = $z<br>";
 			echo "nombre_literal=".nombre_literal($d)."<br>";

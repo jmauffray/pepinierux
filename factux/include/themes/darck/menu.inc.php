@@ -10,7 +10,7 @@
  * 		http://factux.sourceforge.net
  * 
  * File Name: menu.inc.php
- * 	menu d'inclusion dans les themes personalisés
+ * 	menu d'inclusion dans les themes personalisÃ©s
  * 
  * * Version:  1.1.5
  * * * Modified: 23/07/2005
@@ -695,7 +695,7 @@ function getPageOffsetTop(el) {
 <div id="LotsMenu" class="menu">
 <?php if ($user_fact != 'n') { ?>
 <a class="menuItem" href="lister_lot.php"><?php echo "Lister" ?></a>
-<a class="menuItem" href="form_lot.php"><?php echo "Créer" ?></a>
+<a class="menuItem" href="form_lot.php"><?php echo "CrÃ©er" ?></a>
 <div class="menuItemSep"></div>
 <a class="menuItem" href="form_recherche_lot.php"><?php echo "Rechercher" ?></a>
 <?php } ?>

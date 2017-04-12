@@ -10,7 +10,7 @@
  * 		http://factux.sourceforge.net
  * 
  * File Name: lister_utilisateurs.php
- * 	crée la liste des utilisateurs
+ * 	crÃ©e la liste des utilisateurs
  * 
  * * * Version:  1.1.5
  * * * * Modified: 23/07/2005

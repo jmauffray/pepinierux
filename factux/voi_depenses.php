@@ -25,7 +25,7 @@ require_once("include/config/common.php");
 <SCRIPT language="JavaScript" type="text/javascript">
 		function confirmDelete()
 		{
-		var agree=confirm('<?php echo "Estes vous sûr de vouloir effacer cette dépense ?"; ?>');
+		var agree=confirm('<?php echo "Estes vous sÅ±r de vouloir effacer cette dÃ©pense ?"; ?>');
 		if (agree)
 		 return true ;
 		else
@@ -38,7 +38,7 @@ echo'<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >';
 $sql = "SELECT num, lib, fournisseur, prix, DATE_FORMAT(date,'%d/%m/%Y') AS date FROM " . $tblpref ."`depense`  ORDER BY `num` DESC LIMIT 10";
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
 echo "<center><table>"; 
-echo "<tr><td><strong>Dépense N&deg; </strong><td class='td2'><strong>libellé</strong><td><strong>Prix </strong><td class='td2'><strong>fournisseur</strong><td><strong>date</strong><td class='td2'><b>Editer</td><td><b>Effacer</tr>";
+echo "<tr><td><strong>DÃ©pense N&deg; </strong><td class='td2'><strong>libellÃ©</strong><td><strong>Prix </strong><td class='td2'><strong>fournisseur</strong><td><strong>date</strong><td class='td2'><b>Editer</td><td><b>Effacer</tr>";
 while($data = mysql_fetch_array($req))
     {
 		$num = $data['num'];
@@ -47,7 +47,7 @@ while($data = mysql_fetch_array($req))
 		$fou = $data['fournisseur'];
 		$fou = stripslashes($fou);
 		$prix = $data['prix'];
-		echo "<tr><td class='td2'>$num</div></td><td>$lib</td><td class='td2'>$prix €</td><td>$fou</td><td class='td2'>$date</td><td><a href='edit_dep.php?num_dep=$num'><img border=0 alt=editer src=image/edit.gif><td class='td2'><a href=delete_dep.php?num=$num onClick='return confirmDelete()'><img border=0 src= image/delete.jpg ></a>";
+		echo "<tr><td class='td2'>$num</div></td><td>$lib</td><td class='td2'>$prix â‚¬</td><td>$fou</td><td class='td2'>$date</td><td><a href='edit_dep.php?num_dep=$num'><img border=0 alt=editer src=image/edit.gif><td class='td2'><a href=delete_dep.php?num=$num onClick='return confirmDelete()'><img border=0 src= image/delete.jpg ></a>";
 		}
 		echo "</table>";
  ?> 

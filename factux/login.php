@@ -37,7 +37,7 @@ if($login=='' || $pass=='')
   exit;
 }
 
-// on recupère le password de la table qui correspond au login du
+// on recupÃ¨re le password de la table qui correspond au login du
 //visiteur
 $sql = "select pwd from " . $tblpref ."user where login= '$login'";
 $req = mysql_query($sql) or die('Erreur SQL

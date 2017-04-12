@@ -73,7 +73,7 @@ while($data = mysql_fetch_array($req))
 <?php 
 $rqSql = "SELECT uni, num, article, prix_htva FROM " . $tblpref ."article WHERE actif != 'non' ORDER BY article, prix_htva";
 $result = mysql_query( $rqSql )
-             or die( "Exécution requête impossible.");
+             or die( "ExÃ©cution requÃªte impossible.");
 $ld = "<SELECT NAME='article'>";
 $ld .= "<OPTION VALUE=$article_num>".$article."/".$prix_ht.$devise."</OPTION>";
 while ( $row = mysql_fetch_array( $result)) {
@@ -90,7 +90,7 @@ $ld .= "</SELECT>";
 print $ld;
 $rqSql = "SELECT num, prod FROM " . $tblpref ."lot WHERE actif != 'non' ORDER BY num";
 			$result = mysql_query( $rqSql )
-             or die( "Exécution requête impossible.");?>
+             or die( "ExÃ©cution requÃªte impossible.");?>
 <td class="texte0">Lot</td>
 <td class="texte0"><SELECT NAME='lot'>
 					<OPTION VALUE=<?php echo "$num_lot >$num_lot"; ?></OPTION>

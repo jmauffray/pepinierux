@@ -22,7 +22,7 @@
 echo '<table width="100%" border="1" cellpadding="0" cellspacing="0" summary="">';
  ?>
  <br><h2> Ajouter un utilisateur </font><br><br>
- <p>Cet utilisateur aura les droits d'administrateur et ne pourra être effacé par la suite</p>
+ <p>Cet utilisateur aura les droits d'administrateur et ne pourra Ãªtre effacÃ© par la suite</p>
 <center><table bgcolor="#FFFFCC" border="1" cellspacing="0" cellpadding="0">
   <tr >
     <td colspan="2"><form action="register.php" method="post" name="utilisateur" id="utilisateur">
@@ -37,7 +37,7 @@ Pr&eacute;nom:
       <p align="right">Mot de passe : 
         <input name="pass" type="password" id="pass">
 </p>
-      <p align="right">Mot de passe (pour vérification) :
+      <p align="right">Mot de passe (pour vÃ©rification) :
         <input name="pass2" type="password" id="pass2"> 
       </p>
       <p align="right">Adresse email : 
