@@ -60,7 +60,7 @@ $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client
 				require_once("include/configav.php");
 				if ($liste_cli!='y') { 
  				$rqSql="$rqSql order by nom";
- 				$result = mysql_query( $rqSql ) or die( "Exécution requête impossible.");
+ 				$result = mysql_query( $rqSql ) or die( "ExÃ©cution requÃªte impossible.");
  				?> 
         			<SELECT NAME='listeville'>
           		<OPTION VALUE="null"><?php echo $lang_choisissez; ?></OPTION>
@@ -108,7 +108,7 @@ $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client
 		?>
 		<select name="payement">
 		<option value="">Mode de paiement</option>
-	<option value="non">non payées</option>
+	<option value="non">non payÃ©es</option>
   <option value="liquide">liquide</option>
   <option value="virement">virement</option>
   <option value="paypal">paypal</option>
@@ -119,8 +119,8 @@ $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client
 		}else{ ?>
 		<select name="payement">
 		<option value="">Choisissez</option>
-	<option value="non">non payées</option>
-  <option value="oui">Payée</option>
+	<option value="non">non payÃ©es</option>
+  <option value="oui">PayÃ©e</option>
  </select>
 		<?php
 		} ?>

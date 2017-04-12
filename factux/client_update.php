@@ -104,7 +104,7 @@ $to = "$mail_cli";
 $from = "$mail_admin" ;
 
 $subject2 = "$lang_cre_mo_pa" ;
-$message_mail =  "Cher client<br>Votre mot de passe a ete créé par l'administrateur<br><b>Login: $login Mot de passe: $pass2</b><br><br>vous pouver changer ce mot de passe en ligne mais pas le login. <br>Ce mot de pass est encodé dans notre base de donnée .<br>Si vous le perdiez, veuilliez prévevir l <a href=$mail_admin>administrateur</a> pour qu'il vous en donne un nouveau ";
+$message_mail =  "Cher client<br>Votre mot de passe a ete crÃ©Ã© par l'administrateur<br><b>Login: $login Mot de passe: $pass2</b><br><br>vous pouver changer ce mot de passe en ligne mais pas le login. <br>Ce mot de pass est encodÃ© dans notre base de donnÃ©e .<br>Si vous le perdiez, veuilliez prÃ©vevir l <a href=$mail_admin>administrateur</a> pour qu'il vous en donne un nouveau ";
 $header = 'From: '.$from."\n"
  .'MIME-Version: 1.0'."\n"
  .'Content-Type: text/html; charset= ISO-8859-1'."\n"

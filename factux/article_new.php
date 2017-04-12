@@ -52,7 +52,7 @@ mysql_select_db($db) or die ("Could not select $db database");
 $sql1 = "INSERT INTO " . $tblpref ."article(article, prix_htva, prix_htva_gros, prix_ttc_part, taux_tva, prix_htva_part, taux_tva_part, commentaire, uni, stock, cat, taille, conditionnement, contenance, variete, phyto) VALUES ('$article', '$prix', '$prix_gros', '$prix_part_ttc', '$taux_tva','$prix_part', '$taux_tva_part', '$commentaire', '$uni', '$stock', '$categorie', '$taille', '$conditionnement', '$contenance', '$variete', '$phyto')";
 mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
 $lastItemID = mysql_insert_id();
-$message= "<center><h2>$lang_nouv_art<br>N° $lastItemID</h2>";
+$message= "<center><h2>$lang_nouv_art<br>NÂ° $lastItemID</h2>";
 include("form_article.php");
 include_once("include/bas.php");
 ?>

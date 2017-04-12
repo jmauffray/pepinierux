@@ -42,11 +42,11 @@ echo'<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >';
      <?php $lang_article ?>
      <?php 
 include("include/config/common.php");
-// Requête SQL
+// RequÃªte SQL
 $rqSql = "SELECT num, article, prix_htva FROM " . $tblpref ."article ORDER BY num";
-// Exécution de la requête
+// ExÃ©cution de la requÃªte
 $result = mysql_query( $rqSql )
-             or die( "Exécution requête impossible.");
+             or die( "ExÃ©cution requÃªte impossible.");
 $ld = "<SELECT NAME='article'>";
 $ld .= "<OPTION VALUE=0>Choisissez</OPTION>";
 // On boucle sur la table

@@ -72,7 +72,7 @@ include_once("include/finhead.php");
 		require_once("include/configav.php");
 		if ($liste_cli!='y') { 
 		  $rqSql="$rqSql order by nom";
-		  $result = mysql_query( $rqSql ) or die( "Ex�cution requ�te impossible.");
+		  $result = mysql_query( $rqSql ) or die( "Execution requete impossible.");
 	      ?> 
 	      
 

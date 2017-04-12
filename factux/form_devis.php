@@ -65,7 +65,7 @@ $jour = date("d");
 <form name="formu" method="post" action="devis.php" >
   <center><table >
     <caption>
-    <?php echo $lang_devis_cr�er; ?>
+    <?php echo $lang_devis_créer; ?>
     </caption>
     <tr> 
       <td class="texte0"><?php echo "$lang_client"; ?></td>
@@ -75,7 +75,7 @@ $jour = date("d");
 						if ($liste_cli!='y') { 
 						$rqSql="$rqSql order by nom";
 						echo"$rqSql";
-						$result = mysql_query( $rqSql ) or die( "Ex�cution requ�te impossible.");
+						$result = mysql_query( $rqSql ) or die( "Exécution requete impossible.");
  ?>  
 			<SELECT NAME='listeville'>
           <OPTION VALUE='0'><?php echo $lang_choisissez; ?></OPTION>
@@ -102,7 +102,7 @@ $jour = date("d");
     </tr>
 
     <tr> 
-      <td class="submit" colspan="2"><input type="submit" name="Submit" value="<?php echo "Cr�er le devis" ?>">
+      <td class="submit" colspan="2"><input type="submit" name="Submit" value="<?php echo "Créer le devis" ?>">
       </td>
     
   </table></center>

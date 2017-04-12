@@ -10,7 +10,7 @@
  * 		http://factux.sourceforge.net
  * 
  * File Name: fact_bon_orph_suite.php
- * 	enregistrement de donn�es de la facture a partir d'un bon orphelin
+ * 	enregistrement de donnees de la facture a partir d'un bon orphelin
  * 
  * * * Version:  1.1.5
  * * * * Modified: 23/07/2005
@@ -112,7 +112,7 @@ include_once("include/head.php");
 <?php
 echo "<center><br><hr><br><table class='boiteaction'>
   <caption>
-  Facture $num_fact cr��e pour $nom $nom2
+  Facture $num_fact créée pour $nom $nom2
   </caption>
 "; 
 

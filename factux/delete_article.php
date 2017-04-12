@@ -23,7 +23,7 @@ include_once("include/config/common.php");
 $article=isset($_GET['article'])?$_GET['article']:"";
 $sql2 = "UPDATE " . $tblpref ."article SET actif='non' WHERE num = '".$article."'";
 mysql_query($sql2) OR die("<p>Erreur Mysql<br/>$sql2<br/>".mysql_error()."</p>");
-//echo "<center><font size = 4 color = red >facture $num reglée</font>";
+//echo "<center><font size = 4 color = red >facture $num reglÃ©e</font>";
 include_once("lister_articles.php");
 
  ?> 

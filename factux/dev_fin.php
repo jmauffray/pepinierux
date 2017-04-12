@@ -38,6 +38,6 @@ $sql3 = "UPDATE " . $tblpref ."devis SET tot_tva='".$tot_tva."'  WHERE num_dev =
 mysql_query($sql3) OR die("<p>Erreur Mysql2<br/>$sql3<br/>".mysql_error()."</p>");
 $sql4 = "UPDATE " . $tblpref ."devis SET coment='".$coment."'  WHERE num_dev = $dev_num";
 mysql_query($sql4) OR die("<p>Erreur Mysql2<br/>$sql4<br/>".mysql_error()."</p>");
-$message= "<h2><center>devis enregistré<br>";
+$message= "<h2><center>devis enregistrÃ©<br>";
 include("form_devis.php");
  ?> 

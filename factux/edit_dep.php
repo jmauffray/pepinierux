@@ -53,11 +53,11 @@ while($data = mysql_fetch_array($req))
 <center><br><form name="form1" method="post" action="edit_dep_suite.php">
   <table class="boiteaction">
   <caption>
-  Modifier une dépense
+  Modifier une dÃ©pense
   </caption>
 
 	<tr>
-      <td><b>Libellé</b></td>
+      <td><b>LibellÃ©</b></td>
       <td><b>Montant Htva</b></td>
       <td><b>Fournisseur</b></td>
     </tr>

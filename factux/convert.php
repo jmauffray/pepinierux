@@ -29,7 +29,7 @@ $num_dev=isset($_GET['num_dev'])?$_GET['num_dev']:"";
 $jour = date("d");
 $mois = date("m");
 $annee = date("Y");
-//on recpere les donn�e de devis
+//on recpere les donnee de devis
 $sql0 = "SELECT * FROM " . $tblpref ."devis WHERE num_dev = $num_dev";
 $req = mysql_query($sql0) or die('Erreur SQL !<br>'.$sql0.'<br>'.mysql_error());
 while($data = mysql_fetch_array($req))

@@ -60,7 +60,7 @@ echo "$lang_client";
 				 require_once("include/configav.php");
 				 if ($liste_cli!='y') { 
  				 $rqSql="$rqSql order by nom";
- 				 $result = mysql_query( $rqSql ) or die( "Exécution requête impossible.");
+ 				 $result = mysql_query( $rqSql ) or die( "ExÃ©cution requÃªte impossible.");
  				 ?> 
 				 <SELECT NAME='client'>
 				 <OPTION VALUE=""><?php echo $lang_choisissez; ?></OPTION>

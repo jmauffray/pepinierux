@@ -3,11 +3,11 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Serveur: localhost
--- Généré le : Mardi 21 Juin 2005 à 17:20
+-- GÃ©nÃ©rÃ© le : Mardi 21 Juin 2005 Ã  17:20
 -- Version du serveur: 4.0.24
 -- Version de PHP: 4.3.10-15
 -- 
--- Base de données: `test_factu`
+-- Base de donnÃ©es: `test_factu`
 -- 
 
 -- --------------------------------------------------------

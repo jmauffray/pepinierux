@@ -33,7 +33,7 @@ $login=isset($_GET['login'])?$_GET['login']:"";
  ?> 
  <title><?php echo "$lang_factux" ?></title>
  <table width="760" border="0" class="page" align="center">
- <caption>Refuser le devis n° <?php echo "$num_dev"; ?></caption>
+ <caption>Refuser le devis nÂ° <?php echo "$num_dev"; ?></caption>
  <th><? echo $lang_quantite ;?></th>
   <th><? echo $lang_unite ;?></th>
   <th><? echo $lang_article ;?></th>

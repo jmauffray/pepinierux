@@ -30,6 +30,6 @@ $num=isset($_GET['num'])?$_GET['num']:"";
 mysql_select_db($db) or die ("Could not select $db database");
 $sql1 = "DELETE FROM " . $tblpref ."depense WHERE num = '".$num."'";
 mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
-echo "<center><h1>Dépense effacée";
+echo "<center><h1>DÃ©pense effacÃ©e";
 include("lister_depenses.php");
  ?> 

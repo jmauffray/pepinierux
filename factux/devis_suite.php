@@ -104,7 +104,7 @@ $result = mysql_query($sql3) or die('Erreur SQL !<br>'.$sql3.'<br>'.mysql_error(
 $taux_tva = mysql_result2($result, 'taux_tva');
 $conditionnement = mysql_result2($result, 'conditionnement');
 
-//premiere utilisation de la remise, on la calcule si n�cessaire
+//premiere utilisation de la remise, on la calcule si necessaire
 if( ($remise == 0) && ($prix_remise != '') ) {
   $thePrix = 0;
   if( $type == 'particulier' )
@@ -138,7 +138,7 @@ if($volume_pot > 0)
     $conditionnement = "motte en pot";
   }
 
-//inserer les donn�es dans la table du conten des bons.
+//inserer les donnees dans la table du conten des bons.
 mysql_select_db($db) or die ("Could not select $db database");
 $sql1 = "INSERT INTO " . $tblpref ."cont_dev(p_u_jour, p_u_jour_net, quanti, remise, volume_pot, conditionnement, article_num, dev_num, tot_art_htva, to_tva_art) VALUES ('$prix_article', '$montant_u_htva', '$quanti', '$remise', '$volume_pot', '$conditionnement', '$article', '$max', '$total_htva', '$mont_tva')";
 mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
@@ -189,7 +189,7 @@ echo "<td class='totalmontant'colspan='1'>$total_bon $devise<td class='totalmont
 				  if ($use_categorie !='y') {
 $rqSql = "SELECT num, article, $prix_htva, uni FROM " . $tblpref ."article WHERE actif != 'non' ORDER BY article, $prix_htva";
 $result = mysql_query( $rqSql )
-             or die( "Ex�cution requ�te impossible.");
+             or die( "Execution requete impossible.");
 $ld = "<SELECT NAME='article'>";
 
 $ld .= "<OPTION VALUE=0>Choisissez</OPTION>";

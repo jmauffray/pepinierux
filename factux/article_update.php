@@ -58,6 +58,6 @@ if( $Submit != 'Modifier')
   {
     $id = mysql_insert_id();
   }
-$message= "<h2>$lang_stock_jour : N° $id</h2><br><hr>";
+$message= "<h2>$lang_stock_jour : NÂ° $id</h2><br><hr>";
 include_once("lister_articles.php");
 ?> 

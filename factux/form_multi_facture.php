@@ -10,7 +10,7 @@
  * 		http://factux.sourceforge.net
  * 
  * File Name: form_multi_facture.php
- * 	formulaire de création des factures
+ * 	formulaire de crÃ©ation des factures
  * 
  * * * Version:  1.1.5
  * * * * Modified: 23/07/2005
@@ -59,7 +59,7 @@ $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client WHERE actif != 'non'
 			 or  " . $tblpref ."client.permi LIKE '$user_num,%' 
 ORDER BY nom";  
 }
-$result = mysql_query( $rqSql ) or die( "Exécution requête impossible.");
+$result = mysql_query( $rqSql ) or die( "ExÃ©cution requÃªte impossible.");
 ?>
       <form name="form_facture" method="post" action="fact_multi.php">
         <table class="boiteaction">

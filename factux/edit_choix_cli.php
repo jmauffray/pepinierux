@@ -31,7 +31,7 @@ WHERE (actif != 'non')
 									 and  (" . $tblpref ."client.permi NOT LIKE '%,$num_user,%' )
 									 and  (" . $tblpref ."client.permi NOT LIKE '$num_user,%')  
 ORDER BY nom";
-$result = mysql_query( $rqSql ) or die( "Exécution requête impossible.");
+$result = mysql_query( $rqSql ) or die( "ExÃ©cution requÃªte impossible.");
 ?>
 <td  class="page" align="center">
 <form name="choisir_client" method="post" action="choisir_client.php" >

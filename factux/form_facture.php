@@ -10,7 +10,7 @@
  * 		http://factux.sourceforge.net
  * 
  * File Name: form_facture.php
- * 	formulaire de cr�ation des factures
+ * 	formulaire de création des factures
  * 
  * * * Version:  1.1.5
  * * * * Modified: 23/07/2005
@@ -74,7 +74,7 @@ $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client WHERE actif != 'non'
 						require_once("include/configav.php");
 if ($liste_cli!='y') { 
 $rqSql="$rqSql order by nom";
-$result = mysql_query( $rqSql ) or die( "Ex�cution requ�te impossible.");
+$result = mysql_query( $rqSql ) or die( "Execution requete impossible.");
  ?>  
 								<SELECT NAME='listeville'>
                 <OPTION VALUE="null"><?php echo $lang_choisissez; ?></OPTION>
@@ -92,7 +92,7 @@ $result = mysql_query( $rqSql ) or die( "Ex�cution requ�te impossible.");
 										} ?>
 								</td>
 <tr>
-  <td class='<?php echo couleur_alternee (); ?>'>Bon N�
+  <td class='<?php echo couleur_alternee (); ?>'>Bon N°
   <td class='<?php echo couleur_alternee (); ?>'><input type="text" name="num_bon"/>
 </tr>           <tr>
                   <td class='<?php echo couleur_alternee (); ?>'><?php echo $lang_facture_date; ?></td>
@@ -102,14 +102,14 @@ $result = mysql_query( $rqSql ) or die( "Ex�cution requ�te impossible.");
                   </tr>
 
                 <tr>
-                  <td class='<?php echo couleur_alternee (); ?>'>date d�part
+                  <td class='<?php echo couleur_alternee (); ?>'>date départ
                   <td class='<?php echo couleur_alternee (FALSE); ?>'><input type="text" name="date_depart" value="<?php echo "$jour/$mois/$annee" ?>" readonly="readonly"/>
     <a href="#" onClick=" window.open('include/pop.calendrier.php?frm=formu&amp;ch=date_depart','calendrier','width=415,height=160,scrollbars=0').focus();"><img src="image/petit_calendrier.gif" border="0" alt="calendrier"/></a>
     
                   </td>
                   </tr>
                 <tr>
-  <td class='<?php echo couleur_alternee (); ?>'>date �ch�ance (+62 jours si laiss� vide)
+  <td class='<?php echo couleur_alternee (); ?>'>date échéance (+62 jours si laissé vide)
                   <td class='<?php echo couleur_alternee (FALSE); ?>'><input type="text" name="date_echeance" value="" readonly="readonly"/>
     <a href="#" onClick=" window.open('include/pop.calendrier.php?frm=formu&amp;ch=date_echeance','calendrier','width=415,height=160,scrollbars=0').focus();"><img src="image/petit_calendrier.gif" border="0" alt="calendrier"/></a>
     

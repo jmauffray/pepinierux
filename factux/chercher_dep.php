@@ -60,7 +60,7 @@ while ( $row = mysql_fetch_array( $result)) {
 $ld .= "</SELECT>";
 print $ld;
 ?><tr><?php
-echo "<td class='texte0'>Dépense n°" ?>
+echo "<td class='texte0'>DÃ©pense nÂ°" ?>
     <td class="texte0"><input name="numero" type="text" id="numero" value="" size="2" ></tr>
     <?php echo "<tr><td class='texte1'>$lang_jour;" ?>
     <td class="texte1"><input name="jour" type="text" id="jour"  size="2" ></tr>

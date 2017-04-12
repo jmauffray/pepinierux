@@ -66,7 +66,7 @@ $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client
 			if ($liste_cli!='y') { 
 			 $rqSql="$rqSql order by nom";
 			 
-			  $result = mysql_query( $rqSql ) or die( "Ex�cution requ�te impossible.");
+			  $result = mysql_query( $rqSql ) or die( "Execution requete impossible.");
  				?> 
         <SELECT NAME='listeville'>
         <OPTION VALUE='null'><?php echo $lang_choisissez; ?></OPTION>

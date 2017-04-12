@@ -69,9 +69,9 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error())
             </td>
           </tr>
           <tr> 
-					<th>Ingr�dient</th>
+					<th>Ingrédient</th>
 					<th>Fournisseur</th>
-					<th>N� de lot fournisseur </th>
+					<th>N° de lot fournisseur </th>
 					</tr>
 					
 <?php 

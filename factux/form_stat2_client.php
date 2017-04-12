@@ -37,7 +37,7 @@ echo "<hr>";
       <p align="center"> <?php echo $lang_client;
 $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client ORDER BY nom";
 $result = mysql_query( $rqSql )
-             or die( "Exécution requête impossible.");
+             or die( "ExÃ©cution requÃªte impossible.");
 $ld = "<SELECT NAME='client'>";
 $ld .= "<OPTION VALUE=0>Choisissez</OPTION>";
 // On boucle sur la table

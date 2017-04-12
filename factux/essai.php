@@ -22,7 +22,7 @@
 $coul_date = "255,238,204";
 
 $fichier = fopen("fpdf/essai.php", "w+"); 
-//$un = '"'.$un.'";//l\'utilisateur de la base de données mysql' . "\n";
+//$un = '"'.$un.'";//l\'utilisateur de la base de donnÃ©es mysql' . "\n";
 $a= '<?php' . "\n" .
 'include_once("bon_pdf.inc.test.php");' ."\n" .
 'class PDF extends PDF_MySQL_Table { }' . "\n" .

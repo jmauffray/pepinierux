@@ -35,7 +35,7 @@ echo'<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >';
 mysql_select_db($db) or die ("Could not select $db database");
 $sql2 = "UPDATE " . $tblpref ."depense SET lib = '".$lib."' , fournisseur = '".$four."' , prix = '".$prix."' WHERE num = $num ";
 mysql_query($sql2) OR die("<p>Erreur Mysql<br/>$sql2<br/>".mysql_error()."</p>");
-echo "<h2>Dépense mise à jour</h2>";
+echo "<h2>DÃ©pense mise Ã  jour</h2>";
 include_once("lister_depenses.php");
 include_once("include/bas.php");
 //echo "$num $prix";

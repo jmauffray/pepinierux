@@ -71,7 +71,7 @@ include_once("include/configav.php");
 				  if ($use_categorie !='y') { 
 					$rqSql = "SELECT num, article, prix_htva FROM " . $tblpref ."article WHERE actif != 'non' ORDER BY article asc";
 					$result = mysql_query( $rqSql )
-             or die( "Exécution requête impossible.");
+             or die( "ExÃ©cution requÃªte impossible.");
 
 					?>
           <SELECT NAME='article'>
