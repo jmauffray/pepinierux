@@ -43,6 +43,7 @@ $id=0;
 
 mysql_select_db($db) or die ("Could not select $db database");
 
+$Submit = $_POST['Submit'];
 if( $Submit == 'Modifier')
   {
     $sql2 = "UPDATE " . $tblpref ."article SET `prix_htva`='".$prix."',`prix_htva_gros`='".$prix_gros."',`taux_tva`='".$tva."',`taux_tva_part`='".$tva_part."',`prix_htva_part`='".$prix_part."',`prix_ttc_part`='".$prix_part_ttc."',`stock`='".$stock."', `cat`='".$categorie."', `taille`='".$taille."', `article`='".$article."', `conditionnement`='".$conditionnement."', `variete`='".$variete."', `contenance`='".$contenance."', `phyto`='".$phyto."' WHERE num ='".$num."' LIMIT 1 ";
