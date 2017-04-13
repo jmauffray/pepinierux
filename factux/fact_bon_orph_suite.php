@@ -26,6 +26,7 @@ include_once("include/config/var.php");
 include_once("include/language/$lang.php");
 include_once("include/headers.php");
 include_once("include/finhead.php");
+include_once("include/utils.php");
 
 $date_depart=isset($_POST['date_depart'])?$_POST['date_depart']:"";
 $date_echeance=isset($_POST['date_echeance'])?$_POST['date_echeance']:"";

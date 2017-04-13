@@ -22,6 +22,8 @@
 require_once("include/config/common.php");
 include_once("include/verif.php");
 include_once("include/language/$lang.php");
+include_once("include/utils.php");
+
 echo '<link rel="stylesheet" type="text/css" href="include/style.css">';
 echo'<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >';
 $login=isset($_POST['login'])?$_POST['login']:"";

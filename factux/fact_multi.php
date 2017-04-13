@@ -26,6 +26,7 @@ include_once("include/config/var.php");
 include_once("include/language/$lang.php");
 include_once("include/headers.php");
 include_once("include/finhead.php");
+include_once("include/utils.php");
 
 $acompte=isset($_POST['acompte'])?$_POST['acompte']:"";
 $date_deb=isset($_POST['date_deb'])?$_POST['date_deb']:"";

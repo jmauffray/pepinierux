@@ -21,6 +21,8 @@
  */
 require_once("include/verif.php");
 include_once("include/config/common.php");
+include_once("include/utils.php");
+
 echo '<link rel="stylesheet" type="text/css" href="include/style.css">';
 $quanti=isset($_POST['quanti'])?$_POST['quanti']:"";
 $remise=isset($_POST['remise'])?$_POST['remise']:"";

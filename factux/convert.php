@@ -25,6 +25,8 @@ include_once("include/language/$lang.php");
 include_once("include/utils.php");
 include_once("include/headers.php");
 include_once("include/finhead.php");
+include_once("include/utils.php");
+
 $num_dev=isset($_GET['num_dev'])?$_GET['num_dev']:"";
 $jour = date("d");
 $mois = date("m");

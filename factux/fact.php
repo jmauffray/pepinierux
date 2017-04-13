@@ -24,7 +24,9 @@ include_once("include/config/common.php");
 include_once("include/config/var.php");
 include_once("include/language/$lang.php");
 include_once("include/headers.php");
-include_once("include/finhead.php");?>
+include_once("include/finhead.php");
+include_once("include/utils.php");?>
+
 <table width="760" border="0" class="page" align="center">
 <tr>
 <td class="page" align="center">

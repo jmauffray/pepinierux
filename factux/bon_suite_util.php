@@ -1,5 +1,6 @@
 <?php
 include_once("include/config/common.php");
+include_once("include/utils.php");
 
 function getPrixHtvaColumn($type, $quanti)
 {

@@ -23,6 +23,8 @@ require_once("../include/verif_client.php");
 include_once("../include/config/common.php");
 include_once("../include/config/var.php");
 include_once("../include/language/$lang.php");
+include_once("include/utils.php");
+
 echo '<link rel="stylesheet" type="text/css" href="../include/style.css">';
 $num_dev=isset($_POST['num_dev'])?$_POST['num_dev']:"";
 $login=isset($_POST['login'])?$_POST['login']:"";

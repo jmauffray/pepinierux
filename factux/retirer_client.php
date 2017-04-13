@@ -23,6 +23,8 @@ require_once("include/verif.php");
 include_once("include/config/common.php");
 include_once("include/head.php");
 include_once("include/language/$lang.php");
+include_once("include/utils.php");
+
 echo '<link rel="stylesheet" type="text/css" href="include/style.css">';
 echo'<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >';
 $num_client=isset($_POST['num_client'])?$_POST['num_client']:"";
