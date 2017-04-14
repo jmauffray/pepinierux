@@ -619,8 +619,11 @@ if(!class_exists('FPDF'))
 	return $this->AutoPageBreak;
       }
 
-      function Cell($w,$h=0,$txt='',$border=0,$ln=0,$align='',$fill=0,$link='')
+      function Cell($w,$h=0,$txt1='',$border=0,$ln=0,$align='',$fill=0,$link='')
       {
+        //for UTF8 support
+        $txt = utf8_decode($txt1);
+        
 	//Output a cell
 	$k=$this->k;
 	if($this->y+$h>$this->PageBreakTrigger && !$this->InFooter && $this->AcceptPageBreak())
