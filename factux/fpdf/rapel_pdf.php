@@ -29,7 +29,7 @@ include("../include/config/var.php");
 $client=isset($_POST['client'])?$_POST['client']:"";
 $rapel_num=isset($_POST['rapel_num'])?$_POST['rapel_num']:"";
 $choix=isset($_POST['choix'])?$_POST['choix']:"";
-$euro= '€';
+$euro= 'â‚¬';
 $devise = ereg_replace('&#128;', $euro, $devise);
 
 
@@ -52,14 +52,14 @@ class PDF extends PDF_MySQL_Table
 {
 
 }
-//Connexion à la base
+//Connexion Ã  la base
 mysql_connect("$host","$user","$pwd");
 mysql_select_db("$db");
 
 $pdf=new PDF();
 $pdf->Open();
 $pdf->AddPage();
-//deuxieme cellule les coodoné clients
+//deuxieme cellule les coodonÃ© clients
 $pdf->SetFillColor(255,238,204);
 $pdf->SetFont('Arial','B',10);
 $pdf->SetY(27);
@@ -75,7 +75,7 @@ $pdf->SetFont('Arial','B',15);
 $pdf->SetY(45);
 $pdf->SetX(10);
 $pdf->MultiCell(71,4,"$slogan",0,C,0);
-//Troisieme cellule les coordoné vendeur
+//Troisieme cellule les coordonÃ© vendeur
 $pdf->SetFillColor(255,238,204);
 $pdf->SetFont('Arial','B',8);
 $pdf->SetY(70);
@@ -87,14 +87,14 @@ $pdf->SetFont('Arial','B',10);
 $pdf->SetY(70);
 $pdf->SetX(130);
 $pdf->MultiCell(50,6,"Date: $date_jour",1,C,1);//
-//Si on a oublié le num de rappel
+//Si on a oubliÃ© le num de rappel
 if($rapel_num=='0')
   {
     $pdf->SetFillColor(255,238,204);
     $pdf->SetFont('Arial','',20);
     $pdf->SetY(100);
     $pdf->SetX(30);
-    $pdf->MultiCell(160,8,"Erreur!!!\nVous devez renseigner un n° de rappel",0,C,1);
+    $pdf->MultiCell(160,8,"Erreur!!!\nVous devez renseigner un nÂ° de rappel",0,C,1);
   }
 //pour le premier rappel
 if($rapel_num=='1')
@@ -103,7 +103,7 @@ if($rapel_num=='1')
     $pdf->SetFont('Arial','',10);
     $pdf->SetY(110);
     $pdf->SetX(30);
-    $pdf->MultiCell(160,5,"Nous avons constatés que vous aver probablement oublié de regler les factures si dessous. \n Merci de bien vouloir y remedier au plus tôt. \n Veuiller agréer Madame Monsieur L'expression de nos sentiments respectueux.\nSi votre payement avait croisé ce rappel, veuillez le considérer comme nul et non avenu\n",0,L,0);
+    $pdf->MultiCell(160,5,"Nous avons constatÃ©s que vous aver probablement oubliÃ© de regler les factures si dessous. \n Merci de bien vouloir y remedier au plus tÃ´t. \n Veuiller agrÃ©er Madame Monsieur L'expression de nos sentiments respectueux.\nSi votre payement avait croisÃ© ce rappel, veuillez le considÃ©rer comme nul et non avenu\n",0,L,0);
   }
 
 //pour le deuxieme rappel
@@ -113,7 +113,7 @@ if($rapel_num=='2')
     $pdf->SetFont('Arial','',10);
     $pdf->SetY(100);
     $pdf->SetX(30);
-    $pdf->MultiCell(160,5,"			 								Madame, Monsieur, \n 									 Malgrès notre premier rappel, vous n'avez toujours pas réglé les factures ci-dessous.\nMerci de bien vouloir créditer notre compte endéans les huits jours.\n Dans le cas contraire nous serions dans l'obligation d'appliquer nos conditions générales de vente se trouvant au dos de ce document ainssi qu'au dos de toutes nos factures.\n			Si votre payement avait croisé ce rappel, veuillez le considérer comme nul et non avenu.\n",0,L,1);
+    $pdf->MultiCell(160,5,"			 								Madame, Monsieur, \n 									 MalgrÄs notre premier rappel, vous n'avez toujours pas rÃ©glÃ© les factures ci-dessous.\nMerci de bien vouloir crÃ©diter notre compte endÃ©ans les huits jours.\n Dans le cas contraire nous serions dans l'obligation d'appliquer nos conditions gÃ©nÃ©rales de vente se trouvant au dos de ce document ainssi qu'au dos de toutes nos factures.\n			Si votre payement avait croisÃ© ce rappel, veuillez le considÃ©rer comme nul et non avenu.\n",0,L,1);
   }
 //Pour le troisieme rappel
 if($rapel_num=='3')
@@ -124,7 +124,7 @@ if($rapel_num=='3')
     $pdf->SetX(30);
     $pdf->MultiCell(160,5,"Troisieme rappel",0,L,1);
   }
-//le cntenu des coordonées vendeur
+//le cntenu des coordonÃ©es vendeur
 $pdf->SetFillColor(255,238,204);
 $pdf->SetFont('Arial','',8);
 $pdf->SetY(70);
@@ -132,8 +132,8 @@ $pdf->SetX(51);
 $pdf->MultiCell(50,4,"$social\n $tel\n $tva_vend \n$compte \n$mail",0,L,1);
 $pdf->Line(20,65,200,65);
 $pdf->ln(65);
-//Le tableau : on définit les colonnes
-/*$pdf->AddCol('num',30,'N° de facture','C');
+//Le tableau : on dÃ©finit les colonnes
+/*$pdf->AddCol('num',30,'NÂ° de facture','C');
  $pdf->AddCol('date',30,'Date','C');
  $pdf->AddCol('total_fact_ttc',30,'Montant T.T.C','C');
  $prop=array('HeaderColor'=>array(255,150,100),
@@ -147,7 +147,7 @@ $pdf->ln(65);
 for ($i=0 ; $i< sizeof($choix) ; $i++)
   if (isset($choix[$i]) )
     {
-      //Le tableau : on définit les colonnes
+      //Le tableau : on dÃ©finit les colonnes
       $pdf->AddCol('num',30,' ','C');
       $pdf->AddCol('date',30,' ','C');
       $pdf->AddCol('total_fact_ttc',30,' ','C');
@@ -158,7 +158,7 @@ for ($i=0 ; $i< sizeof($choix) ; $i++)
 		  'padding'=>2);
       $pdf->Table("SELECT num, DATE_FORMAT(date_fact,'%d/%m/%Y') AS date, total_fact_ttc FROM " . $tblpref ."facture WHERE num = $choix[$i]",$prop);
     }
-//deuxieme cellule les coordonnées vendeurs 2
+//deuxieme cellule les coordonnÃ©es vendeurs 2
 $pdf->SetFillColor(255,238,204);
 $pdf->SetFont('Arial','',8);
 $pdf->SetY(240);
@@ -177,7 +177,7 @@ for ($i=0 ; $i< sizeof($choix) ; $i++)
       $sql1 = "UPDATE " . $tblpref ."facture SET r$rapel_num ='".$date_jour."' WHERE num = '".$choix[$i]."'";
       mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
     }				
-//Détermination d'un nom de fichier temporaire dans le répertoire courant
+//DÃ©termination d'un nom de fichier temporaire dans le rÃ©pertoire courant
 $file=basename(tempnam(getcwd(),'tmp'));
 rename($file,$file.'.pdf');
 $file.='.pdf';

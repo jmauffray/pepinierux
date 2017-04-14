@@ -70,7 +70,7 @@ $mail_client = $data['mail'];
 $num_client = $data['num_client'];
 
 $taux_tva='taux_tva';
-//unused p_u_jour used si le prix a varié depuis le bon de commande
+//unused p_u_jour used si le prix a variÃ© depuis le bon de commande
 //$prix_htva='prix_htva';
 if( $type=='particulier' )
   {
@@ -79,8 +79,7 @@ if( $type=='particulier' )
   }
 ////////////////////////////////INC////////////////////////////
 
-$euro= '€';
-$devise = ereg_replace('&euro;', $euro, $devise);
+$devise = utf8_encode(chr(128));
 $slogan = stripslashes($slogan);
 $entrep_nom= stripslashes($entrep_nom);
 $social= stripslashes($social);
@@ -138,7 +137,7 @@ class PDF extends PDF_MySQL_Table
   }
   function AutoPrint($dialog=false, $nb_impr)
   {
-    //Ajoute du JavaScript pour lancer la boîte d'impression ou imprimer immediatement
+    //Ajoute du JavaScript pour lancer la boÃ®te d'impression ou imprimer immediatement
     $param=($dialog ? 'true' : 'false');
     $script=str_repeat("print($param);",$nb_impr);
 		
@@ -211,11 +210,11 @@ WHERE " . $tblpref ."devis.num_dev = '".$num_dev."' ";
 	$pdf->SetFont('Arial','B',12);
 	$pdf->SetY(10);
 	$pdf->SetX(160);
-	$pdf->Cell(40,6,"Devis N° $num_dev",0,0,'L',1);
+	$pdf->Cell(40,6,"Devis NÂ° $num_dev",0,0,'L',1);
         $nomBis = ereg_replace('[^[:alnum:]]', '_', $nom);
 	$file = "dev_numero_".$num_dev."_".$nomBis.".pdf";
 
-	//deuxieme cellule les coordonées du CLIENT
+	//deuxieme cellule les coordonÃ©es du CLIENT
 	$pdf->SetFont('Arial','B',10);
 	$pdf->SetY(50);
 	$pdf->SetX(105);
@@ -223,7 +222,7 @@ WHERE " . $tblpref ."devis.num_dev = '".$num_dev."' ";
 	//cellule coordonnees client
 	$pdf->SetY(50);
 	$pdf->SetX(10);
-	$pdf->MultiCell(65,6,"TVA N° : $num_tva\nTel : $tel_client\nTel : $fax_client",0,L,1);
+	$pdf->MultiCell(65,6,"TVA NÂ° : $num_tva\nTel : $tel_client\nTel : $fax_client",0,L,1);
 
 	//le logo
 	$pdf->Image("../image/$logo",8,6,53,42);
@@ -234,7 +233,7 @@ WHERE " . $tblpref ."devis.num_dev = '".$num_dev."' ";
 	$pdf->SetY(45);
 	$pdf->SetX(10);
 	//$pdf->MultiCell(71,4,"$slogan",0,C,0);
-	//Troisieme cellule les coordonnées vendeur
+	//Troisieme cellule les coordonnÃ©es vendeur
 	$pdf->SetFont('Arial','B',8);
 	$pdf->SetY(70);
 	$pdf->SetX(10);
@@ -244,22 +243,22 @@ WHERE " . $tblpref ."devis.num_dev = '".$num_dev."' ";
 	$pdf->SetY(15);
 	$pdf->SetX(160);
 	$pdf->MultiCell(40,6,"$lang_date: $date_dev",0,L,1);//
-	//le cntenu des coordonnées VENDEUR
+	//le cntenu des coordonnÃ©es VENDEUR
 	$pdf->SetFont('Arial','',8);
 	$pdf->SetY(10);
 	$pdf->SetX(80);
-	$pdf->MultiCell(55,4,"$entrep_nom\n$social\nTél/Tel : $tel\nPortable : $tel_portable\n$mail\nTVA N° : $tva_vend\n$siret_num\n$site_web_url\n",0,L,1);//
+	$pdf->MultiCell(55,4,"$entrep_nom\n$social\nTÃ©l/Tel : $tel\nPortable : $tel_portable\n$mail\nTVA NÂ° : $tva_vend\n$siret_num\n$site_web_url\n",0,L,1);//
 	$pdf->Line(10,48,200,48);
 	$pdf->ln(50);
-	//Le tableau : on définit les colonnes
+	//Le tableau : on dÃ©finit les colonnes
 	//$pdf->AddCol('num_dev',7,"$lang_num_dev_ab",'L');
 	$pdf->AddCol('num_ligne',5,"L",'R');
-	$pdf->AddCol('article_num',8,"N°",'R');
+	$pdf->AddCol('article_num',8,"NÂ°",'R');
 	//$pdf->AddCol('date',15,"$lang_date",'C');
 	$pdf->AddCol('quanti',6,"Q",'R');
 	$pdf->AddCol('article',24,"$lang_articles",'L');
 	$pdf->AddCol('variete',42,"$lang_variete",'L');
-	$pdf->AddCol('categorie',12,"Série" ,'R');
+	$pdf->AddCol('categorie',12,"SÃ©rie" ,'R');
 	$pdf->AddCol('taille',12,"$lang_taille" ,'R');
 	$pdf->AddCol('conditionnement',17,"Cond." ,'R');
         $pdf->AddCol($taux_tva,8,"$lang_t_tva",'R');
@@ -285,15 +284,15 @@ WHERE  dev_num = $num_dev LIMIT $nb, $nb_li_page";
 	//	$suite2_sql = "LIMIT $nb, $nb_li_page";
 	$sql_table="$sql_table $suite_sql[$o] $suite2_sql";
 	$pdf->Table("$sql_table",$prop,$i);
-	//deuxieme cellule les coordonnées vendeurs 2
+	//deuxieme cellule les coordonnÃ©es vendeurs 2
 	$pdf->SetFillColor(255,255,255);
 	$pdf->SetFont('Arial','',8);
 	$pdf->SetY(240);
 	$pdf->SetX(5);
-	//$pdf->MultiCell(50,4,"$entrep_nom\n$social\n Tél:$tel\n $tva_vend \n$compte \n$reg",0,C,0);
+	//$pdf->MultiCell(50,4,"$entrep_nom\n$social\n TÃ©l:$tel\n $tva_vend \n$compte \n$reg",0,C,0);
 	if($num_pa2 >= $nb_pa)
 	  {
-	      //Quatrieme cellule les enoncés de totaux
+	      //Quatrieme cellule les enoncÃ©s de totaux
 	      $pdf->SetFont('Arial','B',10);
 	      //$pdf->SetTextColor(255, 0, 0);
 	      $pdf->SetY(250);
@@ -364,7 +363,7 @@ WHERE  dev_num = $num_dev LIMIT $nb, $nb_li_page";
 	$pdf->SetY(268);
 	$annee_fact = substr ($date_fact,6,4);
 	//$pdf->MultiCell(0,4,"$lang_factpdf_penalites_conditions",0,C,0);
-        //$pdf->MultiCell(0,4,"Livraison sur RDV de 8H00 à 12H00",0,C,0);
+        //$pdf->MultiCell(0,4,"Livraison sur RDV de 8H00 Ã  12H00",0,C,0);
 	$pdf->SetFont('Arial','B',10);
 	$pdf->SetY(270);
 	$pdf->SetX(30);
@@ -376,7 +375,7 @@ WHERE  dev_num = $num_dev LIMIT $nb, $nb_li_page";
       $pdf->SetFont('Arial','B',10);
       $pdf->SetY(10);
       $pdf->SetX(30);
-      $pdf->MultiCell(160,4,"Conditions génerales de vente\n",0,C,0);
+      $pdf->MultiCell(160,4,"Conditions gÃ©nerales de vente\n",0,C,0);
       $pdf->SetY(70);
       $pdf->SetX(10);
       $pdf->MultiCell(160,4,"$lang_condi_ven",0,C,0);
@@ -390,7 +389,7 @@ $pdf->Output($file);
 if ($_POST['mail']=='y') { 	 
   $to = "$mail_client";
   $sujet = "Nouvelle facture de $entrep_nom";
-  $message = "Une nouvelle facture vous a étée adressée par  $entrep_nom . \nVous la trouverez en piece jointe de mail\n Salutations distinguées \n $entrep_nom";
+  $message = "Une nouvelle facture vous a Ã©tÃ©e adressÃ©e par  $entrep_nom . \nVous la trouverez en piece jointe de mail\n Salutations distinguÃ©es \n $entrep_nom";
   $fichier = "$file";
   $typemime = "pdf";
   $nom = "$file";

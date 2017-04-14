@@ -34,7 +34,7 @@ include_once("../include/configav.php");
 $num_bon=isset($_POST['num_bon'])?$_POST['num_bon']:"";
 $nom=isset($_POST['nom'])?$_POST['nom']:"";
 define('FPDF_FONTPATH','font/');
-$euro= '€';
+$euro= 'â‚¬';
 $devise = ereg_replace('&euro;', $euro, $devise);
 $slogan = stripslashes($slogan);
 $entrep_nom= stripslashes($entrep_nom);
@@ -75,7 +75,7 @@ $type = $data['type'];
 $mail_client = $data['mail'];
 
 $taux_tva='taux_tva';
-//unused p_u_jour used si le prix a varié depuis le bon de commande
+//unused p_u_jour used si le prix a variÃ© depuis le bon de commande
 //$prix_htva='prix_htva';
 if( $type=='particulier' )
   {
