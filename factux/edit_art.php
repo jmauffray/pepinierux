@@ -61,7 +61,7 @@
 	 ?>
       <tr><td><?php echo"<h2>$lang_modi_pri $article : $num</h2>"; ?></tr><tr><td>
 
-	  <form action=<?php echo"article_update.php#$num"; ?> method="post" name="article" id="article">
+	  <form action=<?php echo"article_update.php"; ?> method="post" name="article" id="article">
 	    <fieldset>
 	      <legend>Plante</legend>
 	      <span><label><?php echo "Plante "; ?></label><input size=18 name="article" type="text" value ="<?php echo"$article" ?>"></span><br/>
