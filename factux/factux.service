@@ -1,0 +1,5 @@
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/opt/lampp/lampp start
+ExecStop=/opt/lampp/lampp stop
