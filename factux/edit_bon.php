@@ -39,6 +39,7 @@ include_once("include/autocomplete.php");
 if($num_bon==''){
 $num_bon=isset($_GET['num_bon'])?$_GET['num_bon']:"";
 $nom=isset($_GET['nom'])?$_GET['nom']:"";
+$num_client=isset($_GET['num_client'])?$_GET['num_client']:"";
 }
 
 if($type==''){

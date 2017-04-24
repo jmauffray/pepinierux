@@ -48,12 +48,12 @@ else if( $quanti > 14 )
 //on recupere le prix htva		
 $sql2 = "SELECT $prix_htva FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql2) or die('Erreur SQL1 !<br>'.$sql2.'<br>'.mysql_error());
-$prix_article = mysql_result2($result, '$prix_htva');
+$prix_article = mysql_result2($result, $prix_htva);
 
 //on recupere le taux de tva
 $sql3 = "SELECT $taux_tva FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql3) or die('Erreur SQL2 !<br>'.$sql3.'<br>'.mysql_error());
-$taux_tva_res = mysql_result2($result, '$taux_tva');
+$taux_tva_res = mysql_result2($result, $taux_tva);
 
 //on recupere le taux de tva
 $sql3 = "SELECT conditionnement FROM " . $tblpref ."article WHERE num = $article";
