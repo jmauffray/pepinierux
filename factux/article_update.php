@@ -24,7 +24,7 @@ include_once("include/config/common.php");
 
 include_once("include/language/$lang.php");
 $num=isset($_POST['num'])?$_POST['num']:"";
-$article=isset($_POST['article'])?$_POST['article']:"";
+$article1=isset($_POST['article'])?$_POST['article']:"";
 $prix=isset($_POST['prix'])?$_POST['prix']:"";
 $prix_gros=isset($_POST['prix_gros'])?$_POST['prix_gros']:"";
 //$prix_part=isset($_POST['prix_part'])?$_POST['prix_part']:"";
@@ -35,14 +35,21 @@ $prix_part = ($prix_part_ttc * 100 / (100 + $tva_part));
 $stock=isset($_POST['stock'])?$_POST['stock']:"";
 $categorie=isset($_POST['categorie'])?$_POST['categorie']:"";
 $taille=isset($_POST['taille'])?$_POST['taille']:"";
-$variete=isset($_POST['variete'])?$_POST['variete']:"";
-$contenance=isset($_POST['contenance'])?$_POST['contenance']:"";
-$phyto=isset($_POST['phyto'])?$_POST['phyto']:"";
-$conditionnement=isset($_POST['conditionnement'])?$_POST['conditionnement']:"";
+$variete1=isset($_POST['variete'])?$_POST['variete']:"";
+$contenance1=isset($_POST['contenance'])?$_POST['contenance']:"";
+$phyto1=isset($_POST['phyto'])?$_POST['phyto']:"";
+$conditionnement1=isset($_POST['conditionnement'])?$_POST['conditionnement']:"";
 $id=0;
 
 mysql_select_db($db) or die ("Could not select $db database");
 
+//fix special char for sql
+$article=mysql_real_escape_string($article1);
+$conditionnement=mysql_real_escape_string($conditionnement1);
+$variete=mysql_real_escape_string($variete1);
+$contenance=mysql_real_escape_string($contenance1);
+$phyto=mysql_real_escape_string($phyto1);
+                    
 $Submit = $_POST['Submit'];
 if( $Submit == 'Modifier')
   {
@@ -56,11 +63,11 @@ if( $Submit == 'Modifier')
             . "`stock`='".$stock."',"
             . "`cat`='".$categorie."',"
             . "`taille`='".$taille."',"
-            . "`article`='".mysql_real_escape_string($article)."',"
-            . "`conditionnement`='".mysql_real_escape_string($conditionnement)."',"
-            . "`variete`='".mysql_real_escape_string($variete)."',"
-            . "`contenance`='".mysql_real_escape_string($contenance)."',"
-            . "`phyto`='".mysql_real_escape_string($phyto)."'"
+            . "`article`='".$article."',"
+            . "`conditionnement`='".$conditionnement."',"
+            . "`variete`='".$variete."',"
+            . "`contenance`='".$contenance."',"
+            . "`phyto`='".$phyto."'"
             . " WHERE num ='".$num."'"
             . " LIMIT 1 ";
     $id = $num;
@@ -68,7 +75,7 @@ if( $Submit == 'Modifier')
  else
    {
      $sql2 = "INSERT INTO " . $tblpref ."article(article, prix_htva,prix_htva_gros, taux_tva, prix_ttc_part, prix_htva_part, taux_tva_part, uni, stock, cat, taille, conditionnement, variete, contenance, phyto)"
-             . " VALUES ('mysql_real_escape_string($article)', '$prix','$prix_gros', '$tva','$prix_part_ttc', '$prix_part', '$tva_part', 'pcs', '$stock', '$categorie', '$taille', 'mysql_real_escape_string($conditionnement)', 'mysql_real_escape_string($variete)', 'mysql_real_escape_string($contenance)', 'mysql_real_escape_string($phyto)')";
+             . " VALUES ('$article', '$prix','$prix_gros', '$tva','$prix_part_ttc', '$prix_part', '$tva_part', 'pcs', '$stock', '$categorie', '$taille', '$conditionnement', '$variete', '$contenance', '$phyto')";
    }
 mysql_query($sql2) OR die("<p>Erreur Mysql<br/>$sql2<br/>".mysql_error()."</p>");
 if( $Submit != 'Modifier')
