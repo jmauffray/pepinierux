@@ -104,8 +104,10 @@
 	      <span><label><?php echo "$lang_stock "; ?></label><input size=8 name="stock" type="text" value ="<?php echo"$stock" ?>"></span><br/>
 	      <span><label><?php echo "Origine "; ?></label>
 		<?php
-		   $rqSql = "SELECT id_cat, categorie FROM " . $tblpref ."categorie WHERE 1 ORDER BY id_cat DESC";
-		   $result = mysql_query( $rqSql ) or die( "ExÃÂÃÂÃÂÃ¢ÂÂÃÂÃ¢ÂÂ ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ¢ÃÂÃÂÃÂ¢Ã¢ÂÂ¬ÃÂ¡ÃÂÃ¢ÂÂÃÂÃÂ©cution requÃÂÃÂÃÂÃ¢ÂÂÃÂÃ¢ÂÂ ÃÂ¢Ã¢ÂÂ¬Ã¢ÂÂ¢ÃÂÃÂÃÂ¢Ã¢ÂÂ¬ÃÂ¡ÃÂÃ¢ÂÂÃÂÃÂªte impossible."); ?>
+		   $rqSql = "SELECT id_cat, categorie FROM " . $tblpref ."categorie"
+                           . " WHERE categorie <> ''"
+                           . " ORDER BY id_cat DESC";
+		   $result = mysql_query( $rqSql ) or die( "Execution impossible."); ?>
 		<SELECT NAME='categorie'>
 		  <OPTION VALUE='<?php echo"$cat_id" ?>'><?php echo $cate; ?></OPTION>
 		  <?php
