@@ -77,6 +77,8 @@ if ($message !='') {
   <OPTION VALUE='MG d62'>MG d62</OPTION>
   <OPTION VALUE='racines nues'>racines nues</OPTION>
   <OPTION VALUE='godet'>godet</OPTION>
+  <OPTION VALUE='godet x6'>godet x6</OPTION>
+  <OPTION VALUE='godet x10'>godet x10</OPTION>
   <OPTION VALUE=''></OPTION>
   </SELECT></td>
   </tr>
