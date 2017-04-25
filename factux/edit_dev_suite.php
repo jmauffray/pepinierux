@@ -93,7 +93,7 @@ $taux_tva_res = mysql_result2($result, $taux_tva);
 //on recupere le conditionnement
 $sql3 = "SELECT conditionnement FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql3) or die('Erreur SQL2 !<br>'.$sql3.'<br>'.mysql_error());
-$conditionnement = mysql_result2($result, $conditionnement);
+$conditionnement = mysql_result2($result, 'conditionnement');
 
 //premiere utilisation de la remise, on la calcule si nécessaire
 if( ($remise == 0) && ($prix_remise != '') ) {
