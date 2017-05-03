@@ -21,7 +21,7 @@ include_once("include/head.php");
 </tr>
 <tr>
 <td  class="page" align="center">
-
+<h2>Importer commande</h2>
 <form action="upload_commande.php" method="post" enctype="multipart/form-data">
     
     <table>        
@@ -51,7 +51,7 @@ include_once("include/head.php");
         </tr>
         <tr>
             <td>
-                Select CSV file to import:
+                Selectionner le fichier CSV à importer:
                 <input type="file" name="fileToUpload" id="fileToUpload">
             </td>
             <td>                

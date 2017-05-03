@@ -21,13 +21,13 @@ include_once("include/head.php");
 </tr>
 <tr>
 <td  class="page" align="center">
-
+<h2>Importer inventaire</h2>
 <form action="upload_inventaire.php" method="post" enctype="multipart/form-data">
     
     <table>
         <tr>
             <td>
-                Select CSV file to import:
+                Selectionner le fichier CSV à importer:
                 <input type="file" name="fileToUpload" id="fileToUpload">
             </td>
             <td>                
