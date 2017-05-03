@@ -126,6 +126,7 @@ preChargement();
 	<li><a href="lister_articles2.php"><?php echo $lang_lister ?>2<span>&nbsp;;</span></a></li>
         <li><a href="export_articles.php"><?php echo "Exporter plantes" ?><span>&nbsp;;</span></a></li>
         <li><a href="export_articles_incwo.php"><?php echo "Exporter plantes Incwo" ?><span>&nbsp;;</span></a></li>
+        <li><a href="importer_inventaire.php"><?php echo "Importer inventaire" ?><span>&nbsp;;</span></a></li>
 	<?php } ?>
 	</ul>
 
