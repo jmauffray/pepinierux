@@ -22,7 +22,8 @@ mysql_query("set names 'utf8'");
 $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
 
 //output
-$filename = "plantes.csv";
+$today = date("Y-m-d-H-i-s");
+$filename = "plantes-".$today.".csv";
 $fp = fopen('php://output', 'w');
 
 //HTTP header
