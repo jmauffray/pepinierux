@@ -26,8 +26,11 @@ require_once("include/language/$lang.php");
 $tot_ht=isset($_POST['tot_ht'])?$_POST['tot_ht']:"";
 $tot_tva=isset($_POST['tot_tva'])?$_POST['tot_tva']:"";
 $bon_num=isset($_POST['bon_num'])?$_POST['bon_num']:"";
-$coment=isset($_POST['coment'])?$_POST['coment']:"";
+$coment1=isset($_POST['coment'])?$_POST['coment']:"";
 mysql_select_db($db) or die ("Could not select $db database");
+
+//fix special char for SQL
+$coment=mysql_real_escape_string($coment1);
 
 $sql2 = "UPDATE " . $tblpref ."bon_comm SET tot_htva='".$tot_ht."'  WHERE num_bon = $bon_num";
 mysql_query($sql2) OR die("<p>Erreur Mysql2<br/>$sql2<br/>".mysql_error()."</p>");

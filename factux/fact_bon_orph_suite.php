@@ -49,7 +49,7 @@ list($dateJour, $dateMois,$dateAnnee) = preg_split('/\//', $date, 3);
 
 $list_num=isset($_POST['bon_sup'])?$_POST['bon_sup']:"";
 $acompte=isset($_POST['acompte'])?$_POST['acompte']:"";
-$coment=isset($_POST['coment'])?$_POST['coment']:"";
+$coment=mysql_real_escape_string(isset($_POST['coment'])?$_POST['coment']:"");
 $num=isset($_POST['num'])?$_POST['num']:"";
 $client=isset($_POST['client'])?$_POST['client']:"";
 

@@ -41,7 +41,7 @@ while($data = mysql_fetch_array($req))
 		$date = $data['date'];
 		$tot_htva = $data['tot_htva'];
 		$tot_tva = $data['tot_tva'];
-		$coment = $data['coment'];
+		$coment = mysql_real_escape_string($data['coment']);
 		}
 		//on les reinjecte dans la base bon_comm
 

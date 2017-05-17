@@ -27,10 +27,13 @@ echo'<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >';
 $tot_ht=isset($_POST['tot_ht'])?$_POST['tot_ht']:"";
 $tot_tva=isset($_POST['tot_tva'])?$_POST['tot_tva']:"";
 $dev_num=isset($_POST['dev_num'])?$_POST['dev_num']:"";
-$coment=isset($_POST['coment'])?$_POST['coment']:"";
+$coment1=isset($_POST['coment'])?$_POST['coment']:"";
 mysql_select_db($db) or die ("Could not select $db database");
 //$sql1 = "INSERT INTO bon_comm(tot_htva, tot_tva) VALUES ('$tot_ht', '$tot_tva) WHERE num_bon = $bon_num";
 //mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
+
+//fix special char for SQL
+$coment=mysql_real_escape_string($coment1);
 
 $sql2 = "UPDATE " . $tblpref ."devis SET tot_htva='".$tot_ht."'  WHERE num_dev = $dev_num";
 mysql_query($sql2) OR die("<p>Erreur Mysql1<br/>$sql2<br/>".mysql_error()."</p>");
