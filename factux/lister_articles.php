@@ -103,7 +103,6 @@ include_once("include/configav.php");
 	  <th><a href="lister_articles.php?ordre=taille"><?php echo $lang_taille; ?></a></th>
 	  <th><a href="lister_articles.php?ordre=conditionnement"><?php echo "Cond."; ?></a></th>
 	  <th><a href="lister_articles.php?ordre=prix_htva"><?php echo $lang_htva; ?></a> </th>
-	  <th><a href="lister_articles.php?ordre=prix_htva_gros"><?php echo "HT: Gros"; ?></a> </th>
 	  <th><a href="lister_articles.php?ordre=prix_htva_part"><?php echo "Par:TTC" ?></a> </th>
 	  <?php
 	    if($use_stock=='y'){?>
@@ -131,7 +130,6 @@ include_once("include/configav.php");
 	      $cat = htmlentities($cat, ENT_QUOTES);
 	      $num =$data['num'];
 	      $prix = $data['prix_htva'];
-	      $prix_gros = $data['prix_htva_gros'];
 	      $tva = $data['taux_tva'];
 	      $prix_part = $data['prix_htva_part'];
 	      $prix_part_ttc = $data['prix_ttc_part'];
@@ -156,7 +154,6 @@ include_once("include/configav.php");
 	<td class="highlight"><?php echo $taille; ?></td>
 	<td class="highlight"><?php echo $conditionnement; ?></td>
 	<td class="highlight"><?php echo montant_financier ($prix); ?></td>
-	<td class="highlight"><?php echo montant_financier ($prix_gros); ?></td>
         <td class="highlight"><?php echo montant_financier ($prix_part_ttc); ?></td>
 	<?php
 	  if($use_stock=='y'){?>
