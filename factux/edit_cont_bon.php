@@ -33,10 +33,6 @@ if( $type=='particulier' )
   {
     $prix_htva='prix_htva_part';
   }
-else if( $quanti > 14 )
-  {
-    $prix_htva='prix_htva_gros';
-  }
 
 ?>
 <table width="760" border="0" class="page" align="center">

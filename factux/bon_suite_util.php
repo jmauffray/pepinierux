@@ -9,10 +9,6 @@ function getPrixHtvaColumn($type, $quanti)
   {
     $prix_htva='prix_htva_part';
   }
-  else if( $quanti > 14 )
-  {
-    $prix_htva='prix_htva_gros';
-  }
 
   return $prix_htva;
 }

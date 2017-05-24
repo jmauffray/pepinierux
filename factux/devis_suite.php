@@ -41,10 +41,6 @@ if( $type=='particulier' )
 {
   $prix_htva='prix_htva_part';
 }
-else if( $quanti > 14 )
-  {
-    $prix_htva='prix_htva_gros';
-  }
 ?>
 <SCRIPT language="JavaScript" type="text/javascript">
 		function confirmDelete()
@@ -92,12 +88,7 @@ while($data = mysql_fetch_array($req))
 $sql2 = "SELECT $prix_htva FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
 $prix_article = mysql_result2($result, $prix_htva);
-if( $quanti > 14 )
-  {
-    $sql2 = "SELECT prix_htva_gros FROM " . $tblpref ."article WHERE num = $article";
-    $result = mysql_query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
-    $prix_article = mysql_result2($result, 'prix_htva_gros');
- }
+
 //on recupere le taux de tva
 $sql3 = "SELECT taux_tva, conditionnement FROM " . $tblpref ."article WHERE num = $article";
 $result = mysql_query($sql3) or die('Erreur SQL !<br>'.$sql3.'<br>'.mysql_error());

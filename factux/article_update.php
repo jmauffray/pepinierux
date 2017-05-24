@@ -26,7 +26,6 @@ include_once("include/language/$lang.php");
 $num=isset($_POST['num'])?$_POST['num']:"";
 $article1=isset($_POST['article'])?$_POST['article']:"";
 $prix=isset($_POST['prix'])?$_POST['prix']:"";
-$prix_gros=isset($_POST['prix_gros'])?$_POST['prix_gros']:"";
 //$prix_part=isset($_POST['prix_part'])?$_POST['prix_part']:"";
 $prix_part_ttc=isset($_POST['prix_part_ttc'])?$_POST['prix_part_ttc']:"";
 $tva=isset($_POST['tva'])?$_POST['tva']:"";
@@ -55,7 +54,6 @@ if( $Submit == 'Modifier')
   {
     $sql2 = "UPDATE " . $tblpref ."article SET"
             . " `prix_htva`='".$prix."',"
-            . "`prix_htva_gros`='".$prix_gros."',"
             . "`taux_tva`='".$tva."',"
             . "`taux_tva_part`='".$tva_part."',"
             . "`prix_htva_part`='".$prix_part."',"
@@ -74,8 +72,8 @@ if( $Submit == 'Modifier')
   }
  else
    {
-     $sql2 = "INSERT INTO " . $tblpref ."article(article, prix_htva,prix_htva_gros, taux_tva, prix_ttc_part, prix_htva_part, taux_tva_part, uni, stock, cat, taille, conditionnement, variete, contenance, phyto)"
-             . " VALUES ('$article', '$prix','$prix_gros', '$tva','$prix_part_ttc', '$prix_part', '$tva_part', 'pcs', '$stock', '$categorie', '$taille', '$conditionnement', '$variete', '$contenance', '$phyto')";
+     $sql2 = "INSERT INTO " . $tblpref ."article(article, prix_htva, taux_tva, prix_ttc_part, prix_htva_part, taux_tva_part, uni, stock, cat, taille, conditionnement, variete, contenance, phyto)"
+             . " VALUES ('$article', '$prix', '$tva','$prix_part_ttc', '$prix_part', '$tva_part', 'pcs', '$stock', '$categorie', '$taille', '$conditionnement', '$variete', '$contenance', '$phyto')";
    }
 mysql_query($sql2) OR die("<p>Erreur Mysql<br/>$sql2<br/>".mysql_error()."</p>");
 if( $Submit != 'Modifier')

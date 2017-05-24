@@ -484,7 +484,6 @@ $lang_art_no = "Nom de la plante";
 $lang_uni_art = "Unité de la plante (kg, pcs, gr....)";
 $lang_prix_uni = "Prix HT unitaire";
 $lang_prix_uni_abrege = "P.U.";
-$lang_prix_uni_gros = "Prix HT unitaire par 15";
 $lang_ttva = "% $lang_tva";
 $langCommentaire ="Commentaire (optionel)";
 $lang_cre_bon = "Créer un bon de commande";

@@ -27,7 +27,6 @@ echo'<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >';
 $article1=isset($_POST['article'])?$_POST['article']:"";
 $uni="pcs";
 $prix=isset($_POST['prix'])?$_POST['prix']:"";
-$prix_gros=isset($_POST['prix_gros'])?$_POST['prix_gros']:"";
 $taux_tva=isset($_POST['taux_tva'])?$_POST['taux_tva']:"";
 //$prix_part=isset($_POST['prix_part'])?$_POST['prix_part']:"";
 $prix_part_ttc=isset($_POST['prix_part_ttc'])?$_POST['prix_part_ttc']:"";
@@ -57,8 +56,8 @@ $variete=mysql_real_escape_string($variete1);
 $contenance=mysql_real_escape_string($contenance1);
 $phyto=mysql_real_escape_string($phyto1);
 
-$sql1 = "INSERT INTO " . $tblpref ."article(article, prix_htva, prix_htva_gros, prix_ttc_part, taux_tva, prix_htva_part, taux_tva_part, commentaire, uni, stock, cat, taille, conditionnement, contenance, variete, phyto) VALUES"
-        . " ('$article', '$prix', '$prix_gros', '$prix_part_ttc', '$taux_tva','$prix_part', '$taux_tva_part', '$commentaire', '$uni', '$stock', '$categorie', '$taille', '$conditionnement', '$contenance', '$variete', '$phyto')";
+$sql1 = "INSERT INTO " . $tblpref ."article(article, prix_htva, prix_ttc_part, taux_tva, prix_htva_part, taux_tva_part, commentaire, uni, stock, cat, taille, conditionnement, contenance, variete, phyto) VALUES"
+        . " ('$article', '$prix', '$prix_part_ttc', '$taux_tva','$prix_part', '$taux_tva_part', '$commentaire', '$uni', '$stock', '$categorie', '$taille', '$conditionnement', '$contenance', '$variete', '$phyto')";
 mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
 $lastItemID = mysql_insert_id();
 $message= "<center><h2>$lang_nouv_art<br>N° $lastItemID</h2>";

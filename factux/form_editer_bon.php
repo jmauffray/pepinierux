@@ -32,10 +32,6 @@ if( $type=='particulier' )
 {
   $prix_htva='prix_htva_part';
 }
-else if( $quanti > 14 )
-  {
-    $prix_htva='prix_htva_gros';
-  }
 
 $sql = "SELECT " . $tblpref ."cont_bon.num, num_lot, quanti, remise, volume_pot, uni, article, article_num, tot_art_htva, to_tva_art tva
         FROM " . $tblpref ."cont_bon 

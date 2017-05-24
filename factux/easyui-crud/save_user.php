@@ -10,7 +10,6 @@ $contenance = $_REQUEST['contenance'];
 $prix_ttc_part = $_REQUEST['prix_ttc_part'];
 $taux_tva_part = $_REQUEST['taux_tva_part'];
 $prix_htva = $_REQUEST['prix_htva'];
-$prix_htva_gros = $_REQUEST['prix_htva_gros'];
 $taux_tva = $_REQUEST['taux_tva'];
 $stock = $_REQUEST['stock'];
 $cat = getCatId($_REQUEST['categorie']);
@@ -23,9 +22,9 @@ include '../include/config/common.php';
 
 
 $sql = "insert into " . $tblpref ."article(
-article,     variete,   taille,    conditionnement,     contenance,   prix_ttc_part,    prix_htva_part,    taux_tva_part,    prix_htva,    prix_htva_gros,    taux_tva,    uni,   stock,    cat,    phyto)
+article,     variete,   taille,    conditionnement,     contenance,   prix_ttc_part,    prix_htva_part,    taux_tva_part,    prix_htva,    taux_tva,    uni,   stock,    cat,    phyto)
 values(
-'$article', '$variete', '$taille', '$conditionnement', '$contenance', '$prix_ttc_part', '$prix_htva_part', '$taux_tva_part', '$prix_htva', '$prix_htva_gros', '$taux_tva', 'pcs', '$stock', '$cat', '$phyto')";
+'$article', '$variete', '$taille', '$conditionnement', '$contenance', '$prix_ttc_part', '$prix_htva_part', '$taux_tva_part', '$prix_htva', '$taux_tva', 'pcs', '$stock', '$cat', '$phyto')";
 
 mysql_query("set names 'utf8'");
 $result = @mysql_query($sql);
@@ -45,7 +44,6 @@ echo json_encode(array(
 	'prix_htva_part' => $prix_htva_part,
 	'taux_tva_part' => $taux_tva_part,
 	'prix_htva' => $prix_htva,
-	'prix_htva_gros' => $prix_htva_gros,
 	'taux_tva' => $taux_tva,
 	'stock' => $stock,
 	'cat' => $cat,

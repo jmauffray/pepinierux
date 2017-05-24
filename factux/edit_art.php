@@ -40,7 +40,6 @@
    $phyto = $data['phyto'];
    $num =$data['num'];
    $prix = $data['prix_htva'];
-   $prix_gros = $data['prix_htva_gros'];
    $tva = $data['taux_tva'];
    $prix_part = $data['prix_htva_part'];
    $prix_part_ttc = $data['prix_ttc_part'];
@@ -92,7 +91,6 @@
 	    <fieldset>
 	      <legend>Tarif</legend>
 	      <span><label><?php echo "$lang_prixunitaire " ?></label><input size=5 name="prix" type="text"  value ="<?php echo"$prix" ?> <?php echo "$devise" ?>"></span><br/>
-	      <span><label><?php echo "Tarif HT Gros " ?></label><input size=5 name="prix_gros" type="text"  value ="<?php echo"$prix_gros" ?> <?php echo "$devise" ?>"></span><br/>
 	      <span><label><?php echo "%TVA "?></label><input size=3 name="tva" type="text" value ="<?php echo"$tva" ?>"></span><br/>
         <br/>
 	      <span><label><?php echo "Part:Tarif TTC " ?></label><input size=5 name="prix_part_ttc" type="text"  value ="<?php echo"$prix_part_ttc" ?> <?php echo "$devise" ?>"></span><br/>

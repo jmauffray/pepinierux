@@ -100,10 +100,6 @@ if ($message !='') {
   <td class='<?php echo couleur_alternee (FALSE); ?>'> <input name="prix" type="text" id="prix"> &euro;</td>
   </tr>
   <tr>
-  <td class='<?php echo couleur_alternee (); ?>'> <?php echo $lang_prix_uni_gros; ?></td>
-  <td class='<?php echo couleur_alternee (FALSE); ?>'> <input name="prix_gros" type="text" id="prix_gros"> &euro;</td>
-  </tr>
-  <tr>
   <td class='<?php echo couleur_alternee (); ?>'> <?php echo "$lang_ttva" ?></td>
   <td class='<?php echo couleur_alternee (FALSE); ?>'> <input name="taux_tva" type="text" id="taux_tva" size="5" maxlength="5" value=10>
   %</td>

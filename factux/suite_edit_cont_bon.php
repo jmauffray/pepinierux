@@ -35,30 +35,18 @@ $num_lot=isset($_POST['num_lot'])?$_POST['num_lot']:"";
 //pro or part
 $type=isset($_POST['type'])?$_POST['type']:"";
 $prix_htva='prix_htva';
-$prix_htva_gros='prix_htva_gros';
 $taux_tva='taux_tva';
 if( $type=='particulier' )
   {
     $taux_tva='taux_tva_part';
     $prix_htva='prix_htva_part';
   }
-else if( $quanti > 14 )
-  {
-    $prix_htva='prix_htva_gros';
-  }
 
-$sql = "SELECT $prix_htva, $prix_htva_gros,$taux_tva, conditionnement FROM " . $tblpref ."article WHERE  " . $tblpref ."article.num = $article";
+$sql = "SELECT $prix_htva,$taux_tva, conditionnement FROM " . $tblpref ."article WHERE  " . $tblpref ."article.num = $article";
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 while($data = mysql_fetch_array($req))
   {
-    if( ($quanti > 14) && ($data[$prix_htva_gros] > 0) && ($type != 'particulier') )
-      {
-	$prix_article = $data[$prix_htva_gros];
-      }
-    else
-      {
-	$prix_article = $data[$prix_htva];
-      }
+    $prix_article = $data[$prix_htva];
     $taux_tva_res = $data[$taux_tva];
     $conditionnement = $data['conditionnement'];
   }

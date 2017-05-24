@@ -90,7 +90,6 @@ include_once("include/configav.php");
   				<th field="taille" width="30" editor="text">Taille</th>
   				<th field="conditionnement" width="30" editor="text">Cond.</th>
           <th field="prix_htva" width="20" editor="text">HT</th>
-          <th field="prix_htva_gros" width="20" editor="text">HT:Gros</th>
           <th field="taux_tva" width="10" editor="text">TVA</th>
           <th field="prix_ttc_part" width="20" editor="text">TTC:Part.</th>
           <th field="taux_tva_part" width="10" editor="text">TVA:Part.</th>

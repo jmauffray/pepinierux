@@ -48,10 +48,6 @@ if( $type=='particulier')
     $prix_htva = 'prix_htva_part';
     $taux_tva = 'taux_tva_part';
   }
-else if( $quanti > 14 )
-  {
-    $prix_htva='prix_htva_gros';
-  }
 
 $sql = "SELECT $prix_htva, $taux_tva, conditionnement FROM " . $tblpref ."article WHERE  " . $tblpref ."article.num = $article";
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());

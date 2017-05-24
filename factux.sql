@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS `factux_article` (
   `prix_htva_part` float NOT NULL default '0',
   `taux_tva_part` float default '0',
   `prix_htva` float NOT NULL default '0',
-  `prix_htva_gros` float NOT NULL default '0',
   `taux_tva` float default '0',
   `commentaire` varchar(30) NOT NULL default '0',
   `uni` varchar(5) NOT NULL default '',
