@@ -105,6 +105,10 @@ if ($message !='') {
   %</td>
   </tr>
   <tr>
+  <td class='<?php echo couleur_alternee (); ?>'> <?php echo "Prix achat" ?></td>
+  <td class='<?php echo couleur_alternee (FALSE); ?>'> <input name="prix_achat" type="text" id="prix_achat"> &euro;</td>
+  </tr>
+  <tr>
   <td class='<?php echo couleur_alternee (); ?>'> <?php echo "$langCommentaire" ?> : </td>
   <td class='<?php echo couleur_alternee (FALSE); ?>'><input name="commentaire" type="text" id="commentaire">
   </td>
@@ -112,6 +116,14 @@ if ($message !='') {
   <tr>
   <td class='<?php echo couleur_alternee (); ?>'><?php echo "$lang_stock"; ?></TD>
   <td class='<?php echo couleur_alternee (FALSE); ?>'><input name='stock' type='text'> </td>
+  </tr>
+  <tr>
+  <td class='<?php echo couleur_alternee (); ?>'>Quantité disponible</TD>
+  <td class='<?php echo couleur_alternee (FALSE); ?>'><input name='stock_disponible' type='text'> </td>
+  </tr>
+  <tr>
+  <td class='<?php echo couleur_alternee (); ?>'>Localisation</TD>
+  <td class='<?php echo couleur_alternee (FALSE); ?>'><input name='localisation' type='text'> </td>
   </tr>
 
   <?php

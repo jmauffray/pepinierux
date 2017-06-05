@@ -39,6 +39,9 @@ CREATE TABLE IF NOT EXISTS `factux_article` (
   `stomax` float(15,2) NOT NULL default '0.00',
   `cat` varchar(10) NOT NULL default '',
   `phyto` varchar(10) NOT NULL,
+  `prix_achat` float NOT NULL default '0',
+  `stock_disponible` float(15,2) NOT NULL default '0.00',
+  `localisation` varchar(40) NOT NULL,
   PRIMARY KEY  (`num`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

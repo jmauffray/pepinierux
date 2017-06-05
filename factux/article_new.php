@@ -40,6 +40,9 @@ $phyto1=isset($_POST['phyto'])?$_POST['phyto']:"";
 $taille=isset($_POST['taille'])?$_POST['taille']:"";
 $conditionnement1=isset($_POST['conditionnement'])?$_POST['conditionnement']:"";
 $contenance1=isset($_POST['contenance'])?$_POST['contenance']:"";
+$prix_achat=isset($_POST['prix_achat'])?$_POST['prix_achat']:"";
+$stock_disponible=isset($_POST['stock_disponible'])?$_POST['stock_disponible']:"";
+$localisation=isset($_POST['localisation'])?$_POST['localisation']:"";
 if($article1=='' || $prix==''|| $taux_tva=='' || $uni=='' )
   {
     echo "<center><h1>$lang_oubli_champ";
@@ -56,8 +59,8 @@ $variete=mysql_real_escape_string($variete1);
 $contenance=mysql_real_escape_string($contenance1);
 $phyto=mysql_real_escape_string($phyto1);
 
-$sql1 = "INSERT INTO " . $tblpref ."article(article, prix_htva, prix_ttc_part, taux_tva, prix_htva_part, taux_tva_part, commentaire, uni, stock, cat, taille, conditionnement, contenance, variete, phyto) VALUES"
-        . " ('$article', '$prix', '$prix_part_ttc', '$taux_tva','$prix_part', '$taux_tva_part', '$commentaire', '$uni', '$stock', '$categorie', '$taille', '$conditionnement', '$contenance', '$variete', '$phyto')";
+$sql1 = "INSERT INTO " . $tblpref ."article(article, prix_htva, prix_ttc_part, taux_tva, prix_htva_part, taux_tva_part, commentaire, uni, stock, cat, taille, conditionnement, contenance, variete, phyto, prix_achat, stock_disponible, localisation) VALUES"
+        . " ('$article', '$prix', '$prix_part_ttc', '$taux_tva','$prix_part', '$taux_tva_part', '$commentaire', '$uni', '$stock', '$categorie', '$taille', '$conditionnement', '$contenance', '$variete', '$phyto', '$prix_achat', '$stock_disponible', '$localisation')";
 mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
 $lastItemID = mysql_insert_id();
 $message= "<center><h2>$lang_nouv_art<br>N° $lastItemID</h2>";

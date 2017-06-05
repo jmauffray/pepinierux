@@ -50,6 +50,10 @@
    $taille = $data['taille'];
    $conditionnement = $data['conditionnement'];
    $cat_id = $data['id_cat'];
+   $prix_achat = $data['prix_achat'];
+   $stock_disponible = $data['stock_disponible'];
+   $localisation = $data['localisation'];
+   
    }
    ?>
 <table width="760" border="0" class="page" align="center">
@@ -95,11 +99,15 @@
         <br/>
 	      <span><label><?php echo "Part:Tarif TTC " ?></label><input size=5 name="prix_part_ttc" type="text"  value ="<?php echo"$prix_part_ttc" ?> <?php echo "$devise" ?>"></span><br/>
 	      <span><label><?php echo "Part : %TVA "?></label><input size=3 name="tva_part" type="text" value ="<?php echo"$tva_part" ?>"></span><br/>
+              <span><label><?php echo "Prix achat :  "?></label><input size=3 name="prix_achat" type="text" value ="<?php echo"$prix_achat" ?>"></span><br/>
 	    </fieldset>
 
 	    <fieldset>
 	      <legend>Stock</legend>
 	      <span><label><?php echo "$lang_stock "; ?></label><input size=8 name="stock" type="text" value ="<?php echo"$stock" ?>"></span><br/>
+	      <span><label>Quantité disponible : </label><input size=8 name="stock_disponible" type="text" value ="<?php echo"$stock_disponible" ?>"></span><br/>
+              <span><label>Localisation : </label><input size=8 name="localisation" type="text" value ="<?php echo"$localisation" ?>"></span><br/>
+              
 	      <span><label><?php echo "Origine "; ?></label>
 		<?php
 		   $rqSql = "SELECT id_cat, categorie FROM " . $tblpref ."categorie"

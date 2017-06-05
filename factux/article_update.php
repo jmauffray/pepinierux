@@ -38,6 +38,9 @@ $variete1=isset($_POST['variete'])?$_POST['variete']:"";
 $contenance1=isset($_POST['contenance'])?$_POST['contenance']:"";
 $phyto1=isset($_POST['phyto'])?$_POST['phyto']:"";
 $conditionnement1=isset($_POST['conditionnement'])?$_POST['conditionnement']:"";
+$prix_achat=isset($_POST['prix_achat'])?$_POST['prix_achat']:"";
+$stock_disponible=isset($_POST['stock_disponible'])?$_POST['stock_disponible']:"";
+$localisation=isset($_POST['localisation'])?$_POST['localisation']:"";
 $id=0;
 
 mysql_select_db($db) or die ("Could not select $db database");
@@ -65,15 +68,18 @@ if( $Submit == 'Modifier')
             . "`conditionnement`='".$conditionnement."',"
             . "`variete`='".$variete."',"
             . "`contenance`='".$contenance."',"
-            . "`phyto`='".$phyto."'"
+            . "`phyto`='".$phyto."',"
+            . "`prix_achat`='".$prix_achat."',"
+            . "`stock_disponible`='".$stock_disponible."',"
+            . "`localisation`='".$localisation."'"
             . " WHERE num ='".$num."'"
             . " LIMIT 1 ";
     $id = $num;
   }
  else
    {
-     $sql2 = "INSERT INTO " . $tblpref ."article(article, prix_htva, taux_tva, prix_ttc_part, prix_htva_part, taux_tva_part, uni, stock, cat, taille, conditionnement, variete, contenance, phyto)"
-             . " VALUES ('$article', '$prix', '$tva','$prix_part_ttc', '$prix_part', '$tva_part', 'pcs', '$stock', '$categorie', '$taille', '$conditionnement', '$variete', '$contenance', '$phyto')";
+     $sql2 = "INSERT INTO " . $tblpref ."article(article, prix_htva, taux_tva, prix_ttc_part, prix_htva_part, taux_tva_part, uni, stock, cat, taille, conditionnement, variete, contenance, phyto, prix_achat, stock_disponible, localisation)"
+             . " VALUES ('$article', '$prix', '$tva','$prix_part_ttc', '$prix_part', '$tva_part', 'pcs', '$stock', '$categorie', '$taille', '$conditionnement', '$variete', '$contenance', '$phyto', '$prix_achat', '$stock_disponible', '$localisation')";
    }
 mysql_query($sql2) OR die("<p>Erreur Mysql<br/>$sql2<br/>".mysql_error()."</p>");
 if( $Submit != 'Modifier')
