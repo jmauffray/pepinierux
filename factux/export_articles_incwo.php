@@ -15,7 +15,7 @@ error_reporting(E_ALL);
 //SQL
 $columns = array('num', 'name', 'classification', 'categorie', 'prix_ttc_part', 'stock', 'code_barre');
 $sql = "SELECT num,
-    CONCAT(article, ', ', variete, ', ', taille, ', ', contenance) AS name,    
+    CONCAT(article, ', ', variete, ', ', taille, ', ', contenance, ', ', categorie) AS name,    
     'produit' as classification,
     categorie,
     prix_ttc_part,
