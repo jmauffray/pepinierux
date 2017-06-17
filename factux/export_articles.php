@@ -17,7 +17,8 @@ $columns = array('num', 'article', 'variete', 'taille', 'contenance', 'prix_ttc_
 $sql = "SELECT ".implode(",", $columns)
         . " FROM " . $tblpref . "article, " . $tblpref . "categorie"
         . " WHERE actif != 'non' AND stock_disponible > 0 AND"
-        . " " . $tblpref . "article.cat = " . $tblpref . "categorie.id_cat";
+        . " " . $tblpref . "article.cat = " . $tblpref . "categorie.id_cat "
+        . " ORDER by article";
 mysql_query("set names 'utf8'");
 $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
 
