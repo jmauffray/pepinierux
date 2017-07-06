@@ -85,11 +85,16 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 $data = mysql_fetch_array($req);
 $quantiplus = $data['quanti'];
 $artiplus = $data['article_num'];
+//restore quantite before bon
 $sql11 = "UPDATE `" . $tblpref ."article` SET `stock` = (stock + $quantiplus) WHERE `num` = '$artiplus'";
 mysql_query($sql11) or die('Erreur SQL11 !<br>'.$sql11.'<br>'.mysql_error());
+$sql11 = "UPDATE `" . $tblpref ."article` SET `stock_disponible` = (stock_disponible + $quantiplus) WHERE `num` = '$artiplus'";
+mysql_query($sql11) or die('Erreur SQL11 !<br>'.$sql11.'<br>'.mysql_error());
 
-
+//update quantite with new quantite
 $sql12 = "UPDATE `" . $tblpref ."article` SET `stock` = (stock - $quanti) WHERE `num` = '$article'";
+mysql_query($sql12) or die('Erreur SQL12 !<br>'.$sql12.'<br>'.mysql_error());
+$sql12 = "UPDATE `" . $tblpref ."article` SET `stock_disponible` = (stock_disponible - $quanti) WHERE `num` = '$article'";
 mysql_query($sql12) or die('Erreur SQL12 !<br>'.$sql12.'<br>'.mysql_error());
 
 ////conditionnement

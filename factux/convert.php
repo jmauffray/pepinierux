@@ -76,6 +76,8 @@ mysql_query($sql4) or die('Erreur SQL !<br>'.$sql4.'<br>'.mysql_error());
 //on decremente le stock
 $sql12 = "UPDATE `" . $tblpref ."article` SET `stock` = (stock - $quanti) WHERE `num` = '$article_num'";
 mysql_query($sql12) or die('Erreur SQL12 !<br>'.$sql12.'<br>'.mysql_error());
+$sql12 = "UPDATE `" . $tblpref ."article` SET `stock_disponible` = (stock_disponible - $quanti) WHERE `num` = '$article_num'";
+mysql_query($sql12) or die('Erreur SQL12 !<br>'.$sql12.'<br>'.mysql_error());
 
 }
 $message= "$lang_dev_cov <br><form action=\"fpdf/bon_pdf.php\" method=\"post\" target= \"_blank\" ><input type=\"hidden\" name=\"num_bon\" value=\"$max\" /><input type=\"hidden\" name=\"user\" VALUE=\"adm\"><input type=\"image\" src=\"image/printer.gif\" alt=\"imprimer\" /></form>";
