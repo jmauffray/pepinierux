@@ -13,7 +13,7 @@ include_once("include/utils.php");
 error_reporting(E_ALL);
 
 //SQL
-$columns = array('num', 'name', 'classification', 'categorie', 'prix_ttc_part', 'stock', 'code_barre');
+$columns = array('num', 'name', 'classification', 'categorie', 'prix_ttc_part', 'stock_disponible', 'code_barre');
 $sql = "SELECT num,
     CONCAT(article, ', ', variete, ', ', taille, ', ', contenance, ', ', categorie) AS name,    
     'produit' as classification,
