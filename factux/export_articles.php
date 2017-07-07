@@ -16,6 +16,7 @@ error_reporting(E_ALL);
 $columns = array('num',
     'article',
     'variete',
+    'groupe_varietal',
     'taille', 
     'contenance',
     'prix_ttc_part',
