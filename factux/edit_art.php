@@ -53,6 +53,7 @@
    $prix_achat = $data['prix_achat'];
    $stock_disponible = $data['stock_disponible'];
    $localisation = $data['localisation'];
+   $groupe_varietal = $data['groupe_varietal'];
    
    }
    ?>
@@ -69,7 +70,32 @@
 	      <legend>Plante</legend>
 	      <span><label><?php echo "Plante "; ?></label><input size=18 name="article" type="text" value ="<?php echo"$article" ?>"></span><br/>
 	      <span><label><?php echo "$lang_variete "; ?></label><input size=24 name="variete" type="text" value ="<?php echo"$variete" ?>"></span><br/>
-	    </fieldset>
+	    <span><label>Groupe varietal</label>
+		<SELECT NAME='groupe_varietal'>
+		  <OPTION VALUE='<?php echo"$groupe_varietal" ?>'><?php echo"$groupe_varietal" ?></OPTION>
+		  <OPTION VALUE='Arbres'>Arbres</OPTION>
+		  <OPTION VALUE='Arbustes'>Arbustes</OPTION>
+		  <OPTION VALUE='Aromatique'>Aromatique</OPTION>
+		  <OPTION VALUE='Bambou'>Bambou</OPTION>
+		  <OPTION VALUE='Buis et topiaire'>Buis et topiaire</OPTION>
+		  <OPTION VALUE='Camélia'>Camélia</OPTION>
+		  <OPTION VALUE='Conifères'>Conifères</OPTION>
+		  <OPTION VALUE='Cornus de greffe'>Cornus de greffe</OPTION>
+		  <OPTION VALUE='Erables du japon'>Erables du japon</OPTION>
+		  <OPTION VALUE='Graminées'>Graminées</OPTION>
+		  <OPTION VALUE='Grimpantes'>Grimpantes</OPTION>
+		  <OPTION VALUE='Lilas'>Lilas</OPTION>
+		  <OPTION VALUE='Petits fruits'>Petits fruits</OPTION>
+		  <OPTION VALUE='Pittosporum'>Pittosporum</OPTION>
+		  <OPTION VALUE='Plantes de terre de bruyère'>Plantes de terre de bruyère</OPTION>
+		  <OPTION VALUE='Plants maraicher'>Plants maraicher</OPTION>
+		  <OPTION VALUE='Produits complémentaires'>Produits complémentaires</OPTION>
+		  <OPTION VALUE='Rosiers'>Rosiers</OPTION>
+		  <OPTION VALUE='Vivaces'>Vivaces</OPTION>
+		  <OPTION VALUE=''></OPTION>
+	 	</SELECT>
+	      </span><br/>
+            </fieldset>
 	    <fieldset>
 	      <legend>Caracteristiques</legend>
 	      <span><label><?php echo "Cont. "; ?></label><input size=4 name="contenance" type="text" value ="<?php echo"$contenance" ?>"></span><br/>

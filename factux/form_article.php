@@ -60,6 +60,33 @@ if ($message !='') {
   <td class='<?php echo couleur_alternee (); ?>'><?php echo"$lang_variete"; ?></td>
   <td class='<?php echo couleur_alternee (FALSE); ?>'><input name='variete' type='text'></td>
   <tr>
+  <tr>
+  <td class='<?php echo couleur_alternee (); ?>'><?php echo"groupe varietal"; ?></td>
+  <td class='<?php echo couleur_alternee (FALSE); ?>'>
+		<SELECT NAME='groupe_varietal'>
+		  <OPTION VALUE='Arbres'>Arbres</OPTION>
+		  <OPTION VALUE='Arbustes'>Arbustes</OPTION>
+		  <OPTION VALUE='Aromatique'>Aromatique</OPTION>
+		  <OPTION VALUE='Bambou'>Bambou</OPTION>
+		  <OPTION VALUE='Buis et topiaire'>Buis et topiaire</OPTION>
+		  <OPTION VALUE='Camélia'>Camélia</OPTION>
+		  <OPTION VALUE='Conifères'>Conifères</OPTION>
+		  <OPTION VALUE='Cornus de greffe'>Cornus de greffe</OPTION>
+		  <OPTION VALUE='Erables du japon'>Erables du japon</OPTION>
+		  <OPTION VALUE='Graminées'>Graminées</OPTION>
+		  <OPTION VALUE='Grimpantes'>Grimpantes</OPTION>
+		  <OPTION VALUE='Lilas'>Lilas</OPTION>
+		  <OPTION VALUE='Petits fruits'>Petits fruits</OPTION>
+		  <OPTION VALUE='Pittosporum'>Pittosporum</OPTION>
+		  <OPTION VALUE='Plantes de terre de bruyère'>Plantes de terre de bruyère</OPTION>
+		  <OPTION VALUE='Plants maraicher'>Plants maraicher</OPTION>
+		  <OPTION VALUE='Produits complémentaires'>Produits complémentaires</OPTION>
+		  <OPTION VALUE='Rosiers'>Rosiers</OPTION>
+		  <OPTION VALUE='Vivaces'>Vivaces</OPTION>
+		  <OPTION VALUE=''></OPTION>
+	 	</SELECT>
+  </td>
+  <tr>
   <td class='<?php echo couleur_alternee (); ?>'><?php echo"phyto"; ?></td>
   <td class='<?php echo couleur_alternee (FALSE); ?>'><input name='phyto' type='text'></td>
   </tr>
