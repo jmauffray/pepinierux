@@ -32,6 +32,12 @@ if (($handle = fopen($target_file, "r")) !== FALSE) {
         }
         $num = count($data);
         
+        if ($num < 4) {
+            //stop on first empty line or missing fields
+            break;
+        }
+        
+        //debug
         for ($c = 0; $c < $num; $c++) {
             //echo $data[$c] . "<br />\n";
         }
