@@ -47,7 +47,10 @@ if (($handle = fopen($target_file, "r")) !== FALSE) {
         $quantiVente = $data[2];
         $loc = $data[3];
         
-        $sql1 = "UPDATE `" . $tblpref . "article` SET `stock` = '" . $quanti . "',  `stock_disponible` = '" . $quantiVente . "',  `localisation` = '" . $loc . "' "
+        $sql1 = "UPDATE `" . $tblpref . "article`"
+                . " SET `stock` = stock +'" . $quanti . "',"
+                . "  `stock_disponible` = stock_disponible + '" . $quantiVente . "',"
+                . "  `localisation` = IF(LENGTH(localisation)>0, CONCAT(localisation, ' " . $loc . "'),  '" . $loc . "') "
                 . "WHERE `" . $tblpref . "article`.`num` = " . $article;
         mysql_query($sql1) or die('Erreur SQL !<br>' . $sql1 . '<br>' . mysql_error());
 
