@@ -74,6 +74,7 @@
 		<SELECT NAME='groupe_varietal'>
 		  <OPTION VALUE='<?php echo"$groupe_varietal" ?>'><?php echo"$groupe_varietal" ?></OPTION>
 		  <OPTION VALUE='Arbres'>Arbres</OPTION>
+		  <OPTION VALUE='Arbres fruitiers'>Arbres fruitiers</OPTION>
 		  <OPTION VALUE='Arbustes'>Arbustes</OPTION>
 		  <OPTION VALUE='Aromatique'>Aromatique</OPTION>
 		  <OPTION VALUE='Bambou'>Bambou</OPTION>
