@@ -18,12 +18,12 @@ $columns = array('num',
     'variete',
     'groupe_varietal',
     'taille', 
+    'conditionnement',
     'contenance',
     'prix_ttc_part',
     'prix_htva', 
     'categorie',
     'localisation',
-    'conditionnement',
     'stock',
     'stock_disponible');
 $sql = "SELECT ".implode(",", $columns)
