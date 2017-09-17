@@ -20,8 +20,21 @@ $columns = array('num',
     'taille', 
     'conditionnement',
     'contenance',
+    'REPLACE(FORMAT(prix_ttc_part, 2), \'.\', \',\')',
+    'REPLACE(FORMAT(prix_htva, 2), \'.\', \',\')',
+    'categorie',
+    'localisation',
+    'stock',
+    'stock_disponible');
+$columnsHeader = array('num',
+    'article',
+    'variete',
+    'groupe_varietal',
+    'taille', 
+    'conditionnement',
+    'contenance',
     'prix_ttc_part',
-    'prix_htva', 
+    'prix_htva',
     'categorie',
     'localisation',
     'stock',
@@ -44,7 +57,7 @@ header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename=' . $filename);
 
 //first line
-fputcsv($fp, $columns);
+fputcsv($fp, $columnsHeader);
 
 //data
 while ($row = mysql_fetch_array($req, MYSQL_ASSOC)) {
