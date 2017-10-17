@@ -127,6 +127,7 @@ preChargement();
         <li><a href="export_articles.php"><?php echo "Exporter disponible" ?><span>&nbsp;;</span></a></li>
         <li><a href="export_articles_incwo.php"><?php echo "Exporter plantes Incwo" ?><span>&nbsp;;</span></a></li>
         <li><a href="importer_inventaire.php"><?php echo "Importer inventaire" ?><span>&nbsp;;</span></a></li>
+        <li><a href="imprimer_etiquette.php"><?php echo "Imprimer étiquettes" ?><span>&nbsp;;</span></a></li>
 	<?php } ?>
 	</ul>
 
