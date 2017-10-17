@@ -22,7 +22,7 @@ include_once("include/headers.php");
             }
             for (i=0;i<number;i++){
                 // Append a node with a random text
-                container.appendChild(document.createTextNode("Numéro et nombre " + (i+1)));
+                container.appendChild(document.createTextNode("Numéro de l'article, quantité, prix" + (i+1)));
                 // Create an <input> element, set its type and name attributes
                 var input = document.createElement("input");
                 input.type = "text";
@@ -59,18 +59,18 @@ include_once("include/head.php");
 </tr>
 <tr>
 <td  class="page" align="center">
-<h2>Importer inventaire</h2>
+<h2>Imprimer étiquettes</h2>
 <form action="upload_etiquette.php" method="post" enctype="multipart/form-data">
     
     <table>
         <tr>
             <td>
-                Selectionner le fichier CSV à importer:
+                Selectionner le fichier gLabels à utiliser:
                 <input type="file" name="fileToUpload" id="fileToUpload">
             </td>
             <td>
-                <input type="text" id="member" name="member" value="">Number of members: (max. 10)<br />
-                <a href="#" id="filldetails" onclick="addFields()">Fill Details</a>
+                <input type="text" id="member" name="member" value="">Nombre d'articles différents<br />
+                <a href="#" id="filldetails" onclick="addFields()">Ajouter</a>
                 <div id="container"/>
             </td>
             <td>                
@@ -78,10 +78,6 @@ include_once("include/head.php");
             </td>
         </tr>
     </table>
-    
-    
-    
-    
     
 </form>
 
