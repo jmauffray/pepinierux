@@ -37,7 +37,7 @@ function generate_csv($num, $nb, $price) {
                 $variete = $data['variete'];
                 $prix_part_ttc = $data['prix_ttc_part'];
                 $taille = $data['taille'];
-                $descriptif = ""; //TODO
+                $descriptif = $data['description'];
             }
             
             if (!empty($price[$i])) {
@@ -75,10 +75,12 @@ if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file)) {
     $filename = generate_csv($num, $nb, $price);
 
     print_glabels($filename, $target_file);
+    
+    unlink($filename);
 
     //HTTP header
     header('Content-type: application/pdf');
-    header("Content-Disposition: attachment; filename=test.pdf");
+    header("Content-Disposition: attachment; filename=etiquette_factux.pdf");
     readfile("uploads/test.pdf");
     
 } else {
