@@ -59,7 +59,11 @@ if ($message !='') {
   <tr>
   <td class='<?php echo couleur_alternee (); ?>'><?php echo"$lang_variete"; ?></td>
   <td class='<?php echo couleur_alternee (FALSE); ?>'><input name='variete' type='text'></td>
+  </tr>
   <tr>
+  <td class='<?php echo couleur_alternee (); ?>'><?php echo"description"; ?></td>
+  <td class='<?php echo couleur_alternee (FALSE); ?>'><input name='description' type='text'></td>
+  </tr>
   <tr>
   <td class='<?php echo couleur_alternee (); ?>'><?php echo"groupe varietal"; ?></td>
   <td class='<?php echo couleur_alternee (FALSE); ?>'>

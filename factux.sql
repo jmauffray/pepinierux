@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `factux_article` (
   `stock_disponible` float(15,2) NOT NULL default '0.00',
   `localisation` varchar(40) NOT NULL,
   `groupe_varietal` varchar(40) NOT NULL,
+  `description` varchar(255) NOT NULL,
   PRIMARY KEY  (`num`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

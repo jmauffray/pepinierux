@@ -44,6 +44,7 @@ $prix_achat=isset($_POST['prix_achat'])?$_POST['prix_achat']:"";
 $stock_disponible=isset($_POST['stock_disponible'])?$_POST['stock_disponible']:"";
 $localisation=isset($_POST['localisation'])?$_POST['localisation']:"";
 $groupe_varietal1=isset($_POST['groupe_varietal'])?$_POST['groupe_varietal']:"";
+$description1=isset($_POST['description'])?$_POST['description']:"";
 
 if($article1=='' || $prix==''|| $taux_tva=='' || $uni=='' )
   {
@@ -61,9 +62,10 @@ $variete=mysql_real_escape_string($variete1);
 $contenance=mysql_real_escape_string($contenance1);
 $phyto=mysql_real_escape_string($phyto1);
 $groupe_varietal=mysql_real_escape_string($groupe_varietal1);
+$description=mysql_real_escape_string($description1);
 
-$sql1 = "INSERT INTO " . $tblpref ."article(article, prix_htva, prix_ttc_part, taux_tva, prix_htva_part, taux_tva_part, commentaire, uni, stock, cat, taille, conditionnement, contenance, variete, phyto, prix_achat, stock_disponible, localisation, groupe_varietal) VALUES"
-        . " ('$article', '$prix', '$prix_part_ttc', '$taux_tva','$prix_part', '$taux_tva_part', '$commentaire', '$uni', '$stock', '$categorie', '$taille', '$conditionnement', '$contenance', '$variete', '$phyto', '$prix_achat', '$stock_disponible', '$localisation', '$groupe_varietal')";
+$sql1 = "INSERT INTO " . $tblpref ."article(article, prix_htva, prix_ttc_part, taux_tva, prix_htva_part, taux_tva_part, commentaire, uni, stock, cat, taille, conditionnement, contenance, variete, phyto, prix_achat, stock_disponible, localisation, groupe_varietal, description) VALUES"
+        . " ('$article', '$prix', '$prix_part_ttc', '$taux_tva','$prix_part', '$taux_tva_part', '$commentaire', '$uni', '$stock', '$categorie', '$taille', '$conditionnement', '$contenance', '$variete', '$phyto', '$prix_achat', '$stock_disponible', '$localisation', '$groupe_varietal', '$description')";
 mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
 $lastItemID = mysql_insert_id();
 $message= "<center><h2>$lang_nouv_art<br>N° $lastItemID</h2>";

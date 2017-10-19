@@ -42,6 +42,7 @@ $prix_achat=isset($_POST['prix_achat'])?$_POST['prix_achat']:"";
 $stock_disponible=isset($_POST['stock_disponible'])?$_POST['stock_disponible']:"";
 $localisation=isset($_POST['localisation'])?$_POST['localisation']:"";
 $groupe_varietal1=isset($_POST['groupe_varietal'])?$_POST['groupe_varietal']:"";
+$description1=isset($_POST['description'])?$_POST['description']:"";
 
 $id=0;
 
@@ -54,7 +55,8 @@ $variete=mysql_real_escape_string($variete1);
 $contenance=mysql_real_escape_string($contenance1);
 $phyto=mysql_real_escape_string($phyto1);
 $groupe_varietal=mysql_real_escape_string($groupe_varietal1);
-                    
+$description=mysql_real_escape_string($description1);
+
 $Submit = $_POST['Submit'];
 if( $Submit == 'Modifier')
   {
@@ -75,15 +77,16 @@ if( $Submit == 'Modifier')
             . "`prix_achat`='".$prix_achat."',"
             . "`stock_disponible`='".$stock_disponible."',"
             . "`localisation`='".$localisation."',"
-            . "`groupe_varietal`='".$groupe_varietal."'"
+            . "`groupe_varietal`='".$groupe_varietal."',"
+            . "`description`='".$description."'"
             . " WHERE num ='".$num."'"
             . " LIMIT 1 ";
     $id = $num;
   }
  else
    {
-     $sql2 = "INSERT INTO " . $tblpref ."article(article, prix_htva, taux_tva, prix_ttc_part, prix_htva_part, taux_tva_part, uni, stock, cat, taille, conditionnement, variete, contenance, phyto, prix_achat, stock_disponible, localisation, groupe_varietal)"
-             . " VALUES ('$article', '$prix', '$tva','$prix_part_ttc', '$prix_part', '$tva_part', 'pcs', '$stock', '$categorie', '$taille', '$conditionnement', '$variete', '$contenance', '$phyto', '$prix_achat', '$stock_disponible', '$localisation', '$groupe_varietal')";
+     $sql2 = "INSERT INTO " . $tblpref ."article(article, prix_htva, taux_tva, prix_ttc_part, prix_htva_part, taux_tva_part, uni, stock, cat, taille, conditionnement, variete, contenance, phyto, prix_achat, stock_disponible, localisation, groupe_varietal, description)"
+             . " VALUES ('$article', '$prix', '$tva','$prix_part_ttc', '$prix_part', '$tva_part', 'pcs', '$stock', '$categorie', '$taille', '$conditionnement', '$variete', '$contenance', '$phyto', '$prix_achat', '$stock_disponible', '$localisation', '$groupe_varietal', '$description')";
    }
 mysql_query($sql2) OR die("<p>Erreur Mysql<br/>$sql2<br/>".mysql_error()."</p>");
 if( $Submit != 'Modifier')
