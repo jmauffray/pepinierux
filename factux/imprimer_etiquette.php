@@ -28,16 +28,20 @@ include_once("include/headers.php");
                 input.type = "text";
                 input.name = "num[]"
                 container.appendChild(input);
+                container.appendChild(document.createElement("br"));
                 
                 var input = document.createElement("input");
                 input.type = "text";
                 input.name = "nb[]";
+                input.value = "1";
                 container.appendChild(input);
+                container.appendChild(document.createElement("br"));
                 
                 var input = document.createElement("input");
                 input.type = "text";
                 input.name = "price[]";
                 container.appendChild(input);
+                container.appendChild(document.createElement("br"));
                 
                 // Append a line break 
                 container.appendChild(document.createElement("br"));
@@ -69,7 +73,7 @@ include_once("include/head.php");
                 <input type="file" name="fileToUpload" id="fileToUpload">
             </td>
             <td>
-                <input type="text" id="member" name="member" value="">Nombre d'articles différents<br />
+                <input type="text" id="member" name="member" value="10">Nombre d'articles différents<br />
                 <a href="#" id="filldetails" onclick="addFields()">Ajouter</a>
                 <div id="container"/>
             </td>
