@@ -55,12 +55,19 @@ function generate_csv($num, $nb, $price) {
 }
 
 function print_glabels($csvFilename, $modelFilename) {
-    //echo "Print glabels : " . $csvFilename . " with model " . $modelFilename;
-    $cmd = "export LD_LIBRARY_PATH=\"\" && glabels-3-batch -i " . $csvFilename . " -o uploads/test.pdf " . $modelFilename . " 2>&1";
-    //echo $cmd;
-
+    
+    $cmd = "export LD_LIBRARY_PATH=\"\" && glabels-3-batch -i " . escapeshellarg($csvFilename) . " -o uploads/test.pdf " . escapeshellarg($modelFilename) . " 2>&1";
+    
     $output = shell_exec($cmd);
-    //echo "<pre>$output</pre>";
+    
+    if (file_exists("uploads/test.pdf")) {
+        return true;
+    } else {
+        echo "Error to generate pdf<br/>";
+        echo $cmd;
+        echo '<pre>' . $output . '</pre>';
+        return false;
+    }
 }
 
 $target_dir = "uploads/";
@@ -74,14 +81,16 @@ if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file)) {
 
     $filename = generate_csv($num, $nb, $price);
 
-    print_glabels($filename, $target_file);
-    
+    if (print_glabels($filename, $target_file)) {
+        //HTTP header
+        header('Content-type: application/pdf');
+        header("Content-Disposition: attachment; filename=etiquette_factux.pdf");
+        readfile("uploads/test.pdf");
+    }
+    //clean files
     unlink($filename);
-
-    //HTTP header
-    header('Content-type: application/pdf');
-    header("Content-Disposition: attachment; filename=etiquette_factux.pdf");
-    readfile("uploads/test.pdf");
+    unlink("uploads/test.pdf");
+    unlink($target_file);
     
 } else {
     echo "Aucun fichier gLabels sélectionné\n";
