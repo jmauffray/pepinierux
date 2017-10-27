@@ -44,6 +44,11 @@ function generate_csv($num, $nb, $price) {
                 $prix_part_ttc = $price[$i];
             }
             
+            //si centimes ajout de 2 décimales
+            if(fmod($prix_part_ttc, 1) !== 0.00) {
+                $prix_part_ttc = number_format($prix_part_ttc, 2);
+            }
+
             for ($j = 0; $j < intval($nb[$i]); $j++) {
                 $columns = array($article, $variete, $taille, $prix_part_ttc, $descriptif, 300000000000 + intval($num[$i]));
                 fputcsv($fp, $columns);
