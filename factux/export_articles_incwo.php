@@ -12,16 +12,25 @@ include_once("ean13.php");
 
 //display PHP errors
 error_reporting(E_ALL);
-
+    
 //SQL
-$columns = array('num', 'name', 'classification', 'categorie', 'prix_ttc_part', 'stock_disponible', 'code_barre');
-$sql = "SELECT num,
-    CONCAT(article, ', ', variete, ', ', taille, ', ', contenance, ', ', categorie) AS name,    
-    'produit' as classification,
-    categorie,
-    prix_ttc_part,
-    stock,
-    300000000000 + num AS 'code_barre'
+$columns = array('Référence',
+            'Nom du produit',
+            'Classification',
+            'Catégorie de produit',
+            'Prix de vente TTC',
+            'Taux de tva',
+            'Stock entrepot 1',
+            'Code-barre EAN');
+
+$sql = "SELECT num as 'Référence',
+    CONCAT(article, ', ', variete, ', ', taille, ', ', contenance, ', ', categorie) AS 'Nom du produit',    
+    'produit' as Classification,
+    categorie as 'Catégorie de produit',
+    prix_ttc_part as 'Prix de vente TTC',
+    taux_tva_part as 'Taux de tva',
+    stock as 'Stock entrepot 1',
+    300000000000 + num AS 'Code-barre EAN'
     FROM " . $tblpref . "article, " . $tblpref . "categorie
     WHERE actif != 'non'
     AND " . $tblpref . "article.cat = " . $tblpref . "categorie.id_cat";
@@ -44,7 +53,7 @@ while ($row = mysql_fetch_array($req, MYSQL_ASSOC)) {
     $values = array_values($row);
     
     //compute control key
-    $values[6] = ean13_check_digit($values[6]);
+    $values[7] = ean13_check_digit($values[7]);
     
     fputcsv($fp, $values);
 }
