@@ -24,7 +24,7 @@ $columns = array('Référence',
             'Code-barre EAN');
 
 $sql = "SELECT num as 'Référence',
-    CONCAT(article, ', ', variete, ', ', taille, ', ', contenance, ', ', categorie) AS 'Nom du produit',    
+    CONCAT(article, ', ', variete, ', ', taille, ', ', categorie) AS 'Nom du produit',    
     'produit' as Classification,
     categorie as 'Catégorie de produit',
     prix_ttc_part as 'Prix de vente TTC',
