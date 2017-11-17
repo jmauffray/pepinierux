@@ -25,7 +25,6 @@ function generate_csv($num, $nb, $price) {
 
         global $tblpref;
         if (!empty($num[$i])) {
-            echo "num:" . $num[$i] . " - > " . $nb[$i] . "<br/>";
 
             $article = isset($_GET['article']) ? $_GET['article'] : "";
             $sql = "SELECT * FROM " . $tblpref . "article  left join " . $tblpref . "categorie on " . $tblpref . "article.cat = " . $tblpref . "categorie.id_cat
@@ -68,9 +67,9 @@ function print_glabels($csvFilename, $modelFilename) {
     if (file_exists("uploads/test.pdf")) {
         return true;
     } else {
-        echo "Error to generate pdf<br/>";
-        echo $cmd;
-        echo '<pre>' . $output . '</pre>';
+        error_log("Error to generate pdf<br/>");
+        error_log($cmd);
+        error_log('<pre>' . $output . '</pre>');
         return false;
     }
 }
@@ -91,10 +90,15 @@ if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file)) {
         header('Content-type: application/pdf');
         header("Content-Disposition: attachment; filename=etiquette_factux.pdf");
         readfile("uploads/test.pdf");
+        unlink("uploads/test.pdf");
+    } else {
+        header('Content-type: application/csv');
+        header("Content-Disposition: attachment; filename=" . $filename);
+        readfile($filename);
     }
+        
     //clean files
     unlink($filename);
-    unlink("uploads/test.pdf");
     unlink($target_file);
     
 } else {
