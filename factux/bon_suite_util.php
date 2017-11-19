@@ -56,8 +56,13 @@ $lot1)
   {
     $conditionnement = "motte en pot";
   }
-
+  
   //premiere utilisation de la remise, on la calcule si nécessaire
+  if(!is_string($prix_remise))
+  {
+      //fix issue to compare 0 to '' below
+      $prix_remise = strval($prix_remise);
+  }
   if( ($remise == 0) && ($prix_remise != '') ) {
     $thePrix = 0;
     if( $type == 'particulier' )
@@ -68,13 +73,13 @@ $lot1)
     {
       $thePrix = $prix_article;
     }
-
+    
     if( $thePrix !=  0 )
     {
       $remise = (1 - $prix_remise / $thePrix ) * 100;
     }
   }
-
+  
   //prise en compte du volume
   if( $prix_remise == '' )
   {
