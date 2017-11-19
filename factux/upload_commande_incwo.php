@@ -43,7 +43,14 @@ if (($handle = fopen($target_file, "r")) !== FALSE) {
         for ($c = 0; $c < $num; $c++) {
             //echo $data[$c] . "<br />\n";
         }
-
+        
+        //ignore avoir
+        $isFacture = $data[3];
+        if($isFacture != "1")
+        {
+            continue;
+        }
+        
         $article = intval($data[7]);
         $quanti = intval($data[12]);
         $prix_remise_ht = $data[19];
