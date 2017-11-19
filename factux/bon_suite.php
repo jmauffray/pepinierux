@@ -45,6 +45,7 @@ $nom=isset($_POST['nom'])?$_POST['nom']:"";
 $type=isset($_POST['type'])?$_POST['type']:"";
 
 $prix_htva=getPrixHtvaColumn($type, $quanti);
+$taux_tva_column=  getTauxTvaColumn($type);
 ?>
 <body onload="document.forms[0].elements[0].focus()">
 <SCRIPT language="JavaScript" type="text/javascript">
@@ -70,7 +71,7 @@ if($article=='' || $quanti=='' )
     <table class='boiteaction'>
       <?php
       $max = addArticleInBon(
-              $quanti, $remise, $prix_remise, $volume_pot, $article, $prix_htva, $type, $lot1);
+              $quanti, $remise, $prix_remise, $volume_pot, $article, $prix_htva, $type, $lot1, $taux_tva_column);
       ?>
       <caption><?php echo"$lang_nv_bon"; ?> </caption>
       <tr>

@@ -2,6 +2,17 @@
 include_once("include/config/common.php");
 include_once("include/utils.php");
 
+function getTauxTvaColumn($type)
+{
+  $taux_tva='taux_tva';
+  if( $type=='particulier' )
+  {
+    $taux_tva='taux_tva_part';
+  }
+
+  return $taux_tva;
+}
+
 function getPrixHtvaColumn($type, $quanti)
 {
   $prix_htva='prix_htva';
@@ -20,9 +31,10 @@ $remise,
 $prix_remise,
 $volume_pot,
 $article,
-$prix_htva,
+$prix_htva_column,
 $type,
-$lot1)
+$lot1,
+$taux_tva_column)
 {
   global $tblpref;
   //touver le dernier enregistrement pour le numero de bon
@@ -37,14 +49,14 @@ $lot1)
     $num = $data['client_num'];
   }
   //on recupere le prix htva
-  $sql2 = "SELECT $prix_htva FROM " . $tblpref ."article WHERE num = $article";
+  $sql2 = "SELECT $prix_htva_column FROM " . $tblpref ."article WHERE num = $article";
   $result = mysql_query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
-	$prix_article = mysql_result2($result, $prix_htva);
+	$prix_article = mysql_result2($result, $prix_htva_column);
 
   //on recupere le taux de tva
-  $sql3 = "SELECT taux_tva FROM " . $tblpref ."article WHERE num = $article";
+  $sql3 = "SELECT $taux_tva_column FROM " . $tblpref ."article WHERE num = $article";
   $result = mysql_query($sql3) or die('Erreur SQL !<br>'.$sql3.'<br>'.mysql_error());
-	$taux_tva = mysql_result2($result, 'taux_tva');
+	$taux_tva = mysql_result2($result, $taux_tva_column);
 
   //on recupere le conditionnement
   $sql4 = "SELECT conditionnement FROM " . $tblpref ."article WHERE num = $article";
