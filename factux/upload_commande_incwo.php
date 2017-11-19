@@ -44,9 +44,17 @@ if (($handle = fopen($target_file, "r")) !== FALSE) {
             //echo $data[$c] . "<br />\n";
         }
 
-        $article = $data[7];
-        $quanti = $data[12];
-        $prix_remise = $data[10]; //TODO : peut être TTC à recalculer
+        $article = intval($data[7]);
+        $quanti = intval($data[12]);
+        $prix_remise_ht = $data[19];
+        $prix_remise_1_art_ht = 0;
+        if ($quanti > 0) {
+            $prix_remise_1_art_ht = ($prix_remise_ht / $quanti);
+        }
+        $tva = substr($data[13], 0, -1);
+        
+        //compute price with tva
+        $prix_remise_1_art_ttc = ((1 + ($tva / 100)) * $prix_remise_1_art_ht);
         
         $volume_pot = 0;
         $remise = 0;
@@ -55,8 +63,8 @@ if (($handle = fopen($target_file, "r")) !== FALSE) {
         $prixHtvaColumn = getPrixHtvaColumn($type, $quanti);
 
         $max = addArticleInBon(
-                $quanti, $remise, $prix_remise, $volume_pot, $article, $prixHtvaColumn, $type, $lot1);
-        echo "Ajout de l'article : ",$article," : x", $quanti," - ", $prix_remise, "e unitaire dans le bon ", $max ,"</br>";
+                $quanti, $remise, $prix_remise_1_art_ttc, $volume_pot, $article, $prixHtvaColumn, $type, $lot1);
+        echo "Ajout de l'article : ",$article," : x", $quanti," - ", $prix_remise_1_art_ttc, "e TTC, TVA:", $tva," unitaire dans le bon ", $max ,"</br>";
     }
     fclose($handle);
 }
