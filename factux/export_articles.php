@@ -43,7 +43,7 @@ $sql = "SELECT ".implode(",", $columns)
         . " FROM " . $tblpref . "article, " . $tblpref . "categorie"
         . " WHERE actif != 'non' AND stock_disponible > 0 AND"
         . " " . $tblpref . "article.cat = " . $tblpref . "categorie.id_cat "
-        . " ORDER by article, taille";
+        . " ORDER by article, variete, taille + 0";
 mysql_query("set names 'utf8'");
 $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
 
