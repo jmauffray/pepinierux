@@ -24,8 +24,8 @@ $columns = array('num',
     'REPLACE(FORMAT(prix_htva, 2), \'.\', \',\')',
     'categorie',
     'localisation',
-    'stock',
-    'stock_disponible');
+    'REPLACE(stock,".00","")',
+    'REPLACE(stock_disponible,".00","")');
 $columnsHeader = array('num',
     'article',
     'variete',
