@@ -33,7 +33,8 @@ $sql = "SELECT num as 'Référence',
     300000000000 + num AS 'Code-barre EAN'
     FROM " . $tblpref . "article, " . $tblpref . "categorie
     WHERE actif != 'non'
-    AND " . $tblpref . "article.cat = " . $tblpref . "categorie.id_cat";
+    AND " . $tblpref . "article.cat = " . $tblpref . "categorie.id_cat
+    ORDER by num";
 $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
 
 //output
