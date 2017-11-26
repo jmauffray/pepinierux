@@ -13,7 +13,7 @@ function getTauxTvaColumn($type)
   return $taux_tva;
 }
 
-function getPrixHtvaColumn($type, $quanti)
+function getPrixHtvaColumn($type)
 {
   $prix_htva='prix_htva';
   if( $type=='particulier' )
@@ -25,29 +25,35 @@ function getPrixHtvaColumn($type, $quanti)
 }
 
 
+function getLastNumBon()
+{
+  global $tblpref;
+  
+  //touver le dernier enregistrement pour le numero de bon
+  $sql = "SELECT MAX(num_bon) As Maxi FROM " . $tblpref ."bon_comm";
+  $result = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+  $max = mysql_result2($result, 'Maxi');
+  
+  return $max;
+}
+  
+  
 function addArticleInBon(
+        $numBon,
 $quanti,
 $remise,
 $prix_remise,
 $volume_pot,
 $article,
-$prix_htva_column,
 $type,
-$lot1,
-$taux_tva_column)
+$lot1)
 {
   global $tblpref;
-  //touver le dernier enregistrement pour le numero de bon
-  $sql = "SELECT MAX(num_bon) As Maxi FROM " . $tblpref ."bon_comm";
-  $result = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
-	$max = mysql_result2($result, 'Maxi');
-  //trouver le client correspodant au dernier bon
-  $sql = "SELECT client_num FROM " . $tblpref ."bon_comm WHERE num_bon = $max";
-  $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
-  while($data = mysql_fetch_array($req))
-  {
-    $num = $data['client_num'];
-  }
+  
+  //get tva column
+  $prix_htva_column = getPrixHtvaColumn($type);
+  $taux_tva_column = getTauxTvaColumn($type);
+  
   //on recupere le prix htva
   $sql2 = "SELECT $prix_htva_column FROM " . $tblpref ."article WHERE num = $article";
   $result = mysql_query($sql2) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
@@ -104,12 +110,10 @@ $taux_tva_column)
 
   //inserer les données dans la table du conten des bons.
   $sql1 = "INSERT INTO " . $tblpref ."cont_bon(p_u_jour, p_u_jour_net, quanti, remise, volume_pot, conditionnement, article_num, bon_num, tot_art_htva, to_tva_art, num_lot)
-  VALUES ('$prix_article', '$montant_u_htva', '$quanti', '$remise', '$volume_pot', '$conditionnement', '$article', '$max', '$total_htva', '$mont_tva', '$lot1')";
+  VALUES ('$prix_article', '$montant_u_htva', '$quanti', '$remise', '$volume_pot', '$conditionnement', '$article', '$numBon', '$total_htva', '$mont_tva', '$lot1')";
   mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
   
   updateArticleStock($quanti, $article);
-
-  return $max;
 }
 
 function updateArticleStock(
@@ -147,6 +151,24 @@ $numBon) {
     $sql = "SELECT quanti, article_num
         FROM " . $tblpref . "cont_bon 
 		WHERE  bon_num = $numBon";
+    $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+
+    while ($data = mysql_fetch_array($req)) {
+        $quanti = $data['quanti'];
+        $articleNum = $data['article_num'];
+
+        restoreArticleStock($quanti, $articleNum);
+    }
+}
+
+
+function restoreStockDeletedContBon(
+$numContBon) {
+    global $tblpref;
+
+    $sql = "SELECT quanti, article_num
+        FROM " . $tblpref . "cont_bon 
+		WHERE  num = $numContBon";
     $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
 
     while ($data = mysql_fetch_array($req)) {

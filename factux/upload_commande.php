@@ -52,11 +52,9 @@ if (($handle = fopen($target_file, "r")) !== FALSE) {
         $remise = 0;
         $lot1="";
 
-        $prixHtvaColumn = getPrixHtvaColumn($type, $quanti);
-        $tauxTvaColumn = getTauxTvaColumn($type);
-
-        $max = addArticleInBon(
-                $quanti, $remise, $prix_remise, $volume_pot, $article, $prixHtvaColumn, $type, $lot1, $tauxTvaColumn);
+        $max = getLastNumBon();
+        addArticleInBon(
+                $max, $quanti, $remise, $prix_remise, $volume_pot, $article, $type, $lot1);
         echo "Ajout de l'article : ",$article," : x", $quanti," - ", $prix_remise, "e unitaire dans le bon ", $max ,"</br>";
     }
     fclose($handle);
