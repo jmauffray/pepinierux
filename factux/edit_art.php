@@ -71,7 +71,7 @@
 	      <legend>Plante</legend>
 	      <span><label><?php echo "Plante "; ?></label><input size=18 name="article" type="text" value ="<?php echo"$article" ?>"></span><br/>
 	      <span><label><?php echo "$lang_variete "; ?></label><input size=24 name="variete" type="text" value ="<?php echo"$variete" ?>"></span><br/>
-	      <span><label><?php echo "Description "; ?></label><input size=24 name="description" type="text" value ="<?php echo"$description" ?>"></span><br/>
+	      <span><label><?php echo "Description "; ?></label><input size=45 name="description" type="text" value ="<?php echo"$description" ?>"></span><br/>
 	    <span><label>Groupe varietal</label>
 		<SELECT NAME='groupe_varietal'>
 		  <OPTION VALUE='<?php echo"$groupe_varietal" ?>'><?php echo"$groupe_varietal" ?></OPTION>
