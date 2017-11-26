@@ -105,16 +105,56 @@ $taux_tva_column)
   //inserer les données dans la table du conten des bons.
   $sql1 = "INSERT INTO " . $tblpref ."cont_bon(p_u_jour, p_u_jour_net, quanti, remise, volume_pot, conditionnement, article_num, bon_num, tot_art_htva, to_tva_art, num_lot)
   VALUES ('$prix_article', '$montant_u_htva', '$quanti', '$remise', '$volume_pot', '$conditionnement', '$article', '$max', '$total_htva', '$mont_tva', '$lot1')";
-
-
   mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
+  
+  updateArticleStock($quanti, $article);
+
+  return $max;
+}
+
+function updateArticleStock(
+$quanti,
+$article)
+{
+  global $tblpref;
+  
   //ici on decremnte le stock
   $sql12 = "UPDATE `" . $tblpref ."article` SET `stock` = (stock - $quanti) WHERE `num` = '$article'";
   mysql_query($sql12) or die('Erreur SQL12 !<br>'.$sql12.'<br>'.mysql_error());
   $sql12 = "UPDATE `" . $tblpref ."article` SET `stock_disponible` = (stock_disponible - $quanti) WHERE `num` = '$article'";
   mysql_query($sql12) or die('Erreur SQL12 !<br>'.$sql12.'<br>'.mysql_error());
+}
 
-  return $max;
+
+function restoreArticleStock(
+$quanti,
+$article)
+{
+  global $tblpref;
+  
+  //ici on incremente le stock
+  $sql12 = "UPDATE `" . $tblpref ."article` SET `stock` = (stock + $quanti) WHERE `num` = '$article'";
+  mysql_query($sql12) or die('Erreur SQL12 !<br>'.$sql12.'<br>'.mysql_error());
+  $sql12 = "UPDATE `" . $tblpref ."article` SET `stock_disponible` = (stock_disponible + $quanti) WHERE `num` = '$article'";
+  mysql_query($sql12) or die('Erreur SQL12 !<br>'.$sql12.'<br>'.mysql_error());
+}
+
+
+function restoreStockDeletedBon(
+$numBon) {
+    global $tblpref;
+
+    $sql = "SELECT quanti, article_num
+        FROM " . $tblpref . "cont_bon 
+		WHERE  bon_num = $numBon";
+    $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+
+    while ($data = mysql_fetch_array($req)) {
+        $quanti = $data['quanti'];
+        $articleNum = $data['article_num'];
+
+        restoreArticleStock($quanti, $articleNum);
+    }
 }
 
 ?>

@@ -22,6 +22,8 @@
 include_once("include/verif.php");
 include_once("include/config/common.php");
 include_once("include/language/$lang.php");
+include_once("bon_suite_util.php");
+
 echo '<link rel="stylesheet" type="text/css" href="include/style.css">';
 echo'<link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico" >';
 $num_bon=isset($_GET['num_bon'])?$_GET['num_bon']:"";
@@ -42,6 +44,9 @@ exit;
 mysql_select_db($db) or die ("Could not select $db database");
 $sql1 = "DELETE FROM " . $tblpref ."bon_comm WHERE num_bon = '".$num_bon."'";
 mysql_query($sql1) or die('Erreur SQL !<br>'.$sql1.'<br>'.mysql_error());
+
+restoreStockDeletedBon($num_bon);
+
 $message= "<center><h1>$lang_bon_effa";
 include("form_commande.php");
  ?> 
