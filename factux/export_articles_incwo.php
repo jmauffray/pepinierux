@@ -20,7 +20,6 @@ $columns = array('Référence',
             'Catégorie de produit',
             'Prix de vente TTC',
             'Taux de tva',
-            'Stock entrepot 1',
             'Code-barre EAN');
 
 $sql = "SELECT num as 'Référence',
@@ -29,7 +28,6 @@ $sql = "SELECT num as 'Référence',
     categorie as 'Catégorie de produit',
     prix_ttc_part as 'Prix de vente TTC',
     taux_tva_part as 'Taux de tva',
-    stock as 'Stock entrepot 1',
     300000000000 + num AS 'Code-barre EAN'
     FROM " . $tblpref . "article, " . $tblpref . "categorie
     WHERE actif != 'non'
@@ -54,7 +52,7 @@ while ($row = mysql_fetch_array($req, MYSQL_ASSOC)) {
     $values = array_values($row);
     
     //compute control key
-    $values[7] = ean13_check_digit($values[7]);
+    $values[6] = ean13_check_digit($values[6]);
     
     fputcsv($fp, $values);
 }
