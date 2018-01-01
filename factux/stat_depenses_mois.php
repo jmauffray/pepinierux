@@ -66,6 +66,8 @@ foreach ($calendrier as $numero_mois => $nom_mois)
           </select>
 		  </td><td class="texte0">
           <select name="annee_1">
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
             <option value="2017">2017</option>
             <option value="2016">2016</option>
             <option value="2015">2015</option>
