@@ -55,6 +55,7 @@
    $localisation = $data['localisation'];
    $groupe_varietal = $data['groupe_varietal'];
    $description = $data['description'];
+   $commentaire = $data['commentaire'];
    
    }
    ?>
@@ -98,6 +99,7 @@
 		  <OPTION VALUE=''></OPTION>
 	 	</SELECT>
 	      </span><br/>
+              <span><label><?php echo "Commentaire "; ?></label><input size=30 name="commentaire" type="text" value ="<?php echo"$commentaire" ?>"></span><br/>
             </fieldset>
 	    <fieldset>
 	      <legend>Caracteristiques</legend>
