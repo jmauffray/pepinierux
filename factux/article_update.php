@@ -81,6 +81,7 @@ if( $Submit == 'Modifier')
             . "`localisation`='".$localisation."',"
             . "`groupe_varietal`='".$groupe_varietal."',"
             . "`description`='".$description."',"
+            . "`date_modifie`=NOW(),"
             . "`commentaire`='".$commentaire."'"
             . " WHERE num ='".$num."'"
             . " LIMIT 1 ";
@@ -88,8 +89,8 @@ if( $Submit == 'Modifier')
   }
  else
    {
-     $sql2 = "INSERT INTO " . $tblpref ."article(article, prix_htva, taux_tva, prix_ttc_part, prix_htva_part, taux_tva_part, uni, stock, cat, taille, conditionnement, variete, contenance, phyto, prix_achat, stock_disponible, localisation, groupe_varietal, description, commentaire)"
-             . " VALUES ('$article', '$prix', '$tva','$prix_part_ttc', '$prix_part', '$tva_part', 'pcs', '$stock', '$categorie', '$taille', '$conditionnement', '$variete', '$contenance', '$phyto', '$prix_achat', '$stock_disponible', '$localisation', '$groupe_varietal', '$description', '$commentaire')";
+     $sql2 = "INSERT INTO " . $tblpref ."article(article, prix_htva, taux_tva, prix_ttc_part, prix_htva_part, taux_tva_part, uni, stock, cat, taille, conditionnement, variete, contenance, phyto, prix_achat, stock_disponible, localisation, groupe_varietal, description, commentaire, date_modifie)"
+             . " VALUES ('$article', '$prix', '$tva','$prix_part_ttc', '$prix_part', '$tva_part', 'pcs', '$stock', '$categorie', '$taille', '$conditionnement', '$variete', '$contenance', '$phyto', '$prix_achat', '$stock_disponible', '$localisation', '$groupe_varietal', '$description', '$commentaire', NOW())";
    }
 mysql_query($sql2) OR die("<p>Erreur Mysql<br/>$sql2<br/>".mysql_error()."</p>");
 if( $Submit != 'Modifier')

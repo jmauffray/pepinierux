@@ -12,7 +12,10 @@ include_once("ean13.php");
 
 //display PHP errors
 error_reporting(E_ALL);
-    
+
+//get date modifie
+$date_modifie=isset($_POST['date_modifie'])?$_POST['date_modifie']:"";
+
 //SQL
 $columns = array('Référence',
             'Nom du produit',
@@ -32,6 +35,7 @@ $sql = "SELECT num as 'Référence',
     FROM " . $tblpref . "article, " . $tblpref . "categorie
     WHERE actif != 'non'
     AND " . $tblpref . "article.cat = " . $tblpref . "categorie.id_cat
+        AND " . $tblpref . "article.date_modifie >= '" . $date_modifie . "'
     ORDER by num";
 $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
 
