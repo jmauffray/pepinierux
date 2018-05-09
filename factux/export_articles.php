@@ -24,6 +24,7 @@ $columns = array('num',
     'REPLACE(FORMAT(prix_htva, 2), \'.\', \',\')',
     'categorie',
     'localisation',
+    'prix_achat',
     'REPLACE(stock,".00","")',
     'REPLACE(stock_disponible,".00","")');
 $columnsHeader = array('num',
@@ -37,6 +38,7 @@ $columnsHeader = array('num',
     'prix_htva',
     'categorie',
     'localisation',
+    'prix_achat',
     'stock',
     'stock_disponible');
 $sql = "SELECT ".implode(",", $columns)
