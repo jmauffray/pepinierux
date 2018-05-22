@@ -44,13 +44,6 @@ if (($handle = fopen($target_file, "r")) !== FALSE) {
             //echo $data[$c] . "<br />\n";
         }
         
-        //ignore avoir
-        $isFacture = $data[3];
-        if($isFacture != "1")
-        {
-            continue;
-        }
-        
         $article = intval($data[7]);
         $quanti = intval($data[12]);
         $prix_remise_ht = $data[19];
@@ -62,6 +55,13 @@ if (($handle = fopen($target_file, "r")) !== FALSE) {
         
         //compute price with tva
         $prix_remise_1_art_ttc = ((1 + ($tva / 100)) * $prix_remise_1_art_ht);
+        
+        //avoir, multiply price per -1
+        $isFacture = $data[3];
+        if($isFacture != "1")
+        {
+            $prix_remise_1_art_ttc = $prix_remise_1_art_ttc * -1;
+        }
         
         $volume_pot = 0;
         $remise = 0;
