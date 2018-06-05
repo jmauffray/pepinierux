@@ -23,7 +23,8 @@ $columns = array('Référence',
             'Catégorie de produit',
             'Prix de vente TTC',
             'Taux de tva',
-            'Code-barre EAN');
+            'Code-barre EAN',
+            'Stock entrepot 1');
 
 $sql = "SELECT num as 'Référence',
     CONCAT(article, ', ', variete, ', ', taille, ', ', categorie) AS 'Nom du produit',    
@@ -31,7 +32,8 @@ $sql = "SELECT num as 'Référence',
     categorie as 'Catégorie de produit',
     prix_ttc_part as 'Prix de vente TTC',
     taux_tva_part as 'Taux de tva',
-    300000000000 + num AS 'Code-barre EAN'
+    300000000000 + num AS 'Code-barre EAN',
+    stock_disponible as 'Stock entrepot 1'
     FROM " . $tblpref . "article, " . $tblpref . "categorie
     WHERE actif != 'non'
     AND " . $tblpref . "article.cat = " . $tblpref . "categorie.id_cat
