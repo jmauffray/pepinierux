@@ -19,20 +19,20 @@ $date_modifie=isset($_POST['date_modifie'])?$_POST['date_modifie']:"";
 //SQL
 $columns = array('Référence',
             'Nom du produit',
+            'Code-barre EAN',
             'Classification',
             'Catégorie de produit',
             'Prix de vente TTC',
             'Taux de tva',
-            'Code-barre EAN',
             'Stock entrepot 1');
 
 $sql = "SELECT num as 'Référence',
-    CONCAT(article, ', ', variete, ', ', taille, ', ', categorie) AS 'Nom du produit',    
+    CONCAT(article, ', ', variete, ', ', taille, ', ', categorie) AS 'Nom du produit',
+    300000000000 + num AS 'Code-barre EAN',
     'produit' as Classification,
     categorie as 'Catégorie de produit',
     prix_ttc_part as 'Prix de vente TTC',
     taux_tva_part as 'Taux de tva',
-    300000000000 + num AS 'Code-barre EAN',
     stock_disponible as 'Stock entrepot 1'
     FROM " . $tblpref . "article, " . $tblpref . "categorie
     WHERE actif != 'non'
@@ -58,7 +58,7 @@ while ($row = mysql_fetch_array($req, MYSQL_ASSOC)) {
     $values = array_values($row);
     
     //compute control key
-    $values[6] = ean13_check_digit($values[6]);
+    $values[2] = ean13_check_digit($values[2]);
     
     fputcsv($fp, $values);
 }
