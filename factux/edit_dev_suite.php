@@ -112,7 +112,7 @@ if( ($remise == 0) && ($prix_remise != '') ) {
 //prise en compte du volume
 if( $prix_remise == '' )
   {
-    $prix_article += ($volume_pot * 0.15);
+    $prix_article += ($volume_pot * 0.17);
   }
 
 $montant_u_htva = $prix_article * (100-$remise)/100;
