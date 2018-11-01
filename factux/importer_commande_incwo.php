@@ -30,7 +30,7 @@ include_once("include/head.php");
                 Date  (AAAA-MM-JJ) : 
             </td>
             <td>
-                <input name="date" type="text" value="2017-01-01">
+                <input name="date" type="text" value="<?php echo date('Y-m-d');?>">
             </td>
         </tr>
         <tr>
