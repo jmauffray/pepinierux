@@ -27,7 +27,7 @@ $columns = array('Référence',
             'Stock entrepot 1');
 
 $sql = "SELECT num as 'Référence',
-    CONCAT(article, ', ', variete, ', ', taille, ', ', categorie) AS 'Nom du produit',
+    CONCAT(article, ', ', variete, ', ', taille, ', ', categorie, ', ', localisation) AS 'Nom du produit',
     300000000000 + num AS 'Code-barre EAN',
     'produit' as Classification,
     categorie as 'Catégorie de produit',
