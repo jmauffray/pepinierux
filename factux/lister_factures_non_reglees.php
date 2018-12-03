@@ -161,6 +161,7 @@ while($data = mysql_fetch_array($req))
   <option value="carte"><?php echo"$lang_carte_ban"; ?></option>
   <option value="virement"><?php echo"$lang_virement"; ?></option>
   <option value="paypal"><?php echo"$lang_paypal"; ?></option>
+  <option value="incwo"><?php echo"$lang_incwo"; ?></option>
   <option value="visa"><?php echo"$lang_visa"; ?></option>
   </select>
   <input type="hidden" name="num"  value="<?php echo"$num"; ?>" />

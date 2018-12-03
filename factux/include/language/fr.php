@@ -48,6 +48,7 @@ $lang_mode_paiement ="Mode de paiement";
 $lang_carte_ban ="Carte";
 $lang_pay_ok =" réglée ";
 $lang_paypal ="Paypal";
+$lang_incwo ="incwo";
 $lang_non_pay = "Non payée";
 $lang_virement = "Virement";
 $lang_visa = "Visa";

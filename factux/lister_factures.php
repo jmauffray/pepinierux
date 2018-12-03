@@ -114,6 +114,8 @@ while($data = mysql_fetch_array($req))
    break;
 	case "paypal":
    $payement="$lang_paypal";
+	case "incwo":
+   $payement="$lang_incwo";
    break;
 	case "cheque":
    $payement="$lang_cheque";

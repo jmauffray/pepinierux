@@ -48,6 +48,7 @@ $lang_mode_paiement ="Payment means";
 $lang_carte_ban ="Credit Card";
 $lang_pay_ok =" paid ";
 $lang_paypal ="Paypal";
+$lang_incwo ="incwo";
 $lang_non_pay = "Not paid";
 $lang_virement = "Transfer";
 $lang_visa = "Visa";

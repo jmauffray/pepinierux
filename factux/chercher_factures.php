@@ -112,6 +112,7 @@ $rqSql = "SELECT num_client, nom FROM " . $tblpref ."client
   <option value="liquide">liquide</option>
   <option value="virement">virement</option>
   <option value="paypal">paypal</option>
+  <option value="incwo">incwo</option>
   <option value="carte">Carte banquaire</option>
   <option value="visa">Visa</option>
 		</select>
