@@ -37,6 +37,7 @@ function generate_csv($num, $nb, $price) {
                 $prix_part_ttc = $data['prix_ttc_part'];
                 $taille = $data['taille'];
                 $descriptif = $data['description'];
+                $cond = $data['conditionnement'];
             }
             
             if (!empty($price[$i])) {
@@ -48,7 +49,7 @@ function generate_csv($num, $nb, $price) {
             $prix_part_ttc = number_format($prix_part_ttc, 2);
 
             for ($j = 0; $j < intval($nb[$i]); $j++) {
-                $columns = array($article, $variete, $taille, $prix_part_ttc, $descriptif, 300000000000 + intval($num[$i]));
+                $columns = array($article, $variete, $taille, $prix_part_ttc, $descriptif, 300000000000 + intval($num[$i]), $cond);
                 fputcsv($fp, $columns);
             }
         }
