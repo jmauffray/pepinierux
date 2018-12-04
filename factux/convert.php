@@ -74,9 +74,9 @@ $sql4 = "INSERT INTO " . $tblpref ."cont_bon(bon_num, article_num, quanti, remis
 VALUES ('$max', '$article_num', '$quanti', '$remise', '$volume_pot', '$conditionnement', '$tot_art_htva', '$to_tva_art', '$p_u_jour', '$p_u_jour_net')";
 mysql_query($sql4) or die('Erreur SQL !<br>'.$sql4.'<br>'.mysql_error());
 //on decremente le stock
-$sql12 = "UPDATE `" . $tblpref ."article` SET `stock` = (stock - $quanti) WHERE `num` = '$article_num'";
+$sql12 = "UPDATE `" . $tblpref ."article` SET `stock` = (stock - $quanti), `date_modifie`=NOW() WHERE `num` = '$article_num'";
 mysql_query($sql12) or die('Erreur SQL12 !<br>'.$sql12.'<br>'.mysql_error());
-$sql12 = "UPDATE `" . $tblpref ."article` SET `stock_disponible` = (stock_disponible - $quanti) WHERE `num` = '$article_num'";
+$sql12 = "UPDATE `" . $tblpref ."article` SET `stock_disponible` = (stock_disponible - $quanti), `date_modifie`=NOW() WHERE `num` = '$article_num'";
 mysql_query($sql12) or die('Erreur SQL12 !<br>'.$sql12.'<br>'.mysql_error());
 
 }
