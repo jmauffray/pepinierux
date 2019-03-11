@@ -1,28 +1,53 @@
-# curl -u login:pwd -X GET -H 'Content-Type: application/xml'  https://www.incwo.com/.../customer_products.xml > prod.txt
-# cat prod.txt | grep "<id>" | cut -c9-16 > id.txt
+#!/usr/bin/env python3
 
 import csv
+import os
 import requests
-
 import config
-#config.py content
-#url = "https://www.incwo.com/.../customer_products"
-#login = "..."
-#pwd = "..."
+
+#retrieve info from local config.py
+url = config.url
+login = config.login
+pwd = config.pwd
+from_page = config.from_page
+to_page = config.to_page
+
+#log file
+f = open('incwo-log.txt','w')
+
+def myprint(s):
+    f.write(s + '\n')
 
 def delAll():
-    f = open('id.txt', 'r')
+    filename = 'id.txt'
+    if not os.path.exists(filename):
+        print("None deleted, cannot read file " + filename)
+        return
+
+    f = open(filename, 'r')
     for line in f:
-        delurl = config.url + "/" + line.strip() + ".xml"
+        delurl = url + line.strip() + ".xml"
         print("DELETE " + delurl)
-        res = requests.delete(delurl, auth=(login, pwd))
-        print(res)
+        #res = requests.delete(delurl, auth=(login, pwd))
+        # print(res)
+        #delId(line.strip())
+
+
+def delId(id):
+    delurl = url + id + ".xml"
+    print("DELETE " + delurl)
+    # res = requests.delete(delurl, auth=(login, pwd))
+    # print(res)
+    return res    
+
 
 def updateName(id, name):
     update(id, "<customer_product><name>" + name + "</name></customer_product>")
 
+
 def updateActive(id, isactive):
     update(id, "<customer_product><is_active>" + isactive + "</is_active></customer_product>")
+
 
 def updatePrice(id, arg, tva):
     ht = float(arg) / (1 + float(tva)/100)
@@ -31,11 +56,13 @@ def updatePrice(id, arg, tva):
      + arg + "</entered_price_in_ttc><entered_price_in_ttc_in_file_currency>"
       + arg + "</entered_price_in_ttc_in_file_currency></customer_product>")
 
+
 def updateStock(id, arg):
     update(id, "<customer_product><total_stock>" + arg + "</total_stock></customer_product>")
     
+
 def update(id, dataval):
-    upurl = config.url + "/" + id + ".xml"
+    upurl = url + id + ".xml"
     res = requests.put(upurl,
       auth=(login, pwd),
       #headers={'Content-Type': 'application/xml; charset=utf-8'},
@@ -45,8 +72,11 @@ def update(id, dataval):
       
     print(res)
 
+
 def getAll(page, dictref2id, dictid2ref):
-    res = requests.get(config.url + ".xml?page=" + page, auth=(config.login, config.pwd))
+    req = url[:-1] + ".xml?page=" + page
+    print ("HTTP request " + req)
+    res = requests.get(req, auth=(login, pwd))
     print(res)
     
     id = None
@@ -54,7 +84,7 @@ def getAll(page, dictref2id, dictid2ref):
     for line in res.text.splitlines():
         if id and ref:
             if ref in dictref2id:
-                print(ref + " en double")
+                myprint("doublon : " + url + dictref2id[ref] + " -> " + url + id)
             dictref2id[ref] = id
             dictid2ref[id] = ref
             id = None
@@ -66,27 +96,30 @@ def getAll(page, dictref2id, dictid2ref):
 
     return dict
 
-#Référence,"Nom du produit","Code-barre EAN",Classification,"Catégorie de produit","Prix de vente TTC","Taux de tva","Stock entrepot 1"
+
+#Reference,"Nom du produit","Code-barre EAN",Classification,"Categorie de produit","Prix de vente TTC","Taux de tva","Stock entrepot 1"
 def readCsv(filename, dict):
+    if not os.path.exists(filename):
+        print("Csv file not exist and so ignored " + filename)
+        return
+
     with open(filename, 'r') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
         for row in spamreader:
             dict[row[0]]=row
 
 
-def doall():
+def doAll():
     incwoArticles = {}
     incwoArticles2 = {}
-    for i in range (1, 11):
+    for i in range (from_page, to_page):
         getAll(str(i), incwoArticles, incwoArticles2)
     print(len(incwoArticles))
     print(len(incwoArticles2))
 
-
     factuxArticles = {}
     readCsv("factux.csv", factuxArticles)
     print(len(factuxArticles))
-
 
     nb = 0
     for key in incwoArticles:
@@ -94,8 +127,7 @@ def doall():
             #print(key + " to disable " + incwoArticles[key])
             nb += 1
             #updateActive(incwoArticles[key], "0")
-    print(str(nb) + " articles to delete !!!!!!!!!!!!!!!")
-
+    # print(str(nb) + " articles to delete !!!!!!!!!!!!!!!")
 
     nb = 0
     for key in factuxArticles:
@@ -105,17 +137,24 @@ def doall():
             #updateName(incwoId, factuxArticles[key][1])
             #updateStock(incwoId, factuxArticles[key][7])
         else:
-            print(key + " à créer")
+            nb = nb
+            # print(key + " à créer")
         nb += 1
-    print(str(nb) + " articles to create/update !!!!!!!!!!!!!!!")
+    # print(str(nb) + " articles to create/update !!!!!!!!!!!!!!!")
 
 
-
-#updateActive("12804398", "0")
-#updateName("14346703", "Ligustrum , Ovalifolium Aureum, 80/100, reculture, tun6")
-#updateName("14346703", "Ligustrum")
-
-#updateStock("12825568", "24.00")
-doall()
+def main():
+    doAll()
 
 
+if __name__ == '__main__':
+    main()
+
+
+# get all id from catalog
+# curl -u login:pwd -X GET -H 'Content-Type: application/xml'  https://www.incwo.com/555938/customer_products.xml > prod.txt
+# cat prod.txt | grep "<id>" | cut -c9-16 > id.txt
+
+
+# update with xml
+# curl -u login:pwd -X PUT -H 'Content-Type: application/xml' -d '<customer_product><enter_prices_in_ttc>8</enter_prices_in_ttc></customer_product>' https://www.incwo.com/555938/customer_products/15567882.xml
