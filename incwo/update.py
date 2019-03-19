@@ -81,18 +81,24 @@ def getAll(page, dictref2id, dictid2ref):
     
     id = None
     ref = None
+    isActive = None
+    #print(res.text)
     for line in res.text.splitlines():
-        if id and ref:
-            if ref in dictref2id:
-                myprint("doublon : " + url + dictref2id[ref] + " -> " + url + id)
-            dictref2id[ref] = id
-            dictid2ref[id] = ref
+        if id and ref and isActive:
+            if isActive == "1":
+                if ref in dictref2id:
+                    myprint("doublon : " + url + dictref2id[ref] + " -> " + url + id)
+                dictref2id[ref] = id
+                dictid2ref[id] = ref
             id = None
             ref = None
+            isActive = None
         if "<id>" in line:
             id = line[line.find("<id>")+4:line.find("<\id>")-4]
         if "<reference>" in line:
             ref = line[line.find("<reference>")+11:line.find("<\reference>")-11]
+        if "<is_active>" in line:
+            isActive = line[line.find("<is_active>")+11:line.find("<\is_active>")-11]
 
     return dict
 
@@ -138,7 +144,7 @@ def doAll():
             #updateStock(incwoId, factuxArticles[key][7])
         else:
             nb = nb
-            # print(key + " à créer")
+            # print(key + " a creer")
         nb += 1
     # print(str(nb) + " articles to create/update !!!!!!!!!!!!!!!")
 
