@@ -63,7 +63,8 @@ preChargement();
 	<li><a href="chercher_commande.php"><?php echo $lang_cherc ?><span>&nbsp;;</span></a></li>
 	<li><a href="lister_commandes_non_facturees.php"><?php echo $lang_non_facu ?><span>&nbsp;;</span></a></li>
 	<li><a href="importer_commande.php"><?php echo "Importer commande" ?><span>&nbsp;;</span></a></li>
-        <li><a href="importer_commande_incwo.php"><?php echo "Importer commande Incwo" ?><span>&nbsp;;</span></a></li>
+	<li><a href="importer_commande_incwo.php"><?php echo "Importer commande Incwo" ?><span>&nbsp;;</span></a></li>
+	<li><a href="importer_commande_inventaire.php"><?php echo "Importer commande Inventaire" ?><span>&nbsp;;</span></a></li>			
 	<?php } ?>
 	</ul>
 

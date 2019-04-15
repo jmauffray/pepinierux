@@ -21,8 +21,8 @@ include_once("include/head.php");
 </tr>
 <tr>
 <td  class="page" align="center">
-<h2>Importer commande</h2>
-<form action="upload_commande.php" method="post" enctype="multipart/form-data">
+<h2>Importer commande Incwo</h2>
+<form action="upload_commande_inventaire.php" method="post" enctype="multipart/form-data">
     
     <table>        
         <tr>
@@ -56,14 +56,6 @@ include_once("include/head.php");
             </td>
             <td>                
                 <input type="submit" value="Envoyer fichier" name="submit">            
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Fichier CSV exemple:
-            </td>
-            <td>                
-                <a href="commande_exemple.csv">Exemple CSV</a>
             </td>
         </tr>
     </table>
