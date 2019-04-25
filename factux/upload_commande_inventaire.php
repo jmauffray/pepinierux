@@ -38,25 +38,9 @@ if (($handle = fopen($target_file, "r")) !== FALSE) {
             //ignore first line
             continue;
         }
-        $num = count($data);
-
-        for ($c = 0; $c < $num; $c++) {
-            //echo $data[$c] . "<br />\n";
-        }
-
         $article = $data[0];
         $quanti = $data[1];
 
-        // $sql = "SELECT * FROM " . $tblpref . "article WHERE num=$article";
-
-        // $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
-        // while ($data = mysql_fetch_array($req)) {
-        //         if ($type == "particulier") {
-        //             $prix_remise = $data['prix_ttc_part'];
-        //         } else {
-        //             $prix_remise = $data['prix_htva'] * (1 + $data['taux_htva'] / 100.);
-        //         }
-        //     }
         $prix_remise = '';
         $volume_pot = 0;
         $remise = 0;
