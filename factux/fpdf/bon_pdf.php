@@ -95,6 +95,7 @@ $reg= stripslashes($reg);
 $mail= stripslashes($mail);
 $site_web_url= stripslashes($site_web_url);
 $siret_num= stripslashes($siret_num);
+$code_ape= stripslashes($code_ape);
 $g=1;
 
 ////
@@ -251,7 +252,7 @@ WHERE " . $tblpref ."bon_comm.num_bon = '".$num_bon."' ";
 	$pdf->SetFont('Arial','',8);
 	$pdf->SetY(10);
 	$pdf->SetX(80);
-	$pdf->MultiCell(55,4,"$entrep_nom\n$social\nTél/Tel : $tel\nPortable : $tel_portable\n$mail\nTVA N° : $tva_vend\n$siret_num\n$site_web_url\n",0,L,1);//
+	$pdf->MultiCell(55,4,"$entrep_nom\n$social\nTél/Tel : $tel\nPortable : $tel_portable\n$mail\nTVA N° : $tva_vend\n$siret_num\n$code_ape\n$site_web_url\n",0,L,1);//
 	//phyto
 	if( $isPhyto > 0 )
 	  {

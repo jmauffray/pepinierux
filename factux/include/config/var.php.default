@@ -12,5 +12,6 @@ $mail= "mail@mail.com";//adresse email
 $devise= "&euro;";//devise utilisée par Factux
 $logo= "logo.png";//nom du logo de l'entreprise
 $siret_num= "N° SIRET : 12312123131321313";
+$code_ape= "Code APE : 1234Z";
 $site_web_url= "http://site-web.fr";
 ?>
