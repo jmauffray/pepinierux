@@ -43,7 +43,7 @@ $columnsHeader = array('num',
     'stock_disponible');
 $sql = "SELECT ".implode(",", $columns)
         . " FROM " . $tblpref . "article, " . $tblpref . "categorie"
-        . " WHERE actif != 'non' AND stock_disponible > 0 AND"
+        . " WHERE actif != 'non' AND stock > 0 AND"
         . " " . $tblpref . "article.cat = " . $tblpref . "categorie.id_cat "
         . " ORDER by article, variete, taille + 0";
 mysql_query("set names 'utf8'");
@@ -51,7 +51,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error
 
 //output
 $today = date("Y-m-d-H-i-s");
-$filename = "plantes-dispponible-".$today.".csv";
+$filename = "plantes-".$today.".csv";
 $fp = fopen('php://output', 'w');
 
 //HTTP header
