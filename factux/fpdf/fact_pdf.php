@@ -322,7 +322,7 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
 	//Le tableau : on définit les colonnes
 	//$pdf->AddCol('num_bon',7,"$lang_num_bon_ab",'L');
 	$pdf->AddCol('num_ligne',5,"L",'R');
-	$pdf->AddCol('num',8,"N°",'R');
+	$pdf->AddCol('num',9,"N°",'R');
 	//$pdf->AddCol('date',15,"$lang_date",'C');
 	$pdf->AddCol('quanti',6,"Q",'R');
 	$pdf->AddCol('article',24,"$lang_articles",'L');
@@ -337,7 +337,7 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
         //tmp hack!!
 	if( $num_bon > 311 )
 	  {
-	    $pdf->AddCol('p_u_jour_net',14,"Net HT" ,'R');
+	    $pdf->AddCol('p_u_jour_net',13,"Net HT" ,'R');
 	  }
 	$pdf->AddCol('tot_art_htva',14,"$lang_total_h_tva",'R');
 	//$pdf->AddCol('to_tva_art',18,"$lang_tva",'R');
