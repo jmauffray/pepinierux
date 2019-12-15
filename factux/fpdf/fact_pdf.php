@@ -322,7 +322,7 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
 	//Le tableau : on définit les colonnes
 	//$pdf->AddCol('num_bon',7,"$lang_num_bon_ab",'L');
 	$pdf->AddCol('num_ligne',5,"L",'R');
-	$pdf->AddCol('num',8,"N°",'R');
+	$pdf->AddCol('num',9,"N°",'R');
 	//$pdf->AddCol('date',15,"$lang_date",'C');
 	$pdf->AddCol('quanti',6,"Q",'R');
 	$pdf->AddCol('article',24,"$lang_articles",'L');
@@ -337,7 +337,7 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
         //tmp hack!!
 	if( $num_bon > 311 )
 	  {
-	    $pdf->AddCol('p_u_jour_net',14,"Net HT" ,'R');
+	    $pdf->AddCol('p_u_jour_net',13,"Net HT" ,'R');
 	  }
 	$pdf->AddCol('tot_art_htva',14,"$lang_total_h_tva",'R');
 	//$pdf->AddCol('to_tva_art',18,"$lang_tva",'R');
@@ -451,12 +451,47 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."'";
 			'align' =>L);
 	    $pdf->Table("$sql2",$prop);
 
+            //NEGOCE : categorie id = 7 dans ce cas
+	    $sql2_negoce="SELECT SUM(tot_art_htva)
+			FROM " . $tblpref ."client
+			RIGHT JOIN " . $tblpref ."bon_comm on " . $tblpref ."client.num_client = " . $tblpref ."bon_comm.client_num 
+			LEFT join " . $tblpref ."cont_bon on " . $tblpref ."bon_comm.num_bon = " . $tblpref ."cont_bon.bon_num 
+			LEFT JOIN  " . $tblpref ."article on " . $tblpref ."article.num = " . $tblpref ."cont_bon.article_num 
+			WHERE " . $tblpref ."bon_comm.num_bon = '".$num_bon."' AND " . $tblpref ."article.cat = '7'"; 
+            $suite3_sql_negoce=" GROUP BY $taux_tva";
+	    $sql2_negoce="$sql2_negoce $suite3_sql_negoce";
+	    $resu_negoce = mysql_query( $sql2_negoce ) or die('Erreur SQL !<br>'.$sql2_negoce.'<br>'.mysql_error());
+            $data_negoce_prix = 0;
+            $rowsfound = mysql_num_rows($resu_negoce);
+            while($row = mysql_fetch_array($resu_negoce))
+            {
+                $data_negoce_prix += $row[0];
+            }
+
 	    //fin ventillation
 	    //pour les commentaire
 	    $pdf->SetFont('Arial','',10);
 	    $pdf->SetY(245);
 	    $pdf->SetX(10);
 	    $pdf->MultiCell(190,4,"$coment",0,C,0);
+
+	    if( $type != 'particulier' )
+	      {
+		//ligne d'escompte pour pro
+		$pdf->SetFont('Arial','',10);
+		$pdf->SetY(262);
+		$pdf->SetX(10);
+		$pdf->MultiCell(190,4,"Négoce HT : ". $data_negoce_prix.$devise,0,C,0);
+	      }
+            else
+              {
+		//ligne negoce pour particulier
+		$pdf->SetFont('Arial','',10);
+		$pdf->SetY(262);
+		$pdf->SetX(10);
+		$pdf->MultiCell(190,4,"Négoce HT : ". $data_negoce_prix .$devise, 0,C,0);
+              }
+
 	    //date échéance
             if ($payement=='non') { 
 	        $pdf->SetY(265);
