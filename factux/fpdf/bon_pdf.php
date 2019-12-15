@@ -48,7 +48,7 @@ $nb_pa = ceil($nb_pa1);
 //pour savoir si phyto
 $sql = "SELECT " . $tblpref ."cont_bon.num, quanti, uni, article, prix_htva, tot_art_htva FROM " . $tblpref ."cont_bon RIGHT JOIN " . $tblpref ."article on " . $tblpref ."cont_bon.article_num = " . $tblpref ."article.num WHERE  bon_num = $num_bon AND phyto <> ''";
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
-$isPhyto = mysql_num_rows($req);
+$isPhyto = 0; //mysql_num_rows($req);
 //pour la date
 $sql = "select coment, tot_htva, tot_tva, DATE_FORMAT(date,'%d/%m/%Y') AS date_2 from " . $tblpref ."bon_comm where num_bon = $num_bon";
 $req = mysql_query($sql) or die('Erreur SQL
@@ -268,8 +268,8 @@ WHERE " . $tblpref ."bon_comm.num_bon = '".$num_bon."' ";
 	//$pdf->AddCol('date',15,"$lang_date",'C');
 	$pdf->AddCol('quanti',6,"Q",'R');
 	$pdf->AddCol('article',24,"$lang_articles",'L');
-	$pdf->AddCol('variete',39,"$lang_variete",'L');
-	$pdf->AddCol('phyto',3," ",'L');
+	$pdf->AddCol('variete',42,"$lang_variete",'L');
+	//$pdf->AddCol('phyto',3," ",'L');
 	$pdf->AddCol('categorie',12,"Série" ,'R');
 	$pdf->AddCol('taille',12,"$lang_taille" ,'R');
 	$pdf->AddCol('conditionnement',17,"Cond." ,'R');

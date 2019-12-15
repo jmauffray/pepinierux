@@ -193,7 +193,7 @@ for ($o=0;$o<$g;$o++)
     $sql ="$sql $suite_sql[$o]";
 
     $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
-    $isPhyto = mysql_num_rows($req);
+    $isPhyto = 0; //mysql_num_rows($req);
 
 //suite
     $sql = "select payement, acompte, coment, date_echeance, date_depart, DATE_FORMAT(date_fact,'%d/%m/%Y') AS date_2 
@@ -326,8 +326,8 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
 	//$pdf->AddCol('date',15,"$lang_date",'C');
 	$pdf->AddCol('quanti',6,"Q",'R');
 	$pdf->AddCol('article',24,"$lang_articles",'L');
-	$pdf->AddCol('variete',39,"$lang_variete",'L');
-	$pdf->AddCol('phyto',3," ",'L');
+	$pdf->AddCol('variete',42,"$lang_variete",'L');
+	//$pdf->AddCol('phyto',3," ",'L');
 	$pdf->AddCol('categorie',12,"Série" ,'R');
 	$pdf->AddCol('taille',12,"$lang_taille" ,'R');
 	$pdf->AddCol('conditionnement',17,"Cond." ,'R');
