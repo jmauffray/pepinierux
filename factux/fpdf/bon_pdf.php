@@ -407,6 +407,7 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
 		$pdf->MultiCell(190,4,"Négoce HT : ". $data_negoce_prix .$devise, 0,C,0);
               }
 	  }
+	  //fin footer
 	
 	$pdf->Line(10,267,200,267);
 	//la derniere cellule conditions de facturation
@@ -432,6 +433,78 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
 	$num_pa2 = $num_pa +1;
 
 	$pdf->AddPage();
+
+	//la grande cellule sous le tableau
+	$pdf->SetFillColor(255,255,255);
+	$pdf->SetFont('Arial','B',6);
+	$pdf->SetY(92);
+	$pdf->SetX(10);
+	$pdf->Cell(187,150,"",1,0,'C',1);
+
+	//premiere celule le numero de bon
+	$pdf->Line(136,15,200,15);
+	$pdf->Line(136,49,200,49);
+	$pdf->Line(136,15,136,49);
+	$pdf->Line(200,15,200,49);
+	$pdf->SetFont('Arial','B',12);
+	$pdf->SetY(16);
+	$pdf->SetX(112);
+	$pdf->MultiCell(80,6,"Passeport Phytosanitaire /\nPlant Passport",0,0,'L',1);
+
+	$pdf->Image("../image/europe_flag.jpg",140,28,20,20);
+
+	//filename
+    //    $nomBis = ereg_replace('[^[:alnum:]]', '_', $nom);
+	//$file = "bon_numero_".$num_bon."_".$nomBis.".pdf";
+
+	//deuxieme cellule les coordonées du CLIENT
+	$pdf->SetFont('Arial','B',10);
+	$pdf->SetY(50);
+	$pdf->SetX(105);
+	$pdf->MultiCell(65,6,"DESTINATAIRE:\n$nom\n$nom2\n$rue\n$cp  $ville\n",0,L,1);
+	//cellule coordonnees client
+	$pdf->SetY(50);
+	$pdf->SetX(10);
+	$pdf->MultiCell(65,6,"TVA N° : $num_tva\nTel : $tel_client\nTel : $fax_client",0,L,1);
+
+	//le logo
+	$pdf->Image("../image/$logo",8,6,53,42);
+	$pdf->ln(20);
+
+	//Troisieme cellule le slogan
+	$pdf->SetFont('Arial','B',15);
+	$pdf->SetY(45);
+	$pdf->SetX(10);
+	//$pdf->MultiCell(71,4,"$slogan",0,C,0);
+	//Troisieme cellule les coordonnées vendeur
+	$pdf->SetFont('Arial','B',8);
+	$pdf->SetY(70);
+	$pdf->SetX(10);
+	//$pdf->MultiCell(40,4,"$lang_dev_pdf_soc",1,R,1);
+	//la date
+	$pdf->SetFont('Arial','B',8);
+	$pdf->SetY(8);
+	$pdf->SetX(140);
+	$pdf->MultiCell(40,6,"$lang_date: $date_bon",0,L,1);//
+	//le cntenu des coordonnées VENDEUR
+	$pdf->SetFont('Arial','',8);
+	$pdf->SetY(10);
+	$pdf->SetX(80);
+	$pdf->MultiCell(55,4,"EXPEDITEUR:\n$entrep_nom\n$social\nTél/Tel : $tel\nPortable : $tel_portable\n$mail\nTVA N° : $tva_vend\n$siret_num\n$code_ape\n$site_web_url\n",0,L,1);//
+	//phyto
+	if( $isPhyto > 0 )
+	  {
+	    //le logo
+	    $pdf->Image("../image/passeport-phyto.jpg",10,75,50,13);
+	  }
+	$pdf->Line(10,50,200,50);
+	$pdf->ln(50);
+
+
+
+
+
+	/*
 	//la grande cellule sous le tableau
 	$pdf->SetFillColor(255,255,255);
 	$pdf->SetFont('Arial','B',6);
@@ -458,18 +531,24 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
 	$pdf->MultiCell(55,4,"$entrep_nom\n$social\nTél/Tel : $tel\nPortable : $tel_portable\n$mail\nTVA N° : $tva_vend\n$siret_num\n$code_ape\n$site_web_url\n$code_phyto\n",0,L,1);//
 	
 	//cellule coordonnees client
-	$pdf->SetY(50);
+	$pdf->SetFont('Arial','',18);
+	$pdf->SetY(70);
 	$pdf->SetX(10);
-	$pdf->MultiCell(95,6,"Passeport phytosanitaire/Plan passport",0,L,1);
+	$pdf->MultiCell(140,6,"Passeport phytosanitaire / Plan passport",0,L,1);
 
 	//le logo
 	$pdf->Image("../image/europe_flag.jpg",8,6,40,30);
 	$pdf->ln(40);
-	
+	*/
+
+
+
+
+
 	//$pdf->Line(10,48,200,48);
 	//$pdf->ln(50);
 	//Le tableau : on définit les colonnes
-	$pdf->AddCol('variete',60,"A",'L');
+	$pdf->AddCol('article_variete',102,"A",'L');
 	$pdf->AddCol('producteur',30,"B",'C');
 	$pdf->AddCol('article_num',45,"C",'C');
 	$pdf->AddCol('country',10,"D",'C');
@@ -482,7 +561,10 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
         //tmp hack!!
         $conditionnementInTable = $tblpref ."cont_bon.conditionnement";
 	
-	$sql_table = "SELECT '".$code_phyto."' as 'producteur', 'FR' AS 'country', " . $tblpref ."cont_bon.num, num_lot, CONCAT(article_num, ' BL',".$num_bon.") AS article_num, quanti, uni, categorie, remise, volume_pot, article, variete, phyto, taille, $conditionnementInTable, $taux_tva, prix_htva, p_u_jour, p_u_jour_net, tot_art_htva FROM " . $tblpref ."cont_bon 
+	$sql_table = "SELECT '".$code_phyto."' as 'producteur', 'FR' AS 'country', " . $tblpref ."cont_bon.num, num_lot,
+	 CONCAT(article_num, ' BL',".$num_bon.") AS article_num, quanti, uni, categorie, remise,
+	  volume_pot, article, CONCAT(article, ' / ',variete) AS 'article_variete', phyto, taille, $conditionnementInTable, $taux_tva,
+	   prix_htva, p_u_jour, p_u_jour_net, tot_art_htva FROM " . $tblpref ."cont_bon 
 RIGHT JOIN " . $tblpref ."article on " . $tblpref ."cont_bon.article_num = " . $tblpref ."article.num 
 LEFT JOIN  " . $tblpref ."categorie on " . $tblpref ."article.cat = " . $tblpref ."categorie.id_cat 
 WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
