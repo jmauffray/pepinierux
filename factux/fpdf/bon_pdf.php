@@ -472,7 +472,7 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
 	$pdf->AddCol('article_variete',102,"A",'L');
 	$pdf->AddCol('producteur',30,"B",'C');
 	$pdf->AddCol('article_num',45,"C",'C');
-	$pdf->AddCol('country',10,"D",'C');
+	$pdf->AddCol('phyto',10,"D",'C');
 
 	$prop=array('HeaderColor'=>array(230,230,230),
 		    'color1'=>array(255,255,255),
@@ -482,7 +482,7 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
         //tmp hack!!
         $conditionnementInTable = $tblpref ."cont_bon.conditionnement";
 	
-	$sql_table = "SELECT '".$code_phyto."' as 'producteur', 'FR' AS 'country', " . $tblpref ."cont_bon.num, num_lot,
+	$sql_table = "SELECT '".$code_phyto."' as 'producteur', " . $tblpref ."cont_bon.num, num_lot,
 	 CONCAT(article_num, ' BL',".$num_bon.") AS article_num, quanti, uni, categorie, remise,
 	  volume_pot, article, CONCAT(article, ' / ',variete) AS 'article_variete', phyto, taille, $conditionnementInTable, $taux_tva,
 	   prix_htva, p_u_jour, p_u_jour_net, tot_art_htva FROM " . $tblpref ."cont_bon 

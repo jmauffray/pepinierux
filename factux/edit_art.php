@@ -104,7 +104,7 @@
 	    <fieldset>
 	      <legend>Caracteristiques</legend>
 	      <span><label><?php echo "Cont. "; ?></label><input size=4 name="contenance" type="text" value ="<?php echo"$contenance" ?>"></span><br/>
-	      <span><label><?php echo "phyto "; ?></label><input size=2 name="phyto" type="text" value ="<?php echo"$phyto" ?>"></span><br/>
+	      <span><label><?php echo "Pays d'origine "; ?></label><input size=4 name="phyto" type="text" value ="<?php echo"$phyto" ?>"></span><br/>
 	      <span><label><?php echo "$lang_taille "; ?></label><input size=6 name="taille" type="text" value ="<?php echo"$taille" ?>"></span><br/>
               <span><label><?php echo "$lang_conditionnement "; ?></label>
 		<SELECT NAME='conditionnement'>
