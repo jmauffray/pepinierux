@@ -304,8 +304,7 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
 	$pdf->AddCol('num_ligne',5,"L",'R');
 	$pdf->AddCol('num',9,"N°",'R');
 	$pdf->AddCol('quanti',6,"Q",'R');
-	$pdf->AddCol('article',24,"$lang_articles",'L');
-	$pdf->AddCol('variete',42,"$lang_variete",'L');
+	$pdf->AddCol('article_variete',66,"Désignation",'L');
 	$pdf->AddCol('categorie',12,"Série" ,'R');
 	$pdf->AddCol('taille',12,"$lang_taille" ,'R');
 	$pdf->AddCol('conditionnement',17,"Cond." ,'R');
@@ -331,7 +330,9 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
 	  {
               $conditionnementInTable = $tblpref ."article.conditionnement";
           }
-	$sql_table = "SELECT p_u_jour, p_u_jour_net, DATE_FORMAT(date,'%d/%m/%Y') AS date, " . $tblpref ."article.num, quanti, categorie, remise, article, variete, phyto, tot_art_htva, to_tva_art, $taux_tva, taille, $conditionnementInTable, uni, num_bon 
+	$sql_table = "SELECT p_u_jour, p_u_jour_net, DATE_FORMAT(date,'%d/%m/%Y') AS date, " . $tblpref ."article.num,
+	 quanti, categorie, remise, article, variete,  CONCAT(article, ' ',variete) AS 'article_variete', 
+	  phyto, tot_art_htva, to_tva_art, $taux_tva, taille, $conditionnementInTable, uni, num_bon 
 FROM " . $tblpref ."client 
 RIGHT JOIN " . $tblpref ."bon_comm on " . $tblpref ."client.num_client = " . $tblpref ."bon_comm.client_num 
 LEFT join " . $tblpref ."cont_bon on " . $tblpref ."bon_comm.num_bon = " . $tblpref ."cont_bon.bon_num 

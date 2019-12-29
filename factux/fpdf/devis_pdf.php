@@ -257,8 +257,7 @@ WHERE " . $tblpref ."devis.num_dev = '".$num_dev."' ";
 	$pdf->AddCol('article_num',9,"N°",'R');
 	//$pdf->AddCol('date',15,"$lang_date",'C');
 	$pdf->AddCol('quanti',6,"Q",'R');
-	$pdf->AddCol('article',24,"$lang_articles",'L');
-	$pdf->AddCol('variete',42,"$lang_variete",'L');
+	$pdf->AddCol('article_variete',66,"Désignation",'L');
 	$pdf->AddCol('categorie',12,"Série" ,'R');
 	$pdf->AddCol('taille',12,"$lang_taille" ,'R');
 	$pdf->AddCol('conditionnement',17,"Cond." ,'R');
@@ -278,7 +277,10 @@ WHERE " . $tblpref ."devis.num_dev = '".$num_dev."' ";
 		    'color2'=>array(255,255,255),
 		    'align' =>L,
 		    'padding'=>1);
-	$sql_table = "SELECT " . $tblpref ."cont_dev.num, article_num, quanti, uni, categorie, remise, volume_pot, article, variete, taille, " . $tblpref ."cont_dev.conditionnement, $taux_tva, prix_htva, p_u_jour, p_u_jour_net, tot_art_htva FROM " . $tblpref ."cont_dev 
+	$sql_table = "SELECT " . $tblpref ."cont_dev.num, article_num, quanti, uni, categorie, remise,
+	 volume_pot, article, variete,  CONCAT(article, ' ',variete) AS 'article_variete', 
+	 taille, " . $tblpref ."cont_dev.conditionnement, $taux_tva, prix_htva, p_u_jour, 
+	 p_u_jour_net, tot_art_htva FROM " . $tblpref ."cont_dev 
 RIGHT JOIN " . $tblpref ."article on " . $tblpref ."cont_dev.article_num = " . $tblpref ."article.num 
 LEFT JOIN  " . $tblpref ."categorie on " . $tblpref ."article.cat = " . $tblpref ."categorie.id_cat 
 WHERE  dev_num = $num_dev LIMIT $nb, $nb_li_page";
