@@ -183,17 +183,6 @@ for ($o=0;$o<$g;$o++)
     $nb_pa1 = $nb_li /$nb_li_page ;
     $nb_pa = ceil($nb_pa1);
     $nb_li =$nb_pa * $nb_li_page ;
-    //pour savoir si phyto
-    $sql = "SELECT prix_htva, date, quanti, remise, article, tot_art_htva, to_tva_art, taux_tva, uni, num_bon
- FROM " . $tblpref ."client RIGHT JOIN " . $tblpref ."bon_comm on " . $tblpref ."client.num_client = " . $tblpref ."bon_comm.client_num
-  LEFT join " . $tblpref ."cont_bon on " . $tblpref ."bon_comm.num_bon = " . $tblpref ."cont_bon.bon_num  
-	LEFT JOIN  " . $tblpref ."article on " . $tblpref ."article.num = " . $tblpref ."cont_bon.article_num
-   WHERE " . $tblpref ."client.num_client = '".$client[$o]."'  AND phyto <> ''"; 
-    // AND " . $tblpref ."bon_comm.date >= '".$debut[$o]."' and " . $tblpref ."bon_comm.date <= '".$fin[$o]."'";
-    $sql ="$sql $suite_sql[$o]";
-
-    $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
-    $isPhyto = 0; //mysql_num_rows($req);
 
 //suite
     $sql = "select payement, acompte, coment, date_echeance, date_depart, DATE_FORMAT(date_fact,'%d/%m/%Y') AS date_2 
@@ -294,12 +283,10 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
 	$pdf->SetFont('Arial','B',15);
 	$pdf->SetY(45);
 	$pdf->SetX(10);
-	//$pdf->MultiCell(71,4,"$slogan",0,C,0);
 	//Troisieme cellule les coordonnées vendeur
 	$pdf->SetFont('Arial','B',8);
 	$pdf->SetY(70);
 	$pdf->SetX(10);
-	//$pdf->MultiCell(40,4,"$lang_dev_pdf_soc",1,R,1);
 	//la date
 	$pdf->SetFont('Arial','B',8);
 	$pdf->SetY(15);
@@ -311,23 +298,14 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
 	$pdf->SetX(80);
 	$pdf->MultiCell(55,4,"$entrep_nom\n$social\nTél/Tel : $tel\nPortable : $tel_portable\n$mail\nTVA N° : $tva_vend\n$siret_num\n$code_ape\n$site_web_url\n",0,L,1);//
 
-	//phyto
-	if( $isPhyto > 0 )
-	  {
-	    //le logo
-	    $pdf->Image("../image/passeport-phyto.jpg",10,75,50,13);
-	  }
 	$pdf->Line(10,48,200,48);
 	$pdf->ln(50);
 	//Le tableau : on définit les colonnes
-	//$pdf->AddCol('num_bon',7,"$lang_num_bon_ab",'L');
 	$pdf->AddCol('num_ligne',5,"L",'R');
 	$pdf->AddCol('num',9,"N°",'R');
-	//$pdf->AddCol('date',15,"$lang_date",'C');
 	$pdf->AddCol('quanti',6,"Q",'R');
 	$pdf->AddCol('article',24,"$lang_articles",'L');
 	$pdf->AddCol('variete',42,"$lang_variete",'L');
-	//$pdf->AddCol('phyto',3," ",'L');
 	$pdf->AddCol('categorie',12,"Série" ,'R');
 	$pdf->AddCol('taille',12,"$lang_taille" ,'R');
 	$pdf->AddCol('conditionnement',17,"Cond." ,'R');
@@ -439,8 +417,6 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."'";
 			WHERE " . $tblpref ."client.num_client = '".$client[$o]."'"; 
 	    $suite3_sql=" GROUP BY $taux_tva";
 	    $sql2="$sql2 $suite_sql[$o] $suite3_sql";
-	    ///echo"$sql2<br>";			
-	    ////$resu = mysql_query( $sql2 ) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
 	    $pdf->AddCol($taux_tva,20,'taux tva','L');
 	    $pdf->AddCol('SUM(to_tva_art)',20,'moontant tva','L');
 	    $pdf->AddCol('SUM(tot_art_htva)',25,"$lang_ba_imp",'L');
@@ -513,8 +489,6 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."'";
 	$pdf->SetX(30);
 	$pdf->SetY(268);
 	$annee_fact = substr ($date_fact,6,4);
-	//$pdf->MultiCell(0,4,"$lang_factpdf_penalites_conditions",0,C,0);
-        //$pdf->MultiCell(0,4,"Livraison sur RDV de 8H00 à 12H00",0,C,0);
 	$pdf->SetFont('Arial','B',10);
 	$pdf->SetY(272);
 	$pdf->SetX(30);
@@ -556,6 +530,5 @@ if ($_POST['mail']=='y') {
 
   echo "<HTML><SCRIPT>document.location='$file';</SCRIPT></HTML>";
  }
-
 
 ?> 
