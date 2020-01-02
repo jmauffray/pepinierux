@@ -38,6 +38,9 @@ require_once("include/head.php");
 <option value="8">Août</option><option value="9">Septembre</option><option value="10">Octobre</option><option value="11">Novembre</option>
 <option value="12">Decembre</option></select>
 <select name="annee_1">
+<option value="2022">2022</option>
+<option value="2021">2021</option>
+<option value="2020">2020</option>
 <option value="2019">2019</option>
 <option value="2018">2018</option>
 <option value="2017">2017</option>
