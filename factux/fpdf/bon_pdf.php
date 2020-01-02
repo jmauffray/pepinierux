@@ -90,6 +90,8 @@ $mail= stripslashes($mail);
 $site_web_url= stripslashes($site_web_url);
 $siret_num= stripslashes($siret_num);
 $code_ape= stripslashes($code_ape);
+$code_phyto= stripslashes($code_phyto);
+$code_iban= stripslashes($code_iban);
 $g=1;
 
 ////
@@ -400,7 +402,12 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
 	$pdf->SetFont('Arial','B',10);
 	$pdf->SetY(270);
 	$pdf->SetX(30);
-	$pdf->MultiCell(160,4,"$lang_page $num_pa2 / $nb_pa\n",0,C,0);
+	$pdf->MultiCell(160,4,"$lang_page $num_pa2 / $nb_pa\n",0,R,0);
+
+	$pdf->SetFont('Arial','',8);
+	$pdf->SetY(270);
+	$pdf->SetX(10);
+	$pdf->MultiCell(160,4,"$code_iban\n",0,L,0);
 
       }
 

@@ -15,4 +15,5 @@ $siret_num= "N° SIRET : 12312123131321313";
 $code_ape= "Code APE : 1234Z";
 $code_phyto= "BR 12345";
 $site_web_url= "http://site-web.fr";
+$code_iban= "IBAN: FR11 2222 3333 4444 5555 6666 777      BIC: FR123456";
 ?>
