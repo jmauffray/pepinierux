@@ -486,7 +486,7 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
 	
 	$sql_table = "SELECT '".$code_phyto."' as 'producteur', " . $tblpref ."cont_bon.num, num_lot,
 	 CONCAT(article_num, ' BL',".$num_bon.") AS article_num, quanti, uni, categorie, remise,
-	  volume_pot, article, CONCAT(article, ' / ',variete) AS 'article_variete', phyto, taille, $conditionnementInTable, $taux_tva,
+	  volume_pot, article, CONCAT(article, ' ',variete) AS 'article_variete', phyto, taille, $conditionnementInTable, $taux_tva,
 	   prix_htva, p_u_jour, p_u_jour_net, tot_art_htva FROM " . $tblpref ."cont_bon 
 RIGHT JOIN " . $tblpref ."article on " . $tblpref ."cont_bon.article_num = " . $tblpref ."article.num 
 LEFT JOIN  " . $tblpref ."categorie on " . $tblpref ."article.cat = " . $tblpref ."categorie.id_cat 
