@@ -378,7 +378,7 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
 		$pdf->SetFont('Arial','',10);
 		$pdf->SetY(262);
 		$pdf->SetX(10);
-		$pdf->MultiCell(190,4,"Escompte de 2% pour réglement sous 8 jours après enlèvement ou expédition. Négoce HT : ". $data_negoce_prix.$devise,0,C,0);
+		$pdf->MultiCell(190,4,"Négoce HT : ". $data_negoce_prix.$devise,0,C,0);
 	      }
             else
               {
