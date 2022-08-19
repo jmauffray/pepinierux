@@ -1,4 +1,4 @@
-== Installation du site web ==
+== Installation du site web
 ```sh
 #clone repository
 git clone https://github.com/jmauffray/pepinierux.git
@@ -24,7 +24,7 @@ chmod 777 factux/uploads
 firefox http://localhost/pepinierux/factux/
 ```
 
-== Installation de LAMP (Linux/Apache/MariaDB/PHP) ==
+== Installation de LAMP (Linux/Apache/MariaDB/PHP)
 Factux does not work with PHP 7.
 ```sh
 #download xampp version v5.6.32 : https://www.apachefriends.org/xampp-files/5.6.32/xampp-linux-x64-5.6.30-0-installer.run
