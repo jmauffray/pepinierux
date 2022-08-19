@@ -1,6 +1,5 @@
 == Installation du site web ==
-```
-#!sh
+```sh
 #clone repository
 git clone https://github.com/jmauffray/pepinierux.git
 cd pepinierux
@@ -27,8 +26,7 @@ firefox http://localhost/pepinierux/factux/
 
 == Installation de LAMP (Linux/Apache/MariaDB/PHP) ==
 Factux does not work with PHP 7.
-```
-#!sh
+```sh
 #download xampp version v5.6.32 : https://www.apachefriends.org/xampp-files/5.6.32/xampp-linux-x64-5.6.30-0-installer.run
 sudo xampp-linux-x64-5.6.32-0-installer.run
 
