@@ -2,7 +2,7 @@
 ```
 #!sh
 #clone repository
-hg clone https://breizhux@bitbucket.org/breizhux/pepinierux
+git clone https://github.com/jmauffray/pepinierux.git
 cd pepinierux
 
 #copy default files
