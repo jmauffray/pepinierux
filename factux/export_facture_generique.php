@@ -73,11 +73,11 @@ header('Content-Disposition: attachment; filename=' . $filename);
 
 function filterNomClient($nom, $ignore)
 {
-
     $nom_client_array = explode(" ", $nom);
     $result = array_diff($nom_client_array, $ignore);
     $result = implode(" ", $result);
     $result = preg_replace("/[^a-zA-Z]+/", "", $result);
+
     return strtoupper(substr($result, 0, 5));
 }
 
