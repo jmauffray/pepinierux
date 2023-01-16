@@ -71,13 +71,73 @@ $fp = fopen('php://output', 'w');
 header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename=' . $filename);
 
-function filterNomClient($nom, $ignore) {
+function filterNomClient($nom, $ignore)
+{
 
     $nom_client_array = explode(" ", $nom);
     $result = array_diff($nom_client_array, $ignore);
     $result = implode(" ", $result);
     $result = preg_replace("/[^a-zA-Z]+/", "", $result);
     return strtoupper(substr($result, 0, 5));
+}
+
+function processSql(
+    $sql,
+    $sep,
+    $num,
+    $ignore,
+    $fp,
+    $journalVente,
+    $date_fact_format,
+    $codeTva,
+    $codeComptableArticle,
+    $codeComptableTva,
+    $codeComptableClient
+) {
+    $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+    while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
+
+        $taux_tva = $data['taux_tva'];
+        $nom_client = filterNomClient($data['nom'], $ignore);
+        $total_ht = $data['SUM(tot_art_htva)'];
+        fwrite(
+            $fp,
+            $journalVente . $sep .
+                $date_fact_format . $sep .
+                $codeComptableArticle . $codeTva[$taux_tva] . $sep .
+                $num . $sep .
+                "CLIENT VENTE ARTICLE" . $sep .
+                $sep .
+                $total_ht . $sep . $sep
+                . "\n"
+        );
+
+        $total_tva = $data['SUM(to_tva_art)'];
+        fwrite(
+            $fp,
+            $journalVente . $sep .
+                $date_fact_format . $sep .
+                $codeComptableTva . $codeTva[$taux_tva] . $sep .
+                $num . $sep .
+                "CLIENT TVA " . $taux_tva . "%" . $sep .
+                $sep .
+                $total_tva . $sep . $sep
+                . "\n"
+        );
+
+        $total = $total_ht + $total_tva;
+        fwrite(
+            $fp,
+            $journalVente . $sep .
+                $date_fact_format . $sep .
+                $codeComptableClient . $nom_client . $sep .
+                $num . $sep .
+                "CLIENT TTC" . $sep .
+                $sep .
+                $total . $sep . $sep
+                . "\n"
+        );
+    }
 }
 
 //first line
@@ -102,50 +162,19 @@ $sql = "SELECT SUM(to_tva_art), SUM(tot_art_htva), taux_tva, nom " .
     "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon AND  " . $tblpref . "article.cat != $NEGOCE_CAT " .
     "GROUP BY taux_tva";
 
-$req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
-while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
-
-    $taux_tva = $data['taux_tva'];
-    $nom_client = filterNomClient($data['nom'], $CLIENT_IGNORE);
-    $total_ht = $data['SUM(tot_art_htva)'];
-    fwrite(
-        $fp,
-        $JOURNAL_VENTE . $SEP .
-            $date_fact_format . $SEP .
-            $CODE_COMPTABLE_ARTICLE . $CODE_TVA[$taux_tva] . $SEP .
-            $num . $SEP .
-            "CLIENT VENTE ARTICLE" . $SEP .
-            $SEP .
-            $total_ht . $SEP . $SEP
-            . "\n"
-    );
-
-    $total_tva = $data['SUM(to_tva_art)'];
-    fwrite(
-        $fp,
-        $JOURNAL_VENTE . $SEP .
-            $date_fact_format . $SEP .
-            $CODE_COMPTABLE_TVA . $CODE_TVA[$taux_tva] . $SEP .
-            $num . $SEP .
-            "CLIENT TVA " . $taux_tva . "%" . $SEP .
-            $SEP .
-            $total_tva . $SEP . $SEP
-            . "\n"
-    );
-
-    $total = $total_ht + $total_tva;
-    fwrite(
-        $fp,
-        $JOURNAL_VENTE . $SEP .
-            $date_fact_format . $SEP .
-            $CODE_COMPTABLE_CLIENT . $nom_client . $SEP .
-            $num . $SEP .
-            "CLIENT TTC" . $SEP .
-            $SEP .
-            $total . $SEP . $SEP
-            . "\n"
-    );
-}
+processSql(
+    $sql,
+    $SEP,
+    $num,
+    $CLIENT_IGNORE,
+    $fp,
+    $JOURNAL_VENTE,
+    $date_fact_format,
+    $CODE_TVA,
+    $CODE_COMPTABLE_ARTICLE,
+    $CODE_COMPTABLE_TVA,
+    $CODE_COMPTABLE_CLIENT
+);
 
 //get info from bon for negoce
 $sql = "SELECT SUM(to_tva_art), SUM(tot_art_htva), taux_tva, nom " .
@@ -156,49 +185,18 @@ $sql = "SELECT SUM(to_tva_art), SUM(tot_art_htva), taux_tva, nom " .
     "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon AND  " . $tblpref . "article.cat = $NEGOCE_CAT " .
     "GROUP BY taux_tva";
 
-$req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
-while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
-
-    $taux_tva = $data['taux_tva'];
-    $nom_client = filterNomClient($data['nom'], $CLIENT_IGNORE);
-    $total_ht = $data['SUM(tot_art_htva)'];
-    fwrite(
-        $fp,
-        $JOURNAL_VENTE . $SEP .
-            $date_fact_format . $SEP .
-            $CODE_COMPTABLE_ARTICLE . $CODE_TVA[$taux_tva] . $SEP .
-            $num . $SEP .
-            "CLIENT VENTE ARTICLE" . $SEP .
-            $SEP .
-            $total_ht . $SEP . $SEP
-            . "\n"
-    );
-
-    $total_tva = $data['SUM(to_tva_art)'];
-    fwrite(
-        $fp,
-        $JOURNAL_VENTE . $SEP .
-            $date_fact_format . $SEP .
-            $CODE_COMPTABLE_TVA . $CODE_TVA[$taux_tva] . $SEP .
-            $num . $SEP .
-            "CLIENT TVA " . $taux_tva . "%" . $SEP .
-            $SEP .
-            $total_tva . $SEP . $SEP
-            . "\n"
-    );
-
-    $total = $total_ht + $total_tva;
-    fwrite(
-        $fp,
-        $JOURNAL_VENTE . $SEP .
-            $date_fact_format . $SEP .
-            $CODE_COMPTABLE_CLIENT . $nom_client . $SEP .
-            $num . $SEP .
-            "CLIENT TTC" . $SEP .
-            $SEP .
-            $total . $SEP . $SEP
-            . "\n"
-    );
-}
+processSql(
+    $sql,
+    $SEP,
+    $num,
+    $CLIENT_IGNORE,
+    $fp,
+    $JOURNAL_VENTE,
+    $date_fact_format,
+    $CODE_TVA,
+    $CODE_COMPTABLE_ARTICLE,
+    $CODE_COMPTABLE_TVA,
+    $CODE_COMPTABLE_CLIENT
+);
 
 fclose($fp);
