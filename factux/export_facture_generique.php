@@ -14,8 +14,8 @@ include_once("ean13.php");
 error_reporting(E_ALL);
 
 //constants
-$CODE_COMPTABLE_ARTICLE = "70452";
-$CODE_COMPTABLE_TVA = "4457106";
+$CODE_COMPTABLE_ARTICLE = "70102678";
+$CODE_COMPTABLE_TVA = "44571060";
 $CODE_COMPTABLE_CLIENT = "4119";
 
 $JOURNAL_ACHAT = "ACH";
@@ -71,8 +71,17 @@ $fp = fopen('php://output', 'w');
 header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename=' . $filename);
 
+function filterNomClient($nom, $ignore) {
+
+    $nom_client_array = explode(" ", $nom);
+    $result = array_diff($nom_client_array, $ignore);
+    $result = implode(" ", $result);
+    $result = preg_replace("/[^a-zA-Z]+/", "", $result);
+    return strtoupper(substr($result, 0, 5));
+}
+
 //first line
-fwrite($fp, "#journal;date:compte;reference;libelle;debit;credit;nombre;quantite\n");
+//fwrite($fp, "#journal;date:compte;reference;libelle;debit;credit;nombre;quantite\n");
 
 //get info from facture
 $sql = "SELECT date_fact, list_num FROM " . $tblpref . "facture WHERE num = $num";
@@ -97,14 +106,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error
 while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
 
     $taux_tva = $data['taux_tva'];
-
-    //client
-    $nom_client = $data['nom'];
-    $nom_client_array = explode(" ", $nom_client);
-    $result = array_diff($nom_client_array, $CLIENT_IGNORE);
-    $result = implode(" ", $result);
-    $nom_client = substr($result, 0, 5);
-
+    $nom_client = filterNomClient($data['nom'], $CLIENT_IGNORE);
     $total_ht = $data['SUM(tot_art_htva)'];
     fwrite(
         $fp,
@@ -114,7 +116,7 @@ while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
             $num . $SEP .
             "CLIENT VENTE ARTICLE" . $SEP .
             $SEP .
-            $total_ht . $SEP
+            $total_ht . $SEP . $SEP
             . "\n"
     );
 
@@ -127,7 +129,7 @@ while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
             $num . $SEP .
             "CLIENT TVA " . $taux_tva . "%" . $SEP .
             $SEP .
-            $total_tva . $SEP
+            $total_tva . $SEP . $SEP
             . "\n"
     );
 
@@ -140,7 +142,7 @@ while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
             $num . $SEP .
             "CLIENT TTC" . $SEP .
             $SEP .
-            $total . $SEP
+            $total . $SEP . $SEP
             . "\n"
     );
 }
@@ -158,14 +160,7 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error
 while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
 
     $taux_tva = $data['taux_tva'];
-
-    //client
-    $nom_client = $data['nom'];
-    $nom_client_array = explode(" ", $nom_client);
-    $result = array_diff($nom_client_array, $CLIENT_IGNORE);
-    $result = implode(" ", $result);
-    $nom_client = substr($result, 0, 5);
-
+    $nom_client = filterNomClient($data['nom'], $CLIENT_IGNORE);
     $total_ht = $data['SUM(tot_art_htva)'];
     fwrite(
         $fp,
@@ -175,7 +170,7 @@ while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
             $num . $SEP .
             "CLIENT VENTE ARTICLE" . $SEP .
             $SEP .
-            $total_ht . $SEP
+            $total_ht . $SEP . $SEP
             . "\n"
     );
 
@@ -188,7 +183,7 @@ while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
             $num . $SEP .
             "CLIENT TVA " . $taux_tva . "%" . $SEP .
             $SEP .
-            $total_tva . $SEP
+            $total_tva . $SEP . $SEP
             . "\n"
     );
 
@@ -201,27 +196,9 @@ while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
             $num . $SEP .
             "CLIENT TTC" . $SEP .
             $SEP .
-            $total . $SEP
+            $total . $SEP . $SEP
             . "\n"
     );
 }
-
-/*
-SELECT SUM(to_tva_art), SUM(tot_art_htva), taux_tva
-FROM factux2_client
-RIGHT JOIN factux2_bon_comm on factux2_client.num_client = factux2_bon_comm.client_num 
-LEFT join factux2_cont_bon on factux2_bon_comm.num_bon = factux2_cont_bon.bon_num 
-LEFT JOIN  factux2_article on factux2_article.num = factux2_cont_bon.article_num 
-WHERE factux2_bon_comm.num_bon=4233 AND  factux2_article.cat != 7
-GROUP BY taux_tva
-
-SELECT SUM(to_tva_art), SUM(tot_art_htva), taux_tva
-FROM factux2_client
-RIGHT JOIN factux2_bon_comm on factux2_client.num_client = factux2_bon_comm.client_num 
-LEFT join factux2_cont_bon on factux2_bon_comm.num_bon = factux2_cont_bon.bon_num 
-LEFT JOIN  factux2_article on factux2_article.num = factux2_cont_bon.article_num 
-WHERE factux2_bon_comm.num_bon=4233 AND  factux2_article.cat=7
-GROUP BY taux_tva
-*/
 
 fclose($fp);
