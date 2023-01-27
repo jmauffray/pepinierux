@@ -90,8 +90,9 @@ function generate_csv_facture(
         "RIGHT JOIN " . $tblpref . "bon_comm on " . $tblpref . "client.num_client = " . $tblpref . "bon_comm.client_num " .
         "LEFT join " . $tblpref . "cont_bon on " . $tblpref . "bon_comm.num_bon = " . $tblpref . "cont_bon.bon_num " .
         "LEFT JOIN  " . $tblpref . "article on " . $tblpref . "article.num = " . $tblpref . "cont_bon.article_num " .
-        "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon AND  " . $tblpref . "article.cat != $NEGOCE_CAT " .
-        "GROUP BY taux_tva";
+        "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon AND  " . $tblpref . "article.cat != $NEGOCE_CAT ";
+
+        //fwrite($fp, "sql:".$sql);
 
     processSql(
         $sql,
@@ -113,8 +114,9 @@ function generate_csv_facture(
         "RIGHT JOIN " . $tblpref . "bon_comm on " . $tblpref . "client.num_client = " . $tblpref . "bon_comm.client_num " .
         "LEFT join " . $tblpref . "cont_bon on " . $tblpref . "bon_comm.num_bon = " . $tblpref . "cont_bon.bon_num " .
         "LEFT JOIN  " . $tblpref . "article on " . $tblpref . "article.num = " . $tblpref . "cont_bon.article_num " .
-        "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon AND  " . $tblpref . "article.cat = $NEGOCE_CAT " .
-        "GROUP BY taux_tva";
+        "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon AND  " . $tblpref . "article.cat = $NEGOCE_CAT ";
+
+        //fwrite($fp, "sql:".$sql);
 
     processSql(
         $sql,
@@ -158,8 +160,14 @@ function processSql(
     while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
 
         $taux_tva = $data['taux_tva'];
+        if($taux_tva === null ||  $taux_tva === '') {
+            break;
+        }
         $nom_client = filterNomClient($data['nom'], $ignore);
         $total_ht = $data['SUM(tot_art_htva)'];
+
+        //bug fact 3827 , bon 4583
+        //fwrite($fp, " data:".implode(", ", $data).".");
         fwrite(
             $fp,
             $journalVente . $sep .
@@ -200,29 +208,53 @@ function processSql(
     }
 }
 
+function get_factures($date_from, $date_to, $tblpref)
+{
+    $sql = "SELECT num, date_fact " .
+        "FROM " . $tblpref . "facture " .
+        "WHERE " . $tblpref . "facture.date_fact >= '$date_from' " .
+        "AND  " . $tblpref . "facture.date_fact < '$date_to' " .
+        "ORDER BY num";
+
+    $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
+    $factures = array();
+    while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
+        $values = array_values($data);
+        array_push($factures, $values[0]);
+    }
+
+    return $factures;
+}
+
 //get num modifie
 $num = isset($_POST['num']) ? $_POST['num'] : "";
+$date_from = isset($_POST['date_from']) ? $_POST['date_from'] : "";
+$date_to = isset($_POST['date_to']) ? $_POST['date_to'] : "";
 
 //output
 $filename = "facture-export-" . $num . ".csv";
 $fp = fopen('php://output', 'w');
 
+$factures = get_factures($date_from, $date_to, $tblpref);
+
 //HTTP header
 header('Content-type: application/csv');
 header('Content-Disposition: attachment; filename=' . $filename);
 
-generate_csv_facture(
-    $fp,
-    $num,
-    $tblpref,
-    $SEP,
-    $CLIENT_IGNORE,
-    $JOURNAL_VENTE,
-    $CODE_TVA,
-    $CODE_COMPTABLE_ARTICLE,
-    $CODE_COMPTABLE_TVA,
-    $CODE_COMPTABLE_CLIENT,
-    $NEGOCE_CAT
-);
+foreach ($factures as $facture) {
+    generate_csv_facture(
+        $fp,
+        $facture,
+        $tblpref,
+        $SEP,
+        $CLIENT_IGNORE,
+        $JOURNAL_VENTE,
+        $CODE_TVA,
+        $CODE_COMPTABLE_ARTICLE,
+        $CODE_COMPTABLE_TVA,
+        $CODE_COMPTABLE_CLIENT,
+        $NEGOCE_CAT
+    );
+}
 
 fclose($fp);

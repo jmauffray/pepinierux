@@ -27,8 +27,13 @@ include_once("include/head.php");
     <table>
         <tr>
             <td>
-                Selectionner le numéro de facture
-                <input name="num" id="num">
+                Selectionner la date de début des factures inclus (2018-02-01):
+                <input type="date" name="date_from" id="datetimefrom">
+            </td>
+
+            <td>
+                Selectionner la date de fin des factures non inclus (2018-03-01):
+                <input type="date" name="date_to" id="datetimeto">
             </td>
             <td>                
                 <input type="submit" value="Exporter facture" name="submit">            
