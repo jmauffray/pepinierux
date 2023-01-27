@@ -92,8 +92,6 @@ function generate_csv_facture(
         "LEFT JOIN  " . $tblpref . "article on " . $tblpref . "article.num = " . $tblpref . "cont_bon.article_num " .
         "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon AND  " . $tblpref . "article.cat != $NEGOCE_CAT ";
 
-        //fwrite($fp, "sql:".$sql);
-
     processSql(
         $sql,
         $SEP,
@@ -115,8 +113,6 @@ function generate_csv_facture(
         "LEFT join " . $tblpref . "cont_bon on " . $tblpref . "bon_comm.num_bon = " . $tblpref . "cont_bon.bon_num " .
         "LEFT JOIN  " . $tblpref . "article on " . $tblpref . "article.num = " . $tblpref . "cont_bon.article_num " .
         "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon AND  " . $tblpref . "article.cat = $NEGOCE_CAT ";
-
-        //fwrite($fp, "sql:".$sql);
 
     processSql(
         $sql,
@@ -160,14 +156,12 @@ function processSql(
     while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
 
         $taux_tva = $data['taux_tva'];
-        if($taux_tva === null ||  $taux_tva === '') {
-            break;
+        if ($taux_tva === null ||  $taux_tva === '') {
+            continue;
         }
         $nom_client = filterNomClient($data['nom'], $ignore);
         $total_ht = $data['SUM(tot_art_htva)'];
 
-        //bug fact 3827 , bon 4583
-        //fwrite($fp, " data:".implode(", ", $data).".");
         fwrite(
             $fp,
             $journalVente . $sep .
