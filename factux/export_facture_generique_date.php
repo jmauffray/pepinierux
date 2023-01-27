@@ -21,7 +21,7 @@ include_once("include/head.php");
 </tr>
 <tr>
 <td  class="page" align="center">
-<h2>Exporter facture générique</h2>
+<h2>Exporter facture pour PROfil EDI</h2>
 <form action="export_facture_generique.php" method="post">
     
     <table>

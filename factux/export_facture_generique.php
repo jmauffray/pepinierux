@@ -221,12 +221,11 @@ function get_factures($date_from, $date_to, $tblpref)
 }
 
 //get num modifie
-$num = isset($_POST['num']) ? $_POST['num'] : "";
 $date_from = isset($_POST['date_from']) ? $_POST['date_from'] : "";
 $date_to = isset($_POST['date_to']) ? $_POST['date_to'] : "";
 
 //output
-$filename = "facture-export-" . $num . ".csv";
+$filename = "facture-export-" . $date_from . ".csv";
 $fp = fopen('php://output', 'w');
 
 $factures = get_factures($date_from, $date_to, $tblpref);
