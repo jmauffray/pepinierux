@@ -271,6 +271,10 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
 	$pdf->SetX(10);
 	$pdf->MultiCell(65,6,"TVA N° : $num_tva\nTel : $tel_client\nTel : $fax_client",0,L,1);
 
+	$pdf->SetY(50);
+	$pdf->SetX(165);
+	$pdf->MultiCell(65,6,"Tel : $tel_client\n",0,L,1);
+
 	//cellule date
 	$pdf->SetFont('Arial','B',8);
 	$pdf->SetY(75);
