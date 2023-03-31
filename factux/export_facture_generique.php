@@ -15,13 +15,31 @@ error_reporting(E_ALL);
 
 //constants
 $CODE_COMPTABLE_ARTICLE = "70102678";
-$CODE_COMPTABLE_TVA = "44571060";
+$CODE_COMPTABLE_ARTICLE_NEGOCE = "11111111";
+$CODE_COMPTABLE_ARTICLE_TRANSPORT = "22222222";
+$CODE_COMPTABLE_ARTICLE_PRESTATION = "33333333";
+
 $CODE_COMPTABLE_CLIENT = "4119";
+
+$CAT_NEGOCE = 7;
+$CAT_TRANSPORT = 37;
+$CAT_PRESTATION = 26;
+
 
 $JOURNAL_ACHAT = "ACH";
 $JOURNAL_VENTE = "VEN";
 $JOURNAL_REMISE = "REM";
 $JOURNAL_CAISSE = "CAI";
+
+$CODE_COMPTABLE_TVA = array(
+    '0'    => '0000000',
+    '2.1'  => '0000000',
+    '5.5'  => '4457106',
+    '7'    => '0000000',
+    '10'   => '4457110',
+    '19.6' => '0000000',
+    '20'   => '4457120'
+);
 
 $CODE_TVA = array(
     '0'    => '0',
@@ -34,6 +52,8 @@ $CODE_TVA = array(
 );
 
 $SEP = ";";
+
+$ZERO_CHAR = "0";
 
 $CLIENT_IGNORE = array(
     'Pépinière',
@@ -58,8 +78,6 @@ $CLIENT_IGNORE = array(
     'de',
 );
 
-$NEGOCE_CAT = 7;
-
 //functionsgit a
 function generate_csv_facture(
     $fp,
@@ -71,9 +89,11 @@ function generate_csv_facture(
     $CODE_TVA,
     $CODE_COMPTABLE_ARTICLE,
     $CODE_COMPTABLE_TVA,
-    $CODE_COMPTABLE_CLIENT,
-    $NEGOCE_CAT
+    $CODE_COMPTABLE_CLIENT
 ) {
+    global $CODE_COMPTABLE_ARTICLE_NEGOCE, $CODE_COMPTABLE_ARTICLE_TRANSPORT, $CODE_COMPTABLE_ARTICLE_PRESTATION;
+    global $CAT_NEGOCE, $CAT_TRANSPORT, $CAT_PRESTATION;
+    
     //get info from facture
     $sql = "SELECT date_fact, list_num FROM " . $tblpref . "facture WHERE num = $num";
     $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
@@ -90,7 +110,9 @@ function generate_csv_facture(
         "RIGHT JOIN " . $tblpref . "bon_comm on " . $tblpref . "client.num_client = " . $tblpref . "bon_comm.client_num " .
         "LEFT join " . $tblpref . "cont_bon on " . $tblpref . "bon_comm.num_bon = " . $tblpref . "cont_bon.bon_num " .
         "LEFT JOIN  " . $tblpref . "article on " . $tblpref . "article.num = " . $tblpref . "cont_bon.article_num " .
-        "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon AND  " . $tblpref . "article.cat != $NEGOCE_CAT ";
+        "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon " .
+        "AND  " . $tblpref . "article.cat NOT IN ( $CAT_NEGOCE, $CAT_PRESTATION, $CAT_TRANSPORT) " .
+        "GROUP BY taux_tva";
 
     processSql(
         $sql,
@@ -112,7 +134,9 @@ function generate_csv_facture(
         "RIGHT JOIN " . $tblpref . "bon_comm on " . $tblpref . "client.num_client = " . $tblpref . "bon_comm.client_num " .
         "LEFT join " . $tblpref . "cont_bon on " . $tblpref . "bon_comm.num_bon = " . $tblpref . "cont_bon.bon_num " .
         "LEFT JOIN  " . $tblpref . "article on " . $tblpref . "article.num = " . $tblpref . "cont_bon.article_num " .
-        "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon AND  " . $tblpref . "article.cat = $NEGOCE_CAT ";
+        "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon " .
+        "AND  " . $tblpref . "article.cat = $CAT_NEGOCE " .
+        "GROUP BY taux_tva";
 
     processSql(
         $sql,
@@ -123,7 +147,55 @@ function generate_csv_facture(
         $JOURNAL_VENTE,
         $date_fact_format,
         $CODE_TVA,
-        $CODE_COMPTABLE_ARTICLE,
+        $CODE_COMPTABLE_ARTICLE_NEGOCE,
+        $CODE_COMPTABLE_TVA,
+        $CODE_COMPTABLE_CLIENT
+    );
+
+    //get info from bon for transport
+    $sql = "SELECT SUM(to_tva_art), SUM(tot_art_htva), taux_tva, nom " .
+        "FROM " . $tblpref . "client " .
+        "RIGHT JOIN " . $tblpref . "bon_comm on " . $tblpref . "client.num_client = " . $tblpref . "bon_comm.client_num " .
+        "LEFT join " . $tblpref . "cont_bon on " . $tblpref . "bon_comm.num_bon = " . $tblpref . "cont_bon.bon_num " .
+        "LEFT JOIN  " . $tblpref . "article on " . $tblpref . "article.num = " . $tblpref . "cont_bon.article_num " .
+        "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon " .
+        "AND  " . $tblpref . "article.cat = $CAT_TRANSPORT " .
+        "GROUP BY taux_tva";
+
+    processSql(
+        $sql,
+        $SEP,
+        $num,
+        $CLIENT_IGNORE,
+        $fp,
+        $JOURNAL_VENTE,
+        $date_fact_format,
+        $CODE_TVA,
+        $CODE_COMPTABLE_ARTICLE_TRANSPORT,
+        $CODE_COMPTABLE_TVA,
+        $CODE_COMPTABLE_CLIENT
+    );
+
+    //get info from bon for prestation
+    $sql = "SELECT SUM(to_tva_art), SUM(tot_art_htva), taux_tva, nom " .
+        "FROM " . $tblpref . "client " .
+        "RIGHT JOIN " . $tblpref . "bon_comm on " . $tblpref . "client.num_client = " . $tblpref . "bon_comm.client_num " .
+        "LEFT join " . $tblpref . "cont_bon on " . $tblpref . "bon_comm.num_bon = " . $tblpref . "cont_bon.bon_num " .
+        "LEFT JOIN  " . $tblpref . "article on " . $tblpref . "article.num = " . $tblpref . "cont_bon.article_num " .
+        "WHERE " . $tblpref . "bon_comm.num_bon=$num_bon " .
+        "AND  " . $tblpref . "article.cat = $CAT_PRESTATION " .
+        "GROUP BY taux_tva";
+
+    processSql(
+        $sql,
+        $SEP,
+        $num,
+        $CLIENT_IGNORE,
+        $fp,
+        $JOURNAL_VENTE,
+        $date_fact_format,
+        $CODE_TVA,
+        $CODE_COMPTABLE_ARTICLE_PRESTATION,
         $CODE_COMPTABLE_TVA,
         $CODE_COMPTABLE_CLIENT
     );
@@ -152,6 +224,9 @@ function processSql(
     $codeComptableTva,
     $codeComptableClient
 ) {
+    global $ZERO_CHAR;
+
+    //fwrite(        $fp, $sql . "\n");
     $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
     while ($data = mysql_fetch_array($req, MYSQL_ASSOC)) {
 
@@ -179,7 +254,7 @@ function processSql(
             $fp,
             $journalVente . $sep .
                 $date_fact_format . $sep .
-                $codeComptableTva . $codeTva[$taux_tva] . $sep .
+                $codeComptableTva[$taux_tva] . $ZERO_CHAR . $codeTva[$taux_tva] . $sep .
                 $num . $sep .
                 "CLIENT TVA " . $taux_tva . "%" . $sep .
                 $sep .
@@ -245,8 +320,7 @@ foreach ($factures as $facture) {
         $CODE_TVA,
         $CODE_COMPTABLE_ARTICLE,
         $CODE_COMPTABLE_TVA,
-        $CODE_COMPTABLE_CLIENT,
-        $NEGOCE_CAT
+        $CODE_COMPTABLE_CLIENT
     );
 }
 
