@@ -14,19 +14,54 @@ include_once("ean13.php");
 error_reporting(E_ALL);
 
 //constants
-$CODE_COMPTABLE_ARTICLE = "70102678";
-$CODE_COMPTABLE_ARTICLE_NEGOCE = "11111111";
-$CODE_COMPTABLE_ARTICLE_TRANSPORT = "22222222";
-$CODE_COMPTABLE_ARTICLE_PRESTATION = "33333333";
+$CODE_COMPTABLE_ARTICLE = array(
+    '0'    => '70102678',
+    '2.1'  => '70102678',
+    '5.5'  => '70102678',
+    '7'    => '70102678',
+    '10'   => '70102678',
+    '19.6' => '70102678',
+    '20'   => '70102678'
+);
+
+$CODE_COMPTABLE_ARTICLE_NEGOCE = array(
+    '0'    => '00000000',
+    '2.1'  => '00000000',
+    '5.5'  => '70703489',
+    '7'    => '00000000',
+    '10'   => '70700678',
+    '19.6' => '00000000',
+    '20'   => '70702678'
+);
+
+$CODE_COMPTABLE_ARTICLE_TRANSPORT = array(
+    '0'    => '70800678',
+    '2.1'  => '70800678',
+    '5.5'  => '70800678',
+    '7'    => '70800678',
+    '10'   => '70800678',
+    '19.6' => '70800678',
+    '20'   => '70800678'
+);
+
+$CODE_COMPTABLE_ARTICLE_PRESTATION = array(
+    '0'    => '70600678',
+    '2.1'  => '70600678',
+    '5.5'  => '70600678',
+    '7'    => '70600678',
+    '10'   => '70600678',
+    '19.6' => '70600678',
+    '20'   => '70600678'
+);
 
 $CODE_COMPTABLE_CLIENT = "4119";
 
-$CAT_NEGOCE = 7;
-$CAT_TRANSPORT = 37;
+$CAT_NEGOCE     = 7;
+$CAT_TRANSPORT  = 37;
 $CAT_PRESTATION = 26;
 
-$JOURNAL_ACHAT = "ACH";
-$JOURNAL_VENTE = "VEN";
+$JOURNAL_ACHAT  = "ACH";
+$JOURNAL_VENTE  = "VEN";
 $JOURNAL_REMISE = "REM";
 $JOURNAL_CAISSE = "CAI";
 
@@ -215,7 +250,7 @@ function processSql(
             $fp,
             $JOURNAL_VENTE . $SEP .
                 $date_fact_format . $SEP .
-                $codeComptableArticle . $CODE_TVA[$taux_tva] . $SEP .
+                $codeComptableArticle[$taux_tva] . $CODE_TVA[$taux_tva] . $SEP .
                 $num . $SEP .
                 "CLIENT VENTE ARTICLE" . $SEP .
                 $SEP .
