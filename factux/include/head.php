@@ -85,7 +85,8 @@ preChargement();
 	<li><a href="lister_factures_non_reglees.php"><?php echo $lang_non_reg ?><span>.</span></a></li>
 	<li><a href="form_multi_facture.php"><?php echo $lang_fact_multi ?><span>&nbsp;;</span></a></li>
 	<li><a href="oneclick.php"><?php echo $lang_imp_multi ?><span>&nbsp;;</span></a></li>
-	<li><a href="export_facture_generique_date.php"><?php echo "Export facture" ?><span>&nbsp;;</span></a></li>
+	<li><a href="export_facture_generique_date.php"><?php echo "Export PROfil EDI" ?><span>&nbsp;;</span></a></li>
+	<li><a href="export_vente_generique_date.php"><?php echo "Export ventes" ?><span>&nbsp;;</span></a></li>
 	    <?php } ?>
     </ul>
 
