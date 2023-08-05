@@ -112,6 +112,11 @@ $CLIENT_IGNORE = array(
     'de',
 );
 
+class TotalAndClient {
+    public $total;
+    public $client;
+}
+
 //functionsgit a
 function generate_csv_facture(
     $fp,
@@ -147,7 +152,7 @@ function generate_csv_facture(
         "AND  " . $tblpref . "article.cat NOT IN ( $CAT_NEGOCE, $CAT_PRESTATION, $CAT_TRANSPORT) " .
         "GROUP BY taux_tva";
 
-    processSql(
+    $totalAndClient1 = processSql(
         $sql,
         $num,
         $fp,
@@ -164,7 +169,7 @@ function generate_csv_facture(
         "AND  " . $tblpref . "article.cat = $CAT_NEGOCE " .
         "GROUP BY taux_tva";
 
-    processSql(
+    $totalAndClient2 = processSql(
         $sql,
         $num,
         $fp,
@@ -182,7 +187,7 @@ function generate_csv_facture(
         "AND  " . $tblpref . "article.cat = $CAT_TRANSPORT " .
         "GROUP BY taux_tva";
 
-    processSql(
+    $totalAndClient3 = processSql(
         $sql,
         $num,
         $fp,
@@ -200,13 +205,25 @@ function generate_csv_facture(
         "AND  " . $tblpref . "article.cat = $CAT_PRESTATION " .
         "GROUP BY taux_tva";
 
-    processSql(
+    $totalAndClient4 = processSql(
         $sql,
         $num,
         $fp,
         $date_fact_format,
         $CODE_COMPTABLE_ARTICLE_PRESTATION
     );
+
+    //write total
+    $totalAndClient1->total =
+      $totalAndClient1->total
+    + $totalAndClient2->total
+    + $totalAndClient3->total
+    + $totalAndClient4->total;
+    writeTotal(
+        $totalAndClient1,
+        $num,
+        $fp,
+        $date_fact_format);
 }
 
 function filterNomClient($nom, $ignore)
@@ -230,10 +247,12 @@ function processSql(
     $ZERO_CHAR, 
     $SEP,
     $CODE_COMPTABLE_TVA,
-    $CODE_COMPTABLE_CLIENT,
     $CODE_TVA,
     $JOURNAL_VENTE,
     $CLIENT_IGNORE;
+
+    $totalAndClient = new TotalAndClient();
+    $totalAndClient->total = 0;
     
     //fwrite(        $fp, $sql . "\n");
     $req = mysql_query($sql) or die('Erreur SQL !<br>' . $sql . '<br>' . mysql_error());
@@ -244,6 +263,7 @@ function processSql(
             continue;
         }
         $nom_client = filterNomClient($data['nom'], $CLIENT_IGNORE);
+        $totalAndClient->client = $nom_client;
         $total_ht = $data['SUM(tot_art_htva)'];
 
         fwrite(
@@ -271,19 +291,34 @@ function processSql(
                 . "\n"
         );
 
-        $total = $total_ht + $total_tva;
-        fwrite(
-            $fp,
-            $JOURNAL_VENTE . $SEP .
-                $date_fact_format . $SEP .
-                $CODE_COMPTABLE_CLIENT . $nom_client . $SEP .
-                $num . $SEP .
-                "CLIENT TTC" . $SEP .
-                $total .
-                $SEP . $SEP . $SEP
-                . "\n"
-        );
+        $totalAndClient->total += $total_ht + $total_tva;
     }
+
+    return $totalAndClient;
+}
+
+function writeTotal(
+    $totalAndClient,
+    $num,
+    $fp,
+    $date_fact_format
+)
+{
+    global
+        $SEP,
+        $CODE_COMPTABLE_CLIENT,
+        $JOURNAL_VENTE;
+    fwrite(
+        $fp,
+        $JOURNAL_VENTE . $SEP .
+            $date_fact_format . $SEP .
+            $CODE_COMPTABLE_CLIENT . $totalAndClient->client . $SEP .
+            $num . $SEP .
+            "CLIENT TTC" . $SEP .
+            $totalAndClient->total .
+            $SEP . $SEP . $SEP
+            . "\n"
+    );
 }
 
 function get_factures($date_from, $date_to, $tblpref)
