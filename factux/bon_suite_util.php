@@ -101,7 +101,7 @@ $lot1)
   //prise en compte du volume
   if( $prix_remise == '' )
   {
-    $prix_article += ($volume_pot * 0.20);
+    $prix_article += ($volume_pot * 0.18);
   }
 
   $montant_u_htva = $prix_article * (100-$remise)/100;
