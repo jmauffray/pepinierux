@@ -477,9 +477,9 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."'";
 
 	    //date échéance
             if ($payement=='non') { 
-	        $pdf->SetY(265);
+	        $pdf->SetY(266);
 	        $pdf->SetX(10);
-	        $pdf->MultiCell(65,4,"Echéance le $date_echeance",0,C,0);
+	        $pdf->MultiCell(190,4,"Echéance le $date_echeance",0,C,0);
 	    }
 
 	  }

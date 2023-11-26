@@ -222,7 +222,11 @@ WHERE " . $tblpref ."bon_comm.num_bon = '".$num_bon."' ";
 	//cellule coordonnees client
 	$pdf->SetY(50);
 	$pdf->SetX(10);
-	$pdf->MultiCell(65,6,"TVA N° : $num_tva\nTel : $tel_client\nTel : $fax_client",0,L,1);
+	$pdf->MultiCell(65,6,"TVA N° : $num_tva",0,L,1);
+
+	$pdf->SetY(50);
+	$pdf->SetX(165);
+	$pdf->MultiCell(65,6,"Tel : $tel_client\nTel : $fax_client",0,L,1);
 
 	//le logo
 	$pdf->Image("../image/$logo",8,6,53,42);
@@ -447,7 +451,11 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
 	//cellule coordonnees client
 	$pdf->SetY(50);
 	$pdf->SetX(10);
-	$pdf->MultiCell(65,6,"TVA N° : $num_tva\nTel : $tel_client\nTel : $fax_client",0,L,1);
+	$pdf->MultiCell(65,6,"TVA N° : $num_tva",0,L,1);
+
+	$pdf->SetY(50);
+	$pdf->SetX(165);
+	$pdf->MultiCell(65,6,"Tel : $tel_client\nTel : $fax_client",0,L,1);
 
 	//le logo
 	$pdf->Image("../image/$logo",8,6,53,42);
