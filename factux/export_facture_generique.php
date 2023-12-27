@@ -278,7 +278,11 @@ function processSql(
                 . "\n"
         );
 
-        $total_tva = $data['SUM(to_tva_art)'];
+        // not precise enough
+        //$total_tva = $data['SUM(to_tva_art)'];
+        $total_tva_preci = $total_ht * $taux_tva / 100;
+        // rouding up like compatbility
+        $total_tva = round($total_tva_preci, 2, PHP_ROUND_HALF_UP);
         fwrite(
             $fp,
             $JOURNAL_VENTE . $SEP .
