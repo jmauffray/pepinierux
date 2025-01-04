@@ -59,6 +59,7 @@ while ($row = mysql_fetch_array($req, MYSQL_ASSOC)) {
     
     //compute control key
     $values[2] = ean13_check_digit($values[2]);
+    $values[7] = $values[7] < 0 ? 0 : $values[7];
     
     fputcsv($fp, $values);
 }
