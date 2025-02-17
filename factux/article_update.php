@@ -21,15 +21,16 @@
  */
 require_once("include/verif.php");
 include_once("include/config/common.php");
+include_once("include/utils.php");
 
 include_once("include/language/$lang.php");
 $num=isset($_POST['num'])?$_POST['num']:"";
 $article1=isset($_POST['article'])?$_POST['article']:"";
-$prix=isset($_POST['prix'])?$_POST['prix']:"";
+$prix=isset($_POST['prix'])?strfloatval($_POST['prix']):"";
 //$prix_part=isset($_POST['prix_part'])?$_POST['prix_part']:"";
-$prix_part_ttc=isset($_POST['prix_part_ttc'])?$_POST['prix_part_ttc']:"";
-$tva=isset($_POST['tva'])?$_POST['tva']:"";
-$tva_part=isset($_POST['tva_part'])?$_POST['tva_part']:"";
+$prix_part_ttc=isset($_POST['prix_part_ttc'])?strfloatval($_POST['prix_part_ttc']):"";
+$tva=isset($_POST['tva'])?strfloatval($_POST['tva']):"";
+$tva_part=isset($_POST['tva_part'])?strfloatval($_POST['tva_part']):"";
 $prix_part = ($prix_part_ttc * 100 / (100 + $tva_part));
 $stock=isset($_POST['stock'])?$_POST['stock']:"";
 $categorie=isset($_POST['categorie'])?$_POST['categorie']:"";
@@ -38,7 +39,7 @@ $variete1=isset($_POST['variete'])?$_POST['variete']:"";
 $contenance1=isset($_POST['contenance'])?$_POST['contenance']:"";
 $phyto1=isset($_POST['phyto'])?$_POST['phyto']:"";
 $conditionnement1=isset($_POST['conditionnement'])?$_POST['conditionnement']:"";
-$prix_achat=isset($_POST['prix_achat'])?$_POST['prix_achat']:"";
+$prix_achat=isset($_POST['prix_achat'])?strfloatval($_POST['prix_achat']):"";
 $stock_disponible=isset($_POST['stock_disponible'])?$_POST['stock_disponible']:"";
 $localisation=isset($_POST['localisation'])?$_POST['localisation']:"";
 $groupe_varietal1=isset($_POST['groupe_varietal'])?$_POST['groupe_varietal']:"";

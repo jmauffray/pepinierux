@@ -36,4 +36,10 @@ function mysql_result2($res,$col=0,$row=0){
     return false;
 }
 
+function strfloatval($val){
+    $val = str_replace(",",".",$val);
+    $val = preg_replace('/\.(?=.*\.)/', '', $val);
+    return $val;
+}
+
 ?>
