@@ -13,34 +13,37 @@ include_once("include/utils.php");
 error_reporting(E_ALL);
 
 //SQL
-$columns = array('num',
+$columns = array(
+    'groupe_varietal',
+    'num',
+    'REPLACE(stock_disponible,".00","")',
     'article',
     'variete',
-    'groupe_varietal',
-    'taille', 
+    'taille',
     'conditionnement',
-    'contenance',
     'REPLACE(FORMAT(prix_ttc_part, 2), \'.\', \',\')',
     'REPLACE(FORMAT(prix_htva, 2), \'.\', \',\')',
     'categorie',
+    'contenance',
     'localisation',
     'prix_achat',
     'REPLACE(stock,".00","")',
-    'REPLACE(stock_disponible,".00","")');
-$columnsHeader = array('num',
-    'article',
-    'variete',
-    'groupe_varietal',
-    'taille', 
-    'conditionnement',
+    );
+$columnsHeader = array(
+    'Groupe variétal',
+    'Numéro d\'article',
+    'Stock disponible',
+    'Nom',
+    'Variété', 
+    'Taille',
+    'Conditionnement',
+    'Tarif TTC',
+    'Tarif HT',
+    'Catégorie',
     'contenance',
-    'prix_ttc_part',
-    'prix_htva',
-    'categorie',
     'localisation',
     'prix_achat',
-    'stock',
-    'stock_disponible');
+    'stock');
 $sql = "SELECT ".implode(",", $columns)
         . " FROM " . $tblpref . "article, " . $tblpref . "categorie"
         . " WHERE actif != 'non' AND stock_disponible > 0 AND"
