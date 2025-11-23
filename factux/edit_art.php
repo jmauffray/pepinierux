@@ -115,6 +115,7 @@
 		  <OPTION VALUE='motte d35'>motte d35</OPTION>
 		  <OPTION VALUE='motte d40'>motte d40</OPTION>
 		  <OPTION VALUE='motte d45'>motte d45</OPTION>
+		  <OPTION VALUE='motte d50'>motte d50</OPTION>
 		  <OPTION VALUE='motte d60'>motte d60</OPTION>
 		  <OPTION VALUE='motte d70'>motte d70</OPTION>
 		  <OPTION VALUE='motte d80'>motte d80</OPTION>
