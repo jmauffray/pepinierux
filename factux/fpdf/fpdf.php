@@ -171,7 +171,7 @@ if(!class_exists('FPDF'))
 	//Line width (0.2 mm)
 	$this->LineWidth=.567/$this->k;
 	//Automatic page break
-	$this->SetAutoPageBreak(true,2*$margin);
+	$this->SetAutoPageBreak(true,1*$margin);
 	//Full width display mode
 	$this->SetDisplayMode('fullwidth');
 	//Enable compression
