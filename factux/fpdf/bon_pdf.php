@@ -395,7 +395,7 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
 	  }
 	  //fin footer
 	
-	$pdf->Line(10,267,200,267);
+	$pdf->Line(10,277,200,277);
 	//la derniere cellule conditions de facturation
 	$pdf->SetFont('Arial','B',10);
 	$pdf->SetY(258);
@@ -404,12 +404,12 @@ WHERE  bon_num = $num_bon LIMIT $nb, $nb_li_page";
 	$annee_fact = substr ($date_fact,6,4);
 	
 	$pdf->SetFont('Arial','B',10);
-	$pdf->SetY(270);
+	$pdf->SetY(280);
 	$pdf->SetX(30);
 	$pdf->MultiCell(160,4,"$lang_page $num_pa2 / $nb_pa\n",0,R,0);
 
 	$pdf->SetFont('Arial','',8);
-	$pdf->SetY(270);
+	$pdf->SetY(280);
 	$pdf->SetX(10);
 	$pdf->MultiCell(160,4,"$code_iban\n",0,L,0);
 

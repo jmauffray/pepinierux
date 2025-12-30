@@ -454,7 +454,7 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."'";
 	    //fin ventillation
 	    //pour les commentaire
 	    $pdf->SetFont('Arial','',10);
-	    $pdf->SetY(245);
+	    $pdf->SetY(247);
 	    $pdf->SetX(10);
 	    $pdf->MultiCell(190,4,"$coment",0,C,0);
 
@@ -489,20 +489,20 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."'";
 	  $pdf->SetX(140);
 	  $pdf->MultiCell(60,4,"$lang_po_acquis",0,C,0);  
 	}
-	$pdf->Line(10,277,200,277);
+	$pdf->Line(10,280,200,280);
 	//la derniere cellule conditions de facturation
 	$pdf->SetFont('Arial','B',10);
-	$pdf->SetY(268);
+	$pdf->SetY(278);
 	$pdf->SetX(30);
 	$pdf->SetY(268);
 	$annee_fact = substr ($date_fact,6,4);
 	$pdf->SetFont('Arial','B',10);
-	$pdf->SetY(272);
+	$pdf->SetY(282);
 	$pdf->SetX(30);
 	$pdf->MultiCell(160,4,"$lang_page $num_pa2 / $nb_pa\n",0,R,0);
 
 	$pdf->SetFont('Arial','',8);
-	$pdf->SetY(272);
+	$pdf->SetY(282);
 	$pdf->SetX(10);
 	$pdf->MultiCell(160,4,"$code_iban\n",0,L,0);
 
