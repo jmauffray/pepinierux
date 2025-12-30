@@ -225,7 +225,7 @@ WHERE " . $tblpref ."bon_comm.num_bon = '".$num_bon."' ";
 	$pdf->MultiCell(65,6,"TVA N° : $num_tva",0,L,1);
 
 	$pdf->SetY(50);
-	$pdf->SetX(165);
+	$pdf->SetX(160);
 	$pdf->MultiCell(65,6,"Tel : $tel_client\nTel : $fax_client",0,L,1);
 
 	//le logo
