@@ -75,26 +75,32 @@
 	      <span><label><?php echo "Description "; ?></label><input size=45 name="description" type="text" value ="<?php echo"$description" ?>"></span><br/>
 	    <span><label>Groupe varietal</label>
 		<SELECT NAME='groupe_varietal'>
-		  <OPTION VALUE='<?php echo"$groupe_varietal" ?>'><?php echo"$groupe_varietal" ?></OPTION>
+		  <OPTION VALUE='<?php echo"$groupe_varietal" ?>'>
+		    <?php echo"$groupe_varietal" ?></OPTION>
+		  <OPTION VALUE='Agrumes'>Agrumes</OPTION>
 		  <OPTION VALUE='Arbres'>Arbres</OPTION>
 		  <OPTION VALUE='Arbres fruitiers'>Arbres fruitiers</OPTION>
 		  <OPTION VALUE='Arbustes'>Arbustes</OPTION>
 		  <OPTION VALUE='Aromatique'>Aromatique</OPTION>
 		  <OPTION VALUE='Bambou'>Bambou</OPTION>
-		  <OPTION VALUE='Buis et topiaire'>Buis et topiaire</OPTION>
+		  <OPTION VALUE='Bulbes'>Bulbes</OPTION>
 		  <OPTION VALUE='Camélia'>Camélia</OPTION>
 		  <OPTION VALUE='Conifères'>Conifères</OPTION>
 		  <OPTION VALUE='Cornus de greffe'>Cornus de greffe</OPTION>
 		  <OPTION VALUE='Erables du japon'>Erables du japon</OPTION>
 		  <OPTION VALUE='Graminées'>Graminées</OPTION>
 		  <OPTION VALUE='Grimpantes'>Grimpantes</OPTION>
+		  <OPTION VALUE='Hydrangea'>Hydrangea</OPTION>
 		  <OPTION VALUE='Lilas'>Lilas</OPTION>
+		  <OPTION VALUE='Palmiers'>Palmiers</OPTION>
 		  <OPTION VALUE='Petits fruits'>Petits fruits</OPTION>
 		  <OPTION VALUE='Pittosporum'>Pittosporum</OPTION>
+		  <OPTION VALUE='Plantes annuelles'>Plantes annuelles</OPTION>
 		  <OPTION VALUE='Plantes de terre de bruyère'>Plantes de terre de bruyère</OPTION>
 		  <OPTION VALUE='Plants maraicher'>Plants maraicher</OPTION>
 		  <OPTION VALUE='Produits complémentaires'>Produits complémentaires</OPTION>
 		  <OPTION VALUE='Rosiers'>Rosiers</OPTION>
+		  <OPTION VALUE='Topiaire'>Topiaire</OPTION>
 		  <OPTION VALUE='Vivaces'>Vivaces</OPTION>
 		  <OPTION VALUE=''></OPTION>
 	 	</SELECT>
