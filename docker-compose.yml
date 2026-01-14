@@ -1,0 +1,36 @@
+
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./factux:/var/www/html/factux
+    depends_on:
+      - db
+    links:
+      - db
+
+  db:
+    image: mariadb:10.3
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: factux
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./factux.sql:/docker-entrypoint-initdb.d/factux.sql
+
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+
+volumes:
+  db_data:

@@ -1,4 +1,62 @@
-## Installation du site web
+# Pepinierux
+
+## Quick Start with Docker (Recommended)
+
+This is the easiest way to run the application without installing legacy PHP versions on your machine.
+
+### Prerequisites
+- Docker and Docker Compose installed.
+
+### Installation
+1.  **Clone the repository:**
+    ```sh
+    git clone https://github.com/jmauffray/pepinierux.git
+    cd pepinierux
+    ```
+
+2.  **Setup Configuration Files:**
+    Copy the Docker-specific configuration files:
+    ```sh
+    cp factux/include/config/common.php.docker factux/include/config/common.php
+    cp factux/dbinfo.php.docker factux/dbinfo.php
+    ```
+    
+    Copy default image assets (if not already present):
+    ```sh
+    cp factux/image/logo.png.default factux/image/logo.png
+    cp factux/image/passeport-phyto.jpg.default factux/image/passeport-phyto.jpg
+    ```
+    
+    Copy variable config:
+    ```sh
+    cp factux/include/config/var.php.default factux/include/config/var.php
+    ```
+
+3.  **Start the Application:**
+    ```sh
+    docker-compose up -d
+    ```
+
+    
+docker compose exec db mysql -uroot -proot -e "DROP DATABASE IF EXISTS factux; CREATE DATABASE factux;"
+
+docker compose exec db mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS factux"
+
+docker compose exec -T db mysql -uroot -proot factux < factux.sql
+
+
+
+
+4.  **Access the Application:**
+    Open your browser and go to: [http://localhost:8080/factux/](http://localhost:8080/factux/)
+    
+    **Default Credentials:**
+    - Login: `admin`
+    - Password: `admin`
+
+---
+
+## Installation du site web (Legacy Manual Method)
 ```sh
 #clone repository
 git clone https://github.com/jmauffray/pepinierux.git
