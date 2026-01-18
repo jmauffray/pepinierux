@@ -1,84 +1,55 @@
 <?php
 /*
  * Factux le facturier libre
- * Copyright (C) 2003-2004 Guy Hendrickx
- * 
- * Licensed under the terms of the GNU  General Public License:
- * 		http://www.opensource.org/licenses/gpl-license.php
- * 
- * For further information visit:
- * 		http://factux.sourceforge.net
- * 
- * File Name: fckconfig.js
- * 	Editor configuration settings.
- * 
- * * Version:  1.1.5
- * * * Modified: 23/07/2005
- * 
- * File Authors:
- * 		Guy Hendrickx
- *.
+ * Replacement date.php for PHP 8 compatibility
  */
- function calendrier_local_mois ()
+
+function get_month_names($lang) {
+    if (strpos($lang, 'fr') !== false) return [1=>'Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+    if (strpos($lang, 'nl') !== false) return [1=>'Januari','Februari','Maart','April','Mei','Juni','Juli','Augustus','September','Oktober','November','December'];
+    return [1=>'January','February','March','April','May','June','July','August','September','October','November','December'];
+}
+
+function get_day_names($lang) {
+    if (strpos($lang, 'fr') !== false) return ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+    if (strpos($lang, 'nl') !== false) return ['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag'];
+    return ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+}
+
+function calendrier_local_mois ()
 {
   global $code_langue;
-  $an = strftime ( "%G", time ());
-  setlocale(LC_TIME, $code_langue);
-  for ($i=1;$i<=12;$i++)
-  {
-    $premier = mktime(0, 0, 0, $i, 1, $an);
-    $calendrier [$i] = strftime ( "%B", $premier);
-  }
-  return  $calendrier;
+  return get_month_names($code_langue);
 }
+
 function calendrier_local_mois2 ()
 {
   global $code_langue;
-  $an = strftime ( "%G", time ());
-  setlocale(LC_TIME, $code_langue);
-  for ($i=12;$i<=12;$i++)
-  {
-    $premier = mktime(0, 0, 0, $i, 1, $an);
-    $calendrier [$i] = strftime ( "%B", $premier);
-  }
-  return  $calendrier;
+  $m = get_month_names($code_langue);
+  return [12 => $m[12]];
 }
+
 function calendrier_local_mois3 ()
 {
   global $code_langue;
-  $an = strftime ( "%G", time ());
-  setlocale(LC_TIME, $code_langue);
-  for ($i=1;$i<=11;$i++)
-  {
-    $premier = mktime(0, 0, 0, $i, 1, $an);
-    $calendrier [$i] = strftime ( "%B", $premier);
-  }
-  return  $calendrier;
+  $m = get_month_names($code_langue);
+  unset($m[12]);
+  return $m;
 }
+
 function calendrier_local_jour ()
 {
   global $code_langue;
-  $jour = strftime ( "%A", time ());
-  setlocale(LC_TIME, $code_langue);
-  for ($i=5;$i<=10;$i++)
-	
-  {
-    $premier = mktime(0, 0, 0, 0, $i, $jour);
-    $calendrier [$i] = strftime ( "%A", $premier);
-  }
-  return  $calendrier;
+  $d = get_day_names($code_langue);
+  // Return first 6 days (Sun-Fri)
+  return array_slice($d, 0, 6);
 }
+
 function calendrier_local_jour2 ()
 {
   global $code_langue;
-  $jour = strftime ( "%A", time ());
-  setlocale(LC_TIME, $code_langue);
-  for ($i=11;$i<=11;$i++)
-	
-  {
-    $premier = mktime(0, 0, 0, 0, $i, $jour);
-    $calendrier [$i] = strftime ( "%A", $premier);
-  }
-  return  $calendrier;
+  $d = get_day_names($code_langue);
+  // Return last day (Sat)
+  return array_slice($d, 6, 1);
 }
 ?>

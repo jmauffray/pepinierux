@@ -42,7 +42,7 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=0,lo
 include_once("include/finhead.php");
 
 
-if (ereg("MSIE", $_SERVER["HTTP_USER_AGENT"])) {?>
+if (preg_match("/MSIE/", $_SERVER["HTTP_USER_AGENT"])) {?>
     <BODY onLoad="javascript:popUp('ie.php')">
 		<?php
 } 

@@ -19,7 +19,6 @@
    * 		Guy Hendrickx
    *.
    */
-
 session_cache_limiter('private');
 if ($_POST['user']=='adm') { 
   require_once("../include/verif2.php");  
@@ -154,7 +153,8 @@ class PDF extends PDF_MySQL_Table
       $this->_out('/Names <</JavaScript '.($this->n_js).' 0 R>>');
     }
   }
-  function AutoPrint($dialog=false, $nb_impr)
+  //TODO PDF
+  function AutoPrint($nb_impr, $dialog=false)
   {
     //Ajoute du JavaScript pour lancer la boîte d'impression ou imprimer immediatement
     $param=($dialog ? 'true' : 'false');
@@ -168,6 +168,7 @@ class PDF extends PDF_MySQL_Table
 $pdf=new PDF();	
 $pdf->Open();
 $toto="guy";
+
 for ($o=0;$o<$g;$o++)
   {
 
@@ -178,7 +179,8 @@ for ($o=0;$o<$g;$o++)
 	LEFT JOIN  " . $tblpref ."article on " . $tblpref ."article.num = " . $tblpref ."cont_bon.article_num
    WHERE " . $tblpref ."client.num_client = '".$client[$o]."'"; 
     // AND " . $tblpref ."bon_comm.date >= '".$debut[$o]."' and " . $tblpref ."bon_comm.date <= '".$fin[$o]."'";
-    $sql ="$sql $suite_sql[$o]";
+
+	$sql ="$sql $suite_sql[$o]";
 
     $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
     $nb_li = mysql_num_rows($req);
@@ -189,15 +191,20 @@ for ($o=0;$o<$g;$o++)
 //suite
     $sql = "select payement, acompte, coment, date_echeance, date_depart, DATE_FORMAT(date_fact,'%d/%m/%Y') AS date_2 
 from " . $tblpref ."facture where num = $num[$o]";
+
     $req = mysql_query($sql) or die('Erreur SQL
 !<br>'.$sql.'<br>'.mysql_error());
+
     $data = mysql_fetch_array($req);
-    $date_fact = $data[date_2];
-    $coment = $data[coment];
-    $acompte = $data[acompte];
-    $date_depart = $data[date_depart];
-    $date_echeance = $data[date_echeance];
-    $payement= $data[payement];
+
+	$date_fact = $data["date_2"];
+
+	$coment = $data["coment"];
+
+	$acompte = $data["acompte"];
+    $date_depart = $data["date_depart"];
+    $date_echeance = $data["date_echeance"];
+    $payement= $data["payement"];
 
     //pour les totaux
     $sql = "SELECT SUM(tot_art_htva), SUM(to_tva_art) FROM " . $tblpref ."client RIGHT JOIN " . $tblpref ."bon_comm on " . $tblpref ."client.num_client = " . $tblpref ."bon_comm.client_num LEFT join " . $tblpref ."cont_bon on " . $tblpref ."bon_comm.num_bon = " . $tblpref ."cont_bon.bon_num  LEFT JOIN  " . $tblpref ."article on " . $tblpref ."article.num = " . $tblpref ."cont_bon.article_num 
@@ -224,6 +231,7 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
     $mail_client = $data['mail'];
     $tel_client = $data['tel'];
     $fax_client = $data['fax'];
+echo "5";
 
     $type = $data['type'];
     $taux_tva='taux_tva';
@@ -234,6 +242,8 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
 
     for ($i=0;$i<$nb_pa;$i++)
       {
+		echo "6 pa";
+
 	$nb = $i *$nb_li_page;
 	$num_pa = $i;
 	$num_pa2 = $num_pa +1;
@@ -519,9 +529,12 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."'";
     }
   }
 if($autoprint=='y' and $_POST['mail']!='y' and $_POST['user']=='adm'){
-  $pdf->AutoPrint(false, $nbr_impr);
+  $pdf->AutoPrint($nbr_impr, false);
  }
-$pdf->Output($file); 
+echo "test";
+
+ $pdf->Output($file); 
+echo "test2";
 
 if ($_POST['mail']=='y') { 	 
   $to = "$mail_client";

@@ -40,7 +40,7 @@
 Les nombres peuvent ętre entier, a virgule, mais positif, et ecrit uniquement en chiffres et virgule.
 ****/
 //$euro= '€';
-//$devise = ereg_replace('&#128;', $euro, $devise);
+//$devise = preg_replace('/&#128;/', $euro, $devise);
 
 define ("ENTIER", "");
 define ("VIRGULE", ".");
@@ -76,7 +76,7 @@ function nombre_literal($nombre, $partie_entiere=ENTIER, $virgule=VIRGULE, $deci
 // on fait de cette valeur un nombre
 	$nombre = preg_replace("/[^,0-9]/", "", $nombre);
 	if ($nombre == ""){ return "z&eacute;ro"; }
-	$parties = split("," , $nombre);
+	$parties = explode("," , $nombre);
 	$nombre = array_shift($parties);
 	if (count($parties) > 0) { $nombre .= ",".implode("", $parties);}
 	
@@ -89,7 +89,7 @@ function nombre_literal($nombre, $partie_entiere=ENTIER, $virgule=VIRGULE, $deci
 	$lunite = ($nombre - $les_centaines * 100 - $les_dizaines * 10);
 
 	// cas de la virgule
-	if (ereg(',', $nombre)){
+	if (strpos($nombre, ',') !== false){
 		list($e, $d) = explode(",", $nombre);
 		$r = nombre_literal($e);
 		
@@ -101,7 +101,7 @@ function nombre_literal($nombre, $partie_entiere=ENTIER, $virgule=VIRGULE, $deci
         // Modification par www.cyberiel.com 10-05-2004. Afficher EURO et CENT
 		// Si on utilise des devis, on affiche "zéro" et non "zéro zéro" aprčs la virgule
 		// ... attention: ça ne marche que s'il y a maximum 2 décimales.
-			$z = ereg_replace("0", "z&eacute;ro ", $z);
+			$z = preg_replace("/0/", "z&eacute;ro ", $z);
 			echo "z = $z<br>";
 			echo "nombre_literal=".nombre_literal($d)."<br>";
 			if (($partie_entiere <> ENTIER) && (substr ($z, 0,1) == "z"))// on utile une devise
@@ -126,12 +126,12 @@ function nombre_literal($nombre, $partie_entiere=ENTIER, $virgule=VIRGULE, $deci
 		} else if (in_array( $les_dizaines, array(2,3,4,5,6,8))){
 			$r .= $dizaine[$les_dizaines]." ".$unite[$lunite];
 			if (($lunite==1) && ($les_dizaines < 8)){
-				$r = ereg_replace(" ", " et ", $r);
+				$r = preg_replace("/ /", " et ", $r);
 			}
 		} else if ( in_array($les_dizaines, array(7,9))){
 			$r .= $dizaine[$les_dizaines-1]." ".$unite[$lunite+10];	
 			if (($lunite==1) && ($les_dizaines == 7)){
-				$r = ereg_replace(" ", " et ", $r);
+				$r = preg_replace("/ /", " et ", $r);
 			}	
 		}
 		
