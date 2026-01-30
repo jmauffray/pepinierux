@@ -522,6 +522,7 @@ if($autoprint=='y' and $_POST['mail']!='y' and $_POST['user']=='adm'){
   $pdf->AutoPrint(false, $nbr_impr);
  }
 $pdf->Output($file); 
+$file = generate_pdf($file);
 
 if ($_POST['mail']=='y') { 	 
   $to = "$mail_client";
@@ -541,6 +542,68 @@ if ($_POST['mail']=='y') {
  }else{
 
   echo "<HTML><SCRIPT>document.location='$file';</SCRIPT></HTML>";
+ }
+
+ function generate_xml($filename) {
+	 
+	$template = read_template_xml1("factur-x-template.xml");
+
+	$search  = array(
+		"BT-invoice-id",
+		"BT-invoice-date",
+		"BT-tva",
+		"BT-total-ht",
+		"BT-total-ttc",
+		"BT-total-payed"
+	);
+	$replace = array(
+		"123456",
+		"20261111",
+		"150.00",
+		"11",
+		"11",
+		"11",
+	);
+	$content = str_replace($search, $replace, $template);
+	
+	$result = file_put_contents($filename, $content);
+	if ($result == false) {
+		echo "Erreur lors de l'enregistrement du fichier.";
+	}	
+ }
+
+ function read_template_xml1($filename) {
+	 // 1. Check if file exists
+	 echo "read:" + $filename;
+
+	 if (!file_exists($filename)) {
+		error_log("Template file $filename does not exist.");
+		return false; 
+    }
+
+    // 2. Check if it is actually a file and readable
+    if (is_file($filename) && is_readable($filename)) {
+		error_log("read $filename");
+        return file_get_contents($filename);
+    } else {
+		error_log("Template file $filename is not a readable file.");
+		return false;
+	}	
+
+    return false;
+ }
+
+ function generate_pdf($filename) {
+	generate_xml("factux-output.xml");
+
+    $bin = "/home/jm/workspace/factur-x/.venv/bin/facturx-pdfgen";
+	$pdffile = $filename;
+	$xmlfile = "factux-output.xml";
+	$pdffileout = "out-".$filename;
+    $cmd = "export LD_LIBRARY_PATH=\"\" && $bin $pdffile $xmlfile $pdffileout 2>&1";
+    $output = shell_exec($cmd);
+
+	return $pdffileout;
  }
 
 ?> 
