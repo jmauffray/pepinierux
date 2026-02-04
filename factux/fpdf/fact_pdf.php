@@ -260,7 +260,6 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
 	  }
         $nomBis = ereg_replace('[^[:alnum:]]', '_', $nom);
 	$file = "facture_numero_$num[$o]_".$nomBis.".pdf";
-
 	//deuxieme cellule les coordonées du CLIENT
 	$pdf->SetFont('Arial','B',10);
 	$pdf->SetY(50);
@@ -521,8 +520,10 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."'";
 if($autoprint=='y' and $_POST['mail']!='y' and $_POST['user']=='adm'){
   $pdf->AutoPrint(false, $nbr_impr);
  }
-$pdf->Output($file); 
-$file = generate_pdf($file);
+$pdf->Output($file);
+
+$filex = generate_pdf($file);
+rename($filex, $file);
 
 if ($_POST['mail']=='y') { 	 
   $to = "$mail_client";
@@ -545,8 +546,19 @@ if ($_POST['mail']=='y') {
  }
 
  function generate_xml($filename) {
-	 
-	$template = read_template_xml1("factur-x-template.xml");
+
+	global $num;
+	global $date_fact;
+	global $total_tva;
+	global $total_htva;
+	global $tot_tva_inc;
+	global $entrep_nom;
+	global $siret_num;
+	global $tva_vend;
+	global $num_bon;
+
+	$date = DateTime::createFromFormat('d/m/Y', $date_fact);
+	$datefmt = $date->format('Ymd');
 
 	$search  = array(
 		"BT-invoice-id",
@@ -554,54 +566,51 @@ if ($_POST['mail']=='y') {
 		"BT-tva",
 		"BT-total-ht",
 		"BT-total-ttc",
-		"BT-total-payed"
+		"BT-total-payed",
+		"BT-enterprise-name",
+		"BT-siret",
+		"BT-tva-number",
+		"BT-command-order-id",
+
 	);
 	$replace = array(
-		"123456",
-		"20261111",
-		"150.00",
-		"11",
-		"11",
-		"11",
+		"$num[0]",
+		"$datefmt",
+		"$total_tva",
+		"$total_htva",
+		"$tot_tva_inc",
+		"$tot_tva_inc",
+		"$entrep_nom",
+		"$siret_num",
+		"$tva_vend",
+		"$num_bon",
 	);
+	//print_r($replace);
+
+	$template = file_get_contents("factur-x-template.xml");
 	$content = str_replace($search, $replace, $template);
-	
 	$result = file_put_contents($filename, $content);
 	if ($result == false) {
 		echo "Erreur lors de l'enregistrement du fichier.";
 	}	
  }
 
- function read_template_xml1($filename) {
-	 // 1. Check if file exists
-	 echo "read:" + $filename;
-
-	 if (!file_exists($filename)) {
-		error_log("Template file $filename does not exist.");
-		return false; 
-    }
-
-    // 2. Check if it is actually a file and readable
-    if (is_file($filename) && is_readable($filename)) {
-		error_log("read $filename");
-        return file_get_contents($filename);
-    } else {
-		error_log("Template file $filename is not a readable file.");
-		return false;
-	}	
-
-    return false;
- }
-
  function generate_pdf($filename) {
+	global $facturx_pdfgen_bin;
+
 	generate_xml("factux-output.xml");
 
-    $bin = "/home/jm/workspace/factur-x/.venv/bin/facturx-pdfgen";
+    $bin = $facturx_pdfgen_bin;
 	$pdffile = $filename;
 	$xmlfile = "factux-output.xml";
-	$pdffileout = "out-".$filename;
+	$pdffileout = "x-".$filename;
     $cmd = "export LD_LIBRARY_PATH=\"\" && $bin $pdffile $xmlfile $pdffileout 2>&1";
     $output = shell_exec($cmd);
+	
+	if ($output === null) {
+		print("Failed to execute command: $cmd");
+		return $filename;
+	}
 
 	return $pdffileout;
  }
