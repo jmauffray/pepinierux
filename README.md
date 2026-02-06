@@ -20,6 +20,12 @@ chmod 777 factux/include/session
 chmod 777 factux/fpdf
 chmod 777 factux/uploads
 
+#install facturx module
+cd factux/fpdf
+python3 -m venv .venv
+. .venv/bin/activate
+pip install factur-x
+
 #go to home page and connect login:admin pwd:admin
 firefox http://localhost/pepinierux/factux/
 ```
