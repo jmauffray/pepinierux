@@ -600,7 +600,7 @@ if ($_POST['mail']=='y') {
 
 	generate_xml("factux-output.xml");
 
-    $bin = $facturx_pdfgen_bin;
+    $bin = ".venv/bin/facturx-pdfgen";
 	$pdffile = $filename;
 	$xmlfile = "factux-output.xml";
 	$pdffileout = "x-".$filename;

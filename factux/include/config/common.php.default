@@ -10,5 +10,4 @@ mysql_connect($host,$user,$pwd) or die ("serveur de base de données injoignable
 mysql_select_db($db) or die ("La base de données est injoignable. Vérifiez dans /factux/include/common.php si $user, $pwd, $db sont exacts.");
 mysql_query("set names 'utf8'");//for UTF8 support
 $price_per_liter= 0.20;//prix par litre pour motte en pot
-$facturx_pdfgen_bin="/factur-x/.venv/bin/facturx-pdfgen"
 ?>
