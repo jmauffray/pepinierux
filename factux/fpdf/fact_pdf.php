@@ -209,7 +209,7 @@ WHERE " . $tblpref ."client.num_client = '".$client[$o]."' ";
     $data = mysql_fetch_array($req);
     $total_htva = $data["SUM(tot_art_htva)"];
     $total_tva = $data["SUM(to_tva_art)"];
-    $tot_tva_inc = $tot_tva_inc + $total_htva;
+    $tot_tva_inc = $total_tva + $total_htva;
 
     //pour le nom de client
     $sql1 = "SELECT mail, nom, nom2, rue, ville, cp, num_tva, type, tel, fax FROM " . $tblpref ."client WHERE  num_client = $client[$o]";
@@ -585,6 +585,7 @@ if ($_POST['mail']=='y') {
 		"$tva_vend",
 		"$num_bon",
 	);
+	//print_r($search);
 	//print_r($replace);
 
 	$template = file_get_contents("factur-x-template.xml");
