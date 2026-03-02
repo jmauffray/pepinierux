@@ -262,6 +262,10 @@ function processSql(
         if ($taux_tva === null ||  $taux_tva === '') {
             continue;
         }
+        if(!isset($codeComptableArticle[$taux_tva])
+        || !isset($CODE_TVA[$taux_tva] )) {
+            continue;
+        }
         $nom_client = filterNomClient($data['nom'], $CLIENT_IGNORE);
         $totalAndClient->client = $nom_client;
         $total_ht = $data['SUM(tot_art_htva)'];
