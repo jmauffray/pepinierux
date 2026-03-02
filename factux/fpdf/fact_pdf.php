@@ -563,13 +563,13 @@ if ($_POST['mail']=='y') {
 	$search  = array(
 		"BT-invoice-id",
 		"BT-invoice-date",
-		"BT-tva",
+		"BT-tva-sum",
 		"BT-total-ht",
 		"BT-total-ttc",
 		"BT-total-payed",
 		"BT-enterprise-name",
 		"BT-siret",
-		"BT-tva-number",
+		"BT-tva-id",
 		"BT-command-order-id",
 
 	);
