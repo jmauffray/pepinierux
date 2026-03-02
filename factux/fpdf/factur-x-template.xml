@@ -26,7 +26,7 @@
                     <ram:CountryID>FR</ram:CountryID>
                 </ram:PostalTradeAddress>
                 <ram:SpecifiedTaxRegistration>
-                    <ram:ID schemeID="VA">BT-tva-number</ram:ID>
+                    <ram:ID schemeID="VA">BT-tva-id</ram:ID>
                 </ram:SpecifiedTaxRegistration>
             </ram:SellerTradeParty>
             <ram:BuyerTradeParty>
@@ -47,7 +47,7 @@
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
             <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
                 <ram:TaxBasisTotalAmount>BT-total-ht</ram:TaxBasisTotalAmount>
-                <ram:TaxTotalAmount currencyID="EUR">BT-tva</ram:TaxTotalAmount>
+                <ram:TaxTotalAmount currencyID="EUR">BT-tva-sum</ram:TaxTotalAmount>
                 <ram:GrandTotalAmount>BT-total-ttc</ram:GrandTotalAmount>
                 <ram:DuePayableAmount>BT-total-payed</ram:DuePayableAmount>
             </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
