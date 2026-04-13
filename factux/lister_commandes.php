@@ -111,6 +111,8 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql2.'<br>'.mysql_error());
 				?>
               </select> </td><td width="27%" class="texte0">
 			  <select name="annee_1">
+                <option value="2027">2027</option>
+                <option value="2026">2026</option>
                 <option value="2025">2025</option>
                 <option value="2024">2024</option>
                 <option value="2023">2023</option>
