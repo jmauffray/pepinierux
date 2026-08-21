@@ -115,6 +115,7 @@ $CLIENT_IGNORE = array(
 class TotalAndClient {
     public $total;
     public $client;
+    public $client_full;
 }
 
 //functionsgit a
@@ -236,6 +237,14 @@ function filterNomClient($nom, $ignore)
     return strtoupper(substr($result, 0, 5));
 }
 
+function processNomClient($nom)
+{
+    $transliterated = transliterator_transliterate('Any-Latin; Latin-ASCII;', $nom);
+    $cleanString = preg_replace('/[^a-zA-Z0-9 ]/', '', $transliterated);
+
+    return substr($cleanString, 0, 24);
+}
+
 function processSql(
     $sql,
     $num,
@@ -266,8 +275,8 @@ function processSql(
         || !isset($CODE_TVA[$taux_tva] )) {
             continue;
         }
-        $nom_client = filterNomClient($data['nom'], $CLIENT_IGNORE);
-        $totalAndClient->client = $nom_client;
+        $totalAndClient->client = filterNomClient($data['nom'], $CLIENT_IGNORE);
+        $totalAndClient->client_full = processNomClient($data['nom']);
         $total_ht = $data['SUM(tot_art_htva)'];
 
         fwrite(
@@ -322,7 +331,7 @@ function writeTotal(
             $date_fact_format . $SEP .
             $CODE_COMPTABLE_CLIENT . $totalAndClient->client . $SEP .
             $num . $SEP .
-            "CLIENT TTC" . $SEP .
+            "CLIENT TTC " . $totalAndClient->client_full . $SEP .
             $totalAndClient->total .
             $SEP . $SEP . $SEP
             . "\n"
